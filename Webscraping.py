@@ -5,10 +5,10 @@ This script is for the Webscraping section of the 'Analysis of Investing on YouT
 
 # Running loading script
 import subprocess
-subprocess.call(["python", "Installing & Loading packages.py"])
+import sys
 
-print('Craic')
-
-import spacy
+python_executable = sys.executable
+subprocess.call([python_executable, "Installing & Loading packages.py"])
 
 """ Part 1: Connecting to YouTube API """
+
