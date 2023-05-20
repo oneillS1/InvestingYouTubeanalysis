@@ -17,3 +17,4 @@ import numpy as np
 import py_youtube
 import nltk
 import bert
+import youtube_transcript_api
