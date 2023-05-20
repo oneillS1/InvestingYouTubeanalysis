@@ -27,6 +27,7 @@ def extract_metadata(video_id, api_key):
     channel = video_info["snippet"]["channelTitle"]
     date = video_info["snippet"]["publishedAt"]
     tags = video_info["snippet"]["tags"]
+    id = video_info['id']
     title = video_info["snippet"]["title"]
     description = video_info["snippet"]["description"]
     #video_length = video_info["contentDetails"]["duration"]
@@ -40,6 +41,7 @@ def extract_metadata(video_id, api_key):
         'Channel': channel,
         'Date': date,
         'Tags': tags,
+        'Video id': id,
         'Title': title,
         'Description': description,
         'Likes': likes,
@@ -58,7 +60,7 @@ def extract_multiVideo_metadata(video_ids, api_key):
     return metadata
 
 def append_metadata_to_csv(metadata, csv_file):
-    var_names = ['Channel', 'Date', 'Tags', 'Title', 'Description', 'Likes', 'Views', 'Comments', 'Transcript']
+    var_names = ['Channel', 'Date', 'Tags', 'Video id', 'Title', 'Description', 'Likes', 'Views', 'Comments', 'Transcript']
 
     with open(csv_file, 'a', newline='', encoding='utf-8-sig') as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames = var_names)
@@ -91,9 +93,13 @@ Criteria for inclusion:
         Transcript available on YouTube
         Between 2 - 10 minute videos (may also do shorts if possible)
 """
-
-
-
+#test
+url = f"https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id={'SbMtY-aJjFA'}&key={api_key}"
+response = requests.get(url)
+data = response.json()
+video_info = data["items"][0]
+print(video_info)
+print(video_info['id'])
 
 
 """ Part 3: Scraping the data """
@@ -113,7 +119,7 @@ What data to include?
 """
 from youtube_transcript_api import YouTubeTranscriptApi
 a = YouTubeTranscriptApi.get_transcript('3irypwLDtTs')
-print(a)
+# print(a)
 
 
 """ Part 4: Creating the dataset """
