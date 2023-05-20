@@ -11,6 +11,7 @@ python_executable = sys.executable
 # subprocess.call([python_executable, "Installing & Loading packages.py"])
 import requests
 import csv
+from youtube_transcript_api import YouTubeTranscriptApi
 
 """ Part 1: Connecting to YouTube API """
 api_key = "AIzaSyBRpuSMO306VzZkUGCNt06zIk7deIJk0Ec"
@@ -32,6 +33,7 @@ def extract_metadata(video_id, api_key):
     likes = video_info["statistics"]["likeCount"]
     views = video_info["statistics"]["viewCount"]
     comments = video_info["statistics"]["commentCount"]
+    transcript = YouTubeTranscriptApi.get_transcript(video_id)
 
     # Reshape to be a dictionary
     metadata = {
@@ -42,7 +44,8 @@ def extract_metadata(video_id, api_key):
         'Description': description,
         'Likes': likes,
         'Views': views,
-        'Comments': comments
+        'Comments': comments,
+        'Transcript': transcript
     }
 
     return metadata
@@ -55,7 +58,7 @@ def extract_multiVideo_metadata(video_ids, api_key):
     return metadata
 
 def append_metadata_to_csv(metadata, csv_file):
-    var_names = ['Channel', 'Date', 'Tags', 'Title', 'Description', 'Likes', 'Views', 'Comments']
+    var_names = ['Channel', 'Date', 'Tags', 'Title', 'Description', 'Likes', 'Views', 'Comments', 'Transcript']
 
     with open(csv_file, 'a', newline='', encoding='utf-8-sig') as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames = var_names)
