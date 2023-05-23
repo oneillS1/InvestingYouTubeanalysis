@@ -16,6 +16,7 @@ import csv
 from youtube_transcript_api import YouTubeTranscriptApi
 from youtubesearchpython import VideosSearch, ChannelsSearch
 import time
+from googleapiclient.discovery import build
 
 
 """ Part 1: Necessary functions """
@@ -35,6 +36,8 @@ def search_videos_by_keyword_in_channel(channel_ids, keyword, max_results=100):
 
     for channel_id in channel_ids:
         channels_search = ChannelsSearch(channel_id, limit=1)
+        print(channels_search)
+        print(channels_search.result())
 
         if len(channels_search.result()['result']) == 0:
             video_ids_by_channel[channel_id] = "Not Found"
@@ -51,37 +54,6 @@ def search_videos_by_keyword_in_channel(channel_ids, keyword, max_results=100):
         video_ids_by_channel[channel_id] = video_ids
 
     return video_ids_by_channel
-
-def find_channel_ids2(channel_names, api_key):
-    api_url = f"https://www.googleapis.com/youtube/v3/search"
-
-    channel_ids = []
-
-    for channel_name in channel_names:
-        username = channel_name.lstrip('@')  # Remove the "@" symbol if present
-
-        params = {
-            "part": "id",
-            "q": username,
-            "type": "channel",
-            "key": api_key
-        }
-
-        response = requests.get(api_url, params=params)
-        data = response.json()
-        print(data)
-
-        if "items" in data and len(data["items"]) > 0:
-            print('here')
-            channel_id = data["items"][0]["id"]
-            print(channel_id)
-            channel_ids.append(channel_id)
-        else:
-            channel_ids.append(None)
-
-    return channel_ids
-
-from googleapiclient.discovery import build
 
 def find_channel_ids(channel_usernames, api_key):
     youtube = build('youtube', 'v3', developerKey=api_key)
@@ -112,14 +84,15 @@ def find_channel_ids(channel_usernames, api_key):
             channel_ids_username.append((username, None))
 
     return channel_ids_username, channel_ids
+
 api_key = "AIzaSyBRpuSMO306VzZkUGCNt06zIk7deIJk0Ec"
 channel_names = ["@stephenoneill3309", "@skysports", "@SkySportsF1", "@skysportspremierleague"]
-channel_ids_username, channel_ids = find_channel_ids(channel_names, api_key)
-print(channel_ids_username, channel_ids)
+# channel_ids_username, channel_ids = find_channel_ids(channel_names, api_key)
+# print(channel_ids_username, channel_ids)
 
-# UCn6Ra0_U_0yr2o-JZUHFFxQ
-#video_ids3 = search_videos_by_keyword_in_channel(channel_ids, "crypto", max_results=100)
-#print(video_ids3)
+channel_ids2 = ["UCNAf1k0yIjyGu3k9BwAg3lg"]
+video_ids3 = search_videos_by_keyword_in_channel(channel_ids2, "Neville", max_results=100)
+print(video_ids3)
 
 """ 1 b) Function(s) for extracting relevant data from videos """
 def extract_metadata2(video_id, api_key):
