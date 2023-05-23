@@ -52,6 +52,74 @@ def search_videos_by_keyword_in_channel(channel_ids, keyword, max_results=100):
 
     return video_ids_by_channel
 
+def find_channel_ids2(channel_names, api_key):
+    api_url = f"https://www.googleapis.com/youtube/v3/search"
+
+    channel_ids = []
+
+    for channel_name in channel_names:
+        username = channel_name.lstrip('@')  # Remove the "@" symbol if present
+
+        params = {
+            "part": "id",
+            "q": username,
+            "type": "channel",
+            "key": api_key
+        }
+
+        response = requests.get(api_url, params=params)
+        data = response.json()
+        print(data)
+
+        if "items" in data and len(data["items"]) > 0:
+            print('here')
+            channel_id = data["items"][0]["id"]
+            print(channel_id)
+            channel_ids.append(channel_id)
+        else:
+            channel_ids.append(None)
+
+    return channel_ids
+
+from googleapiclient.discovery import build
+
+def find_channel_ids(channel_usernames, api_key):
+    youtube = build('youtube', 'v3', developerKey=api_key)
+
+    channel_ids_username = []
+    channel_ids = []
+
+    for channel_username in channel_usernames:
+        username = channel_username.lstrip('@')  # Remove the "@" symbol if present
+
+        response = youtube.search().list(part='snippet', q=username, type='channel').execute()
+        print(response)
+
+        if 'items' in response and len(response['items']) > 0:
+            channel_id = response['items'][0]['snippet']['channelId']
+
+            channel_response = youtube.channels().list(part='snippet', id=channel_id).execute()
+            print(channel_response)
+
+            if 'items' in channel_response and len(channel_response['items']) > 0:
+                channel_name = channel_response['items'][0]['snippet']['title']
+                channel_ids_username.append((channel_name, channel_id))
+                channel_ids.append(channel_id)
+            else:
+                channel_ids_username.append((username, channel_id))
+                channel_ids.append(channel_id)
+        else:
+            channel_ids_username.append((username, None))
+
+    return channel_ids_username, channel_ids
+api_key = "AIzaSyBRpuSMO306VzZkUGCNt06zIk7deIJk0Ec"
+channel_names = ["@stephenoneill3309", "@skysports", "@SkySportsF1", "@skysportspremierleague"]
+channel_ids_username, channel_ids = find_channel_ids(channel_names, api_key)
+print(channel_ids_username, channel_ids)
+
+# UCn6Ra0_U_0yr2o-JZUHFFxQ
+#video_ids3 = search_videos_by_keyword_in_channel(channel_ids, "crypto", max_results=100)
+#print(video_ids3)
 
 """ 1 b) Function(s) for extracting relevant data from videos """
 def extract_metadata2(video_id, api_key):
@@ -155,9 +223,9 @@ keyword = 'crypto advice'  # Replace with your desired keyword
 
 
 """ Part 4: Scraping the data """
-video_ids = ['3irypwLDtTs', 'SbMtY-aJjFA']
-metadata = extract_multiVideo_metadata(video_ids, api_key)
+#video_ids = ['3irypwLDtTs', 'SbMtY-aJjFA']
+#metadata = extract_multiVideo_metadata(video_ids, api_key)
 
 """ Part 5: Creating the dataset """
-csv_fle = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/data_test.csv"
-append_metadata_to_csv(metadata, csv_fle)
+#csv_fle = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/data_test.csv"
+#append_metadata_to_csv(metadata, csv_fle)
