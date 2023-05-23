@@ -14,7 +14,7 @@ python_executable = sys.executable
 import requests
 import csv
 from youtube_transcript_api import YouTubeTranscriptApi
-from youtubesearchpython import VideosSearch
+from youtubesearchpython import VideosSearch, ChannelsSearch
 import time
 
 
@@ -29,6 +29,28 @@ def search_videos_by_keyword(keyword, max_results=100):
         video_ids.append(video['id'])
 
     return video_ids
+
+def search_videos_by_keyword_in_channel(channel_ids, keyword, max_results=100):
+    video_ids_by_channel = {}
+
+    for channel_id in channel_ids:
+        channels_search = ChannelsSearch(channel_id, limit=1)
+
+        if len(channels_search.result()['result']) == 0:
+            video_ids_by_channel[channel_id] = "Not Found"
+            continue
+
+        channel_username = channels_search.result()['result'][0]['username']
+
+        videos_search = VideosSearch(f'{keyword} inchannel:{channel_username}', limit=max_results)
+
+        video_ids = []
+        for video in videos_search.result()['result']:
+            video_ids.append(video['id'])
+
+        video_ids_by_channel[channel_id] = video_ids
+
+    return video_ids_by_channel
 
 
 """ 1 b) Function(s) for extracting relevant data from videos """
