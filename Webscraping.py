@@ -31,29 +31,36 @@ def search_videos_by_keyword(keyword, max_results=100):
 
     return video_ids
 
-def search_videos_by_keyword_in_channel(channel_ids, keyword, max_results=100):
+def search_videos_by_keyword_in_channel(channel_ids, keyword, max_results=100, api_key=None):
     video_ids_by_channel = {}
+    all_video_ids = []
+
+    youtube = build('youtube', 'v3', developerKey=api_key)
 
     for channel_id in channel_ids:
-        channels_search = ChannelsSearch(channel_id, limit=1)
-        print(channels_search)
-        print(channels_search.result())
-
-        if len(channels_search.result()['result']) == 0:
-            video_ids_by_channel[channel_id] = "Not Found"
-            continue
-
-        channel_username = channels_search.result()['result'][0]['username']
-
-        videos_search = VideosSearch(f'{keyword} inchannel:{channel_username}', limit=max_results)
-
         video_ids = []
-        for video in videos_search.result()['result']:
-            video_ids.append(video['id'])
 
-        video_ids_by_channel[channel_id] = video_ids
+        search_response = youtube.search().list(
+            part='id',
+            q=keyword,
+            channelId=channel_id,
+            type='video',
+            maxResults=max_results
+        ).execute()
+        print(search_response)
 
-    return video_ids_by_channel
+        for item in search_response['items']:
+            print(item['id'])
+            video_id = item['id']['videoId']
+            video_ids.append(video_id)
+            all_video_ids.append(video_id)
+
+        if channel_id in video_ids_by_channel:
+            video_ids_by_channel[channel_id].extend(video_ids)
+        else:
+            video_ids_by_channel[channel_id] = video_ids
+
+    return video_ids_by_channel, all_video_ids
 
 def find_channel_ids(channel_usernames, api_key):
     youtube = build('youtube', 'v3', developerKey=api_key)
@@ -91,52 +98,15 @@ channel_names = ["@stephenoneill3309", "@skysports", "@SkySportsF1", "@skysports
 # print(channel_ids_username, channel_ids)
 
 channel_ids2 = ["UCNAf1k0yIjyGu3k9BwAg3lg"]
-video_ids3 = search_videos_by_keyword_in_channel(channel_ids2, "Neville", max_results=100)
+video_ids3 = search_videos_by_keyword_in_channel(channel_ids2, "Neville", max_results=10, api_key = api_key)
 print(video_ids3)
 
 """ 1 b) Function(s) for extracting relevant data from videos """
-def extract_metadata2(video_id, api_key):
-    url = f"https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id={video_id}&key={api_key}"
-    response = requests.get(url)
-    data = response.json()
-    video_info = data["items"][0]
-
-    # Video metadata
-    channel = video_info["snippet"]["channelTitle"]
-    date = video_info["snippet"]["publishedAt"]
-    tags = video_info["snippet"]["tags"]
-    id = video_info['id']
-    title = video_info["snippet"]["title"]
-    description = video_info["snippet"]["description"]
-    #video_length = video_info["contentDetails"]["duration"]
-    likes = video_info["statistics"]["likeCount"]
-    views = video_info["statistics"]["viewCount"]
-    comments = video_info["statistics"]["commentCount"]
-    transcript = YouTubeTranscriptApi.get_transcript(video_id)
-
-    # Reshape to be a dictionary
-    metadata = {
-        'Channel': channel,
-        'Date': date,
-        'Tags': tags,
-        'Video id': id,
-        'Title': title,
-        'Description': description,
-        'Likes': likes,
-        'Views': views,
-        'Comments': comments,
-        'Transcript': transcript
-    }
-
-    return metadata
-
-
 def extract_metadata(video_id, api_key):
     url = f"https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id={video_id}&key={api_key}"
     response = requests.get(url)
     data = response.json()
     video_info = data["items"][0]
-    print(video_info)
 
     # Video metadata
     metadata = {}
