@@ -83,6 +83,8 @@ Crypto:
         Cryptocurrency Market: Covers market updates, project reviews, and investment strategies in cryptocurrencies.
         Brian Jung:
 
+Usernames of channels above
+    Crypto: "@SheldonEvansx", "@CryptoBanterGroup", "@TheCryptoLark", @BitBoyCryptoChannel,
 
 Part 4: Webscraping
 
