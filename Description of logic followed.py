@@ -84,7 +84,18 @@ Crypto:
         Brian Jung:
 
 Usernames of channels above
-    Crypto: "@SheldonEvansx", "@CryptoBanterGroup", "@TheCryptoLark", @BitBoyCryptoChannel,
+    Crypto (27):
+            "@SheldonEvansx", "@CryptoBanterGroup", "@TheCryptoLark", @BitBoyCryptoChannel, @CoinBureau
+            @DataDash, @IvanOnTech, @CryptoJebb, @AltcoinDaily, @CryptoZombie, @BitBoyCryptoChannel, @CryptoLove,
+            @TheModernInvestor, @CryptoCapitalVenture, @CryptoDaily, @CryptosRUs, @NuggetsNews, @CryptoCrowOfficial,
+            @cryptobeadles3949, @ReadySet, @TheMoon, @JamesCryptoGuru, @Jungernaut, @BitBoyCryptoChannel,
+            @SheldonEvansx, @CryptoBanterGroup, @TheCryptoLark
+
+    Stocks (24):
+            @RickyGutierrezz, @thetradingchannel, @DaytradeWarrior, @StockMoe, @CharlieChang, @AlexBeckersChannel,
+            @ZipTrader, @InformedTrades, @claytrader, @TradeIdeas, @FinancialEducation, @MotleyFool, @RyanScribner
+            @InvestingwithTom, @LearntoInvest, @themebfabershow1017, @MeetKevin, @GrahamStephan,
+            @AndreiJikh, @NateOBrien, @wealthhacker, @wolfofdubai, @StockswithJosh, @jeremylefebvremakesmoney7934
 
 Part 4: Webscraping
 
