@@ -51,10 +51,8 @@ def search_videos_by_keyword_in_channel(channel_ids, keyword, max_results=100, a
             maxResults=max_results,
             videoDuration='medium'
         ).execute()
-        print(search_response)
 
         for item in search_response['items']:
-            print(item['id'])
             video_id = item['id']['videoId']
             video_ids.append(video_id)
             all_video_ids.append(video_id)
@@ -122,8 +120,6 @@ def extract_metadata(video_id, api_key):
         except KeyError:
             pass
 
-    #print(metadata)
-
     return metadata
 
 def extract_multiVideo_metadata(video_ids, api_key):
@@ -131,30 +127,10 @@ def extract_multiVideo_metadata(video_ids, api_key):
     for video_id in video_ids:
         data = extract_metadata(video_id, api_key)
         metadata.append(data)
-    #print(metadata)
+
     return metadata
 
 """ 1 c) Function(s) to add data from videos to csv """
-def append_metadata_to_csv2(metadata, csv_file):
-    var_names = ['channelId', 'publishedAt', 'tags', 'id', 'title', 'description', 'likeCount', 'viewCount', 'commentCount', 'Transcript']
-
-    with open(csv_file, 'a', newline='', encoding='utf-8') as csvfile:
-        writer = csv.DictWriter(csvfile, fieldnames = var_names)
-
-        if csvfile.tell() == 0:
-            writer.writeheader()
-
-        for data in metadata:
-            if 'Transcript' in data:
-                transcript = data['Transcript']
-                if transcript is not None:
-                    # Concatenate the 'text' values from each segment
-                    transcript_text = ' '.join(segment["text"] for segment in transcript)
-                    data['Transcript'] = transcript_text
-
-            print(data)
-            writer.writerow(data)
-
 def append_metadata_to_csv(metadata, csv_file):
     var_names = ['channelId', 'publishedAt', 'tags', 'id', 'title', 'description', 'likeCount', 'viewCount', 'commentCount', 'Transcript']
 
