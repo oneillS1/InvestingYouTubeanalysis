@@ -86,10 +86,9 @@ Crypto:
 Usernames of channels above
     Crypto (27):
             "@SheldonEvansx", "@CryptoBanterGroup", "@TheCryptoLark", @BitBoyCryptoChannel, @CoinBureau
-            @DataDash, @IvanOnTech, @CryptoJebb, @AltcoinDaily, @CryptoZombie, @BitBoyCryptoChannel, @CryptoLove,
+            @DataDash, @IvanOnTech, @CryptoJebb, @AltcoinDaily, @CryptoZombie, @CryptoLove,
             @TheModernInvestor, @CryptoCapitalVenture, @CryptoDaily, @CryptosRUs, @NuggetsNews, @CryptoCrowOfficial,
-            @cryptobeadles3949, @ReadySet, @TheMoon, @JamesCryptoGuru, @Jungernaut, @BitBoyCryptoChannel,
-            @SheldonEvansx, @CryptoBanterGroup, @TheCryptoLark
+            @cryptobeadles3949, @ReadySet, @TheMoon, @JamesCryptoGuru, @Jungernaut,
 
     Stocks (24):
             @RickyGutierrezz, @thetradingchannel, @DaytradeWarrior, @StockMoe, @CharlieChang, @AlexBeckersChannel,
