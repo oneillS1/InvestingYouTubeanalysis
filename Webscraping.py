@@ -184,31 +184,38 @@ api_key = "AIzaSyBvqa2-cEtjDKTCZ47qQcVJQqY4wKk5kek"
 """ Part 3: Finding relevant videos """
     # Channel usernames identified from sector knowledge, google searches
 ## Crypto
-channel_names_crypto = ["@BitBoyCryptoChannel"]
-
-# , "@CryptoBanterGroup", "@TheCryptoLark"
-# "@CoinBureau", "@DataDash", "@IvanOnTech", "@CryptoJebb", "@AltcoinDaily""@CryptoZombie", "@CryptoLove", "@TheModernInvestor",
-  # "@CryptoCapitalVenture", "@CryptoDaily", "@CryptosRUs", "@NuggetsNews", "@CryptoCrowOfficial",
-   #  "@cryptobeadles3949", "@ReadySet", "@TheMoon", "@JamesCryptoGuru", "@Jungernaut"
+channel_names_crypto = ["@BitBoyCryptoChannel", "@CryptoBanterGroup", "@TheCryptoLark", "@CoinBureau", "@DataDash",
+                        "@IvanOnTech", "@CryptoJebb", "@AltcoinDaily""@CryptoZombie", "@CryptoLove", "@TheModernInvestor",
+                        "@CryptoCapitalVenture", "@CryptoDaily", "@CryptosRUs", "@NuggetsNews", "@CryptoCrowOfficial",
+                        "@cryptobeadles3949", "@ReadySet", "@TheMoon", "@JamesCryptoGuru", "@Jungernaut"]
 
 ## Stocks
-channel_names_stocks = ["@RickyGutierrezz", "@thetradingchannel", "@DaytradeWarrior", "@StockMoe", "@CharlieChang", "@AlexBeckersChannel",
-            "@ZipTrader", "@InformedTrades", "@claytrader", "@TradeIdeas", "@FinancialEducation", "@MotleyFool", "@RyanScribner",
-            "@InvestingwithTom", "@LearntoInvest", "@themebfabershow1017", "@MeetKevin", "@GrahamStephan",
-            "@AndreiJikh", "@NateOBrien", "@wealthhacker", "@wolfofdubai", "@StockswithJosh", "@jeremylefebvremakesmoney7934"]
+channel_names_stocks = ["@RickyGutierrezz", "@thetradingchannel"]
+
+            #             "@DaytradeWarrior", "@StockMoe", "@CharlieChang", "@AlexBeckersChannel",
+            # "@ZipTrader", "@InformedTrades", "@claytrader", "@TradeIdeas", "@FinancialEducation", "@MotleyFool", "@RyanScribner",
+            # "@InvestingwithTom", "@LearntoInvest", "@themebfabershow1017", "@MeetKevin", "@GrahamStephan",
+            # "@AndreiJikh", "@NateOBrien", "@wealthhacker", "@wolfofdubai", "@StockswithJosh", "@jeremylefebvremakesmoney7934"]
 
 
     # Finding channel ids
 ## Crypto
-# channel_ids_username_crypto, channel_ids_crypto = find_channel_ids(channel_names_crypto, api_key)
-# print(channel_ids_crypto)
+channel_ids_username_crypto, channel_ids_crypto = find_channel_ids(channel_names_crypto, api_key)
+print(channel_ids_crypto)
 ## Stocks
-# channel_ids_username_stocks, channel_ids_stocks = find_channel_ids(channel_names_stocks, api_key)
+#channel_ids_username_stocks, channel_ids_stocks = find_channel_ids(channel_names_stocks, api_key)
+#print(channel_ids_username_stocks)
+#print(channel_ids_stocks)
+
+# To reduce the times I call the YouTube API (as there are daily restrictions) I will hardcode the output of the channel ids function for subsequent runs
+channel_ids_crypto = ['UCjemQfjaXAzA-95RKoy9n_g', 'UCN9Nj4tjXbVTLYWN0EKly_Q', 'UCl2oCaw8hdR_kbqyqd2klIA', 'UCqK_GSMbpiV8spgD3ZGloSw', 'UCCatR7nWbYrkVXdxXb4cGXw',
+                      'UCrYmtJBtLdtm2ov84ulV-yg', 'UCviqt5aaucA1jP3qFmorZLQ', 'UCCE0Z5w0jcYipFPnve0R8Rg', 'UCu7Sre5A1NMV8J3s2FhluCw', 'UC-5HLi3buMzdxjdTdic3Aig',
+                      'UCnMku7J_UtwlcSfZlIuQ3Kw', 'UC67AEEecqFEc92nVvcqKdhA', 'UCI7M65p3A-D3P4v5qW8POxQ', 'UCLo66QVfEod0nNM_GzKNxmQ', 'UCwsRWmIL5XKqFtdytBfeX0g',
+                      'UCMbOW2DpyVfqYRP-KIaurJw', 'UCj1pAhsJCqMMcmAeQJgOc9w', 'UCc4Rz_T9Sb1w5rqqo9pL1Og', 'UCtR_Pn4XLjLU53LhRqYrJTQ', 'UCvwEcDj42J1gbh5R8D4EqQg']
 
     # Finding video ids within channels (by channel id and keyword search)
 ## Crypto
     # Keyword: Crypto
-channel_ids_crypto = ["UCjemQfjaXAzA-95RKoy9n_g"]
 #video_ids_by_channel_crypto1, video_ids_crypto1 = search_videos_by_keyword_in_channel(channel_ids_crypto, "crypto", max_results=10, api_key = api_key)
 print("hello")
     # Keyword: Crypto
