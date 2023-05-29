@@ -64,7 +64,7 @@ def search_videos_by_keyword_in_channel(channel_ids, keyword, max_results=100, a
 
     return video_ids_by_channel, all_video_ids
 
-def find_channel_ids(channel_usernames, api_key):
+def find_channel_ids2(channel_usernames, api_key):
     youtube = build('youtube', 'v3', developerKey=api_key)
 
     channel_ids_username = []
@@ -74,13 +74,13 @@ def find_channel_ids(channel_usernames, api_key):
         username = channel_username.lstrip('@')  # Remove the "@" symbol if present
 
         response = youtube.search().list(part='snippet', q=username, type='channel').execute()
-        #print(response)
+        print(response)
 
         if 'items' in response and len(response['items']) > 0:
             channel_id = response['items'][0]['snippet']['channelId']
 
             channel_response = youtube.channels().list(part='snippet', id=channel_id).execute()
-            #print(channel_response)
+            print(channel_response)
 
             if 'items' in channel_response and len(channel_response['items']) > 0:
                 channel_name = channel_response['items'][0]['snippet']['title']
@@ -89,6 +89,35 @@ def find_channel_ids(channel_usernames, api_key):
             else:
                 channel_ids_username.append((username, channel_id))
                 channel_ids.append(channel_id)
+        else:
+            channel_ids_username.append((username, None))
+
+    return channel_ids_username, channel_ids
+
+
+def find_channel_ids(channel_usernames, api_key):
+    youtube = build('youtube', 'v3', developerKey=api_key)
+
+    channel_ids_username = []
+    channel_ids = []
+
+    for channel_username in channel_usernames:
+        username = channel_username.lstrip('@')  # Remove the "@" symbol if present
+
+        search_response = youtube.search().list(
+            part='snippet',
+            q=username,
+            type='channel',
+            maxResults=1,
+            fields='items(id,snippet(title,channelId))'
+        ).execute()
+
+        if 'items' in search_response and len(search_response['items']) > 0:
+            item = search_response['items'][0]
+            channel_id = item['id']['channelId']
+            channel_name = item['snippet']['title']
+            channel_ids_username.append((channel_name, channel_id))
+            channel_ids.append(channel_id)
         else:
             channel_ids_username.append((username, None))
 
@@ -149,15 +178,19 @@ def append_metadata_to_csv(metadata, csv_file):
     return df
 
 """ Part 2: Connecting to YouTube API """
-api_key = "AIzaSyBRpuSMO306VzZkUGCNt06zIk7deIJk0Ec"
+# api_key = "AIzaSyBRpuSMO306VzZkUGCNt06zIk7deIJk0Ec"
+api_key = "AIzaSyBvqa2-cEtjDKTCZ47qQcVJQqY4wKk5kek"
 
 """ Part 3: Finding relevant videos """
     # Channel usernames identified from sector knowledge, google searches
 ## Crypto
-channel_names_crypto = ["@BitBoyCryptoChannel", "@SheldonEvansx", "@CryptoBanterGroup", "@TheCryptoLark"
-                 "@CoinBureau", "@DataDash", "@IvanOnTech", "@CryptoJebb", "@AltcoinDaily", "@CryptoZombie", "@CryptoLove", "@TheModernInvestor",
-                 "@CryptoCapitalVenture", "@CryptoDaily", "@CryptosRUs", "@NuggetsNews", "@CryptoCrowOfficial",
-                 "@cryptobeadles3949", "@ReadySet", "@TheMoon", "@JamesCryptoGuru", "@Jungernaut"]
+channel_names_crypto = ["@BitBoyCryptoChannel"]
+
+# , "@CryptoBanterGroup", "@TheCryptoLark"
+# "@CoinBureau", "@DataDash", "@IvanOnTech", "@CryptoJebb", "@AltcoinDaily""@CryptoZombie", "@CryptoLove", "@TheModernInvestor",
+  # "@CryptoCapitalVenture", "@CryptoDaily", "@CryptosRUs", "@NuggetsNews", "@CryptoCrowOfficial",
+   #  "@cryptobeadles3949", "@ReadySet", "@TheMoon", "@JamesCryptoGuru", "@Jungernaut"
+
 ## Stocks
 channel_names_stocks = ["@RickyGutierrezz", "@thetradingchannel", "@DaytradeWarrior", "@StockMoe", "@CharlieChang", "@AlexBeckersChannel",
             "@ZipTrader", "@InformedTrades", "@claytrader", "@TradeIdeas", "@FinancialEducation", "@MotleyFool", "@RyanScribner",
@@ -167,41 +200,45 @@ channel_names_stocks = ["@RickyGutierrezz", "@thetradingchannel", "@DaytradeWarr
 
     # Finding channel ids
 ## Crypto
-channel_ids_username_crypto, channel_ids_crypto = find_channel_ids(channel_names_crypto, api_key)
+# channel_ids_username_crypto, channel_ids_crypto = find_channel_ids(channel_names_crypto, api_key)
+# print(channel_ids_crypto)
 ## Stocks
-channel_ids_username_stocks, channel_ids_stocks = find_channel_ids(channel_names_stocks, api_key)
+# channel_ids_username_stocks, channel_ids_stocks = find_channel_ids(channel_names_stocks, api_key)
 
     # Finding video ids within channels (by channel id and keyword search)
 ## Crypto
     # Keyword: Crypto
-video_ids_by_channel_crypto1, video_ids_crypto1 = search_videos_by_keyword_in_channel(channel_ids_crypto, "crypto", max_results=10, api_key = api_key)
+channel_ids_crypto = ["UCjemQfjaXAzA-95RKoy9n_g"]
+#video_ids_by_channel_crypto1, video_ids_crypto1 = search_videos_by_keyword_in_channel(channel_ids_crypto, "crypto", max_results=10, api_key = api_key)
+print("hello")
     # Keyword: Crypto
-video_ids_by_channel_crypto2, video_ids_crypto2 = search_videos_by_keyword_in_channel(channel_ids_crypto, "crypto tips", max_results=10, api_key = api_key)
+#video_ids_by_channel_crypto2, video_ids_crypto2 = search_videos_by_keyword_in_channel(channel_ids_crypto, "crypto tips", max_results=10, api_key = api_key)
     # Keyword: Crypto
-video_ids_by_channel_crypto3, video_ids_crypto3 = search_videos_by_keyword_in_channel(channel_ids_crypto, "#notfinancialadvice", max_results=10, api_key = api_key)
+#video_ids_by_channel_crypto3, video_ids_crypto3 = search_videos_by_keyword_in_channel(channel_ids_crypto, "#notfinancialadvice", max_results=10, api_key = api_key)
     # Keyword: Crypto
-video_ids_by_channel_crypto4, video_ids_crypto4 = search_videos_by_keyword_in_channel(channel_ids_crypto, "what to buy", max_results=10, api_key = api_key)
+#video_ids_by_channel_crypto4, video_ids_crypto4 = search_videos_by_keyword_in_channel(channel_ids_crypto, "what to buy", max_results=10, api_key = api_key)
 
-video_ids_crypto = video_ids_crypto1 + video_ids_crypto2 + video_ids_crypto3 + video_ids_crypto4
+#video_ids_crypto = video_ids_crypto1
+#+ video_ids_crypto2 + video_ids_crypto3 + video_ids_crypto4
 
 ## Stocks
     # Keyword: Stocks
-video_ids_by_channel_stocks1, video_ids_stocks1 = search_videos_by_keyword_in_channel(channel_ids_stocks, "crypto", max_results=10, api_key = api_key)
+#video_ids_by_channel_stocks1, video_ids_stocks1 = search_videos_by_keyword_in_channel(channel_ids_stocks, "crypto", max_results=10, api_key = api_key)
     # Keyword: Stocks
-video_ids_by_channel_stocks2, video_ids_stocks2 = search_videos_by_keyword_in_channel(channel_ids_stocks, "crypto tips", max_results=10, api_key = api_key)
+#video_ids_by_channel_stocks2, video_ids_stocks2 = search_videos_by_keyword_in_channel(channel_ids_stocks, "crypto tips", max_results=10, api_key = api_key)
     # Keyword: Stocks
-video_ids_by_channel_stocks3, video_ids_stocks3 = search_videos_by_keyword_in_channel(channel_ids_stocks, "#notfinancialadvice", max_results=10, api_key = api_key)
+#video_ids_by_channel_stocks3, video_ids_stocks3 = search_videos_by_keyword_in_channel(channel_ids_stocks, "#notfinancialadvice", max_results=10, api_key = api_key)
     # Keyword: Stocks
-video_ids_by_channel_stocks4, video_ids_stocks4 = search_videos_by_keyword_in_channel(channel_ids_stocks, "what to buy", max_results=10, api_key = api_key)
+#video_ids_by_channel_stocks4, video_ids_stocks4 = search_videos_by_keyword_in_channel(channel_ids_stocks, "what to buy", max_results=10, api_key = api_key)
 
-video_ids_stocks = video_ids_stocks1 + video_ids_stocks2 + video_ids_stocks3 + video_ids_stocks4
+#video_ids_stocks = video_ids_stocks1 + video_ids_stocks2 + video_ids_stocks3 + video_ids_stocks4
 
 """ Part 4: Scraping the data """
 ## Crypto
-metadata_crypto = extract_multiVideo_metadata(video_ids_crypto, api_key)
+#metadata_crypto = extract_multiVideo_metadata(video_ids_crypto, api_key)
 
 ## Stocks
-metadata_stocks = extract_multiVideo_metadata(video_ids_stocks, api_key)
+# metadata_stocks = extract_multiVideo_metadata(video_ids_stocks, api_key)
 
 ## Overall
 # video_ids = video_ids_crypto + video_ids_stocks
@@ -210,15 +247,15 @@ metadata_stocks = extract_multiVideo_metadata(video_ids_stocks, api_key)
 """ Part 5: Creating the dataset """
 ## Crypto
 csv_fle_crypto = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/crypto_test.csv"
-df_crypto = append_metadata_to_csv(metadata_crypto, csv_fle_crypto)
+#df_crypto = append_metadata_to_csv(metadata_crypto, csv_fle_crypto)
 
-print(df_crypto.head())
+#print(df_crypto.head())
 
 ## Stocks
-csv_fle_stocks = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/stocks_test.csv"
-df_stocks = append_metadata_to_csv(metadata_stocks, csv_fle_stocks)
+#csv_fle_stocks = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/stocks_test.csv"
+# df_stocks = append_metadata_to_csv(metadata_stocks, csv_fle_stocks)
 
-print(df_stocks.head())
+# print(df_stocks.head())
 
 ## Overall
 # csv_fle_stocks = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/overall_test.csv"
