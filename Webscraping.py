@@ -178,8 +178,9 @@ def append_metadata_to_csv(metadata, csv_file):
     return df
 
 """ Part 2: Connecting to YouTube API """
-# api_key = "AIzaSyBRpuSMO306VzZkUGCNt06zIk7deIJk0Ec"
+# api_key_old = "AIzaSyBRpuSMO306VzZkUGCNt06zIk7deIJk0Ec"
 api_key = "AIzaSyBvqa2-cEtjDKTCZ47qQcVJQqY4wKk5kek"
+api_key_2 = "AIzaSyCkMzXm8C6lhQJCJUJbWM57bPF3Bi5jO3U"
 
 """ Part 3: Finding relevant videos """
     # Channel usernames identified from sector knowledge, google searches
@@ -190,55 +191,184 @@ channel_names_crypto = ["@BitBoyCryptoChannel", "@CryptoBanterGroup", "@TheCrypt
                         "@cryptobeadles3949", "@ReadySet", "@TheMoon", "@JamesCryptoGuru", "@Jungernaut"]
 
 ## Stocks
-channel_names_stocks = ["@RickyGutierrezz", "@thetradingchannel"]
-
-            #             "@DaytradeWarrior", "@StockMoe", "@CharlieChang", "@AlexBeckersChannel",
-            # "@ZipTrader", "@InformedTrades", "@claytrader", "@TradeIdeas", "@FinancialEducation", "@MotleyFool", "@RyanScribner",
-            # "@InvestingwithTom", "@LearntoInvest", "@themebfabershow1017", "@MeetKevin", "@GrahamStephan",
-            # "@AndreiJikh", "@NateOBrien", "@wealthhacker", "@wolfofdubai", "@StockswithJosh", "@jeremylefebvremakesmoney7934"]
+channel_names_stocks = ["@RickyGutierrezz", "@thetradingchannel", "@DaytradeWarrior", "@StockMoe", "@CharlieChang", "@AlexBeckersChannel",
+            "@ZipTrader", "@InformedTrades", "@claytrader", "@TradeIdeas", "@FinancialEducation", "@MotleyFool", "@RyanScribner",
+            "@InvestingwithTom", "@LearntoInvest", "@themebfabershow1017", "@MeetKevin", "@GrahamStephan",
+            "@AndreiJikh", "@NateOBrien", "@wealthhacker", "@wolfofdubai", "@StockswithJosh", "@jeremylefebvremakesmoney7934"]
 
 
     # Finding channel ids
 ## Crypto
-channel_ids_username_crypto, channel_ids_crypto = find_channel_ids(channel_names_crypto, api_key)
-print(channel_ids_crypto)
+# channel_ids_username_crypto, channel_ids_crypto = find_channel_ids(channel_names_crypto, api_key)
+
 ## Stocks
-#channel_ids_username_stocks, channel_ids_stocks = find_channel_ids(channel_names_stocks, api_key)
-#print(channel_ids_username_stocks)
-#print(channel_ids_stocks)
+# channel_ids_username_stocks, channel_ids_stocks = find_channel_ids(channel_names_stocks, api_key)
 
 # To reduce the times I call the YouTube API (as there are daily restrictions) I will hardcode the output of the channel ids function for subsequent runs
 channel_ids_crypto = ['UCjemQfjaXAzA-95RKoy9n_g', 'UCN9Nj4tjXbVTLYWN0EKly_Q', 'UCl2oCaw8hdR_kbqyqd2klIA', 'UCqK_GSMbpiV8spgD3ZGloSw', 'UCCatR7nWbYrkVXdxXb4cGXw',
                       'UCrYmtJBtLdtm2ov84ulV-yg', 'UCviqt5aaucA1jP3qFmorZLQ', 'UCCE0Z5w0jcYipFPnve0R8Rg', 'UCu7Sre5A1NMV8J3s2FhluCw', 'UC-5HLi3buMzdxjdTdic3Aig',
                       'UCnMku7J_UtwlcSfZlIuQ3Kw', 'UC67AEEecqFEc92nVvcqKdhA', 'UCI7M65p3A-D3P4v5qW8POxQ', 'UCLo66QVfEod0nNM_GzKNxmQ', 'UCwsRWmIL5XKqFtdytBfeX0g',
                       'UCMbOW2DpyVfqYRP-KIaurJw', 'UCj1pAhsJCqMMcmAeQJgOc9w', 'UCc4Rz_T9Sb1w5rqqo9pL1Og', 'UCtR_Pn4XLjLU53LhRqYrJTQ', 'UCvwEcDj42J1gbh5R8D4EqQg']
+channel_ids_stocks = ['UCtlAFoYl2aWb6pMiHCctQHA', 'UCGL9ubdGcvZh_dvSV2z1hoQ', 'UCBayuhgYpKNbhJxfExYkPfA', 'UCoMzWLaPjDJBbipihD694pQ', 'UCTQuKo8v0PaPCvk5aRxc_Yg',
+                         'UCKQvGU-qtjEthINeViNbn6A', 'UC0BGhWsIbV7Dm-lsvhdlMbA', 'UCxyD6SQNbe8sh-jqo8eTfEg', 'UCn2JOViAAWssWefchGpTNvw', 'UCZy3pEdGnWLDsqGu56axxcQ',
+                         'UCnMn36GT_H0X-w5_ckLtlgQ', 'UCpRQuynBX9Qy9tPrcswpPag', 'UC3mjMoJuFnjYRBLon_6njbQ', 'UCG9FGwgAx9-RKq1smF1lc8w', 'UCSglJMvX-zSgv3PEJIE_inw',
+                         'UCKvWzzrVUA_DSCoKXL6GU2w', 'UCUvvj5lwue7PspotMDjk5UA', 'UCV6KDgJskWaEckne5aPA0aQ', 'UCGy7SkBjcIAgTiwkXEtPnYg',
+                         'UCO3tlaeZ6Z0ZN5frMZI3-uQ', 'UCkNgKCu9062P0CPyVoBI5sQ', 'UCzBuoeqN94gdGcx5g4CgYNA', 'UCNttUtm9vloDjo-a2jqkoNQ', 'UC12lnsYNt8_VthTNOuOGTmQ']
+
 
     # Finding video ids within channels (by channel id and keyword search)
 ## Crypto
     # Keyword: Crypto
-#video_ids_by_channel_crypto1, video_ids_crypto1 = search_videos_by_keyword_in_channel(channel_ids_crypto, "crypto", max_results=10, api_key = api_key)
-print("hello")
+#video_ids_by_channel_crypto1, video_ids_crypto1 = search_videos_by_keyword_in_channel(channel_ids_crypto, "crypto tips", max_results=10, api_key = api_key)
     # Keyword: Crypto
-#video_ids_by_channel_crypto2, video_ids_crypto2 = search_videos_by_keyword_in_channel(channel_ids_crypto, "crypto tips", max_results=10, api_key = api_key)
+#video_ids_by_channel_crypto2, video_ids_crypto2 = search_videos_by_keyword_in_channel(channel_ids_crypto, "advice", max_results=10, api_key = api_key)
     # Keyword: Crypto
-#video_ids_by_channel_crypto3, video_ids_crypto3 = search_videos_by_keyword_in_channel(channel_ids_crypto, "#notfinancialadvice", max_results=10, api_key = api_key)
+#video_ids_by_channel_crypto3, video_ids_crypto3 = search_videos_by_keyword_in_channel(channel_ids_crypto, "#notfinancialadvice", max_results=10, api_key = api_key_2)
     # Keyword: Crypto
-#video_ids_by_channel_crypto4, video_ids_crypto4 = search_videos_by_keyword_in_channel(channel_ids_crypto, "what to buy", max_results=10, api_key = api_key)
+#video_ids_by_channel_crypto4, video_ids_crypto4 = search_videos_by_keyword_in_channel(channel_ids_crypto, "what to buy", max_results=10, api_key = api_key_2)
 
-#video_ids_crypto = video_ids_crypto1
-#+ video_ids_crypto2 + video_ids_crypto3 + video_ids_crypto4
+# Similarly I will hard code the outputs of the above so as to run the below without reconnecting to the YouTube API
+video_ids_crypto1 = ['kFHdQFt8-n4', 'TMpULJwCLZk', '4PgIySbSm4g', 'GjSG-dk4m8c', '0jLv0brvAwc', 'Zc5dUsBTbpI', 'hAb_OTm-mGc', '7OAKcoCNaCU',
+                     'AaNfHskwLdg', '4SJNH-UwCWg', '28vMbDcW_jA', 'm36eAoRIAXg', 'bPCZfLsd7fU', 'YX-RZKjGV-M', 'WAImJuW-3iA', '04TTf55Z0lE',
+                     'zSGCtoO4VJU', 'ws-jEZa3CCQ', 'aCYItUDYQ4Y', '4FJ9RXHKWgc', '0DKVpnL3hUc', 'hcWhgDME2kU', 'qIY_6yPv0k0', 'KnoQdWZ_n18',
+                     'V5wE0ML_WMc', 'Af4cKK_T2F0', 'I3sh-vfSbt0', '-qRpW20AB8k', 'Qf7qx-B3NHA', '72hPK8zUnn0', 'F4YFtNHfGrw', 'EADLE7kO4tA',
+                     'BrRP-KxUnoU', 'lRIJIxfS5Ck', 'YPt41FQS1XE', 'tNsc4tdXnCE', 'amLBQZfIw3M', 'si5kq7TFjjg', 'yDXB1jafqg4', 'i83OuE-aXOM',
+                     'dB3RL3DzvMU', 'fbiR8tVbjTQ', 'HhYsGjxYjbs', 'zBjbyew6oyc', 'embu6Vy-M78', 'ByvURTZLSf8', 'bzs8-7OqWSU', 'tXBrK8jSA9U',
+                     '8PNWFdry6WA', 'p4UXdvAwmgg', '8fzV9bO56ow', 'QZQIt9ONwSk', 'Ir_Xx7GQmOs', 'l79506sWDIg', 'IGhqslEwuOI', 'gXQpX2kObJg',
+                     'i5NTKh-MNH8', 'RI4n6tQims4', 'EMA84FdiBvY', 'U556vsDPFrs', 'hkUoj9IZ1bA', 'Aadox_2RbdE', 'o1f8lG5s7sg', 'bxJTklJpw8I',
+                     'dHR-krnrh-Q', 'ziyaJLxVfmc', 'kjwGCajj7ZY', 'RP0Do5pX5gw', '6JHd9iCdJ2E', 'Lb-Ciq8QpFk', 'nOLYdBEB5Pg', 'S9urRPApxy4',
+                     'A4eRXTsNx6I', 'lBNoQeTaGaM', '956VkPvtA7Q', 'F_dPFJVSH2M', '0rpMLAWe-OY', 'oH8vmDnxIK0', 'jqQ9ErbsV7w', 'LnGAWFtNr48',
+                     'QpIz1XsIXdA', '0hFYA43boIQ', 'cXTaYTrRuv8', 'IwL85i9SURs', '6ajkRnW6Mm4', 'P-d4SAqiv3c', '15zQenUrMF4', 'cWlcillUtdw',
+                     'LUqPcxi8ZYU', '_rZFSzbAqlw', 'Y0HHt72fogA', '7GD_D8Wnq-U', 'r3BbzmzA_30', 'g8AzyXxD_JI', '1mI1UFq7kJE', 'JhQXHAjnfjQ',
+                     'i9ehhiOVnrA', '8m79DftD2s8', 'YYyCadWCLH0', 'vp4yqpLhJ5Q', 'jRb-mKiQ3Yc', 'DFUs98kOHQY', 'tyci0fbMEZc', 'kXwtonUJcFU',
+                     'n1ttKgGdEGE', 'VOi4j57_clQ', 'U0qkxhdcqPE', 'YrnOxhI3lF0', 'iC4uhrvxSe0', 'lJRd1XwaIOg', 'atD3ik7fnI8', 'rrp8Undxcik',
+                     'QxOcmOLkLx0', '-oDRqE4gKFU', 'wv4BzFeDF14', 'XW7FGmgS-9s', 'KDGfjaGehSo', 'o4a8l3NVH1I', 'JBTR45kRe9I', 'HoqpgER2ZGE',
+                     'Gq3rem1jd-Y', '60_OaOOZaAo', 'Q-X4MgoKGPg', '1mnn2r1Ysv8', 'FCBgRc-v_mA', 'C8p8XoKzd4w', 'ZXHotricTTw', '2We6Z-v2GzA',
+                     'JjCuxckpJ9E', '41Ggxvj0B8s', 'ZMghrnDpIRk', 'RabdrZT87oE', 'sncdDPGHmu4', 'eTa_w-KA5qQ', 'Kq6y7y57V7o', '3W04ra6vYmc',
+                     '_qr6sNEAQsY', 'A_84dYLz_E0', 'nQRfsjJUzyk', 'zQMgwgDNNbE', 'QRpode16wnI', 'qDNQ-WTkwv0', 'uKp0G74aivM', 'iyL06tWsp6E',
+                     'murb5ga-56g', '3n5HDH5TwF4', 'AbRFl9ZXyqc', 'aJ46nM45NL8', '-hJCcNsiBVQ', 'Y8lMZBy7ydo', 'DxZu6kUa5FM', '90hq6GIxJTw',
+                      'Ui4RFGPIGDg', 'CpIW-Mtg5X4', '9ozbvy8AxuU', '2BntbmUnLaM', 'M0dix6hsf0M', 'dMjiR9B-ts4', 'PnFOPT4JWp0', 'EZl0ntQwsoI']
+video_ids_crypto2 = ['kFHdQFt8-n4', 'g-Z-21qfqf8', 'Rm6TuE2pyjg', 'F_qkF_gSzv4', '5Xm_BbSZxUw', 'TMpULJwCLZk', '0Rs7o6oAMyQ', 'Ww5hAXoPiPg',
+                     'WFrFp7ITsys', 'Mu9XNE_Uim0', 'OPCxzupYLzA', '-YG1o-xhX4k', 'jOOVrLrzZ7A', 'ws-jEZa3CCQ', '_5JULMp2Hls', '77o1LcX8T40',
+                     '_1Sb7tmUXBI', 'JlAdCox7cI8', 'y2IWGE_HIFU', 'zqq8MjdjoIk', 'hcWhgDME2kU', 'KnoQdWZ_n18', '5C4LTWq_gTI', 'W7fumWmhiaA',
+                     'VXnYYxI6xYA', 'AOUCI22GEW8', '4aQZYL6e3_0', 'vXS_lHLYnqA', 'ssVaf7-mfso', '6qBczZue7s8', 'lRIJIxfS5Ck', 'EADLE7kO4tA',
+                     'F4YFtNHfGrw', 'oyFMzFfxTdo', 'LoWOO3GtUBY', '1lwN6iIIDps', 'BrRP-KxUnoU', '2GktMxR3wak', 'PDui3ReLeTE', 'If9r3IX-B6E',
+                     'EO-wSgwn7u0', 'fmuwT2L3u4E', 'mDN94E2MRNM', 'cpT5Z-Nlc2E', '6acmEYT3adY', 'GOyBgum-cg4', 'iAhFhdSbtgg', 'b4tg5XiI5l4',
+                     'kShqEyNib2k', 'XU-LKhm2WUU', '-2svLnsky0A', 'L4kldDbR6mI', 'iNwMSJza4Wc', 'tvRbVh4JCP4', 'l79506sWDIg', '8fzV9bO56ow',
+                     'T_3dMKCFXf0', 'iMGJnaFLz-w', '_7Rph_Hm5lg', 'MlGa0fXIE-o', 'XaTtnusUmZ4', 'bxJTklJpw8I', 'xNrE2SqhECw', 'cq8DsOrfaiY',
+                     'Nj96VsBgqbU', '2JXLkXI5b1I', 'o1f8lG5s7sg', 'gjyig2EVLL0', 'UUivm1DMdX4', 'gX70v3slPuA', '-1MlAXARobc', 'cY8FMSuLvVQ',
+                     'KKw3rCCpf44', 'tNvgP2DFqaU', 'LpX93GvEvG4', 'zSTz8275_5s', 'eQgzpj8qauw', 'chRpx_yZSLw', 'm6kai8pwPz0', '_24BJuNpyzc',
+                     '-jaOq0e8Xl4', 'eolCjGDRMCg', '1ZTn0sTooD4', 'PingosQVCAU', 'zrKmhJNzuS4', 'WrDcdfPHmkY', 'PQzTBvoQ8lU', '67iKCqo2RCY',
+                     '2L3vvT4fHTM', 'zK2shli5UdM', 'f23uEgU_O8E', 'g41rqWduT6Q', 'PcA0mjL_oVg', 'ZPBhCda1SmU', 'KHHwJVrP68E', 'VDdPuo3Y-xk',
+                     'DRiUSQ5lmtg', 'bImMlD5ucug', '76z0a8wrWYk', '3Ajh7-y59o0', 'Qguf03l0KaU', 'wf9zHLiDWRk', 'YYtgVvSnz_A', 'Xzd3X79pjAo',
+                     'xb3ELyUB1Og', 'L8A6wMrCwXc', 'B5Dw5y7uKK8', 'ygDoXFDmLlQ', '1xKD8oRktt0', 'bxx0nL5doFQ', 'LqFyWxRnwiw', 'Q61Zl-99_Q4',
+                     'fHb8RU_1qqk', 'I8cgRhNLzVA', 'gVjh-hVfcc8', 'HVkEnck2Vck', 'Bm4UKKrRvC0', 'dInqu3p7J0o', 'Tw4ot68cVzA', 'StJ3fDXWtAU',
+                     'JtqtIw4CCug', 'F12MPTNNuo4', 'ANgnWlNbQjg', 'qntIHEXxG7M', 'Ist6VjzLVm4', 'SEwklu4t9Rg', 'QpZrOE2VDKQ', 'SLZ_3bdyO2M',
+                     'AeSh3weZXJ8', 'xNZlo2EUfwQ', 'nNPK3yjEavw', '4kBxSzSK2Ts', 'gUVR6AzMtqI', 'UiByfkI2rjY', 'qDmwBAjwRSc', 'ZMghrnDpIRk',
+                     'hvQXsewHSkE', 'PQPi_ewwe1I', 'hxsajHMvJoY', 'JGbO6zep5Bg', 'ihwI9nr2VeA', 'QRpode16wnI', 'IqOUtR6WcOk', '80zosJeVhU4',
+                     'iyL06tWsp6E', '0bJ0ZEHd6ho', 'murb5ga-56g', 'GU01L6I0BsY', '0qw1mI1baDY', 'UZpJIre_LOc', '_RkyQFB-ETg', '1Boq66u_W6E',
+                     '1I7Cg64gDS4', 'dEbbTTdWupY', '8YAMt5Tt24Q', 'F1uos4QIWNM', 'DxZu6kUa5FM', 'pG2zv-XowYs', 'rR7gKAZFtcI', 'PlVV8V6CFRI']
+video_ids_crypto3 = ['WFrFp7ITsys', 'ZPH2ekOI5BA', '4-EgKFBmwKY', 'ofIm-w4OGCs', 'pA7kuLQN4AM', 'iVrrYhWSyx8', 'x2GPeDZOEyo', 'g-Z-21qfqf8',
+                     'Uz56waLwUfM', 'q6HfyuZ4wrQ', 'jOOVrLrzZ7A', '-YG1o-xhX4k', 'OPCxzupYLzA', 'HtNDxhcbYLo', '5BQ7zaJC3B0', 'lJcPsVg3cUQ',
+                     'YX-RZKjGV-M', '8ihE2q0QkU8', 'nAXJu2rlIxc', 'hEQPC9kLuLc', 'hcWhgDME2kU', 'MpOzD65quBE', '0DKVpnL3hUc', 'T8NKiePdkqo',
+                     'pHKvTjNgqB4', '4X4R1luTsho', 'SbMtY-aJjFA', 'xobu78ax3GQ', '57G4L44Bc7A', 'UrVbekMqhG4', 'F4YFtNHfGrw', 'BrRP-KxUnoU',
+                     '0Og5-OJ1x1s', 'If9r3IX-B6E', '1lwN6iIIDps', 'PDui3ReLeTE', 'lRIJIxfS5Ck', 'ETZscebFb58', 'gpnLjfnZ2qM', 'oyFMzFfxTdo',
+                     'fmuwT2L3u4E', 'EO-wSgwn7u0', 'X0AjxdE2ZsA', '0dph0dUMWEo', 'LrouAGf00Sk', 'FOIy_kPlu5M', '9uwOjXd1OH0', '6HwF3ejSpIU',
+                     'iAmbpMXDh94', 'SZPGD0rOIRI', 'tvRbVh4JCP4', '-2svLnsky0A', 'L4kldDbR6mI', 'iNwMSJza4Wc', 'skVvlt7TicI', '8fzV9bO56ow',
+                     'MlGa0fXIE-o', '_7Rph_Hm5lg', 'l79506sWDIg', 'iMGJnaFLz-w', 'Nj96VsBgqbU', 'h5ZDjK1ad8o', 'hA0jafKpRkc', 'o1f8lG5s7sg',
+                     '2JXLkXI5b1I', 'cq8DsOrfaiY', 'p0YyRIj17_M', 'roXACxVWjIk', 'u9VDqRGSEpE', 'FSRRKFuoD-8', '-1MlAXARobc', 'cY8FMSuLvVQ',
+                     '-qhTxdKHlbY', 'WJl2SodWhqc', 'cLYCNFV69s4', 'xA-A6JynmOE', 'bn8X4HPvhQQ', 'RDn0UfDb2GY', 'ceob8tvCVaw', 'BDDAvsV7-l4',
+                     '1ZTn0sTooD4', 'PingosQVCAU', 'WrDcdfPHmkY', '-jaOq0e8Xl4', 'JLWwdUSKYbQ', 'zK2shli5UdM', 'gnEVwG_M0ac', '0hFYA43boIQ',
+                     'rIzuDm3n0DI', 'HmXYJbLXPXg', 'f23uEgU_O8E', 'g41rqWduT6Q', 'PcA0mjL_oVg', 'VDdPuo3Y-xk', 'DRiUSQ5lmtg', 'KHHwJVrP68E',
+                     'AKI64v-7Ko8', 'ZPBhCda1SmU', '76z0a8wrWYk', 'WghckXE4hQ0', 'u8blZPDgwk4', 'wf9zHLiDWRk', 'd8vwSALYQaM', '-ERngk9mCxM',
+                     'RwpsBA0dmio', 'U0qkxhdcqPE', '_w8UlTO97eY', '4hdgGfPkTkE', 'RPXMc36_d48', 'eJ5WgwcE7Kw', 'LqFyWxRnwiw', 'Q61Zl-99_Q4',
+                     'Kl3nH4qqsis', 'rVc3XN5BdPo', 'b7h7yGm2G3A', 'Ojrkuq77HFE', '6OQMgHSESpA', 'Sq2AIgRN1Lw', 'exIwwkKxQJs', '6JX2eN9eYl8',
+                     'ANgnWlNbQjg', 'qGc8-jDnk0c', 'Ist6VjzLVm4', '7_2Bmgqt95M', 'QpZrOE2VDKQ', 'XwyxQjBTqIs', 'gq9T2vLiDig', 'C37yyjTLSio',
+                     'Z0NMPUv6fcM', 'hgt_FVi63Vg', 'gUVR6AzMtqI', 'nNPK3yjEavw', '4kBxSzSK2Ts', 'UiByfkI2rjY', 'qDmwBAjwRSc', 'OGd3uz4AO7s',
+                     'ZMghrnDpIRk', 'hvQXsewHSkE', 'PQPi_ewwe1I', '6kdIQFe0lv0', 'ihwI9nr2VeA', 'GU01L6I0BsY', '0bJ0ZEHd6ho', 'lH3ONqLW4-E',
+                     'qCATotC1v-A', 'iyL06tWsp6E', 'IqOUtR6WcOk', 'QRpode16wnI', 'uKp0G74aivM', 'qDNQ-WTkwv0', 'EsnpRGvb4K0', 'qp4Aalv-Av4',
+                     '8Xr-dS8sdSE', 'z4ra-cLXGZ4', 'WMUyhTfppNY', '2OAK2pYOMxw', 'FlwhiNckwRQ', 'LR9Ign86zZw', 'z3rZxTPw2VM', 'SzlO6x6imr4']
+video_ids_crypto4 = ['L4869xRVM3E', 'D51Uf078d0w', '50tYOPvqA5c', 'C814v3HT1To', 'BcGd0DyRm58', 'LO5XrVbt-fc', 'oSx1pKSrAXk', 'NTBWt6AlDX4',
+                     'pnxVSFk_jZc', 'dfhCgICxscY', 'HtNDxhcbYLo', 'jOOVrLrzZ7A', 'WAImJuW-3iA', '3EieOrx5r5E', 'fCWcfYoDPFk', 'oVEfVR_KxTk',
+                     'oRSsr6VnOW4', '8Eosysbqiac', 'XNR-NNUh38w', 'KWaiAI6ZFrE', 'eNoLBYDf2wc', '0DKVpnL3hUc', 'SbMtY-aJjFA', 'NiuI9o09DWI',
+                     'NZNuXWsdfCY', 'dHy86IAAFXU', 'hcWhgDME2kU', 'BpX1CTbwX6E', 'RhfKaRAhIRc', '4jeaBIMnp1U', 'UK6LKszd73M', 'Prkv45GfGUg',
+                     'lRIJIxfS5Ck', 'v7LyUzKWGfQ', 'F4YFtNHfGrw', 'EADLE7kO4tA', 'UaGiOdogC7o', 'XSJnX9oe_is', 'rmDPFHdE448', 'si5kq7TFjjg',
+                     'DJnv6tbbK3A', 'qXWsTozY3k0', 'OVlQ8Pgcq8w', 'uIIR5XG0Luc', 'dLLUIeHH-3A', 'nFU019GGTxY', 'fbiR8tVbjTQ', 'mDN94E2MRNM',
+                     'NJ3oHc_lzws', 'tvIYRGdZwdg', 'IRfUsVmpsfs', 'l79506sWDIg', 'iMGJnaFLz-w', 'L4kldDbR6mI', '8fzV9bO56ow', 'iNwMSJza4Wc',
+                     'QZQIt9ONwSk', 'kePhyClKtU0', 'skVvlt7TicI', 'dgpz5fckgec', '0liZ8jG3yUY', 'o1f8lG5s7sg', 'BLdRGPDOqJw', 'T_v4pW9o7a4',
+                     '5CySDSRCWhY', 'Yn4sKVdJiUU', 'R_8_ESg2Q3Y', '-ZP59yjtV5M', 'ueDPXW4dSaw', 'RSEJUFS4S4w', 'LxqIKK0NRaI', 'cY8FMSuLvVQ',
+                     'psa3mZFj4Gg', 's1TOtBPFipk', 'cG1cSY-fjEs', 'AkxAdYKBUEg', '7ttJPvqKBDg', 'YjFOj1M7ZOo', 'cvPUX_K2NTs', 'ec6tfiwBQYU',
+                     'JLWwdUSKYbQ', 'uxxf4h-hwIs', '1P2u-PbXr_Q', 'cXTaYTrRuv8', '5gs8vwQnInI', 'WTTmbjj0Z0c', 'pMBLUCxzTUM', '8UiAGkeqNwQ',
+                     'Uby6wu8I0e4', 'g-CG3aOXRIY', 'PcA0mjL_oVg', '7GD_D8Wnq-U', '76z0a8wrWYk', 'TwY9CZahsxU', 'HuF17vCq70E', 'jXbMAk6dsk0',
+                     '1mI1UFq7kJE', '-uIgcOKmEhs', 'VDdPuo3Y-xk', 'ZPBhCda1SmU', '2Qv9lFfLYDI', 'xcRVqogMCRg', 'SXspRnb-xJo', 'oA2L_22Y6z0',
+                     'CQRZKYjO6uw', 'JY3l4VwcNrw', 'wmZQGy1GWQ4', 'm501gRu_nik', 'eCDsiwnPGMk', 'g55JAdwVs2Q', 'fHb8RU_1qqk', 'Q61Zl-99_Q4',
+                     '_zl0R5tMH5U', 'Kl3nH4qqsis', 'Av9ypMylguE', 'zF-FZfl1d60', 'KBzQgKxcHbE', 'rKMkYsQuB-s', 'wv4BzFeDF14', '9W0uBdZkON4',
+                     'Ir8oIRgs-Zs', 'wrcsRKlCX_M', 'YQiJ7mMvHow', 'goVx267uuqw', 'gq9T2vLiDig', 'LSkEWrCT-eo', 'Z0NMPUv6fcM', 'n6P6o-say-0',
+                     'mSCE7HX45_A', 'Ist6VjzLVm4', 'gUVR6AzMtqI', '4kBxSzSK2Ts', 'LKtA-x3J12Q', 'lI7q_9ZvDGQ', 'XzUE4pUguAw', 'S3p1oKAeZvY',
+                     'ZMghrnDpIRk', 'vlvMYOhM-LE', 'nNPK3yjEavw', 'ZCoetv12AT0', 'G34fTJHXMTk', '3n5HDH5TwF4', 'lH3ONqLW4-E', 'QRpode16wnI',
+                     'IqOUtR6WcOk', 'fKWLZHg6m_I', 'VIzHL1RNc6E', 'TrKRC7Y56uo', 'uKp0G74aivM', 'KTJcL6WJfy4', '406jWUWCAWk', 'on8OzKfeu58', 'm396VLNXmnU',
+                     'LzcL9q8y88o', 'txzxXFKe6DU', 'aNr2cx9d6s0', 'Az251B6logo', 'IPld39yx0tY', 'IxfgrEaO50c', '8LNyH1ITSdY', 'RSMnV9f5pwg']
+
+#video_ids_crypto = video_ids_crypto1 + video_ids_crypto2 + video_ids_crypto3 + video_ids_crypto4
 
 ## Stocks
     # Keyword: Stocks
-#video_ids_by_channel_stocks1, video_ids_stocks1 = search_videos_by_keyword_in_channel(channel_ids_stocks, "crypto", max_results=10, api_key = api_key)
+#video_ids_by_channel_stocks1, video_ids_stocks1 = search_videos_by_keyword_in_channel(channel_ids_stocks, "stock tips", max_results=10, api_key = api_key_2)
     # Keyword: Stocks
-#video_ids_by_channel_stocks2, video_ids_stocks2 = search_videos_by_keyword_in_channel(channel_ids_stocks, "crypto tips", max_results=10, api_key = api_key)
+video_ids_by_channel_stocks2, video_ids_stocks2 = search_videos_by_keyword_in_channel(channel_ids_stocks, "investment advice", max_results=10, api_key = api_key_2)
+print(video_ids_by_channel_stocks2)
+print(video_ids_stocks2)
+print("hello")
     # Keyword: Stocks
 #video_ids_by_channel_stocks3, video_ids_stocks3 = search_videos_by_keyword_in_channel(channel_ids_stocks, "#notfinancialadvice", max_results=10, api_key = api_key)
     # Keyword: Stocks
 #video_ids_by_channel_stocks4, video_ids_stocks4 = search_videos_by_keyword_in_channel(channel_ids_stocks, "what to buy", max_results=10, api_key = api_key)
 
+
+video_ids_stocks1 = ['dV00JxVDBdk', 'hjm4t4F-1AY', 'x6EyI_hLtJg', '78LpNG_rbI8', 'CWcD7JF8ebw', 'RBaxlBu8fMM', 'k-MQaDfd250', 'MFoL_ljkTNo',
+                     '9hHst4KVwkI', 'nQAEmbkqiOA', 'OIXvIvDl2fM', 'dyV1NYbk_nA', 'cjXQPIb_xtM', 'J1JmNaqLzNM', 'tdjVVsVtXi0', 'PLfJkb5Ydbw',
+                     'bXOXc49IbCI', 's8wC6U7QJmQ', 'fHXPu-EDb6M', 'jmoOrgTP5XQ', '5X_ZcifasBg', 'uJy9XIJq1cQ', '1axXKjgCe84', '32QhRORiqGk',
+                     '8h1xWOkgrpI', 'JMcaRfFThmg', 'I3FFdGMNe58', 'xn_Nxa_0JBU', '9greKFrOY94', 'N3E5eYS8d-I', '-E91e3al4gg', 'm00G4m1XEVI',
+                     'D60pgI8hVm8', 'yeCwcJuesTc', '3OvpXQGoTHY', 'isjHU3MzO5U', 'BbSlcEUr1Ow', 'OpmMhTUJMnY', 'wqC3mWP7zAw', 'wWeECooKbbc',
+                     'uWmPzNsgDZs', 'j38ZXGcZ9u4', 'KdZNiVFlQIs', 'Y6HfXpqtvdI', 'fYaqitj2Ics', 'gxlhsuWLIoI', '8yTK6Tok7EU', 'ysv2BwHEy8o',
+                     'pNIZw_toUIo', 'SHwDePphnCo', 'bsuespwe_uY', 'IRavvVM6AVs', 'WwotytnkYRQ', 'rxU6ze-NluI', 'jLcnYd6Ki0E', 'A5DAoRLDN0w',
+                     '32w1xnOqSPo', 'hfmloFUxJ1Q', '8J_mscS7MnY', 'iQPU1Pyic4U', 'hEzDxnSUlIA', 'pVjDriSvN-U', 'H1XbtWdhZ5E', 'rEnGNbcySj0',
+                     'ANGeuB0fQcs', 'WMRDuAdk7q4', 'P3oXSKZXfXA', '2VQp6-alQMg', 'VpCuDb1H-nc', '-kHLDxOqguQ', 'rtgIVfezB-U', 'Cc_sauhqOLs',
+                     'oc4rLzU4OKo', 'CRAMVf35SCs', 'ikh2xbbHvqY', '864d8f0mBAY', 'fMhMT0hz3EA', 'N9LvWy1IGPY', 'Rn2BkivJpl8', 'ExsfiMK6bhE',
+                     'SrQiOg0TV20', '1kD66RMWimo', 'EPEud3AVAGQ', 'jye4aTRjhnw', 'LhEzhflVw9g', 'ECgwpqVYB78', 'GdRXeJxbT6M', '4LZilvA1u0Y',
+                     'sP_XnMjJxY8', 'm6NgMXUVlq8', 'izViFORf7SQ', 'rKbhTSzBGRI', 'rr3p4os5SyQ', 'KOi44KdrlxA', 'd57G0R5aldU', 'TRF_ryFg06A',
+                     'J_EAo5U9izg', '4LqvOL7kMvY', '7PPwcamumT4', 'hx1CzMH0cHs', 'jqsP5O3udv0', 'dWWXHs8gLKU', 'DRmDZ_rqD-A', 'WPc9_iFzScs',
+                     'twgm08WOhnM', 'FAvldninROA', 'Vr4m5X4FMfE', 'Oew3VnE-UD8', 'iV6rkpJveBg', 'JahHRqoZaHg', 'haUujRwCUl4', 'uCdK7YNijX8',
+                     'jjTmsbz_ydE', 'tlGqzT843k0', 'ka2TZM94EtM', 'hmNfjjEhcNY', 'A1Ntf1f-bzg', 'STMK8L199pI', 'URES59zcNyg', 'vPTfaahHkGI',
+                     'ZeLXFbOmprc', 'a_OTAxe9xFk', 'rPmnMKZfx0g', 'iuM1DOysNd4', 'lvlMlf_5yOs', 'qfRAlbWvThA', 'IQMl9-MxcoE', 'Bp8KCAQ6J50',
+                     'C9g8E8QTu1A', 'jGRDSoOuqiY', '3WGPa3BnlbQ', 'nb8zn_25dPU', 'AAIrhCsWNSk', 'OP9sSyULSww', 'Wsg3N82YJs4', '28aZp3n6mmg',
+                     'WNj4hHxWj2g', 'Cy-jss4E52A', '05dHr2LWjsU', 'keikMNOJ5ho', '_dp1bPeO2dY', '_gUMPQZS7b4', 'ntX9bHqygrU', 'KJgUTAbTXOk',
+                     '6DXbZa-lfr8', 'rAWq82IEgkc', 'fUD55CfhH-Q', 'Vvby9pR6Q7I', 'TWIH22YAcrk', '-nSODrSo7nY', 'mHtMxxBsdR8', 'VErctXiMaWI',
+                     'P-XB0ZdE3aQ', 'uFdtO4bVtI0', '8Jq1DjR1RdM', 'kHlP1-H0nsM', 'L76Kd19NZT8', 'Uxzqfb6unA0', 'f26X-L9P4ig', 'f5NZZ-H98I4',
+                     'R0pLsJOjGXM', 'P8upKEsCyU4', '5_3Ra-Q6vK4', 'VmdncOfNWas', 'Mc3Jxx23hbo', 'HBy-xP5aQyA', 'tD3BpmsPPjE', 'JjdDUanjGiY',
+                     'PnSC2BY4e7c', '8JOo4L2w43Q', 'udHzPjxq2lg', 'vSCyfXdl7VE', 'nY234RoQeHw', 'aUbBfolWaYU', 'hWwTzqCmdI4', 'GgXNedPCej8',
+                     'okeg4GhPxjE', '2I_GZebHd8Y', 'KGnNKnLL_b0', 'o_8HxR6K5gY', 'ApMMSacmwXI', 'lFyeLeP44kY', 'HvjSRskN_kU', 'gQqgJJKYYZk',
+                     '5rN22nIRh0M', 'Mxu85SCT9lQ', 'ihf5cn5JP8A', 'vVv-RKRuJzk', 'juXE9-vbSyk', 'IXsb3aoXbVk', 'NskNfAlD3wU', 'qze8YAjya-E',
+                     '87Q6l9jtumQ', 'ZocOzdVvNvE', 'HOeL03zCcs8', 'PW2jGN6tW1o', 'nzU6n0da4as', 'RbyCGfw-L6U', 'MPj17ot8qH0', 'LIG1kSplrYM',
+                     'GuE_MpyMlx4', 'e4W9RzjP4t4', 'vypTRO85GhI', 'V5wxOaenRRs', '86PFzsJRp9U', 'P_Kde4dAcNY', 'xRPBoOVZp7A', 'IoJLJ2D2Ul0',
+                     'ELArJhtGh40', '9kedsUW0ypk', 'YU5VVAfd2j0', 'Bs8vu4CEARU', 'pdRjwXC7moA', 'gSLuzEWIIXg', 'c-psoassiY8', 'fOJns7JUY4o', 'SYfVzR5cB7I',
+                     'jACDruSwi1A', '-Fy1KMt6miI', 'RzSSI_XptKk', 'pQxCiu_CxMk', 'ZoLKXrAIa_g', 'rxpOQkDozdQ', '9DKAuxO25ss', 'uEyJidRH9Go']
+
+
+
+
+
+
 #video_ids_stocks = video_ids_stocks1 + video_ids_stocks2 + video_ids_stocks3 + video_ids_stocks4
+
+
+
+
+
+
+
+
+
 
 """ Part 4: Scraping the data """
 ## Crypto

@@ -96,6 +96,8 @@ Usernames of channels above
             @InvestingwithTom, @LearntoInvest, @themebfabershow1017, @MeetKevin, @GrahamStephan,
             @AndreiJikh, @NateOBrien, @wealthhacker, @wolfofdubai, @StockswithJosh, @jeremylefebvremakesmoney7934
 
+Channels and IDs for reference (in word table)
+
 Part 4: Webscraping
 
 What data to include:
