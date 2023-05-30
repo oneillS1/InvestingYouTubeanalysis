@@ -20,6 +20,7 @@ from youtubesearchpython import VideosSearch, ChannelsSearch
 import time
 from googleapiclient.discovery import build
 import pandas as pd
+import os
 
 
 """ Part 1: Necessary functions """
@@ -319,13 +320,9 @@ video_ids_crypto4 = ['L4869xRVM3E', 'D51Uf078d0w', '50tYOPvqA5c', 'C814v3HT1To',
     # Keyword: Stocks
 #video_ids_by_channel_stocks2, video_ids_stocks2 = search_videos_by_keyword_in_channel(channel_ids_stocks, "investment advice", max_results=10, api_key = api_key)
     # Keyword: Stocks
-video_ids_by_channel_stocks3, video_ids_stocks3 = search_videos_by_keyword_in_channel(channel_ids_stocks, "#notfinancialadvice", max_results=10, api_key = api_key)
-print(video_ids_by_channel_stocks3)
-print(video_ids_stocks3)
-print("hello")
+#video_ids_by_channel_stocks3, video_ids_stocks3 = search_videos_by_keyword_in_channel(channel_ids_stocks, "#notfinancialadvice", max_results=10, api_key = api_key)
     # Keyword: Stocks
 #video_ids_by_channel_stocks4, video_ids_stocks4 = search_videos_by_keyword_in_channel(channel_ids_stocks, "what to buy", max_results=10, api_key = api_key)
-
 
 video_ids_stocks1 = ['dV00JxVDBdk', 'hjm4t4F-1AY', 'x6EyI_hLtJg', '78LpNG_rbI8', 'CWcD7JF8ebw', 'RBaxlBu8fMM', 'k-MQaDfd250', 'MFoL_ljkTNo',
                      '9hHst4KVwkI', 'nQAEmbkqiOA', 'OIXvIvDl2fM', 'dyV1NYbk_nA', 'cjXQPIb_xtM', 'J1JmNaqLzNM', 'tdjVVsVtXi0', 'PLfJkb5Ydbw',
@@ -414,29 +411,52 @@ video_ids_stocks3 = ['dV00JxVDBdk', 'HlnalLo0SjE', 'CCjWpVGoVyQ', 'aP0Sy9MOmFs',
                      'E516JZbNFKE', 'M7g2j7YXEdU', 'afB0Q6kB-40', 'DqejEplBQ38', 'YTALNVYZ_Y4', 'aDmOxuJE78A', 'Fi26SKWTKUc', 'CItnQXGj3fM',
                      'cEATlnPfK4Q', 'IICdGHn9tSo', 'vqlSKj97OhM', 'a3JV5FaRods', 'sLvGrqqkEyw', '_Dl_DOLeEH4', 'lgdVN2jc09A', 'EuPed8AwvnI', 'NwjvubapZ54', 'akFGfF0pacg',
                      'BwyeJbvmP9w', 'ZpAuGkoM5fs', 'LfM3A9_xoho', 'XQFf2T3G88M', '3FBcP9Ui2HQ', 'ZFqSblxDzU8', 'hhmdYKsH2b0', 'r8SUuudrP5E']
-# video_ids_stocks4 =
-
-
-
-
+video_ids_stocks4 = ['jCHS6FnwzIs', 'FBLMqO8B4-k', 'Tl3XklQmH-I', 'FnC1xKCj2MI', '2FlfRJIxFo4', 'a27iSIhq3HE', 'nl53BvQtH5A', '57tHaO27V7k',
+                     'maJ6nVxv57A', 'dV00JxVDBdk', 'OIXvIvDl2fM', 'YWlpZmABC_A', 'b8j6s0Z8s18', 'J1JmNaqLzNM', '4tHTUc1sav8', 'k3HrQQszqX4',
+                     'mSn7Hh1WGZ0', 'fHXPu-EDb6M', 'bXOXc49IbCI', 'vb7Lx4jmmSo', '5X_ZcifasBg', 'swwx9SzaFYk', 'AJwHtsHPgJw', 'Ymzyd9fbsmI',
+                     'ne75GMwzGD4', 'uJy9XIJq1cQ', 'EXtQsov25_0', '1vGVwEaIBag', 'y3USmdoXKt8', 'ZGap7kb14gI', 'yeCwcJuesTc', '2PgHpcUBdRI',
+                     'TJMz92k6WmQ', 'wWeECooKbbc', 'vTC8jc0YFGk', 'D60pgI8hVm8', '31X0eQj__U0', 'wemYN-PjtB8', '6TjFyCWvU6g', '4h1pT2HdN_Q',
+                     'uWmPzNsgDZs', '5C1OOacVsiU', 'rM7FAYWRjqw', 'fw-qUooWejA', 'NTOaaflv2ZA', 'jouK2wcMWTg', 'U22tZJf7UwQ', 'MMfPjPuw71o',
+                     'Y6HfXpqtvdI', 'rfOXmsI5Phw', '0BIozLE1kLg', 'mOwnz-M_vo8', 'bku0ailQfl8', '8XGLiV_QVHM', 'YHM9MyJVLFE', 'bsuespwe_uY',
+                     '2aCRnWpvl5A', 'VkrC3QKpoH8', 'N2gQZwqp7bM', 'bwqQVIQkz5Q', 'msseS6Jo4NM', '_K9B7IMzzZw', 'P3oXSKZXfXA', '23hVNTdK-bc',
+                     '1rV1bArnUCU', 'MK2V6GKBmf0', 'TYGsqobuz44', 'zPrYUpECZKs', 'vkQzEEGqGxs', 'Q76bFUvxG6g', 'bvHanrTJ6JQ', '83LcWzhUUj8',
+                     'ZU-JKo0XsbU', 'WP3mwFz293I', 'vzeGAOiJ0nE', '786IC57ySLk', 'dCgqHKLyeCA', 'Bi4jd5Eey8g', 'f-fdvkPu3Vw', '7E4H8zYU_BI',
+                     'Rn2BkivJpl8', 'DF23jO8Y0n0', 'Y7nBM-v3NG4', 'ACJkoe70Zlo', 'YWHSwYPKTCo', 'SMu8V316f-w', '_kN12f8eqxw', '38lvejAKH34',
+                     'nNLod9H6uhQ', 'V6boE3V9IwE', 'z59AZsXFS7c', 'sP_XnMjJxY8', 'ISAfQtWNfAI', 'hdkHMxE61II', 'gXJa0_fptjs', '_N6QFnkS7Ns',
+                     'oaaHVbKd08o', 'kAY74p26NoU', 'ZuGdtdsyxGA', 'rr3p4os5SyQ', 'MXDtgPjJ2rA', 'betckbFM49I', 'xFr8J2j_cdA', 'miTBruk3K3I',
+                     'lhTsx1x0DT8', 'l5qYxG64xGY', 'DRmDZ_rqD-A', 'Oew3VnE-UD8', 'nIu1DgllITg', '6v19fKXaaIw', 'H15HO3fFXMg', 'ka2TZM94EtM',
+                     '_lPUBJLYgF0', 'Y05Tf_XOB8A', 'h9k1be9B4A4', 'y1ZbyWd6--I', 'IFja5oYLdww', 'Q9EgnYmEL_k', 'vc6NBth7Ch4', 'Jlr_HJh1HcY',
+                     'IQMl9-MxcoE', 'ZeLXFbOmprc', 'tlXFnShBbXw', 'UpXJYSPZeks', '8l6Wnr1RBjo', 'vPTfaahHkGI', 'VdN_asBQ1m0', 'TLzxD6TN2XE',
+                     'FQxe6R2kucg', 'QtG9UQ2EKec', 'wh7_pkZlmbU', '0hd95qLNO4w', 'jGRDSoOuqiY', 'Wsg3N82YJs4', 'AAIrhCsWNSk', '79S5Z0H-WmI',
+                     't1Sn-KeFzE4', 'M591pP9tJIk', '-QPkrJXiBFs', 'didMRUT06Jk', '6DXbZa-lfr8', 'ZKOQbQtelkk', 'KJgUTAbTXOk', 'WAGKqPhc0HY',
+                     '_pXH9hS0orY', 'HIlcRqgXSgU', 'z1IIG_2Yq6k', '70fS9IK2XE8', '6Lu71eyaLoo', 'l-gea33nmEQ', 'mHtMxxBsdR8', 'GwjQVKzAuDA',
+                     'Xqf06imGofs', 'd6NB5_5Lkfk', 'WPRflrCOVyg', '-nSODrSo7nY', 'JdwgN5H3MBw', 'bn5pRQJLasA', 'qvBgyb2lnFM', 'lcvbNkI5b0U',
+                     '2iJoEBbEm0I', 'AtmM7rYFFd4', 'OsUNLAbJmiM', 'hHw2_oqVO0o', 'Rgozt3dKAjM', 'zM2VVtIyolU', 'L76Kd19NZT8', 'vXPyaOCbgwQ',
+                     'fc7Oj1KH9wI', 'ovLHTl7b6UY', 'm_MGrqGiAn0', 'P8upKEsCyU4', 'yLr-Drxh8jk', '-QRkGJMSHCY', '0Cdqs2Q1Vis', 'j-Y4EPkMmFU',
+                     'YT3909zDFkc', 'qDkOE1RITLw', 'TCF-D4VOpUo', 'VUU56K2UB4E', 'GgXNedPCej8', 'nY234RoQeHw', 'fAmdC64KKdM', 'rI-ortDkoM8',
+                     'vSCyfXdl7VE', 'fhv67YhXqvg', 'cdtZcEnE3L8', '2H05cIQH058', 'hWwTzqCmdI4', 'aUbBfolWaYU', '4E5Wv7ylKBU', '8c-gU1A_Bho',
+                     'gQqgJJKYYZk', 'wS3fkoBkBVA', 'Q0xjk9k3MR0', '5CGKRkOLu64', 'lFyeLeP44kY', 'kqUHQ8AylbY', 'lYquwNlkcUU', 'cO_VL9fo4rc',
+                     'GuE_MpyMlx4', 'SpB4STP_Nio', 'MPj17ot8qH0', '0wvOwKnmCms', 'tS01dA9LaqA', 'rSldsSRh1h0', '52Ce9PdAeLM', '3B4e-d2k8y8',
+                     'PW2jGN6tW1o', 'KSBket6fWuQ', 'ojoVbLvtwUI', 'RqIsrx9aCWs', 'ksYyJrg_Vw4', 'o7UqqnBmYeE', 'lN1Miz0AdHc', 'Sov0IscJq9Y',
+                     '7zgXuWZq2T8', 'YigzR_xfnCQ', 'pSg9UnXUqvk', 'ppE_tHkfyJg', 'Bs8vu4CEARU', 'IICdGHn9tSo', 'Mfe_j4384oM', 'akFGfF0pacg',
+                     'RzSSI_XptKk', 'Hat7aJ2Knfw', 'nRo0FlH1Wow', '0JulwSPVJvw', '3gpAXtDFV9E', '_Dl_DOLeEH4', '_8GumRDBcXA', 'a8SPaKq9ABg',
+                     'ZpAuGkoM5fs', 'ZIv2tgjLj-0', 'YgGezddO7_8', '_6I-0N7DEE0', 'f1kAl0zJqvs', 'tG9HiUH3fRU', '8v9rTGjH0TE', '0-Rm37LAwT4']
 
 #video_ids_stocks = video_ids_stocks1 + video_ids_stocks2 + video_ids_stocks3 + video_ids_stocks4
 
 
-
-
-
-
-
-
-
-
 """ Part 4: Scraping the data """
 ## Crypto
-#metadata_crypto = extract_multiVideo_metadata(video_ids_crypto, api_key)
+#metadata_crypto1 = extract_multiVideo_metadata(video_ids_crypto1, api_key_2)
+#metadata_crypto2 = extract_multiVideo_metadata(video_ids_crypto2, api_key_3)
+#metadata_crypto3 = extract_multiVideo_metadata(video_ids_crypto3, api_key_3)
+#metadata_crypto4 = extract_multiVideo_metadata(video_ids_crypto4, api_key_4)
 
 ## Stocks
-# metadata_stocks = extract_multiVideo_metadata(video_ids_stocks, api_key)
+#metadata_stocks = extract_multiVideo_metadata(video_ids_stocks1, api_key_2)
+#metadata_stocks2 = extract_multiVideo_metadata(video_ids_stocks2, api_key_3)
+#metadata_stocks3 = extract_multiVideo_metadata(video_ids_stocks3, api_key_4)
+#metadata_stocks4 = extract_multiVideo_metadata(video_ids_stocks4, api_key_4)
 
 ## Overall
 # video_ids = video_ids_crypto + video_ids_stocks
@@ -444,20 +464,51 @@ video_ids_stocks3 = ['dV00JxVDBdk', 'HlnalLo0SjE', 'CCjWpVGoVyQ', 'aP0Sy9MOmFs',
 
 """ Part 5: Creating the dataset """
 ## Crypto
-csv_fle_crypto = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/crypto_test.csv"
-#df_crypto = append_metadata_to_csv(metadata_crypto, csv_fle_crypto)
+csv_fle_crypto1 = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/crypto1.csv"
+csv_fle_crypto2 = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/crypto2.csv"
+csv_fle_crypto3 = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/crypto3.csv"
+csv_fle_crypto4 = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/crypto4.csv"
+
+#df_crypto = append_metadata_to_csv(metadata_crypto1, csv_fle_crypto1)
+#df_crypto2 = append_metadata_to_csv(metadata_crypto2, csv_fle_crypto2)
+#df_crypto3 = append_metadata_to_csv(metadata_crypto3, csv_fle_crypto3)
+#df_crypto4 = append_metadata_to_csv(metadata_crypto4, csv_fle_crypto4)
 
 #print(df_crypto.head())
 
 ## Stocks
-#csv_fle_stocks = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/stocks_test.csv"
-# df_stocks = append_metadata_to_csv(metadata_stocks, csv_fle_stocks)
+csv_fle_stocks1 = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/stocks1.csv"
+csv_fle_stocks2 = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/stocks2.csv"
+csv_fle_stocks3 = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/stocks3.csv"
+csv_fle_stocks4 = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/stocks4.csv"
 
+#df_stocks = append_metadata_to_csv(metadata_stocks, csv_fle_stocks1)
+#df_stocks2 = append_metadata_to_csv(metadata_stocks, csv_fle_stocks2)
+#df_stocks3 = append_metadata_to_csv(metadata_stocks, csv_fle_stocks3)
+#df_stocks4 = append_metadata_to_csv(metadata_stocks, csv_fle_stocks4)
 # print(df_stocks.head())
 
 ## Overall
-# csv_fle_stocks = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/overall_test.csv"
-# df_stocks = append_metadata_to_csv(metadata_overall, csv_fle_overall)
+# csv_fle_overall = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/overall_video_data.csv"
+# metadata_overall = metadata_stocks + metadata_stocks2 + metadata_stocks3 + metadata_stocks4 + metadata_crypto + metadata_crypto2 + metadata_crypto3 + metadata_crypto4
+# df_overall = append_metadata_to_csv(metadata_overall, csv_fle_overall)
+
+# Combining all dataframes and saving as overall csv (again coding in this way to reduce times connecting to YouTube API - not the most efficient way but gets around their restrictions)
+folder_path ="C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/"
+dataframes = []
+
+for filename in os.listdir(folder_path):
+    if filename.endswith(".csv"):
+        file_path = os.path.join(folder_path, filename)
+        df = pd.read_csv(file_path)
+        dataframes.append(df)
+
+# Concatenate the dataframes together
+overall_video_data = pd.concat(dataframes)
+
+# Save the combined dataframe to a new CSV file
+overall_video_data.to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/overall_video_data.csv", index=False)
+
 
 """ Additional helpful code """
     # Timing of functions
