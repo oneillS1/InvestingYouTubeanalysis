@@ -181,6 +181,8 @@ def append_metadata_to_csv(metadata, csv_file):
 # api_key_old = "AIzaSyBRpuSMO306VzZkUGCNt06zIk7deIJk0Ec"
 api_key = "AIzaSyBvqa2-cEtjDKTCZ47qQcVJQqY4wKk5kek"
 api_key_2 = "AIzaSyCkMzXm8C6lhQJCJUJbWM57bPF3Bi5jO3U"
+api_key_3 = "AIzaSyAOLyZ77wU_n_wBg22jcN_RF-QMXvg7azg"
+api_key_4 = "AIzaSyDCxeqgw_SekMX_tnuJ2keIXIydChvMOZQ"
 
 """ Part 3: Finding relevant videos """
     # Channel usernames identified from sector knowledge, google searches
@@ -315,12 +317,12 @@ video_ids_crypto4 = ['L4869xRVM3E', 'D51Uf078d0w', '50tYOPvqA5c', 'C814v3HT1To',
     # Keyword: Stocks
 #video_ids_by_channel_stocks1, video_ids_stocks1 = search_videos_by_keyword_in_channel(channel_ids_stocks, "stock tips", max_results=10, api_key = api_key_2)
     # Keyword: Stocks
-video_ids_by_channel_stocks2, video_ids_stocks2 = search_videos_by_keyword_in_channel(channel_ids_stocks, "investment advice", max_results=10, api_key = api_key_2)
-print(video_ids_by_channel_stocks2)
-print(video_ids_stocks2)
-print("hello")
+#video_ids_by_channel_stocks2, video_ids_stocks2 = search_videos_by_keyword_in_channel(channel_ids_stocks, "investment advice", max_results=10, api_key = api_key)
     # Keyword: Stocks
-#video_ids_by_channel_stocks3, video_ids_stocks3 = search_videos_by_keyword_in_channel(channel_ids_stocks, "#notfinancialadvice", max_results=10, api_key = api_key)
+video_ids_by_channel_stocks3, video_ids_stocks3 = search_videos_by_keyword_in_channel(channel_ids_stocks, "#notfinancialadvice", max_results=10, api_key = api_key)
+print(video_ids_by_channel_stocks3)
+print(video_ids_stocks3)
+print("hello")
     # Keyword: Stocks
 #video_ids_by_channel_stocks4, video_ids_stocks4 = search_videos_by_keyword_in_channel(channel_ids_stocks, "what to buy", max_results=10, api_key = api_key)
 
@@ -353,7 +355,66 @@ video_ids_stocks1 = ['dV00JxVDBdk', 'hjm4t4F-1AY', 'x6EyI_hLtJg', '78LpNG_rbI8',
                      'GuE_MpyMlx4', 'e4W9RzjP4t4', 'vypTRO85GhI', 'V5wxOaenRRs', '86PFzsJRp9U', 'P_Kde4dAcNY', 'xRPBoOVZp7A', 'IoJLJ2D2Ul0',
                      'ELArJhtGh40', '9kedsUW0ypk', 'YU5VVAfd2j0', 'Bs8vu4CEARU', 'pdRjwXC7moA', 'gSLuzEWIIXg', 'c-psoassiY8', 'fOJns7JUY4o', 'SYfVzR5cB7I',
                      'jACDruSwi1A', '-Fy1KMt6miI', 'RzSSI_XptKk', 'pQxCiu_CxMk', 'ZoLKXrAIa_g', 'rxpOQkDozdQ', '9DKAuxO25ss', 'uEyJidRH9Go']
-
+video_ids_stocks2 = ['iJFgMkB_ARw', '78LpNG_rbI8', 'CwTQH_clH6Y', 'dV00JxVDBdk', 'x6EyI_hLtJg', 'aP0Sy9MOmFs', '-p2p2U_L4MA', 'HlnalLo0SjE',
+                     'Uf4XG3UTBaY', 'CWcD7JF8ebw', 'AXogsfz4gqE', 'PosvpZRMIjA', '8GWVoduDOGM', 'oDdMPi-S_u0', 'Yr-C3Gn1Jhc', 'fHXPu-EDb6M',
+                     'Ziv9DUKSrHs', 'r1vxSFJQpPg', 'prRpgXVMmWY', 'V1B3uhXfxLA', '5X_ZcifasBg', 'y3USmdoXKt8', 'AfTzD9VHdi4', 'g8e9ul0Sxxc',
+                     'Fe4BaF8gCOQ', 'nm-rhysU96k', '32QhRORiqGk', 'DgV6r0yKyJw', 'ZGap7kb14gI', 'NWeH-uOyTyI', 'J87kGYGDN6A', 'D60pgI8hVm8',
+                     'isjHU3MzO5U', 'yeCwcJuesTc', '6auT5dNCT9I', '3OvpXQGoTHY', '4A2xq0MaIhI', 'alsU4rXLN6c', 'l1DE5WEie-A', 'U4a7mWvOaso',
+                     '8yTK6Tok7EU', 'uWmPzNsgDZs', 'kBuKX2orkgA', 'j38ZXGcZ9u4', 'CAE2_cpB-ic', 'YYHzkVVSpAo', 'pNIZw_toUIo', 'fw-qUooWejA',
+                     'vyUNHmluPlg', 'koe_55782q8', 'rxU6ze-NluI', 'eVgFzmC2lAI', 'IRavvVM6AVs', '2aCRnWpvl5A', 'bku0ailQfl8', 'HpRws1GLmPw',
+                     'm2TOm6b-J_o', 'rUFAEslz84k', 'bsuespwe_uY', '5w6GLvaAdCQ', 'hEzDxnSUlIA', 'mHTmYXGMalE', 'wt2wwoCfPSc', 'pVjDriSvN-U',
+                     'STjYPcVmkoA', 'zbTn6HFaZok', 'CTWUmR3g2VQ', 'HhIbxORFyCU', '4G6cZrtVmuQ', 'j5pQOb5TXy0', 'dCgqHKLyeCA', 'eLRzzN9qUZ0',
+                     'bvHanrTJ6JQ', 'oq_Uu1nWFnI', 'mjNj3rX4wCo', 'aPPnj8NR3vQ', 'jTmPD-ksahU', 'VpCuDb1H-nc', 'Qqzb5NxOGm0', 'df9HYIwy1Ro',
+                     'GdRXeJxbT6M', 'm2db-PpRsq8', 'ZjIyk5Op93I', 'Rn2BkivJpl8', 'h65R-XkAHjg', 'FPOpBDKjtYk', 'nWo8a6Pdv-g', 'LCiHGuTIuLk',
+                     '1f7ZCdsciDs', 'Z8ycYGNFFZA', '_N6QFnkS7Ns', 'U7SnnM9FxQ0', 'rr3p4os5SyQ', 'm6NgMXUVlq8', 'HycMHz5Qp04', 'SPa1zF2Nptc',
+                     'z9bgRtuBRJg', 'AdTDrN21J8I', 'Iltkz-96CZc', '9Y00mp4TbIA', 'dC9JeAko-Lo', 'XLj44NGugUQ', 'nIu1DgllITg', 'KkDOKHG0Hak',
+                     'CSyg75XR1oE', '0a-ZG2tmCI0', 'Vr4m5X4FMfE', 'U78GKrcH0V8', 'PsIQ1DaHRl4', '_cHa-NoQLtc', 'IV9OrXDiouc', 'JahHRqoZaHg',
+                     '9FAVM8NR9zE', 'tlGqzT843k0', 'omuMbgHjH7k', 'Ft6bQI2M37s', '2jCPhSZM2Qc', 'AmogriLhOFE', 'IFja5oYLdww', 'D6dV3pH01Ys',
+                     '0C-_N-5VlR8', 'URES59zcNyg', 'XHxEgtJ-i2c', 'JY1k0D6O8C0', 'IQMl9-MxcoE', 'PnTR6iAQFnA', 'lvlMlf_5yOs', 'w-lFAKuXMfk',
+                     'fbyzQKKEszs', '7poZYLWWkkw', 'M591pP9tJIk', 'HdHnrFH79T0', 'slprFkr0S7k', 'nb8zn_25dPU', 'C9g8E8QTu1A', 'wl1q-iMZf34',
+                     'jeW41cEQVCM', 'XmUMcRVN5O8', 'Cy-jss4E52A', 'SM7_7Ht-MGI', '05dHr2LWjsU', 'TGlo4NHeMTM', 'ntX9bHqygrU', 'P9gRYjwcDQw',
+                     'CvZ9HBkS27k', 'CVeNuRzhq9U', '_gUMPQZS7b4', 'fUD55CfhH-Q', '_pXH9hS0orY', 'T0yKl98PCCM', 'LMTV6Z58hu0', 'JdwgN5H3MBw',
+                     'aXW2MqrqZU0', 'w45SXUzZ3ro', 'mHtMxxBsdR8', 'b-OkhwQO1wU', 'T9nNMMfQchc', 'dO9jKv3ryuk', '6aHbIaQAxXg', 'b380H8wqUnE',
+                     '8Jq1DjR1RdM', 'L76Kd19NZT8', 'eVxeoKf0f7w', 'nfueJfuqq8c', 'Gii-o98VwIs', 'sOw_xpfCnxI', 'orbKC1BWuMc', 'h31pnkNK7Bs',
+                     'WPxP2heADjQ', 'oBGkjWKDfes', 'P8upKEsCyU4', 'VmdncOfNWas', 'j1xAthFAd-0', 'EKIhc3tS0os', 'QLtvIXc6PWQ', 'TPX_OTvGk9k',
+                     'Mc3Jxx23hbo', 'BougQAMldsM', 'qDkOE1RITLw', '7C6roAxktuI', 'vSCyfXdl7VE', 'nY234RoQeHw', 'aUbBfolWaYU', 'hWwTzqCmdI4',
+                     'ryQsJm1a5qc', 'fMkOtRGz5EI', 'X6uQomdxDlI', 'GgXNedPCej8', 'b2-wP0UEERc', 'pnIZLvP-7N4', 'HvjSRskN_kU', 'L8W1tbEVyOM',
+                     '8c-gU1A_Bho', 'IXsb3aoXbVk', 'NskNfAlD3wU', 'lFyeLeP44kY', '5rN22nIRh0M', '_Nb6OKOM_nw', 'CRt135W9Imc', 'tYfuEF9IYuA',
+                     'tS01dA9LaqA', '87Q6l9jtumQ', 'qze8YAjya-E', 'RbyCGfw-L6U', 'Mbd7koFnlaY', 'PW2jGN6tW1o', 'kaPOVR1W5zI', 'aQ26xfoT-3E',
+                     'sm9m1pwatcI', 'DU5zuwuXWOk', 'WGf_RE5Th_U', 'JvR9aC_y6Ts', '_bheTToKZIg', 'ojoVbLvtwUI', 'YTALNVYZ_Y4', 'Rf-yQYoP8mY',
+                     'H7JxVfBV9Q4', 'sLwF7MynC9E', 'Sov0IscJq9Y', 'QWcnLw3pVdQ', 'IICdGHn9tSo', 'vqlSKj97OhM', 'a3JV5FaRods', 'yz4DYxbfHmk',
+                     'lgdVN2jc09A', 'r-epU06B2eY', '_Dl_DOLeEH4', 'sLvGrqqkEyw', 'NwjvubapZ54', 'EuPed8AwvnI',
+                     'ZpAuGkoM5fs', 'LfM3A9_xoho', 'XQFf2T3G88M', 'rxpOQkDozdQ', 'ZFqSblxDzU8', '3FBcP9Ui2HQ', 'hhmdYKsH2b0', 'r8SUuudrP5E']
+video_ids_stocks3 = ['dV00JxVDBdk', 'HlnalLo0SjE', 'CCjWpVGoVyQ', 'aP0Sy9MOmFs', 'sBn3rk2r19s', 'CwTQH_clH6Y', 'Qb_Em_x5Pf8', '-p2p2U_L4MA',
+                     'h9cfkJ2npec', '9cuPzYAy6-c', 'psGxIB7H20o', 'prRpgXVMmWY', 'PosvpZRMIjA', '9Zyde4d1zo8', 'lNExnsbvSrA', 'TSxquI6ac3c',
+                     'N-l9a4BmU4Q', 'hU7YZMwzZPY', 'Yr-C3Gn1Jhc', 'v3bk2MdJ9lw', 'ifAOlaKmuO8', 'g8e9ul0Sxxc', 'y3USmdoXKt8', '5X_ZcifasBg',
+                     'AJwHtsHPgJw', 'yht8S-4TmZU', 'N3E5eYS8d-I', 'SrJ2vSYSFGc', '9greKFrOY94', '32QhRORiqGk', 'J87kGYGDN6A', 'isjHU3MzO5U',
+                     'd32cvhffgco', '6auT5dNCT9I', 'l1DE5WEie-A', 'gBPn4wEKKrw', '-I33SHN44PU', '3OvpXQGoTHY', 'U4a7mWvOaso', 'yeCwcJuesTc',
+                     '8yTK6Tok7EU', 'JW9J93hrDNE', 'fw-qUooWejA', 'uRq1HdL352E', 'zyA_aaSRrKE', 'pNIZw_toUIo', '5VpCuLGeUyM', 'ZWghr1C-jYw',
+                     'ysv2BwHEy8o', 'gTrq65yuHeM', 'eVgFzmC2lAI', 'IRavvVM6AVs', 'rxU6ze-NluI', 'A8vFUo_Yjg4', 'rUFAEslz84k', '32w1xnOqSPo',
+                     '5GvNYH4KhZQ', 'J23HvCzKM3k', 'p5wSRjaQsnE', '-N0ccyDr-ng', 'STjYPcVmkoA', '3irypwLDtTs', 'hEzDxnSUlIA', 'VYKXrL-rSOs',
+                     'RV-CcaDDi48', 'mHTmYXGMalE', 'dvZ1mkBc79E', '7yhKpXKRPwY', '89pCfpw5OF0', 'izlDHnM5NDw', 'rjB_NBimSxU', 'dCgqHKLyeCA',
+                     'mJdwwOjf6LI', 'aPPnj8NR3vQ', 'Mxdq8C4nyxE', '864d8f0mBAY', 'My9drgMEuro', 'mYwiUCg_ZiQ', 'mjNj3rX4wCo', '25WiPIndXtA',
+                     'kJkxX7ltsRQ', 'RxtiePtxfzY', '7z0qM459Opc', 'HWl_H1p0QJY', 't1j5RVaMxaU', 'jITJURSEpds', 'gmPmVpQ20NE', 'NYJgS9UpudE',
+                     'wXyOhbH01C0', 'yIZP92kGFi4', '_N6QFnkS7Ns', 'rr3p4os5SyQ', 'z9bgRtuBRJg', 'HycMHz5Qp04', 'sJK0o90NWHY', 'ZuGdtdsyxGA',
+                     'SPa1zF2Nptc', 'XLj44NGugUQ', 'nIu1DgllITg', '_cHa-NoQLtc', '0a-ZG2tmCI0', 'pltfunL1UQM', 'kQFWr23DIJg', 'DPuQJNhwCOg',
+                     'KkDOKHG0Hak', 'FAvldninROA', 'KY4k6SACiuQ', 'D6dV3pH01Ys', 'AmogriLhOFE', 'FkRQJ_OXQ-4', 'IbRyElTtWT8', 'x5cxA0s5JOg',
+                     '_fHN4ZSFUYw', 'RA7Vb329aSU', 'JahHRqoZaHg', 'resUIggMjDY', 'xW1KvnMgaLA', 'XHxEgtJ-i2c', '0C-_N-5VlR8', 'J6PcJC7vXo8',
+                     'UmEC9qQq0AQ', 'T2MZzQqdQiA', 'fFe3cSVnlmo', 'oWCN6ux_Yf0', 'URES59zcNyg', 't8hDFLksrHE', 'fGu7oWy6Cy8', 'slprFkr0S7k',
+                     'wl1q-iMZf34', 'M591pP9tJIk', 'HdHnrFH79T0', 'oC7xkxTyNbY', 'V8TdCPGw0Sw', 'dx1Yay7lw08', 'XmUMcRVN5O8', 'imkhwaK-c0g',
+                     'didMRUT06Jk', 'CvZ9HBkS27k', '_gUMPQZS7b4', 'CVeNuRzhq9U', 'bj8dp5Afd58', '_pXH9hS0orY', 'YnQbsuWC3F0', 'T0yKl98PCCM',
+                     '24-j8QrbHv0', 'CqXtTAIllTY', 'bAWCs4rO8KE', 'LMTV6Z58hu0', 'JdwgN5H3MBw', 'T9nNMMfQchc', '6aHbIaQAxXg', 'mHtMxxBsdR8',
+                     'dO9jKv3ryuk', 'aXW2MqrqZU0', 'b-OkhwQO1wU', 'Ds3voY0SOLw', 'X7OO85279C0', 'UtthZD7Ckck', 'D9CaxgnWAhQ', 'Gii-o98VwIs',
+                     'KFOsNmektpk', 'h31pnkNK7Bs', 'eBWJwQG-J4c', 'fRdsJnr10xU', 'VxbEF_xhkz4', '-Ugc0dhjp_0', 'yhjC79Cb5Rs', 'TPX_OTvGk9k',
+                     'j1xAthFAd-0', 'jIu6YiBsvOw', 'qDkOE1RITLw', 'P8upKEsCyU4', 'sd9w8Zc-QrU', 'VmdncOfNWas', 'aza0yR6uDgs', 't5w5mk1_K3A',
+                     'QLtvIXc6PWQ', 'aUbBfolWaYU', 'nY234RoQeHw', 'b2-wP0UEERc', 'yrcf2CWrJqk', 'hWwTzqCmdI4', 'kQTI73v84m4', 'vSCyfXdl7VE',
+                     'jiSel4EEonM', 'GgXNedPCej8', 'ryQsJm1a5qc', 'lYquwNlkcUU', 'zXPW0HgMdJI', 'cO_VL9fo4rc', 'At-cde5dhGk', 'L8W1tbEVyOM',
+                     'Yi80jotgLWU', 'GII33cpSBnE', 'juXE9-vbSyk', 'Sn4w2g5yJyI', 'CRt135W9Imc', 'u4PLpO_S5po', '7GrB2b0pS6w', 'qze8YAjya-E',
+                     'KSBket6fWuQ', '4DhCKlWWAjE', '87Q6l9jtumQ', 'l9Nu2e9znJ4', 'nzU6n0da4as', '3VWc1v_JQs4', 'tS01dA9LaqA', 'Rf-yQYoP8mY',
+                     'E516JZbNFKE', 'M7g2j7YXEdU', 'afB0Q6kB-40', 'DqejEplBQ38', 'YTALNVYZ_Y4', 'aDmOxuJE78A', 'Fi26SKWTKUc', 'CItnQXGj3fM',
+                     'cEATlnPfK4Q', 'IICdGHn9tSo', 'vqlSKj97OhM', 'a3JV5FaRods', 'sLvGrqqkEyw', '_Dl_DOLeEH4', 'lgdVN2jc09A', 'EuPed8AwvnI', 'NwjvubapZ54', 'akFGfF0pacg',
+                     'BwyeJbvmP9w', 'ZpAuGkoM5fs', 'LfM3A9_xoho', 'XQFf2T3G88M', '3FBcP9Ui2HQ', 'ZFqSblxDzU8', 'hhmdYKsH2b0', 'r8SUuudrP5E']
+# video_ids_stocks4 =
 
 
 
