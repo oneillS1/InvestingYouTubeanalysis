@@ -206,13 +206,13 @@ channel_ids_stocks = ['UCtlAFoYl2aWb6pMiHCctQHA', 'UCGL9ubdGcvZh_dvSV2z1hoQ', 'U
 
 ## Stocks
     # Keyword: Stocks
-video_ids_by_channel_stocks1, video_ids_stocks1 = search_videos_by_keyword_in_channel(channel_ids_stocks, "stock tips", max_results=10, api_key = api_key)
-    # Keyword: Stocks
-video_ids_by_channel_stocks2, video_ids_stocks2 = search_videos_by_keyword_in_channel(channel_ids_stocks, "investment advice", max_results=10, api_key = api_key)
-    # Keyword: Stocks
-video_ids_by_channel_stocks3, video_ids_stocks3 = search_videos_by_keyword_in_channel(channel_ids_stocks, "#notfinancialadvice", max_results=10, api_key = api_key_2)
-    # Keyword: Stocks
-video_ids_by_channel_stocks4, video_ids_stocks4 = search_videos_by_keyword_in_channel(channel_ids_stocks, "what to buy", max_results=10, api_key = api_key_2)
+# video_ids_by_channel_stocks1, video_ids_stocks1 = search_videos_by_keyword_in_channel(channel_ids_stocks, "stock tips", max_results=10, api_key = api_key_5)
+#     # Keyword: Stocks
+# video_ids_by_channel_stocks2, video_ids_stocks2 = search_videos_by_keyword_in_channel(channel_ids_stocks, "investment advice", max_results=10, api_key = api_key_5)
+#     # Keyword: Stocks
+# video_ids_by_channel_stocks3, video_ids_stocks3 = search_videos_by_keyword_in_channel(channel_ids_stocks, "#notfinancialadvice", max_results=10, api_key = api_key_6)
+#     # Keyword: Stocks
+# video_ids_by_channel_stocks4, video_ids_stocks4 = search_videos_by_keyword_in_channel(channel_ids_stocks, "what to buy", max_results=10, api_key = api_key_6)
 
 #video_ids_stocks = video_ids_stocks1 + video_ids_stocks2 + video_ids_stocks3 + video_ids_stocks4
 
@@ -225,10 +225,10 @@ video_ids_by_channel_stocks4, video_ids_stocks4 = search_videos_by_keyword_in_ch
 # metadata_crypto4 = extract_multiVideo_metadata(video_ids_crypto4, api_key_4)
 
 ## Stocks
-metadata_stocks = extract_multiVideo_metadata(video_ids_stocks1, api_key_3)
-metadata_stocks2 = extract_multiVideo_metadata(video_ids_stocks2, api_key_3)
-metadata_stocks3 = extract_multiVideo_metadata(video_ids_stocks3, api_key_4)
-metadata_stocks4 = extract_multiVideo_metadata(video_ids_stocks4, api_key_4)
+# metadata_stocks = extract_multiVideo_metadata(video_ids_stocks1, api_key_7)
+# metadata_stocks2 = extract_multiVideo_metadata(video_ids_stocks2, api_key_7)
+# metadata_stocks3 = extract_multiVideo_metadata(video_ids_stocks3, api_key_8)
+# metadata_stocks4 = extract_multiVideo_metadata(video_ids_stocks4, api_key_8)
 
 ## Overall
 # video_ids = video_ids_crypto + video_ids_stocks
@@ -254,10 +254,10 @@ csv_fle_stocks2 = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data_short_videos/
 csv_fle_stocks3 = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data_short_videos/stocks3_short.csv"
 csv_fle_stocks4 = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data_short_videos/stocks4_short.csv"
 
-df_stocks_short = append_metadata_to_csv(metadata_stocks, csv_fle_stocks1)
-df_stocks2_short = append_metadata_to_csv(metadata_stocks2, csv_fle_stocks2)
-df_stocks3_short = append_metadata_to_csv(metadata_stocks3, csv_fle_stocks3)
-df_stocks4_short = append_metadata_to_csv(metadata_stocks4, csv_fle_stocks4)
+# df_stocks_short = append_metadata_to_csv(metadata_stocks, csv_fle_stocks1)
+# df_stocks2_short = append_metadata_to_csv(metadata_stocks2, csv_fle_stocks2)
+# df_stocks3_short = append_metadata_to_csv(metadata_stocks3, csv_fle_stocks3)
+# df_stocks4_short = append_metadata_to_csv(metadata_stocks4, csv_fle_stocks4)
 # print(df_stocks.head())
 
 ## Overall
@@ -266,17 +266,17 @@ df_stocks4_short = append_metadata_to_csv(metadata_stocks4, csv_fle_stocks4)
 # df_overall = append_metadata_to_csv(metadata_overall, csv_fle_overall)
 
 # Combining all dataframes and saving as overall csv (again coding in this way to reduce times connecting to YouTube API - not the most efficient way but gets around their restrictions)
-# folder_path ="C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data_short_videos/"
-# dataframes = []
-#
-# for filename in os.listdir(folder_path):
-#     if filename.endswith(".csv"):
-#         file_path = os.path.join(folder_path, filename)
-#         df = pd.read_csv(file_path)
-#         dataframes.append(df)
-#
-# # Concatenate the dataframes together
-# overall_video_data = pd.concat(dataframes)
+folder_path ="C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data_short_videos/"
+dataframes = []
+
+for filename in os.listdir(folder_path):
+    if filename.endswith(".csv"):
+        file_path = os.path.join(folder_path, filename)
+        df = pd.read_csv(file_path)
+        dataframes.append(df)
+
+# Concatenate the dataframes together
+overall_video_data = pd.concat(dataframes)
 
 # Save the combined dataframe to a new CSV file
-#overall_video_data.to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/overall_video_data.csv", index=False)
+overall_video_data.to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data_short_videos/overall_short_video_data.csv", index=False)
