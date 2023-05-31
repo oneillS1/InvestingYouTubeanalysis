@@ -453,10 +453,10 @@ video_ids_stocks4 = ['jCHS6FnwzIs', 'FBLMqO8B4-k', 'Tl3XklQmH-I', 'FnC1xKCj2MI',
 #metadata_crypto4 = extract_multiVideo_metadata(video_ids_crypto4, api_key_4)
 
 ## Stocks
-#metadata_stocks = extract_multiVideo_metadata(video_ids_stocks1, api_key_2)
-#metadata_stocks2 = extract_multiVideo_metadata(video_ids_stocks2, api_key_3)
-#metadata_stocks3 = extract_multiVideo_metadata(video_ids_stocks3, api_key_4)
-#metadata_stocks4 = extract_multiVideo_metadata(video_ids_stocks4, api_key_4)
+metadata_stocks = extract_multiVideo_metadata(video_ids_stocks1, api_key_2)
+metadata_stocks2 = extract_multiVideo_metadata(video_ids_stocks2, api_key_3)
+metadata_stocks3 = extract_multiVideo_metadata(video_ids_stocks3, api_key_4)
+metadata_stocks4 = extract_multiVideo_metadata(video_ids_stocks4, api_key_4)
 
 ## Overall
 # video_ids = video_ids_crypto + video_ids_stocks
@@ -482,10 +482,10 @@ csv_fle_stocks2 = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/stocks2.csv"
 csv_fle_stocks3 = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/stocks3.csv"
 csv_fle_stocks4 = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/stocks4.csv"
 
-#df_stocks = append_metadata_to_csv(metadata_stocks, csv_fle_stocks1)
-#df_stocks2 = append_metadata_to_csv(metadata_stocks, csv_fle_stocks2)
-#df_stocks3 = append_metadata_to_csv(metadata_stocks, csv_fle_stocks3)
-#df_stocks4 = append_metadata_to_csv(metadata_stocks, csv_fle_stocks4)
+df_stocks = append_metadata_to_csv(metadata_stocks, csv_fle_stocks1)
+df_stocks2 = append_metadata_to_csv(metadata_stocks2, csv_fle_stocks2)
+df_stocks3 = append_metadata_to_csv(metadata_stocks3, csv_fle_stocks3)
+df_stocks4 = append_metadata_to_csv(metadata_stocks4, csv_fle_stocks4)
 # print(df_stocks.head())
 
 ## Overall
@@ -494,20 +494,20 @@ csv_fle_stocks4 = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/stocks4.csv"
 # df_overall = append_metadata_to_csv(metadata_overall, csv_fle_overall)
 
 # Combining all dataframes and saving as overall csv (again coding in this way to reduce times connecting to YouTube API - not the most efficient way but gets around their restrictions)
-folder_path ="C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/"
-dataframes = []
-
-for filename in os.listdir(folder_path):
-    if filename.endswith(".csv"):
-        file_path = os.path.join(folder_path, filename)
-        df = pd.read_csv(file_path)
-        dataframes.append(df)
-
-# Concatenate the dataframes together
-overall_video_data = pd.concat(dataframes)
-
-# Save the combined dataframe to a new CSV file
-overall_video_data.to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/overall_video_data.csv", index=False)
+# folder_path ="C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/"
+# dataframes = []
+#
+# for filename in os.listdir(folder_path):
+#     if filename.endswith(".csv"):
+#         file_path = os.path.join(folder_path, filename)
+#         df = pd.read_csv(file_path)
+#         dataframes.append(df)
+#
+# # Concatenate the dataframes together
+# overall_video_data = pd.concat(dataframes)
+#
+# # Save the combined dataframe to a new CSV file
+# overall_video_data.to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/overall_video_data.csv", index=False)
 
 
 """ Additional helpful code """
