@@ -184,6 +184,10 @@ api_key = "AIzaSyBvqa2-cEtjDKTCZ47qQcVJQqY4wKk5kek"
 api_key_2 = "AIzaSyCkMzXm8C6lhQJCJUJbWM57bPF3Bi5jO3U"
 api_key_3 = "AIzaSyAOLyZ77wU_n_wBg22jcN_RF-QMXvg7azg"
 api_key_4 = "AIzaSyDCxeqgw_SekMX_tnuJ2keIXIydChvMOZQ"
+api_key_5 = "AIzaSyDJaz06nOcCQMOsi9UrC6Y9LfZ2r3oIBGc"
+api_key_6 = "AIzaSyAR6W-smS3JzjJwlJ5KafSwi8f2k-kIVHY"
+api_key_7 = "AIzaSyDVlVnYgR4cL8zx4bHjPJygJqVLUGqcR0w"
+api_key_8 = "AIzaSyAl8cA_xOIBvt4m0fhQDmGKfyrklDZpKLU"
 
 """ Part 3: Finding relevant videos """
     # Channel usernames identified from sector knowledge, google searches
