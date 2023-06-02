@@ -11,12 +11,14 @@ import pandas as pd
 
 
 """ 1: Function to search YouTube for relevant video ids"""
-def search_videos_by_keyword(keyword, max_results=100):
+def search_videos_by_keyword(keyword, max_results=100, video_length = 900):
     videos_search = VideosSearch(keyword, limit=max_results)
 
     video_ids = []
     for video in videos_search.result()['result']:
-        video_ids.append(video['id'])
+        duration = video.get('duration')
+        if duration and parse_duration(duration) < video_length:  # Check if duration is under 15 minutes (900 seconds)
+            video_ids.append(video['id'])
 
     return video_ids
 
@@ -167,3 +169,14 @@ def append_metadata_to_csv(metadata, csv_file):
     df.to_csv(csv_file, index=False, encoding='utf-8-sig')
 
     return df
+
+""" 7: Parsing duration of YouTube videos """
+def parse_duration(duration):
+    parts = duration.split(':')
+    if len(parts) == 3:  # Format: HH:MM:SS
+        hours, minutes, seconds = parts
+        total_seconds = int(hours) * 3600 + int(minutes) * 60 + int(seconds)
+    else:  # Format: MM:SS
+        minutes, seconds = parts
+        total_seconds = int(minutes) * 60 + int(seconds)
+    return total_seconds

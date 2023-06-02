@@ -1,9 +1,9 @@
 
-""" This file contains the outputs of aspects of the Webscraping.py and Webscraping short videos.py file
+""" This file contains the outputs of aspects of the Webscraping 1 - Medium videos.py and Webscraping 2 - Short Videos.py file
 
 At times the output of early sections is hard coded as inputs to later sections so as to avoid over-using the YouTube API.
 The YouTube API has daily restrictions on number of calls. Hard coding the output during testing allowed me to run/alter the functions
-and test without exceeding these limits. In theory the Webscraping.py and Webscraping short videos.py scripts could run fully at one time,
+and test without exceeding these limits. In theory the Webscraping 1 - Medium videos.py and Webscraping 2 - Short Videos.py scripts could run fully at one time,
 but the API restrictions may be exceeded if done so. The code below is one way of getting around that. """
 
     # Channel IDs - output of find_channel_ids() function (used in both scripts)
