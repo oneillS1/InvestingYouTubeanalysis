@@ -20,6 +20,16 @@ import bert
 import youtube_transcript_api
 import youtubesearchpython
 import requests
+import requests
+import csv
+from youtube_transcript_api import YouTubeTranscriptApi
+from youtube_transcript_api._errors import TranscriptsDisabled
+from youtube_transcript_api._errors import NoTranscriptFound
+from youtubesearchpython import VideosSearch, ChannelsSearch
+import time
+from googleapiclient.discovery import build
+import pandas as pd
+import os
 
 print('here')
 

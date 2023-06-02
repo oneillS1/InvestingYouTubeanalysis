@@ -1,10 +1,15 @@
 
 """
-This script is for the Webscraping section of the 'Analysis of Investing on YouTube' project.
+This script is for the Webscraping section of the 'Analysis of Investing on YouTube' project. Running this will result in the final dataset.
+
+*NB: This file is used in conjunction with 'YouTube_scraping_functions.py' & 'Hard_coding.py' & 'Installing & Loading packages.py'
+Related files 'webscraping short videos.py' and 'description of logic followed.py'
+
 """
 
-""" Part 1: Importing packages & also from other scripts 
-1 a) Loading libraries """
+""" Part 1: Importing packages & also from other scripts """
+
+""" 1 a) Loading libraries """
 # Running the script which loads the packages for the project
 import subprocess
 import sys
@@ -12,177 +17,20 @@ import sys
 python_executable = sys.executable
 subprocess.call([python_executable, "Installing & Loading packages.py"])
 
-import requests
-import csv
-from youtube_transcript_api import YouTubeTranscriptApi
-from youtube_transcript_api._errors import TranscriptsDisabled
-from youtube_transcript_api._errors import NoTranscriptFound
-from youtubesearchpython import VideosSearch, ChannelsSearch
-import time
-from googleapiclient.discovery import build
-import pandas as pd
-import os
 
 """ 1 b) Import hard coding elements - usage explained in the script (largely to avoid YouTube API daily restrictions """
-from
+from Hard_coding import channel_ids_crypto, channel_ids_stocks
+from Hard_coding import video_ids_crypto1, video_ids_crypto2, video_ids_crypto3, video_ids_crypto4
+from Hard_coding import video_ids_stocks1, video_ids_stocks2, video_ids_stocks3, video_ids_stocks4
 
-""" Part 1: Necessary functions """
+""" 1 c) Importing necessary functions written for the webscraping """
+from YouTube_scraping_functions import find_channel_ids, search_videos_by_keyword_in_channel, search_videos_by_keyword
+from YouTube_scraping_functions import extract_metadata, extract_multiVideo_metadata
+from YouTube_scraping_functions import append_metadata_to_csv
 
-""" 1 a) Function to search YouTube for relevant video ids"""
-def search_videos_by_keyword(keyword, max_results=100):
-    videos_search = VideosSearch(keyword, limit=max_results)
-
-    video_ids = []
-    for video in videos_search.result()['result']:
-        video_ids.append(video['id'])
-
-    return video_ids
-
-def search_videos_by_keyword_in_channel(channel_ids, keyword, max_results=100, api_key=None):
-    video_ids_by_channel = {}
-    all_video_ids = []
-
-    youtube = build('youtube', 'v3', developerKey=api_key)
-
-    for channel_id in channel_ids:
-        video_ids = []
-
-        search_response = youtube.search().list(
-            part='id',
-            q=keyword,
-            channelId=channel_id,
-            type='video',
-            maxResults=max_results,
-            videoDuration='medium'
-        ).execute()
-
-        for item in search_response['items']:
-            video_id = item['id']['videoId']
-            video_ids.append(video_id)
-            all_video_ids.append(video_id)
-
-        if channel_id in video_ids_by_channel:
-            video_ids_by_channel[channel_id].extend(video_ids)
-        else:
-            video_ids_by_channel[channel_id] = video_ids
-
-    return video_ids_by_channel, all_video_ids
-
-def find_channel_ids2(channel_usernames, api_key):
-    youtube = build('youtube', 'v3', developerKey=api_key)
-
-    channel_ids_username = []
-    channel_ids = []
-
-    for channel_username in channel_usernames:
-        username = channel_username.lstrip('@')  # Remove the "@" symbol if present
-
-        response = youtube.search().list(part='snippet', q=username, type='channel').execute()
-        print(response)
-
-        if 'items' in response and len(response['items']) > 0:
-            channel_id = response['items'][0]['snippet']['channelId']
-
-            channel_response = youtube.channels().list(part='snippet', id=channel_id).execute()
-            print(channel_response)
-
-            if 'items' in channel_response and len(channel_response['items']) > 0:
-                channel_name = channel_response['items'][0]['snippet']['title']
-                channel_ids_username.append((channel_name, channel_id))
-                channel_ids.append(channel_id)
-            else:
-                channel_ids_username.append((username, channel_id))
-                channel_ids.append(channel_id)
-        else:
-            channel_ids_username.append((username, None))
-
-    return channel_ids_username, channel_ids
-
-
-def find_channel_ids(channel_usernames, api_key):
-    youtube = build('youtube', 'v3', developerKey=api_key)
-
-    channel_ids_username = []
-    channel_ids = []
-
-    for channel_username in channel_usernames:
-        username = channel_username.lstrip('@')  # Remove the "@" symbol if present
-
-        search_response = youtube.search().list(
-            part='snippet',
-            q=username,
-            type='channel',
-            maxResults=1,
-            fields='items(id,snippet(title,channelId))'
-        ).execute()
-
-        if 'items' in search_response and len(search_response['items']) > 0:
-            item = search_response['items'][0]
-            channel_id = item['id']['channelId']
-            channel_name = item['snippet']['title']
-            channel_ids_username.append((channel_name, channel_id))
-            channel_ids.append(channel_id)
-        else:
-            channel_ids_username.append((username, None))
-
-    return channel_ids_username, channel_ids
-
-""" 1 b) Function(s) for extracting relevant data from videos """
-def extract_metadata(video_id, api_key):
-    url = f"https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id={video_id}&key={api_key}"
-    response = requests.get(url)
-    data = response.json()
-    video_info = data["items"][0]
-
-    # Video metadata
-    metadata = {}
-    fields = ['channelId', 'publishedAt', 'tags', 'id', 'title', 'description', 'likeCount', 'viewCount', 'commentCount', 'Transcript']
-
-    for field in fields:
-        try:
-            if field == 'Transcript':
-                try:
-                    metadata[field] = YouTubeTranscriptApi.get_transcript(video_id)
-                except (TranscriptsDisabled, NoTranscriptFound):
-                    metadata[field] = None
-            elif field in ['likeCount', 'viewCount', 'commentCount']:
-                metadata[field] = video_info["statistics"][field]
-            else:
-                metadata[field] = video_info["snippet"][field] if field.lower() != 'id' else video_info[
-                    'id']
-        except KeyError:
-            pass
-
-    return metadata
-
-def extract_multiVideo_metadata(video_ids, api_key):
-    metadata = []
-    for video_id in video_ids:
-        data = extract_metadata(video_id, api_key)
-        metadata.append(data)
-
-    return metadata
-
-""" 1 c) Function(s) to add data from videos to csv """
-def append_metadata_to_csv(metadata, csv_file):
-    var_names = ['channelId', 'publishedAt', 'tags', 'id', 'title', 'description', 'likeCount', 'viewCount', 'commentCount', 'Transcript']
-
-    # Create a DataFrame with the metadata
-    df = pd.DataFrame(metadata, columns=var_names)
-
-    # Replace any newline characters in the 'Transcript' column
-    df['Transcript'] = df['Transcript'].apply(lambda x: ' '.join(segment['text'] for segment in x) if x is not None else None)
-
-    # Replace any remaining newline characters in other fields
-    df = df.replace('\n', ' ', regex=True)
-
-    # Write the DataFrame to a CSV file
-    df.to_csv(csv_file, index=False, encoding='utf-8-sig')
-
-    return df
 
 """ Part 2: Connecting to YouTube API """
-# api_key_old = "AIzaSyBRpuSMO306VzZkUGCNt06zIk7deIJk0Ec"
+# Using multiple API keys gets around daily restrictions on calls to the API
 api_key = "AIzaSyBvqa2-cEtjDKTCZ47qQcVJQqY4wKk5kek"
 api_key_2 = "AIzaSyCkMzXm8C6lhQJCJUJbWM57bPF3Bi5jO3U"
 api_key_3 = "AIzaSyAOLyZ77wU_n_wBg22jcN_RF-QMXvg7azg"
@@ -207,18 +55,18 @@ channel_names_stocks = ["@RickyGutierrezz", "@thetradingchannel", "@DaytradeWarr
             "@AndreiJikh", "@NateOBrien", "@wealthhacker", "@wolfofdubai", "@StockswithJosh", "@jeremylefebvremakesmoney7934"]
 
 
-    # Finding channel ids
+""" 3 b) Finding channel ids from the usernames """
 ## Crypto
 # channel_ids_username_crypto, channel_ids_crypto = find_channel_ids(channel_names_crypto, api_key)
 
 ## Stocks
 # channel_ids_username_stocks, channel_ids_stocks = find_channel_ids(channel_names_stocks, api_key)
 
-# To reduce the times I call the YouTube API (as there are daily restrictions) you can hardcode the output of the channel ids function for subsequent runs.
-# The output of the two functions above is contained in the 'Hard_coding.py' file.
+# To reduce the times I call the YouTube API (as there are daily restrictions) I hardcode the output of the channel ids function for subsequent runs.
+# The output of the two functions above is contained in the 'Hard_coding.py' file & imported here as 'channnel_ids_crypto' and 'channel_ids_stocks'.
+# Alternatively I could just run the code above too.
 
-
-    # Finding video ids within channels (by channel id and keyword search)
+""" 3 c) Finding relevant video ids within channels (by channel id and keyword search) """
 ## Crypto
     # Keyword: Crypto
 #video_ids_by_channel_crypto1, video_ids_crypto1 = search_videos_by_keyword_in_channel(channel_ids_crypto, "crypto tips", max_results=10, api_key = api_key)
@@ -229,8 +77,9 @@ channel_names_stocks = ["@RickyGutierrezz", "@thetradingchannel", "@DaytradeWarr
     # Keyword: Crypto
 #video_ids_by_channel_crypto4, video_ids_crypto4 = search_videos_by_keyword_in_channel(channel_ids_crypto, "what to buy", max_results=10, api_key = api_key_2)
 
-# Similarly I will hard code the outputs of the above (which is a list of video ids) so as to run subsequent code without reconnecting to the YouTube API
-
+# Similarly I have hard coded the outputs of the above (which is a list of video ids) so as to run subsequent code without reconnecting to the YouTube API
+# The output of is contained in the 'Hard_coding.py' file & imported here as 'video_ids_crypto' with the 1-4 as suffix.
+# Alternatively I could just run the code above too but it will call YouTube API a lot so use different API keys
 
 ## Stocks
     # Keyword: Stocks
@@ -242,8 +91,9 @@ channel_names_stocks = ["@RickyGutierrezz", "@thetradingchannel", "@DaytradeWarr
     # Keyword: Stocks
 #video_ids_by_channel_stocks4, video_ids_stocks4 = search_videos_by_keyword_in_channel(channel_ids_stocks, "what to buy", max_results=10, api_key = api_key)
 
-# Similarly I will hard code the outputs of the above (which is a list of video ids) so as to run subsequent code without reconnecting to the YouTube API
-
+# Similarly I have hard coded the outputs of the above (which is a list of video ids) so as to run subsequent code without reconnecting to the YouTube API
+# The output of is contained in the 'Hard_coding.py' file & imported here as 'video_ids_stocks' with the 1-4 as suffix.
+# Alternatively I could just run the code above too but it will call YouTube API a lot so use different API keys
 
 """ Part 4: Scraping the data """
 ## Crypto
@@ -284,7 +134,8 @@ csv_fle_stocks4 = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/stocks4.csv"
 # df_stocks4 = append_metadata_to_csv(metadata_stocks4, csv_fle_stocks4)
 # # print(df_stocks.head())
 
-# Combining all dataframes and saving as overall csv (again coding in this way to reduce times connecting to YouTube API - not the most efficient way but gets around their restrictions)
+""" 5 b) Combining all dataframes and saving as overall csv 
+    (again coding in this way to reduce times connecting to YouTube API - not the most efficient way but gets around their restrictions) """
 # folder_path ="C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/"
 # dataframes = []
 #
@@ -301,7 +152,6 @@ csv_fle_stocks4 = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/stocks4.csv"
 # overall_video_data.to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/overall_long_video_data.csv", index=False)
 
 
-print(channel_ids_crpto)
 
 """ Additional helpful code """
     # Timing of functions
