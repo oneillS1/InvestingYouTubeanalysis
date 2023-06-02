@@ -3,15 +3,15 @@
 This script is for the Webscraping section of the 'Analysis of Investing on YouTube' project.
 """
 
+""" Part 1: Importing packages & also from other scripts 
+1 a) Loading libraries """
 # Running the script which loads the packages for the project
 import subprocess
 import sys
 
 python_executable = sys.executable
 subprocess.call([python_executable, "Installing & Loading packages.py"])
-subprocess.call([python_executable, "Hard coding.py"])
 
-""" Loading libraries - may move to 'Installing and Loading packages.py' """
 import requests
 import csv
 from youtube_transcript_api import YouTubeTranscriptApi
@@ -23,6 +23,8 @@ from googleapiclient.discovery import build
 import pandas as pd
 import os
 
+""" 1 b) Import hard coding elements - usage explained in the script (largely to avoid YouTube API daily restrictions """
+from
 
 """ Part 1: Necessary functions """
 
@@ -213,7 +215,7 @@ channel_names_stocks = ["@RickyGutierrezz", "@thetradingchannel", "@DaytradeWarr
 # channel_ids_username_stocks, channel_ids_stocks = find_channel_ids(channel_names_stocks, api_key)
 
 # To reduce the times I call the YouTube API (as there are daily restrictions) you can hardcode the output of the channel ids function for subsequent runs.
-# The output of the two functions above is contained in the 'Hard coding.py' file.
+# The output of the two functions above is contained in the 'Hard_coding.py' file.
 
 
     # Finding video ids within channels (by channel id and keyword search)
@@ -283,21 +285,23 @@ csv_fle_stocks4 = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/stocks4.csv"
 # # print(df_stocks.head())
 
 # Combining all dataframes and saving as overall csv (again coding in this way to reduce times connecting to YouTube API - not the most efficient way but gets around their restrictions)
-folder_path ="C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/"
-dataframes = []
+# folder_path ="C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/"
+# dataframes = []
+#
+# for filename in os.listdir(folder_path):
+#     if filename.endswith(".csv"):
+#         file_path = os.path.join(folder_path, filename)
+#         df = pd.read_csv(file_path)
+#         dataframes.append(df)
+#
+# # Concatenate the dataframes together
+# overall_video_data = pd.concat(dataframes)
+#
+# # Save the combined dataframe to a new CSV file
+# overall_video_data.to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/overall_long_video_data.csv", index=False)
 
-for filename in os.listdir(folder_path):
-    if filename.endswith(".csv"):
-        file_path = os.path.join(folder_path, filename)
-        df = pd.read_csv(file_path)
-        dataframes.append(df)
 
-# Concatenate the dataframes together
-overall_video_data = pd.concat(dataframes)
-
-# Save the combined dataframe to a new CSV file
-overall_video_data.to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data/overall_long_video_data.csv", index=False)
-
+print(channel_ids_crpto)
 
 """ Additional helpful code """
     # Timing of functions
