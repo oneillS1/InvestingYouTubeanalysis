@@ -46,17 +46,17 @@ for word in remove_from_stopwords:
 print(len(stopwords))
 
 # Remove stopwords
-test_all_video_df['transcript_without_stopwords'] = test_all_video_df['Transcript'].apply(lambda x: ' '.join([w for w in x.split() if w.lower() not in stopwords]))
+test_long_video_df['transcript_without_stopwords'] = test_long_video_df['Transcript'].apply(lambda x: ' '.join([w for w in x.split() if w.lower() not in stopwords]))
 # # Lemmatization
-test_all_video_df['transcript_lemmatized'] = test_all_video_df['transcript_without_stopwords'].apply(lambda x: ' '.join([wn.lemmatize(w) for w in x.split() if w not in stopwords]))
+test_long_video_df['transcript_lemmatized'] = test_long_video_df['transcript_without_stopwords'].apply(lambda x: ' '.join([wn.lemmatize(w) for w in x.split() if w not in stopwords]))
 # # Take a look at the data
-print(test_all_video_df.head())
+print(test_long_video_df.head())
 
 # Model building
 umap_model = UMAP(n_neighbors=15, n_components=5, min_dist=0.0, metric='cosine', random_state=100)
 
 topic_model_test = BERTopic(umap_model=umap_model, language="english", calculate_probabilities=True)
-topics, probabilities = topic_model_test.fit_transform(test_all_video_df['transcript_lemmatized'])
+topics, probabilities = topic_model_test.fit_transform(test_long_video_df['transcript_lemmatized'])
 
 topic_model_test.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/test_model1")
 
