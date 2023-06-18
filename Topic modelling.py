@@ -31,10 +31,11 @@ video_data = pd.read_csv(video_data_path)
 long_video_df = video_data[video_data['Source'] == "overall_long_video_data.csv"]
 short_video_df = video_data[video_data['Source'] == "overall_short_video_data.csv"]
 freeSearch_video_df = video_data[video_data['Source'] == "overall_free_search.csv"]
+all_video_df = video_data
 
 test_short_video_df = short_video_df[short_video_df['Transcript'] != ''][['Transcript']]
 test_long_video_df = long_video_df[long_video_df['Transcript'] != ''][['Transcript']]
-print(test_short_video_df.head())
+test_all_video_df = all_video_df[all_video_df['Transcript'] != ''][['Transcript']]
 
 """ 3. Topic modelling """
 stopwords = nltk.corpus.stopwords.words('english')
@@ -45,28 +46,25 @@ for word in remove_from_stopwords:
 print(len(stopwords))
 
 # Remove stopwords
-test_long_video_df['transcript_without_stopwords'] = test_long_video_df['Transcript'].apply(lambda x: ' '.join([w for w in x.split() if w.lower() not in stopwords]))
+test_all_video_df['transcript_without_stopwords'] = test_all_video_df['Transcript'].apply(lambda x: ' '.join([w for w in x.split() if w.lower() not in stopwords]))
 # # Lemmatization
-test_long_video_df['transcript_lemmatized'] = test_long_video_df['transcript_without_stopwords'].apply(lambda x: ' '.join([wn.lemmatize(w) for w in x.split() if w not in stopwords]))
+test_all_video_df['transcript_lemmatized'] = test_all_video_df['transcript_without_stopwords'].apply(lambda x: ' '.join([wn.lemmatize(w) for w in x.split() if w not in stopwords]))
 # # Take a look at the data
-print(test_long_video_df.head())
+print(test_all_video_df.head())
 
 # Model building
 umap_model = UMAP(n_neighbors=15, n_components=5, min_dist=0.0, metric='cosine', random_state=100)
 
 topic_model_test = BERTopic(umap_model=umap_model, language="english", calculate_probabilities=True)
-topics, probabilities = topic_model_test.fit_transform(test_long_video_df['transcript_lemmatized'])
+topics, probabilities = topic_model_test.fit_transform(test_all_video_df['transcript_lemmatized'])
 
 topic_model_test.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/test_model1")
-print('done')
-print('\n')
 
 topic_model_test1 = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/test_model1")
 
 print(topic_model_test1.get_topic_info())
-print('\n')
 print(topic_model_test1.get_topic(0))
-print('\n')
+
 barchart = topic_model_test1.visualize_barchart(top_n_topics = 10)
 pio.write_image(barchart, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Bertopic figures/barchart.png")
 
