@@ -52,6 +52,8 @@ print(test_all_video_df.head())
 
 
 """ 3 a) 1. Removing / Altering poor auto transcribed videos """
+# s p 500 = s&p500
+# [Music][Applause]
 
 
 """ 3 a) 2. Chunking so that sentence embedding works on full transcript """
@@ -131,10 +133,11 @@ all_video_df_chunkcount.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/all_v
 """ 3 b) Document embedding"""
 # sentence_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
 # embeddings_1 = sentence_model.encode(transcripts)
+# np.save('embeddings_1.npy', embeddings_1)
 #
 # sentence_model = SentenceTransformer('sentence-transformers/paraphrase-MiniLM-L3-v2')
 # embeddings_2 = sentence_model.encode(transcripts)
-#
+# np.save('embeddings_2.npy', embeddings_2)
 #
 # """ 3 c) Creating the topic model """
 # # Defining sub-models
