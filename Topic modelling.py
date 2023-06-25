@@ -124,37 +124,70 @@ pd.set_option('display.max_columns', 10)
 transcript_chunks_combined_df = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/transcript_chunks_combined_df.csv')
 transcripts = transcript_chunks_combined_df['combined_sentence'].tolist()
 
+# start_time = time.time()
+# sentence_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+# embeddings_1 = sentence_model.encode(transcripts)
+# end_time = time.time()
+# print("Embeddings 1 time:", end_time - start_time, " seconds")
+# np.save('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/embeddings_1.npy', embeddings_1)
+embeddings_1 = np.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/embeddings_1.npy')
+#
+# start_time = time.time()
+# sentence_model = SentenceTransformer('sentence-transformers/paraphrase-MiniLM-L3-v2')
+# embeddings_2 = sentence_model.encode(transcripts)
+# end_time = time.time()
+# print("Embeddings 2 time:", end_time - start_time, " seconds")
+# np.save('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/embeddings_2.npy', embeddings_2)
+embeddings_2 = np.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/embeddings_2.npy')
+
+""" 3 c) Creating the topic model """
+# Defining sub-models
+vectorizer = CountVectorizer(stop_words="english")
+umap_model = UMAP(n_neighbors=15, n_components=5, min_dist=0.0, metric='cosine', random_state=42)
+hdbscan_model = HDBSCAN(min_cluster_size=15, min_samples=2, metric='euclidean', cluster_selection_method='eom')
+
+# Model building
+topic_model = BERTopic(
+    umap_model=umap_model,
+    language="english",
+    hdbscan_model=hdbscan_model,
+    vectorizer_model=vectorizer
+)
 start_time = time.time()
-sentence_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
-embeddings_1 = sentence_model.encode(transcripts)
+topic_model_1 = topic_model.fit(transcripts, embeddings_1)
 end_time = time.time()
-print("Embeddings 1 time:", end_time - start_time, " seconds")
-np.save('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/embeddings_1.npy', embeddings_1)
-# embeddings_1 = np.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/embeddings_1.npy')
+print("Topic model 1 time:", end_time - start_time, " seconds")
 
 start_time = time.time()
-sentence_model = SentenceTransformer('sentence-transformers/paraphrase-MiniLM-L3-v2')
-embeddings_2 = sentence_model.encode(transcripts)
+topic_model_2 = topic_model.fit(transcripts, embeddings_2)
 end_time = time.time()
-print("Embeddings 2 time:", end_time - start_time, " seconds")
-np.save('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/embeddings_2.npy', embeddings_2)
-# embeddings_2 = np.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/embeddings_2.npy')
+print("Topic model 2 time:", end_time - start_time, " seconds")
 
-# """ 3 c) Creating the topic model """
-# # Defining sub-models
-# vectorizer = CountVectorizer(stop_words="english")
-# umap_model = UMAP(n_neighbors=15, n_components=5, min_dist=0.0, metric='cosine', random_state=42)
-# hdbscan_model = HDBSCAN(min_cluster_size=20, min_samples=2, metric='euclidean', cluster_selection_method='eom')
-#
-#
-# # Model building
-# topic_model_test = BERTopic(
-#     umap_model=umap_model,
-#     language="english",
-#     hdbscan_model=hdbscan_model,
-#     vectorizer_model=vectorizer
-# )
-#topic_model_test.fit(docs, embeddings_1)
+topic_model_1.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1")
+# topic_model_1 = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1")
+topic_model_2.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_2")
+# topic_model_2 = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_2")
+
+vectorizer_model = CountVectorizer(stop_words="english", ngram_range=(1, 3), min_df=10)
+
+topic_model_1_countVec = topic_model_1.update_topics(transcripts, vectorizer_model = vectorizer_model)
+topic_model_1_countVec.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1_countVec")
+# topic_model_1_countVec = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1_countVec")
+
+topic_model_2_countVec = topic_model_2.update_topics(transcripts, vectorizer_model = vectorizer_model)
+topic_model_2_countVec.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_2_countVec")
+# topic_model_2_countVec = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_2_countVec")
+
+## Visualisation
+print("Updated with TM1")
+print(topic_model_1.get_topic_info())
+print("Updated with TM2")
+print(topic_model_2.get_topic_info())
+
+print("Updated with Count Vec TM1")
+print(topic_model_1.get_topic_info())
+print("Updated with Count Vec TM2")
+print(topic_model_2.get_topic_info())
 
 # topics, probabilities = topic_model_test.fit_transform(test_long_video_df['transcript_lemmatized'])
 #
