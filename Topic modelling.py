@@ -168,22 +168,23 @@ topic_model_1.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/t
 topic_model_2.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_2")
 # topic_model_2 = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_2")
 
+## Visualisation
+print("TM1")
+print(topic_model_1.get_topic_info())
+print("TM2")
+print(topic_model_2.get_topic_info())
+
 vectorizer_model = CountVectorizer(stop_words="english", ngram_range=(1, 3), min_df=10)
 
-topic_model_1_countVec = topic_model_1.update_topics(transcripts, vectorizer_model = vectorizer_model)
-topic_model_1_countVec.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1_countVec")
+topic_model_1.update_topics(transcripts, vectorizer_model = vectorizer_model)
+topic_model_1.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1_countVec")
 # topic_model_1_countVec = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1_countVec")
 
-topic_model_2_countVec = topic_model_2.update_topics(transcripts, vectorizer_model = vectorizer_model)
-topic_model_2_countVec.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_2_countVec")
+topic_model_2.update_topics(transcripts, vectorizer_model = vectorizer_model)
+topic_model_2.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_2_countVec")
 # topic_model_2_countVec = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_2_countVec")
 
 ## Visualisation
-print("Updated with TM1")
-print(topic_model_1.get_topic_info())
-print("Updated with TM2")
-print(topic_model_2.get_topic_info())
-
 print("Updated with Count Vec TM1")
 print(topic_model_1.get_topic_info())
 print("Updated with Count Vec TM2")
