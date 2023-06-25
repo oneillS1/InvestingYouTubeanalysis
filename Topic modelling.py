@@ -24,6 +24,7 @@ from hdbscan import HDBSCAN
 from sklearn.feature_extraction.text import CountVectorizer
 from sentence_transformers import SentenceTransformer
 import time
+from bertopic.vectorizers import ClassTfidfTransformer
 
 # printing output settings
 desired_width = 320
@@ -142,63 +143,72 @@ embeddings_2 = np.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/em
 
 """ 3 c) Creating the topic model """
 # Defining sub-models
+
+## Altering the stopwords to be omitted due to intricacies of language used in investing and YouTube videos generally
 vectorizer = CountVectorizer(stop_words="english")
+stopwords = vectorizer.get_stop_words()
+modified_stopwords = list(stopwords)
+words_to_remove = ["should", "must", "interest", "never"]
+words_to_add = ["im", "Im", "uh", "hi", "youre", "you're", 'um', 'okay', 'yes', 'yeah', 'just', 'really', 'theyre']
+modified_stopwords.extend(words_to_add)
+for word in words_to_remove:
+    modified_stopwords.remove(word)
+vectorizer.set_params(stop_words=modified_stopwords)
+
 umap_model = UMAP(n_neighbors=15, n_components=5, min_dist=0.0, metric='cosine', random_state=42)
 hdbscan_model = HDBSCAN(min_cluster_size=15, min_samples=2, metric='euclidean', cluster_selection_method='eom')
+ctfidf_model = ClassTfidfTransformer(reduce_frequent_words=True)
 
 # Model building
 topic_model = BERTopic(
     umap_model=umap_model,
     language="english",
     hdbscan_model=hdbscan_model,
-    vectorizer_model=vectorizer
+    vectorizer_model=vectorizer,
+    ctfidf_model=ctfidf_model
 )
-start_time = time.time()
-topic_model_1 = topic_model.fit(transcripts, embeddings_1)
-end_time = time.time()
-print("Topic model 1 time:", end_time - start_time, " seconds")
+# start_time = time.time()
+# topic_model_1 = topic_model.fit(transcripts, embeddings_1)
+# end_time = time.time()
+# print("Topic model 1 time:", end_time - start_time, " seconds")
 
 start_time = time.time()
 topic_model_2 = topic_model.fit(transcripts, embeddings_2)
 end_time = time.time()
 print("Topic model 2 time:", end_time - start_time, " seconds")
 
-topic_model_1.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1")
+# topic_model_1.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1")
 # topic_model_1 = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1")
 topic_model_2.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_2")
 # topic_model_2 = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_2")
 
-## Visualisation
-print("TM1")
-print(topic_model_1.get_topic_info())
-print("TM2")
-print(topic_model_2.get_topic_info())
+# ## Visualisation
+# # print("TM1")
+# # print(topic_model_1.get_topic_info())
+# # print("TM2")
+# # print(topic_model_2.get_topic_info())
+#
+vectorizer_model = CountVectorizer(stop_words=modified_stopwords, ngram_range=(1, 3), min_df=10)
 
-vectorizer_model = CountVectorizer(stop_words="english", ngram_range=(1, 3), min_df=10)
-
-topic_model_1.update_topics(transcripts, vectorizer_model = vectorizer_model)
-topic_model_1.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1_countVec")
+# topic_model_1.update_topics(transcripts, vectorizer_model = vectorizer_model)
+# topic_model_1.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1_countVec")
 # topic_model_1_countVec = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1_countVec")
 
 topic_model_2.update_topics(transcripts, vectorizer_model = vectorizer_model)
 topic_model_2.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_2_countVec")
 # topic_model_2_countVec = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_2_countVec")
 
-## Visualisation
-print("Updated with Count Vec TM1")
-print(topic_model_1.get_topic_info())
-print("Updated with Count Vec TM2")
-print(topic_model_2.get_topic_info())
+# #topic_model_1_countVec.reduce_topics(transcripts, nr_topics=50)
+# #topic_model_2_countVec.reduce_topics(transcripts, nr_topics=50)
 
-# topics, probabilities = topic_model_test.fit_transform(test_long_video_df['transcript_lemmatized'])
+## Visualisation
+# print("Updated with Count Vec TM1")
+# print(topic_model_1.get_topic_info().head(10))
+print("Updated with Count Vec TM2")
+print(topic_model_2.get_topic_info().head(15))
 #
-# topic_model_test.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/test_model1")
 #
-# topic_model_test1 = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/test_model1")
-#
-# print(topic_model_test1.get_topic_info())
-# print(topic_model_test1.get_topic(0))
-#
+# """ 3 d) Visualising"""
 # barchart = topic_model_test1.visualize_barchart(top_n_topics = 10)
 # pio.write_image(barchart, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Bertopic figures/barchart.png")
 #
