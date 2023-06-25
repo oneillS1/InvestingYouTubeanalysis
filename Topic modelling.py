@@ -23,6 +23,7 @@ import re
 from hdbscan import HDBSCAN
 from sklearn.feature_extraction.text import CountVectorizer
 from sentence_transformers import SentenceTransformer
+import time
 
 # printing output settings
 desired_width = 320
@@ -32,40 +33,32 @@ pd.set_option('display.max_columns', 10)
 
 
 """ 2. Reading in the files """
-video_data_path = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Final dataset(s) for analysis/cleaned data.csv"
-video_data = pd.read_csv(video_data_path)
-print(video_data.shape)
-all_video_df = video_data[video_data['Transcript'] != '']
-all_video_df.to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/Final dataset(s) for analysis/cleaned data.csv", index = False)
-
-print(all_video_df.shape)
-test_all_video_df = all_video_df[all_video_df['Transcript'] != ''][['Transcript', 'id']]
-print(test_all_video_df.shape)
-
-print(test_all_video_df[test_all_video_df['id'] == 'qHdw3vMpPz0'])
+# video_data_path = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Final dataset(s) for analysis/cleaned data.csv"
+# video_data = pd.read_csv(video_data_path)
+#
+# test_all_video_df = video_data[video_data['Transcript'] != ''][['Transcript', 'id']]
 
 """ 3. Topic modelling """
 
 """ 3 a) Data preprocessing """
 
 """ 3 a) 1. Removing / Altering poor auto transcribed videos """
-# s p 500 = s&p500
-# [Music][Applause]
-
+# # s p 500 = s&p500
+# test_all_video_df['transcript_processed'] = test_all_video_df['Transcript'].str.replace('s p 500', 'S&P500', case = False)
 
 """ 3 a) 2. Chunking so that sentence embedding works on full transcript """
 # # Load english Spacy model
 # nlp = spacy.load('en_core_web_sm')
 #
 # # Process the transcripts and track their corresponding 'id'
-# transcripts = test_all_video_df['Transcript'].tolist()
+# transcripts = test_all_video_df['transcript_processed'].tolist()
 # ids = test_all_video_df['id'].tolist()
-
+#
 # # Initialize lists to store the extracted sentences and their corresponding 'id'
 # sentences = []
 # sentence_ids = []
-
-# Iterate over each transcript and its corresponding 'id' and split into sentences
+#
+# # Iterate over each transcript and its corresponding 'id' and split into sentences
 # for transcript, id in zip(transcripts, ids):
 #     # Process the transcript
 #     doc = nlp(transcript)
@@ -76,9 +69,9 @@ print(test_all_video_df[test_all_video_df['id'] == 'qHdw3vMpPz0'])
 #
 # # Create a new dataframe with the extracted sentences and their corresponding 'id'
 # new_df = pd.DataFrame({'Sentences': sentences, 'ID': sentence_ids})
-# new_df.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/output2.csv', index=False)
-
-# transcript_chunks = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/output2.csv"
+# new_df.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/sentences_ids_df.csv', index=False)
+#
+# transcript_chunks = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/sentences_ids_df.csv"
 # transcript_chunks_df = pd.read_csv(transcript_chunks)
 #
 # # Combining the chunks as the spacy model splits them too much. Although better than any other model tried thus far
@@ -123,19 +116,30 @@ print(test_all_video_df[test_all_video_df['id'] == 'qHdw3vMpPz0'])
 # id_chunks_count_df = pd.DataFrame({'ID': chunk_counts.index, 'chunk_count': chunk_counts.values})
 # id_chunks_count_df.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/id_chunks_count.csv', index=False)
 #
-# all_video_df_chunkcount = all_video_df.merge(id_chunks_count_df, left_on='id', right_on='ID', how='left')
-# all_video_df_chunkcount.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/all_video_df_chunks_count.csv', index=False)
+# video_data_chunkcount = video_data.merge(id_chunks_count_df, left_on='id', right_on='ID', how='left')
+# video_data_chunkcount.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/video_data_chunks_count.csv', index=False)
 
 
-""" 3 b) Document embedding"""
-# sentence_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
-# embeddings_1 = sentence_model.encode(transcripts)
-# np.save('embeddings_1.npy', embeddings_1)
-#
-# sentence_model = SentenceTransformer('sentence-transformers/paraphrase-MiniLM-L3-v2')
-# embeddings_2 = sentence_model.encode(transcripts)
-# np.save('embeddings_2.npy', embeddings_2)
-#
+""" 3 b) Document embedding """
+transcript_chunks_combined_df = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/transcript_chunks_combined_df.csv')
+transcripts = transcript_chunks_combined_df['combined_sentence'].tolist()
+
+start_time = time.time()
+sentence_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+embeddings_1 = sentence_model.encode(transcripts)
+end_time = time.time()
+print("Embeddings 1 time:", end_time - start_time, " seconds")
+np.save('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/embeddings_1.npy', embeddings_1)
+# embeddings_1 = np.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/embeddings_1.npy')
+
+start_time = time.time()
+sentence_model = SentenceTransformer('sentence-transformers/paraphrase-MiniLM-L3-v2')
+embeddings_2 = sentence_model.encode(transcripts)
+end_time = time.time()
+print("Embeddings 2 time:", end_time - start_time, " seconds")
+np.save('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/embeddings_2.npy', embeddings_2)
+# embeddings_2 = np.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/embeddings_2.npy')
+
 # """ 3 c) Creating the topic model """
 # # Defining sub-models
 # vectorizer = CountVectorizer(stop_words="english")
