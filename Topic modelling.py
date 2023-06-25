@@ -34,22 +34,19 @@ pd.set_option('display.max_columns', 10)
 """ 2. Reading in the files """
 video_data_path = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Final dataset(s) for analysis/cleaned data.csv"
 video_data = pd.read_csv(video_data_path)
+print(video_data.shape)
+all_video_df = video_data[video_data['Transcript'] != '']
+all_video_df.to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/Final dataset(s) for analysis/cleaned data.csv", index = False)
 
-long_video_df = video_data[video_data['Source'] == "overall_long_video_data.csv"]
-short_video_df = video_data[video_data['Source'] == "overall_short_video_data.csv"]
-freeSearch_video_df = video_data[video_data['Source'] == "overall_free_search.csv"]
-all_video_df = video_data
-
-test_short_video_df = short_video_df[short_video_df['Transcript'] != ''][['Transcript']]
-test_long_video_df = long_video_df[long_video_df['Transcript'] != ''][['Transcript']]
+print(all_video_df.shape)
 test_all_video_df = all_video_df[all_video_df['Transcript'] != ''][['Transcript', 'id']]
-print(test_all_video_df.head())
+print(test_all_video_df.shape)
+
+print(test_all_video_df[test_all_video_df['id'] == 'qHdw3vMpPz0'])
 
 """ 3. Topic modelling """
 
 """ 3 a) Data preprocessing """
-
-
 
 """ 3 a) 1. Removing / Altering poor auto transcribed videos """
 # s p 500 = s&p500
@@ -57,16 +54,16 @@ print(test_all_video_df.head())
 
 
 """ 3 a) 2. Chunking so that sentence embedding works on full transcript """
-# Load english Spacy model
-nlp = spacy.load('en_core_web_sm')
+# # Load english Spacy model
+# nlp = spacy.load('en_core_web_sm')
+#
+# # Process the transcripts and track their corresponding 'id'
+# transcripts = test_all_video_df['Transcript'].tolist()
+# ids = test_all_video_df['id'].tolist()
 
-# Process the transcripts and track their corresponding 'id'
-transcripts = test_all_video_df['Transcript'].tolist()
-ids = test_all_video_df['id'].tolist()
-
-# Initialize lists to store the extracted sentences and their corresponding 'id'
-sentences = []
-sentence_ids = []
+# # Initialize lists to store the extracted sentences and their corresponding 'id'
+# sentences = []
+# sentence_ids = []
 
 # Iterate over each transcript and its corresponding 'id' and split into sentences
 # for transcript, id in zip(transcripts, ids):
@@ -81,53 +78,53 @@ sentence_ids = []
 # new_df = pd.DataFrame({'Sentences': sentences, 'ID': sentence_ids})
 # new_df.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/output2.csv', index=False)
 
-transcript_chunks = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/output2.csv"
-transcript_chunks_df = pd.read_csv(transcript_chunks)
-
-# Combining the chunks as the spacy model splits them too much. Although better than any other model tried thus far
-# so I am using it and combining chunks to get chunks of roughly 200 words
-combined_chunks = []
-combined_ids = []
-current_chunk = ""
-current_id = transcript_chunks_df.iloc[0]['ID']
-
-for index, row in transcript_chunks_df.iterrows():
-    chunk = row['Sentences']
-    chunk_length = len(chunk.split())  # Assuming tokens are separated by whitespace
-
-    # If the current chunk length exceeds the desired limit, append the current chunk and ID to the combined lists
-    if len(current_chunk.split()) + chunk_length > 200:
-        combined_chunks.append(current_chunk)
-        combined_ids.append(current_id)
-        current_chunk = chunk
-        current_id = row['ID']
-    else:
-        # If the current chunk length is within the desired limit, append it to the current chunk
-        current_chunk += " " + chunk
-
-        # If it's the first chunk for a given ID, store the ID
-        if current_id == "":
-            current_id = row['ID']
-
-    # If the current chunk is the last one for a given ID, append it to the combined lists
-    if index == len(transcript_chunks_df) - 1 or row['ID'] != transcript_chunks_df.iloc[index + 1]['ID']:
-        combined_chunks.append(current_chunk)
-        combined_ids.append(current_id)
-        current_chunk = ""
-        current_id = ""
-
-# Create a new DataFrame with the combined chunks and their corresponding IDs
-transcript_chunks_combined_df = pd.DataFrame({'ID': combined_ids, 'combined_sentence': combined_chunks})
-transcript_chunks_combined_df.replace("", np.nan, inplace=True)
-transcript_chunks_combined_df.dropna(how='all', inplace=True)
-transcript_chunks_combined_df.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/transcript_chunks_combined_df.csv', index=False)
-
-chunk_counts = transcript_chunks_combined_df['ID'].value_counts()
-id_chunks_count_df = pd.DataFrame({'ID': chunk_counts.index, 'chunk_count': chunk_counts.values})
-id_chunks_count_df.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/id_chunks_count.csv', index=False)
-
-all_video_df_chunkcount = all_video_df.merge(id_chunks_count_df, left_on='id', right_on='ID', how='left')
-all_video_df_chunkcount.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/all_video_df_chunks_count.csv', index=False)
+# transcript_chunks = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/output2.csv"
+# transcript_chunks_df = pd.read_csv(transcript_chunks)
+#
+# # Combining the chunks as the spacy model splits them too much. Although better than any other model tried thus far
+# # so I am using it and combining chunks to get chunks of roughly 200 words
+# combined_chunks = []
+# combined_ids = []
+# current_chunk = ""
+# current_id = transcript_chunks_df.iloc[0]['ID']
+#
+# for index, row in transcript_chunks_df.iterrows():
+#     chunk = row['Sentences']
+#     chunk_length = len(chunk.split())  # Assuming tokens are separated by whitespace
+#
+#     # If the current chunk length exceeds the desired limit, append the current chunk and ID to the combined lists
+#     if len(current_chunk.split()) + chunk_length > 200:
+#         combined_chunks.append(current_chunk)
+#         combined_ids.append(current_id)
+#         current_chunk = chunk
+#         current_id = row['ID']
+#     else:
+#         # If the current chunk length is within the desired limit, append it to the current chunk
+#         current_chunk += " " + chunk
+#
+#         # If it's the first chunk for a given ID, store the ID
+#         if current_id == "":
+#             current_id = row['ID']
+#
+#     # If the current chunk is the last one for a given ID, append it to the combined lists
+#     if index == len(transcript_chunks_df) - 1 or row['ID'] != transcript_chunks_df.iloc[index + 1]['ID']:
+#         combined_chunks.append(current_chunk)
+#         combined_ids.append(current_id)
+#         current_chunk = ""
+#         current_id = ""
+#
+# # Create a new DataFrame with the combined chunks and their corresponding IDs
+# transcript_chunks_combined_df = pd.DataFrame({'ID': combined_ids, 'combined_sentence': combined_chunks})
+# transcript_chunks_combined_df.replace("", np.nan, inplace=True)
+# transcript_chunks_combined_df.dropna(how='all', inplace=True)
+# transcript_chunks_combined_df.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/transcript_chunks_combined_df.csv', index=False)
+#
+# chunk_counts = transcript_chunks_combined_df['ID'].value_counts()
+# id_chunks_count_df = pd.DataFrame({'ID': chunk_counts.index, 'chunk_count': chunk_counts.values})
+# id_chunks_count_df.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/id_chunks_count.csv', index=False)
+#
+# all_video_df_chunkcount = all_video_df.merge(id_chunks_count_df, left_on='id', right_on='ID', how='left')
+# all_video_df_chunkcount.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/all_video_df_chunks_count.csv', index=False)
 
 
 """ 3 b) Document embedding"""

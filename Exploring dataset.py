@@ -36,8 +36,14 @@ print('Number of duplicte rows: ', number_of_duplicates)
 empty_str_count = raw_video_data["Transcript"].isna().sum()
 print("Number of rows with no transcript:", empty_str_count)
 
+print(raw_video_data.shape)
+
+# Duplicate IDs (as there have been changes to the likes between searches and therefore the same videos don't come up as duplicates)
+duplicates_count = raw_video_data.duplicated(subset=['id']).sum()
+print("Number of duplicate ids:", duplicates_count)
+
 ## Dropping duplicates and no transcript videos
-video_data = raw_video_data.drop_duplicates()
+video_data = raw_video_data.drop_duplicates(subset=['id'])
 video_data = video_data.dropna(subset=["Transcript"])
 print(video_data.shape)
 
