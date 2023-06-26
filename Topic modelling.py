@@ -153,8 +153,8 @@ embeddings_2 = np.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/em
 embeddings_3 = np.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/embeddings_3.npy')
 
 """ 3 c) Creating the topic model """
-# Defining sub-models
-
+# # Defining sub-models
+#
 # # Altering the stopwords to be omitted due to intricacies of language used in investing and YouTube videos generally
 # vectorizer = CountVectorizer(stop_words="english")
 # stopwords = vectorizer.get_stop_words()
@@ -172,9 +172,9 @@ embeddings_3 = np.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/em
 # # candidate_topics = ["crypto", "ETF", "advice", "strategy", "stock picks", "countries"]
 # #representation_model_2 = ZeroShotClassification(candidate_topics, model="facebook/bart-large-mnli")
 # representation_model_1 = MaximalMarginalRelevance(diversity=0.5)
-
-# Model building
-# Topic model 1
+#
+# # Model building
+# # Topic model 1
 # topic_model_1 = BERTopic(
 #     umap_model=UMAP(n_neighbors=15, n_components=5, min_dist=0.0, metric='cosine', random_state=100),
 #     language="english",
@@ -201,8 +201,8 @@ embeddings_3 = np.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/em
 # topic_model_2 = topic_model_2.fit(transcripts, embeddings_2)
 # end_time = time.time()
 # print("Topic model 2 time:", end_time - start_time, " seconds")
-
-# Topic model 3
+#
+# #Topic model 3
 # topic_model_3 = BERTopic(
 #     umap_model=UMAP(n_neighbors=15, n_components=5, min_dist=0.0, metric='cosine', random_state=14),
 #     language="english",
@@ -234,17 +234,14 @@ embeddings_3 = np.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/em
 # topic_model_1.update_topics(transcripts, vectorizer_model = vectorizer_model)
 # topic_model_1.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1_countVec")
 topic_model_1 = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1_countVec")
-topic_model_1.embedding_model = embeddings_1
 
 # topic_model_2.update_topics(transcripts, vectorizer_model = vectorizer_model)
 # topic_model_2.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_2_countVec")
 topic_model_2 = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_2_countVec")
-topic_model_2.embedding_model = embeddings_2
 
 # topic_model_3.update_topics(transcripts, vectorizer_model = vectorizer_model)
 # topic_model_3.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_3_countVec")
 topic_model_3 = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_3_countVec")
-topic_model_2.embedding_model = embeddings_2
 
 # #topic_model_1_countVec.reduce_topics(transcripts, nr_topics=50)
 # #topic_model_2_countVec.reduce_topics(transcripts, nr_topics=50)
@@ -258,38 +255,21 @@ print("Updated with Count Vec TM3")
 print(topic_model_3.get_topic_info().head(15))
 
 """ 3 d) Evaluation """
-# Evaluation Topic 1
-print(type(topic_model_1))
-document_term_matrix_1 = topic_model_1.transform(transcripts)
-topics_1 = topic_model_1.get_topics()
-document_term_matrix_2 = topic_model_2.transform(transcripts)
-topics_2 = topic_model_2.get_topics()
-document_term_matrix_3 = topic_model_3.transform(transcripts)
-topics_3 = topic_model_3.get_topics()
-
-coherence_umass_1 = topic_model_2.get_coherence(term_document_matrix=document_term_matrix_1, topics=topics_1, coherence="c_v")
-coherence_uci_1 = topic_model_2.get_coherence(term_document_matrix=document_term_matrix_2, topics=topics_2, coherence="c_uci")
-coherence_umass_2 = topic_model_2.get_coherence(term_document_matrix=document_term_matrix_3, topics=topics_3, coherence="c_v")
-coherence_uci_2 = topic_model_2.get_coherence(term_document_matrix=document_term_matrix_1, topics=topics_1, coherence="c_uci")
-coherence_umass_3 = topic_model_2.get_coherence(term_document_matrix=document_term_matrix_2, topics=topics_2, coherence="c_v")
-coherence_uci_3 = topic_model_2.get_coherence(term_document_matrix=document_term_matrix_3, topics=topics_3, coherence="c_uci")
-
-print("Coherence UMass 1:" + coherence_umass_1)
-print("Coherence UMass 2:" + coherence_umass_2)
-print("Coherence UMass 3:" + coherence_umass_3)
-print("Coherence UCI 1:" + coherence_uci_1)
-print("Coherence UCI 2:" + coherence_uci_2)
-print("Coherence UCI 3:" + coherence_uci_3)
 
 
-# """ 3 e) Visualising"""
-# barchart = topic_model_test1.visualize_barchart(top_n_topics = 10)
-# pio.write_image(barchart, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Bertopic figures/barchart.png")
-#
-# term_rank = topic_model_test1.visualize_term_rank()
+
+""" 3 e) Visualising"""
+vis_barchart_1 = topic_model_1.visualize_barchart(top_n_topics = 12, n_words=5)
+pio.write_image(vis_barchart_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Bertopic figures/vis_barchart_1.png")
+vis_barchart_2 = topic_model_2.visualize_barchart(top_n_topics = 12, n_words=5)
+pio.write_image(vis_barchart_2, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Bertopic figures/vis_barchart_2.png")
+vis_barchart_3 = topic_model_3.visualize_barchart(top_n_topics = 12, n_words=5)
+pio.write_image(vis_barchart_3, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Bertopic figures/vis_barchart_3.png")
+
+# term_rank = topic_model_1.visualize_term_rank()
 # pio.write_image(term_rank, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Bertopic figures/term_rank.png")
 #
-# vis_topics = topic_model_test1.visualize_topics()
+# vis_topics = topic_model_1.visualize_topics()
 # pio.write_image(vis_topics, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Bertopic figures/vis_topics.png")
 #
 # hierarchy = topic_model_test1.visualize_hierarchy(top_n_topics=10)
