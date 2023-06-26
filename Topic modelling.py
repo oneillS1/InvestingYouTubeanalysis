@@ -156,15 +156,15 @@ embeddings_3 = np.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/em
 # # Defining sub-models
 #
 # # Altering the stopwords to be omitted due to intricacies of language used in investing and YouTube videos generally
-vectorizer = CountVectorizer(stop_words="english")
-stopwords = vectorizer.get_stop_words()
-modified_stopwords = list(stopwords)
-words_to_remove = ["should", "must", "interest", "never"]
-words_to_add = ["im", "Im", "uh", "hi", "youre", "you're", 'um', 'okay', 'yes', 'yeah', 'just', 'really', 'theyre', 'thank', 'Music', 'Applause', 'foreign']
-modified_stopwords.extend(words_to_add)
-for word in words_to_remove:
-    modified_stopwords.remove(word)
-vectorizer.set_params(stop_words=modified_stopwords)
+# vectorizer = CountVectorizer(stop_words="english")
+# stopwords = vectorizer.get_stop_words()
+# modified_stopwords = list(stopwords)
+# words_to_remove = ["should", "must", "interest", "never"]
+# words_to_add = ["im", "Im", "uh", "hi", "youre", "you're", 'um', 'okay', 'yes', 'yeah', 'just', 'really', 'theyre', 'thank', 'Music', 'Applause', 'foreign', 'music', 'hmm', 'ill']
+# modified_stopwords.extend(words_to_add)
+# for word in words_to_remove:
+#     modified_stopwords.remove(word)
+# vectorizer.set_params(stop_words=modified_stopwords)
 #
 # umap_model = UMAP(n_neighbors=15, n_components=5, min_dist=0.0, metric='cosine', random_state=100)
 # hdbscan_model = HDBSCAN(min_cluster_size=15, min_samples=2, metric='euclidean', cluster_selection_method='eom')
@@ -215,12 +215,12 @@ vectorizer.set_params(stop_words=modified_stopwords)
 # topic_model_3 = topic_model_3.fit(transcripts, embeddings_3)
 # end_time = time.time()
 # print("Topic model 3 time:", end_time - start_time, " seconds")
-#
-# topic_model_1.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1")
+
+# # topic_model_1.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1")
 # topic_model_1 = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1")
-# topic_model_2.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_2")
+# # topic_model_2.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_2")
 # topic_model_2 = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_2")
-# topic_model_3.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_3")
+# # topic_model_3.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_3")
 # topic_model_3 = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_3")
 
 # ## Visualisation
@@ -230,7 +230,7 @@ vectorizer.set_params(stop_words=modified_stopwords)
 # # print(topic_model_2.get_topic_info())
 
 # vectorizer_model = CountVectorizer(stop_words=modified_stopwords, ngram_range=(1, 3), min_df=10)
-#
+
 # topic_model_1.update_topics(transcripts, vectorizer_model = vectorizer_model)
 # topic_model_1.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1_countVec")
 topic_model_1 = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1_countVec")
@@ -247,12 +247,16 @@ topic_model_3 = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTop
 # #topic_model_2_countVec.reduce_topics(transcripts, nr_topics=50)
 
 ## Visualisation
-print("Updated with Count Vec TM1")
-print(topic_model_1.get_topic_info().head(15))
-print("Updated with Count Vec TM2")
-print(topic_model_2.get_topic_info().head(15))
-print("Updated with Count Vec TM3")
-print(topic_model_3.get_topic_info().head(15))
+# print("Updated with Count Vec TM1")
+# print(topic_model_1.get_topic_info().head(12))
+# print("Updated with Count Vec TM2")
+# print(topic_model_2.get_topic_info().head(12))
+# print("Updated with Count Vec TM3")
+# print(topic_model_3.get_topic_info().head(12))
+
+topic_model_1.get_topic_info().to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics_list_TM1.csv")
+topic_model_2.get_topic_info().to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics_list_TM2.csv")
+topic_model_3.get_topic_info().to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics_list_TM3.csv")
 
 """ 3 d) Evaluation """
 
@@ -260,37 +264,37 @@ print(topic_model_3.get_topic_info().head(15))
 
 """ 3 e) Visualising"""
 # Barchart
-vis_barchart_1 = topic_model_1.visualize_barchart(top_n_topics = 12, n_words=5, width=500, height=500)
-pio.write_image(vis_barchart_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_barchart_1.png")
-vis_barchart_2 = topic_model_2.visualize_barchart(top_n_topics = 12, n_words=5, width=500, height=500)
-pio.write_image(vis_barchart_2, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM2/vis_barchart_2.png")
-vis_barchart_3 = topic_model_3.visualize_barchart(top_n_topics = 12, n_words=5, width=500, height=500)
-pio.write_image(vis_barchart_3, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM3/vis_barchart_3.png")
+# vis_barchart_1 = topic_model_1.visualize_barchart(top_n_topics = 12, n_words=5, width=500, height=500)
+# pio.write_image(vis_barchart_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_barchart_1.png")
+# vis_barchart_2 = topic_model_2.visualize_barchart(top_n_topics = 12, n_words=5, width=500, height=500)
+# pio.write_image(vis_barchart_2, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM2/vis_barchart_2.png")
+# vis_barchart_3 = topic_model_3.visualize_barchart(top_n_topics = 12, n_words=5, width=500, height=500)
+# pio.write_image(vis_barchart_3, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM3/vis_barchart_3.png")
 
 # term_rank = topic_model_1.visualize_term_rank()
 # pio.write_image(term_rank, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Bertopic figures/term_rank.png")
-
+#
 # Visualise topics in 2D space
-vis_topics_1 = topic_model_1.visualize_topics(top_n_topics = 12)
-pio.write_image(vis_topics_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_topics_1.png")
-topic_model_1.visualize_topics().write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_topics_1_html.html")
-topic_model_1.visualize_topics(top_n_topics = 12).write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_topics_1_top12_html.html")
-
-vis_topics_2 = topic_model_2.visualize_topics(top_n_topics = 12)
-pio.write_image(vis_topics_2, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM2/vis_topics_2.png")
-topic_model_2.visualize_topics().write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM2/vis_topics_2_html.html")
-topic_model_2.visualize_topics(top_n_topics = 12).write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM2/vis_topics_2_top12_html.html")
-
-vis_topics_3 = topic_model_3.visualize_topics(top_n_topics = 12)
-pio.write_image(vis_topics_3, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM3/vis_topics_3.png")
-topic_model_3.visualize_topics().write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM3/vis_topics_3_html.html")
-topic_model_3.visualize_topics(top_n_topics = 12).write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM3/vis_topics_3_top12_html.html")
-
-# Topic hierarchy
-hierarchy_topics_1 = topic_model_1.visualize_hierarchy(top_n_topics=12)
-pio.write_image(hierarchy_topics_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/hierarchy_topics_1.png")
-hierarchy_topics_2 = topic_model_2.visualize_hierarchy(top_n_topics=12)
-pio.write_image(hierarchy_topics_2, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM2/hierarchy_topics_2.png")
-hierarchy_topics_3 = topic_model_3.visualize_hierarchy(top_n_topics=12)
-pio.write_image(hierarchy_topics_3, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM3/hierarchy_topics_3.png")
+# vis_topics_1 = topic_model_1.visualize_topics(top_n_topics = 12)
+# pio.write_image(vis_topics_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_topics_1.png")
+# topic_model_1.visualize_topics().write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_topics_1_html.html")
+# topic_model_1.visualize_topics(top_n_topics = 12).write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_topics_1_top12_html.html")
+#
+# vis_topics_2 = topic_model_2.visualize_topics(top_n_topics = 12)
+# pio.write_image(vis_topics_2, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM2/vis_topics_2.png")
+# topic_model_2.visualize_topics().write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM2/vis_topics_2_html.html")
+# topic_model_2.visualize_topics(top_n_topics = 12).write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM2/vis_topics_2_top12_html.html")
+#
+# vis_topics_3 = topic_model_3.visualize_topics(top_n_topics = 12)
+# pio.write_image(vis_topics_3, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM3/vis_topics_3.png")
+# topic_model_3.visualize_topics().write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM3/vis_topics_3_html.html")
+# topic_model_3.visualize_topics(top_n_topics = 12).write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM3/vis_topics_3_top12_html.html")
+#
+# # Topic hierarchy
+# hierarchy_topics_1 = topic_model_1.visualize_hierarchy(top_n_topics=12)
+# pio.write_image(hierarchy_topics_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/hierarchy_topics_1.png")
+# hierarchy_topics_2 = topic_model_2.visualize_hierarchy(top_n_topics=12)
+# pio.write_image(hierarchy_topics_2, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM2/hierarchy_topics_2.png")
+# hierarchy_topics_3 = topic_model_3.visualize_hierarchy(top_n_topics=12)
+# pio.write_image(hierarchy_topics_3, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM3/hierarchy_topics_3.png")
 
