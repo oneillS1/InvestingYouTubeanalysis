@@ -183,7 +183,8 @@ embeddings_3 = np.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/em
 #     hdbscan_model=hdbscan_model,
 #     vectorizer_model=vectorizer,
 #     ctfidf_model=ctfidf_model,
-#     representation_model=representation_model_1
+#     representation_model=representation_model_1,
+#     verbose = True
 # )
 # start_time = time.time()
 # topic_model_1 = topic_model_1.fit(transcripts, embeddings_1)
@@ -232,7 +233,7 @@ embeddings_3 = np.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/em
 # # print(topic_model_2.get_topic_info())
 
 # vectorizer_model = CountVectorizer(stop_words=modified_stopwords, ngram_range=(1, 3), min_df=10)
-
+#
 # topic_model_1.update_topics(transcripts, vectorizer_model = vectorizer_model)
 # topic_model_1.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1_countVec")
 topic_model_1 = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1_countVec")
@@ -249,23 +250,19 @@ topic_model_3 = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTop
 # #topic_model_2_countVec.reduce_topics(transcripts, nr_topics=50)
 
 ## Visualisation
-# print("Updated with Count Vec TM1")
-# print(topic_model_1.get_topic_info().head(12))
+print("Updated with Count Vec TM1")
+print(topic_model_1.get_topic_info().head(20))
 # print("Updated with Count Vec TM2")
 # print(topic_model_2.get_topic_info().head(12))
 # print("Updated with Count Vec TM3")
 # print(topic_model_3.get_topic_info().head(12))
 
-topic_model_1.get_topic_info().to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics_list_TM1.csv")
-topic_model_2.get_topic_info().to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics_list_TM2.csv")
-topic_model_3.get_topic_info().to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics_list_TM3.csv")
+# topic_model_1.get_topic_info().to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics_list_TM1.csv")
+#topic_model_2.get_topic_info().to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics_list_TM2.csv")
+#topic_model_3.get_topic_info().to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics_list_TM3.csv")
 
 
-""" 3 d) Evaluation """
-
-
-
-""" 3 e) Visualising"""
+""" 3 d) Visualising"""
 # Barchart
 # vis_barchart_1 = topic_model_1.visualize_barchart(top_n_topics = 12, n_words=5, width=500, height=500)
 # pio.write_image(vis_barchart_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_barchart_1.png")
@@ -301,6 +298,9 @@ topic_model_3.get_topic_info().to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertatio
 # hierarchy_topics_3 = topic_model_3.visualize_hierarchy(top_n_topics=12)
 # pio.write_image(hierarchy_topics_3, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM3/hierarchy_topics_3.png")
 
+""" 3 e) Evaluation """
+
+
 """ 4 Editing and visualising the chosen topic model """
 # On inspection of the visualisations and the list of topics, topic model 1 is chosen to investigate further
 """ Editing """
@@ -324,11 +324,19 @@ topics_of_interest_1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
                         14, 24, 26, 36, 38, 43, 57]
 
 """ 4 a Visualise topics"""
-# Barchart
+# Barchart - top 12
 vis_barchart_1 = topic_model_1.visualize_barchart(top_n_topics = 12, n_words=5, width=300, height=300)
 pio.write_image(vis_barchart_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_barchart_1.png")
+vis_barchart_1.write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_barchart_1.html")
 topic_model_1.visualize_topics().write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_topics_1_html.html")
 topic_model_1.visualize_topics(top_n_topics = 12).write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_topics_1_top12_html.html")
+
+# Barchart - topics of interest
+vis_barchart_1_toi = topic_model_1.visualize_barchart(topics=topics_of_interest_1, n_words=5, width=300, height=300)
+pio.write_image(vis_barchart_1_toi, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_barchart_1_toi.png")
+vis_barchart_1_toi.write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_barchart_1_toi.html")
+topic_model_1.visualize_topics(topics=topics_of_interest_1).write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_topics_1__toi_html.html")
+
 
 """ 4 b Visualise documents """
 tm1_visualisation_toi = topic_model_1.visualize_documents(
@@ -343,16 +351,19 @@ tm1_visualisation_toi = topic_model_1.visualize_documents(
 """ 4 c Visualise topic hierarchy & topic tree"""
 # Can ID which topics could be merged from these two figures
 hierarchical_topics = topic_model_1.hierarchical_topics(transcripts)
-hierarchy_topics_1 = topic_model_1.visualize_hierarchy(hierarchical_topics)
+hierarchy_topics_1 = topic_model_1.visualize_hierarchy()
 hierarchy_topics_1.write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/hierarchy_topics_1.html")
 pio.write_image(hierarchy_topics_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/hierarchy_topics_1_b.png")
 
 topic_tree_1 = topic_model_1.get_topic_tree(hierarchical_topics)
-print(topic_tree_1)
+# print(topic_tree_1)
 
 # Visualise hierarchy of specific topics
 hierarchy_topics_1 = topic_model_1.visualize_hierarchy(top_n_topics=12)
 pio.write_image(hierarchy_topics_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/hierarchy_topics_1.png")
+
+hierarchy_topics_1 = topic_model_1.visualize_hierarchy(topics=topics_of_interest_1)
+pio.write_image(hierarchy_topics_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/hierarchy_topics_1_toi.png")
 
 """ 4 d Visualise topic similarity """
 topic_similarity_heatmap_1 = topic_model_1.visualize_heatmap()
@@ -363,5 +374,3 @@ vis_hierarchical_docs = topic_model_1.visualize_hierarchical_documents(transcrip
 vis_hierarchical_docs.write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_hierarchy_docs_1.html")
 
 """ 5 Using the model """
-print(topic_model_1.find_topics('advice'))
-print(topic_model_1.find_topics('crypto'))
