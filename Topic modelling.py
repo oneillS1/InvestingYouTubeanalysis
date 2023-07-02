@@ -28,6 +28,7 @@ from bertopic.vectorizers import ClassTfidfTransformer
 from bertopic.representation import MaximalMarginalRelevance
 from bertopic.representation import ZeroShotClassification
 from gensim.models.coherencemodel import CoherenceModel
+from bokeh.plotting import export_png
 
 # printing output settings
 desired_width = 320
@@ -257,6 +258,40 @@ topic_model_3 = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTop
 topic_model_1.get_topic_info().to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics_list_TM1.csv")
 topic_model_2.get_topic_info().to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics_list_TM2.csv")
 topic_model_3.get_topic_info().to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics_list_TM3.csv")
+
+# Generate nicer looking labels and set them in our model
+topic_labels_1 = topic_model_1.generate_topic_labels(nr_words=4,
+                                                  topic_prefix=False,
+                                                  word_length=15,
+                                                  separator=", ")
+topic_model_1.set_topic_labels(topic_labels_1)
+
+topics_of_interest_1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
+                        14, 24, 26, 36, 38, 43, 57]
+
+# I added the title to the documents themselves for easier interactivity
+adjusted_transcripts = ["<b>" + title + "</b><br>" + doc[:100] + "..."
+                  for doc, title in zip(transcripts, topic_labels_1)]
+print(adjusted_transcripts)
+
+print(len(transcripts))
+print(len(adjusted_transcripts))
+print(len(embeddings_1))
+
+tm1_visualisation_toi = topic_model_1.visualize_documents(
+    transcripts,
+    embeddings=embeddings_1,
+    hide_annotations=False,
+    topics=topics_of_interest_1,
+    custom_labels=True
+)
+print(tm1_visualisation_toi)
+export_png(tm1_visualisation_toi, filename='C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/visualization.png')
+plt.savefig('C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/visualization.png')
+tm1_visualisation_toi.savefig('C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/visualization.png')
+
+print(topic_labels_1)
+print(topic_model_1.get_topic_info())
 
 """ 3 d) Evaluation """
 
