@@ -28,7 +28,8 @@ from bertopic.vectorizers import ClassTfidfTransformer
 from bertopic.representation import MaximalMarginalRelevance
 from bertopic.representation import ZeroShotClassification
 from gensim.models.coherencemodel import CoherenceModel
-from bokeh.plotting import export_png
+import bokeh
+from bokeh.io import export_png
 
 # printing output settings
 desired_width = 320
@@ -259,39 +260,6 @@ topic_model_1.get_topic_info().to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertatio
 topic_model_2.get_topic_info().to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics_list_TM2.csv")
 topic_model_3.get_topic_info().to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics_list_TM3.csv")
 
-# Generate nicer looking labels and set them in our model
-topic_labels_1 = topic_model_1.generate_topic_labels(nr_words=4,
-                                                  topic_prefix=False,
-                                                  word_length=15,
-                                                  separator=", ")
-topic_model_1.set_topic_labels(topic_labels_1)
-
-topics_of_interest_1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
-                        14, 24, 26, 36, 38, 43, 57]
-
-# I added the title to the documents themselves for easier interactivity
-adjusted_transcripts = ["<b>" + title + "</b><br>" + doc[:100] + "..."
-                  for doc, title in zip(transcripts, topic_labels_1)]
-print(adjusted_transcripts)
-
-print(len(transcripts))
-print(len(adjusted_transcripts))
-print(len(embeddings_1))
-
-tm1_visualisation_toi = topic_model_1.visualize_documents(
-    transcripts,
-    embeddings=embeddings_1,
-    hide_annotations=False,
-    topics=topics_of_interest_1,
-    custom_labels=True
-)
-print(tm1_visualisation_toi)
-export_png(tm1_visualisation_toi, filename='C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/visualization.png')
-plt.savefig('C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/visualization.png')
-tm1_visualisation_toi.savefig('C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/visualization.png')
-
-print(topic_labels_1)
-print(topic_model_1.get_topic_info())
 
 """ 3 d) Evaluation """
 
@@ -333,3 +301,67 @@ print(topic_model_1.get_topic_info())
 # hierarchy_topics_3 = topic_model_3.visualize_hierarchy(top_n_topics=12)
 # pio.write_image(hierarchy_topics_3, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM3/hierarchy_topics_3.png")
 
+""" 4 Editing and visualising the chosen topic model """
+# On inspection of the visualisations and the list of topics, topic model 1 is chosen to investigate further
+""" Editing """
+# Topic reduction
+# topic_model_1.reduce_topics(transcripts, nr_topics=30)
+# topics = topic_model_1.topics_
+# Manually merging of topics
+
+
+
+""" Visualising """
+# Labels of topics
+topic_labels_1 = topic_model_1.generate_topic_labels(nr_words=4,
+                                                  topic_prefix=False,
+                                                  word_length=15,
+                                                  separator=", ")
+topic_model_1.set_topic_labels(topic_labels_1)
+
+# Defining the index of topics of particular interest
+topics_of_interest_1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
+                        14, 24, 26, 36, 38, 43, 57]
+
+""" 4 a Visualise topics"""
+# Barchart
+vis_barchart_1 = topic_model_1.visualize_barchart(top_n_topics = 12, n_words=5, width=300, height=300)
+pio.write_image(vis_barchart_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_barchart_1.png")
+topic_model_1.visualize_topics().write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_topics_1_html.html")
+topic_model_1.visualize_topics(top_n_topics = 12).write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_topics_1_top12_html.html")
+
+""" 4 b Visualise documents """
+tm1_visualisation_toi = topic_model_1.visualize_documents(
+    transcripts,
+    embeddings=embeddings_1,
+    hide_annotations=False,
+    topics=topics_of_interest_1,
+    custom_labels=True
+).write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/tm1_visualisation_toi.html")
+#pio.write_image(tm1_visualisation_toi, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/visualization.png")
+
+""" 4 c Visualise topic hierarchy & topic tree"""
+# Can ID which topics could be merged from these two figures
+hierarchical_topics = topic_model_1.hierarchical_topics(transcripts)
+hierarchy_topics_1 = topic_model_1.visualize_hierarchy(hierarchical_topics)
+hierarchy_topics_1.write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/hierarchy_topics_1.html")
+pio.write_image(hierarchy_topics_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/hierarchy_topics_1_b.png")
+
+topic_tree_1 = topic_model_1.get_topic_tree(hierarchical_topics)
+print(topic_tree_1)
+
+# Visualise hierarchy of specific topics
+hierarchy_topics_1 = topic_model_1.visualize_hierarchy(top_n_topics=12)
+pio.write_image(hierarchy_topics_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/hierarchy_topics_1.png")
+
+""" 4 d Visualise topic similarity """
+topic_similarity_heatmap_1 = topic_model_1.visualize_heatmap()
+pio.write_image(topic_similarity_heatmap_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/topic_similarity_heatmap_1.png")
+
+""" 4 e Visualise hierarchical documents """
+vis_hierarchical_docs = topic_model_1.visualize_hierarchical_documents(transcripts, hierarchical_topics, embeddings = embeddings_1)
+vis_hierarchical_docs.write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_hierarchy_docs_1.html")
+
+""" 5 Using the model """
+print(topic_model_1.find_topics('advice'))
+print(topic_model_1.find_topics('crypto'))
