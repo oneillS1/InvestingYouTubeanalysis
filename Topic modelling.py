@@ -321,7 +321,7 @@ topic_model_1.set_topic_labels(topic_labels_1)
 
 # Defining the index of topics of particular interest
 topics_of_interest_1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
-                        14, 24, 26, 36, 38, 43, 57]
+                        14, 24, 26, 36, 38, 43, 54, 59, 60]
 
 """ 4 a Visualise topics"""
 # Barchart - top 12
@@ -335,7 +335,7 @@ topic_model_1.visualize_topics(top_n_topics = 12).write_html("C:/Users/Steve.HAH
 vis_barchart_1_toi = topic_model_1.visualize_barchart(topics=topics_of_interest_1, n_words=5, width=300, height=300)
 pio.write_image(vis_barchart_1_toi, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_barchart_1_toi.png")
 vis_barchart_1_toi.write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_barchart_1_toi.html")
-topic_model_1.visualize_topics(topics=topics_of_interest_1).write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_topics_1__toi_html.html")
+topic_model_1.visualize_topics(topics=topics_of_interest_1).write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_topics_1_toi_html.html")
 
 
 """ 4 b Visualise documents """
