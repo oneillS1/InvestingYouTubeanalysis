@@ -137,7 +137,8 @@ video_data = pd.read_csv(video_data_path)
 # # end_time = time.time()
 # # print("Embeddings 1 time:", end_time - start_time, " seconds")
 # # np.save('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/embeddings_1.npy', embeddings_1)
-# embeddings_1 = np.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/embeddings_1.npy')
+embeddings_1 = np.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/embeddings_1.npy')
+
 #
 # # start_time = time.time()
 # # sentence_model = SentenceTransformer('sentence-transformers/paraphrase-MiniLM-L3-v2')
