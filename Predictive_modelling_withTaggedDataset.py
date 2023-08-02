@@ -61,29 +61,44 @@ sentence_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
 # df_tagged.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/df_tagged_pm_embedding_1.csv', index=False)
 
 """ 1 c. Splitting into train, validate, test datasets """
-# df_tagged_pm1 = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/df_tagged_pm_embedding_1.csv')
-#
-# df_tagged_pm1['embeddings'] = df_tagged_pm1['embeddings'].apply(lambda x: [float(val) for val in x[1:-1].split()])
-#
-# X = np.array(df_tagged_pm1['embeddings'].to_list())
-# y = np.array(df_tagged_pm1['Advice'].to_list())
-#
-# # Split the data into training and testing sets (for k-fold cross-validation)
-# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
-#
-# """ 1 d. Train models on the training dataset """
-# clf = LazyClassifier(verbose=0, ignore_warnings=True, custom_metric=None)
-# models_summary, _ = clf.fit(X_train, X_test, y_train, y_test)
-#
-# print(models_summary)
-# models_summary.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/LC_models_summary_pm_embedding_1.csv', index=False)
-#
+df_tagged_pm1 = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/df_tagged_pm_embedding_1.csv')
 
+df_tagged_pm1['embeddings'] = df_tagged_pm1['embeddings'].apply(lambda x: [float(val) for val in x[1:-1].split()])
+
+X = np.array(df_tagged_pm1['embeddings'].to_list())
+y = np.array(df_tagged_pm1['Advice'].to_list())
+
+# Split the data into training and testing sets (for k-fold cross-validation)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
+
+# """ 1 d. Train models on the training dataset """
+clf = LazyClassifier(verbose=0, ignore_warnings=True, custom_metric=None)
+models_summary, _ = clf.fit(X_train, X_test, y_train, y_test)
+
+print(models_summary)
+models_summary.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/LC_models_summary_pm_embedding_1.csv', index=False)
+
+# Create a text file to save the classification reports
+with open('classification_reports.txt', 'w') as f:
+    # Loop through models and get classification reports
+    for model_name in models_summary.index:
+        model = clf.models[model_name]
+        model.fit(X_train, y_train)
+        y_pred = model.predict(X_test)
+
+        classification_rep = classification_report(y_test, y_pred)
+
+        # Write the classification report to the text file
+        f.write(f"Classification Report for {model_name}:\n")
+        f.write(classification_rep)
+        f.write('\n\n')
+
+print("Classification reports saved to classification_reports.txt")
 
 """ Level 2 """
-df_tagged = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/df_tagged_pm_embedding_1.csv')
-df_tagged['embeddings2'] = df_tagged['embeddings'].apply(lambda x: [float(val) for val in x[1:-1].split()])
-df_tagged.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/checking_embedding.csv', index=False)
+# df_tagged = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/df_tagged_pm_embedding_1.csv')
+# df_tagged['embeddings2'] = df_tagged['embeddings'].apply(lambda x: [float(val) for val in x[1:-1].split()])
+# df_tagged.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/checking_embedding.csv', index=False)
 
 """ 2 a. Creating dataset with all information on each video (including embeddings of chunks) """
 # # Step 1: Pivot the dataframe to convert 'embedding' and 'advice' into columns
