@@ -33,6 +33,8 @@ import xgboost as xgb  # Import XGBoost
 from tensorflow import keras
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Embedding, LSTM
+import joblib
+
 
 
 
@@ -118,34 +120,28 @@ cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
 
 # Define the list of models
 models = [
-    # ('BernoulliNB', BernoulliNB()),
+    ('BernoulliNB', BernoulliNB()),
     ('NearestCentroid', NearestCentroid()),
-    # ('GaussianNB', GaussianNB()),
+    ('GaussianNB', GaussianNB()),
     ('LogisticRegression', LogisticRegression()),
-    # ('KNeighborsClassifier', KNeighborsClassifier()),
-    # ('LinearSVC', LinearSVC()),
-    # ('LinearDiscriminantAnalysis', LinearDiscriminantAnalysis()),
-    # ('SGDClassifier', SGDClassifier()),
-    # ('Perceptron', Perceptron()),
-    # ('PassiveAggressiveClassifier', PassiveAggressiveClassifier()),
-    # ('RidgeClassifier', RidgeClassifier()),
-    # ('DecisionTreeClassifier', DecisionTreeClassifier()),
-    # ('AdaBoostClassifier', AdaBoostClassifier()),
-    # ('RandomForestClassifier', RandomForestClassifier()),
-    # ('DummyClassifier', DummyClassifier()),
-    # ('XGBClassifier', xgb.XGBClassifier()),
-    # ('SVC', SVC())
+    ('KNeighborsClassifier', KNeighborsClassifier()),
+    ('LinearSVC', LinearSVC()),
+    ('LinearDiscriminantAnalysis', LinearDiscriminantAnalysis()),
+    ('SGDClassifier', SGDClassifier()),
+    ('Perceptron', Perceptron()),
+    ('PassiveAggressiveClassifier', PassiveAggressiveClassifier()),
+    ('RidgeClassifier', RidgeClassifier()),
+    ('DecisionTreeClassifier', DecisionTreeClassifier()),
+    ('AdaBoostClassifier', AdaBoostClassifier()),
+    ('RandomForestClassifier', RandomForestClassifier()),
+    ('DummyClassifier', DummyClassifier()),
+    ('XGBClassifier', xgb.XGBClassifier()),
+    ('SVC', SVC()),
     ('FeedforwardNN', Sequential([
         Dense(64, activation='relu', input_shape=(384,)),
         Dense(32, activation='relu'),
         Dense(1, activation='sigmoid')
     ]))
-    # ('LSTM', Sequential([
-    #     Embedding(input_dim=vocab_size, output_dim=128, input_length=max_seq_length),
-    #     LSTM(64, return_sequences=True),
-    #     LSTM(32),
-    #     Dense(1, activation='sigmoid')
-    # ]))
 ]
 
 # Compile neural network models before the loop
@@ -157,8 +153,11 @@ for model_name, model in models:
 # Lists to store metric scores for each model
 avg_metric_scores = []
 
-# Open a text file to write the output
-with open('model_evaluation_neural_network.txt', 'w') as f:
+# .txt files of model_evaluation.txt and model_evaluation_no_smote.txt run the models # out above.
+# To re-run simply uncomment out the models in the model list above
+
+# Open txt file for outputs
+with open('model_evaluation.txt', 'w') as f:
     # Loop over models
     for model_name, model in models:
         metric_scores = []
@@ -206,6 +205,11 @@ with open('model_evaluation_neural_network.txt', 'w') as f:
         f.write(f"Final Classification Report:\n{avg_class_report}\n")
         f.write("----------------------\n")
 
+        # After running the above the best 2 models are chosen and saved
+        if model_name == 'FeedforwardNN':
+            model.save('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/feedforward_nn_model.h5')
+        elif model_name == 'LogisticRegression':
+            joblib.dump(model, 'C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/logistic_regression_model.pkl')
 
 
 
