@@ -30,6 +30,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import AdaBoostClassifier, RandomForestClassifier
 from sklearn.dummy import DummyClassifier
 import xgboost as xgb  # Import XGBoost
+from tensorflow import keras
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Embedding, LSTM
 
@@ -73,6 +74,17 @@ df_tagged_pm1['embeddings'] = df_tagged_pm1['embeddings'].apply(lambda x: [float
 X = np.array(df_tagged_pm1['embeddings'].to_list())
 y = np.array(df_tagged_pm1['Advice'].to_list())
 
+# Get the shape of the first embedding array
+first_shape = len(X[0])
+
+# Check if all embeddings have the same shape
+all_same_shape = all(len(arr) == first_shape for arr in X)
+
+if all_same_shape:
+    print("All embeddings have the same shape:", first_shape)
+else:
+    print("Embeddings have different shapes")
+
 # Split the data into training and testing sets (for k-fold cross-validation)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
 
@@ -107,9 +119,9 @@ cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
 # Define the list of models
 models = [
     # ('BernoulliNB', BernoulliNB()),
-    # ('NearestCentroid', NearestCentroid()),
+    ('NearestCentroid', NearestCentroid()),
     # ('GaussianNB', GaussianNB()),
-    # ('LogisticRegression', LogisticRegression()),
+    ('LogisticRegression', LogisticRegression()),
     # ('KNeighborsClassifier', KNeighborsClassifier()),
     # ('LinearSVC', LinearSVC()),
     # ('LinearDiscriminantAnalysis', LinearDiscriminantAnalysis()),
@@ -124,16 +136,16 @@ models = [
     # ('XGBClassifier', xgb.XGBClassifier()),
     # ('SVC', SVC())
     ('FeedforwardNN', Sequential([
-        Dense(64, activation='relu', input_shape=(input_shape,)),
+        Dense(64, activation='relu', input_shape=(384,)),
         Dense(32, activation='relu'),
         Dense(1, activation='sigmoid')
-    ])),
-    ('LSTM', Sequential([
-        Embedding(input_dim=vocab_size, output_dim=128, input_length=max_seq_length),
-        LSTM(64, return_sequences=True),
-        LSTM(32),
-        Dense(1, activation='sigmoid')
     ]))
+    # ('LSTM', Sequential([
+    #     Embedding(input_dim=vocab_size, output_dim=128, input_length=max_seq_length),
+    #     LSTM(64, return_sequences=True),
+    #     LSTM(32),
+    #     Dense(1, activation='sigmoid')
+    # ]))
 ]
 
 # Compile neural network models before the loop
@@ -146,7 +158,7 @@ for model_name, model in models:
 avg_metric_scores = []
 
 # Open a text file to write the output
-with open('model_evaluation.txt', 'w') as f:
+with open('model_evaluation_neural_network.txt', 'w') as f:
     # Loop over models
     for model_name, model in models:
         metric_scores = []
