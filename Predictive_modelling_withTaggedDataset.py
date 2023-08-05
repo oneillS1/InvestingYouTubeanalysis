@@ -22,10 +22,16 @@ from sklearn.model_selection import StratifiedKFold
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, classification_report
 from sklearn.naive_bayes import BernoulliNB, GaussianNB
 from sklearn.neighbors import NearestCentroid, KNeighborsClassifier
-from sklearn.linear_model import LogisticRegression, SGDClassifier
-from sklearn.svm import LinearSVC
+from sklearn.linear_model import LogisticRegression, SGDClassifier, Perceptron, PassiveAggressiveClassifier, RidgeClassifier
+from sklearn.svm import LinearSVC, SVC
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from imblearn.over_sampling import SMOTE
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import AdaBoostClassifier, RandomForestClassifier
+from sklearn.dummy import DummyClassifier
+import xgboost as xgb  # Import XGBoost
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Embedding, LSTM
 
 
 
@@ -94,21 +100,47 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 #
 # print("Classification reports saved to classification_reports.txt")
 
-""" 1 d Training models that look promising based on 1 c and other models """
-# Define cross-validation
+""" 1 d Training models from 1 c using cross validation and SMOTE """
+# SMOTE is a technique for oversampling of positive cases in an unbalanced dataset
 cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
 
 # Define the list of models
 models = [
-    ('BernoulliNB', BernoulliNB()),
-    ('NearestCentroid', NearestCentroid()),
-    ('GaussianNB', GaussianNB()),
-    ('LogisticRegression', LogisticRegression()),
-    ('KNeighborsClassifier', KNeighborsClassifier()),
-    ('LinearSVC', LinearSVC()),
-    ('LinearDiscriminantAnalysis', LinearDiscriminantAnalysis()),
-    ('SGDClassifier', SGDClassifier())
+    # ('BernoulliNB', BernoulliNB()),
+    # ('NearestCentroid', NearestCentroid()),
+    # ('GaussianNB', GaussianNB()),
+    # ('LogisticRegression', LogisticRegression()),
+    # ('KNeighborsClassifier', KNeighborsClassifier()),
+    # ('LinearSVC', LinearSVC()),
+    # ('LinearDiscriminantAnalysis', LinearDiscriminantAnalysis()),
+    # ('SGDClassifier', SGDClassifier()),
+    # ('Perceptron', Perceptron()),
+    # ('PassiveAggressiveClassifier', PassiveAggressiveClassifier()),
+    # ('RidgeClassifier', RidgeClassifier()),
+    # ('DecisionTreeClassifier', DecisionTreeClassifier()),
+    # ('AdaBoostClassifier', AdaBoostClassifier()),
+    # ('RandomForestClassifier', RandomForestClassifier()),
+    # ('DummyClassifier', DummyClassifier()),
+    # ('XGBClassifier', xgb.XGBClassifier()),
+    # ('SVC', SVC())
+    ('FeedforwardNN', Sequential([
+        Dense(64, activation='relu', input_shape=(input_shape,)),
+        Dense(32, activation='relu'),
+        Dense(1, activation='sigmoid')
+    ])),
+    ('LSTM', Sequential([
+        Embedding(input_dim=vocab_size, output_dim=128, input_length=max_seq_length),
+        LSTM(64, return_sequences=True),
+        LSTM(32),
+        Dense(1, activation='sigmoid')
+    ]))
 ]
+
+# Compile neural network models before the loop
+for model_name, model in models:
+    if isinstance(model, Sequential):
+        model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+
 
 # Lists to store metric scores for each model
 avg_metric_scores = []
@@ -124,12 +156,17 @@ with open('model_evaluation.txt', 'w') as f:
             X_train, X_test = X[train_index], X[test_index]
             y_train, y_test = y[train_index], y[test_index]
 
-            # Apply SMOTE to the training set
+            # Apply SMOTE to the training set (remove and include line below to use no smote)
             smote = SMOTE(random_state=42)
             X_train_resampled, y_train_resampled = smote.fit_resample(X_train, y_train)
 
-            model.fit(X_train_resampled, y_train_resampled)
-            y_pred = model.predict(X_test)
+            if isinstance(model, Sequential):
+                model.fit(X_train_resampled, y_train_resampled, epochs=10, batch_size=32, verbose=0)
+                y_pred = (model.predict(X_test) > 0.5).astype(int)
+            else:
+                model.fit(X_train_resampled, y_train_resampled)
+                # model.fit(X_train, y_train) # if no smote to be used
+                y_pred = model.predict(X_test)
 
             accuracy = round(accuracy_score(y_test, y_pred), 2)
             precision = round(precision_score(y_test, y_pred), 2)
@@ -157,15 +194,6 @@ with open('model_evaluation.txt', 'w') as f:
         f.write(f"Final Classification Report:\n{avg_class_report}\n")
         f.write("----------------------\n")
 
-# Print the summary of results
-for model_name, avg_accuracy, avg_precision, avg_recall, avg_f1, avg_class_report in avg_metric_scores:
-    print(f"Model: {model_name}")
-    print("Final Average Accuracy:", avg_accuracy)
-    print("Final Average Precision:", avg_precision)
-    print("Final Average Recall:", avg_recall)
-    print("Final Average F1-score:", avg_f1)
-    print("Final Classification Report:\n", avg_class_report)
-    print("----------------------")
 
 
 
