@@ -18,8 +18,9 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn import metrics
 import ast
+from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import StratifiedKFold
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, classification_report
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, classification_report, make_scorer
 from sklearn.naive_bayes import BernoulliNB, GaussianNB
 from sklearn.neighbors import NearestCentroid, KNeighborsClassifier
 from sklearn.linear_model import LogisticRegression, SGDClassifier, Perceptron, PassiveAggressiveClassifier, RidgeClassifier
@@ -31,9 +32,12 @@ from sklearn.ensemble import AdaBoostClassifier, RandomForestClassifier
 from sklearn.dummy import DummyClassifier
 import xgboost as xgb  # Import XGBoost
 from tensorflow import keras
+from keras.optimizers import Adam
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Embedding, LSTM
 import joblib
+from sklearn.model_selection import GridSearchCV
+from keras.models import load_model
 
 
 
@@ -42,9 +46,9 @@ import joblib
 """ 1 a. Getting transcript chunks that are tagged """
 # df = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/dataset_for_tagging_tagged.csv')
 # print(df['Source'].value_counts())
-# # print(df[['Source', 'Advice']].value_counts())
-#
-# # # As I have only tagged a subset of the dataset originally planned for tagging, I have to keep the tagged for building the model
+# print(df[['Source', 'Advice']].value_counts())
+
+# # As I have only tagged a subset of the dataset originally planned for tagging, I have to keep the tagged for building the model
 # df_tagged = df.dropna(subset=['Advice'], axis=0)
 # print(df_tagged[['Source', 'Advice']].value_counts())
 # print(df_tagged['Source'].value_counts())
@@ -69,185 +73,232 @@ import joblib
 # df_tagged.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/df_tagged_pm_embedding_1.csv', index=False)
 
 """ 1 c. Splitting into train, validate, test datasets """
-df_tagged_pm1 = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/df_tagged_pm_embedding_1.csv')
-
-df_tagged_pm1['embeddings'] = df_tagged_pm1['embeddings'].apply(lambda x: [float(val) for val in x[1:-1].split()])
-
-X = np.array(df_tagged_pm1['embeddings'].to_list())
-y = np.array(df_tagged_pm1['Advice'].to_list())
-
-# Get the shape of the first embedding array
-first_shape = len(X[0])
-
-# Check if all embeddings have the same shape
-all_same_shape = all(len(arr) == first_shape for arr in X)
-
-if all_same_shape:
-    print("All embeddings have the same shape:", first_shape)
-else:
-    print("Embeddings have different shapes")
-
-# Split the data into training and testing sets (for k-fold cross-validation)
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
-
-# # """ 1 d. Train models on the training dataset """
-# clf = LazyClassifier(verbose=0, ignore_warnings=True, custom_metric=None)
-# models_summary, _ = clf.fit(X_train, X_test, y_train, y_test)
+# df_tagged_pm1 = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/df_tagged_pm_embedding_1.csv')
 #
-# print(models_summary)
-# models_summary.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/LC_models_summary_pm_embedding_1.csv', index=False)
+# df_tagged_pm1['embeddings'] = df_tagged_pm1['embeddings'].apply(lambda x: [float(val) for val in x[1:-1].split()])
 #
-# # Create a text file to save the classification reports
-# with open('classification_reports.txt', 'w') as f:
-#     # Loop through models and get classification reports
-#     for model_name in models_summary.index:
-#         model = clf.models[model_name]
-#         model.fit(X_train, y_train)
-#         y_pred = model.predict(X_test)
+# X = np.array(df_tagged_pm1['embeddings'].to_list())
+# y = np.array(df_tagged_pm1['Advice'].to_list())
 #
-#         classification_rep = classification_report(y_test, y_pred)
+# # Get the shape of the first embedding array
+# first_shape = len(X[0])
 #
-#         # Write the classification report to the text file
-#         f.write(f"Classification Report for {model_name}:\n")
-#         f.write(classification_rep)
-#         f.write('\n\n')
+# # Check if all embeddings have the same shape
+# all_same_shape = all(len(arr) == first_shape for arr in X)
 #
-# print("Classification reports saved to classification_reports.txt")
+# if all_same_shape:
+#     print("All embeddings have the same shape:", first_shape)
+# else:
+#     print("Embeddings have different shapes")
+#
+# # Split the data into training and testing sets (for k-fold cross-validation)
+# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
 
-""" 1 d Training models from 1 c using cross validation and SMOTE """
+# # # """ 1 d. Train models on the training dataset """
+# # clf = LazyClassifier(verbose=0, ignore_warnings=True, custom_metric=None)
+# # models_summary, _ = clf.fit(X_train, X_test, y_train, y_test)
+# #
+# # print(models_summary)
+# # models_summary.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/LC_models_summary_pm_embedding_1.csv', index=False)
+# #
+# # # Create a text file to save the classification reports
+# # with open('classification_reports.txt', 'w') as f:
+# #     # Loop through models and get classification reports
+# #     for model_name in models_summary.index:
+# #         model = clf.models[model_name]
+# #         model.fit(X_train, y_train)
+# #         y_pred = model.predict(X_test)
+# #
+# #         classification_rep = classification_report(y_test, y_pred)
+# #
+# #         # Write the classification report to the text file
+# #         f.write(f"Classification Report for {model_name}:\n")
+# #         f.write(classification_rep)
+# #         f.write('\n\n')
+# #
+# # print("Classification reports saved to classification_reports.txt")
+#
+# """ 1 d Training models from 1 c using cross validation and SMOTE """
 # SMOTE is a technique for oversampling of positive cases in an unbalanced dataset
-cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
-
-# Define the list of models
-models = [
-    ('BernoulliNB', BernoulliNB()),
-    ('NearestCentroid', NearestCentroid()),
-    ('GaussianNB', GaussianNB()),
-    ('LogisticRegression', LogisticRegression()),
-    ('KNeighborsClassifier', KNeighborsClassifier()),
-    ('LinearSVC', LinearSVC()),
-    ('LinearDiscriminantAnalysis', LinearDiscriminantAnalysis()),
-    ('SGDClassifier', SGDClassifier()),
-    ('Perceptron', Perceptron()),
-    ('PassiveAggressiveClassifier', PassiveAggressiveClassifier()),
-    ('RidgeClassifier', RidgeClassifier()),
-    ('DecisionTreeClassifier', DecisionTreeClassifier()),
-    ('AdaBoostClassifier', AdaBoostClassifier()),
-    ('RandomForestClassifier', RandomForestClassifier()),
-    ('DummyClassifier', DummyClassifier()),
-    ('XGBClassifier', xgb.XGBClassifier()),
-    ('SVC', SVC()),
-    ('FeedforwardNN', Sequential([
-        Dense(64, activation='relu', input_shape=(384,)),
-        Dense(32, activation='relu'),
-        Dense(1, activation='sigmoid')
-    ]))
-]
-
-# Compile neural network models before the loop
-for model_name, model in models:
-    if isinstance(model, Sequential):
-        model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
-
-
-# Lists to store metric scores for each model
-avg_metric_scores = []
-
-# .txt files of model_evaluation.txt and model_evaluation_no_smote.txt run the models # out above.
-# To re-run simply uncomment out the models in the model list above
-
-# Open txt file for outputs
-with open('model_evaluation.txt', 'w') as f:
-    # Loop over models
-    for model_name, model in models:
-        metric_scores = []
-
-        # Loop over cross-validation folds
-        for train_index, test_index in cv.split(X, y):
-            X_train, X_test = X[train_index], X[test_index]
-            y_train, y_test = y[train_index], y[test_index]
-
-            # Apply SMOTE to the training set (remove and include line below to use no smote)
-            smote = SMOTE(random_state=42)
-            X_train_resampled, y_train_resampled = smote.fit_resample(X_train, y_train)
-
-            if isinstance(model, Sequential):
-                model.fit(X_train_resampled, y_train_resampled, epochs=10, batch_size=32, verbose=0)
-                y_pred = (model.predict(X_test) > 0.5).astype(int)
-            else:
-                model.fit(X_train_resampled, y_train_resampled)
-                # model.fit(X_train, y_train) # if no smote to be used
-                y_pred = model.predict(X_test)
-
-            accuracy = round(accuracy_score(y_test, y_pred), 2)
-            precision = round(precision_score(y_test, y_pred), 2)
-            recall = round(recall_score(y_test, y_pred), 2)
-            f1 = round(f1_score(y_test, y_pred), 2)
-            class_report = classification_report(y_test, y_pred)
-
-            metric_scores.append((accuracy, precision, recall, f1, class_report))
-
-        # Calculate average metrics for the model
-        avg_accuracy = round(np.mean([score[0] for score in metric_scores]), 2)
-        avg_precision = round(np.mean([score[1] for score in metric_scores]), 2)
-        avg_recall = round(np.mean([score[2] for score in metric_scores]), 2)
-        avg_f1 = round(np.mean([score[3] for score in metric_scores]), 2)
-        avg_class_report = '\n\n'.join([score[4] for score in metric_scores])
-
-        avg_metric_scores.append((model_name, avg_accuracy, avg_precision, avg_recall, avg_f1, avg_class_report))
-
-        # Write model results to the file
-        f.write(f"Model: {model_name}\n")
-        f.write(f"Final Average Accuracy: {avg_accuracy}\n")
-        f.write(f"Final Average Precision: {avg_precision}\n")
-        f.write(f"Final Average Recall: {avg_recall}\n")
-        f.write(f"Final Average F1-score: {avg_f1}\n")
-        f.write(f"Final Classification Report:\n{avg_class_report}\n")
-        f.write("----------------------\n")
-
-        # After running the above the best 2 models are chosen and saved
-        if model_name == 'FeedforwardNN':
-            model.save('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/feedforward_nn_model.h5')
-        elif model_name == 'LogisticRegression':
-            joblib.dump(model, 'C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/logistic_regression_model.pkl')
-
-
-
-""" Level 2 """
-# df_tagged = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/df_tagged_pm_embedding_1.csv')
-# df_tagged['embeddings2'] = df_tagged['embeddings'].apply(lambda x: [float(val) for val in x[1:-1].split()])
-# df_tagged.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/checking_embedding.csv', index=False)
-
-""" 2 a. Creating dataset with all information on each video (including embeddings of chunks) """
-# # Step 1: Pivot the dataframe to convert 'embedding' and 'advice' into columns
-# df_tagged_pivot = df_tagged.pivot_table(index='ID', columns=df_tagged.groupby('ID').cumcount(),
-#                           values=['embeddings', 'Advice', 'combined_sentence'], aggfunc='first')
+# cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
 #
-# df_tagged_pivot.columns = [f"{col}_{idx}" for col, idx in df_tagged_pivot.columns]
-# df_tagged_pivot = df_tagged_pivot.reset_index()
-# df_tagged_pivot.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/df_tagged_pivot.csv', index=False)
-# print(df_tagged_pivot.head())
+# # Define the list of models
+# models = [
+#     # ('BernoulliNB', BernoulliNB()),
+#     # ('NearestCentroid', NearestCentroid()),
+#     # ('GaussianNB', GaussianNB()),
+#     ('LogisticRegression', LogisticRegression()),
+#     # ('KNeighborsClassifier', KNeighborsClassifier()),
+#     # ('LinearSVC', LinearSVC()),
+#     # ('LinearDiscriminantAnalysis', LinearDiscriminantAnalysis()),
+#     # ('SGDClassifier', SGDClassifier()),
+#     # ('Perceptron', Perceptron()),
+#     # ('PassiveAggressiveClassifier', PassiveAggressiveClassifier()),
+#     # ('RidgeClassifier', RidgeClassifier()),
+#     # ('DecisionTreeClassifier', DecisionTreeClassifier()),
+#     # ('AdaBoostClassifier', AdaBoostClassifier()),
+#     # ('RandomForestClassifier', RandomForestClassifier()),
+#     # ('DummyClassifier', DummyClassifier()),
+#     # ('XGBClassifier', xgb.XGBClassifier()),
+#     # ('SVC', SVC()),
+#     ('FeedforwardNN', Sequential([
+#         Dense(64, activation='relu', input_shape=(384,)),
+#         Dense(32, activation='relu'),
+#         Dense(1, activation='sigmoid')
+#     ]))
+# ]
 #
-# video_data_chunks_count = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/video_data_chunks_count.csv')
-# metadata_embeddings_tagged_df_pm = pd.merge(video_data_chunks_count, df_tagged_pivot, on='ID', how='inner')
-# metadata_embeddings_tagged_df_pm.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/metadata_embeddings_tagged_df_pm.csv', index=False)
+# # Compile neural network models before the loop
+# for model_name, model in models:
+#     if isinstance(model, Sequential):
+#         model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 #
-# """ 2 b. Embed the title and description to use in a predictive model """
-# metadata_embeddings_tagged_df_pm['title_embedding'] = metadata_embeddings_tagged_df_pm['title'].apply(sentence_model.encode)
-# #metadata_embeddings_tagged_df_pm['descr_embedding'] = metadata_embeddings_tagged_df_pm['description'].apply(sentence_model.encode)
 #
-# #metadata_embeddings_tagged_df_pm['title_embedding'] = metadata_embeddings_tagged_df_pm['title_embedding'].apply(lambda x: [float(val) for val in x[1:-1].split()])
-# #metadata_embeddings_tagged_df_pm['descr_embedding'] = metadata_embeddings_tagged_df_pm['descr_embedding'].apply(lambda x: [float(val) for val in x[1:-1].split()])
+# # Lists to store metric scores for each model
+# avg_metric_scores = []
 #
-# metadata_embeddings_tagged_df_pm['sum_advice'] = metadata_embeddings_tagged_df_pm.apply(lambda row: row.filter(like='Advice_').fillna(0).sum(), axis=1)
-# metadata_embeddings_tagged_df_pm['advice_binary'] = metadata_embeddings_tagged_df_pm['sum_advice'].apply(lambda x: 1 if x > 0 else 0)
+# # .txt files of model_evaluation.txt and model_evaluation_no_smote.txt run the models # out above.
+# # To re-run simply uncomment out the models in the model list above
 #
-# metadata_embeddings_tagged_df_pm.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/metadata_embeddings_tagged_df_pm.csv', index=False)
-# print(metadata_embeddings_tagged_df_pm['advice_binary'].value_counts())
-# print(metadata_embeddings_tagged_df_pm['sum_advice'].value_counts())
+# # Open txt file for outputs
+# with open('model_evaluation_main2.txt', 'w') as f:
+#     # Loop over models
+#     for model_name, model in models:
+#         metric_scores = []
+#
+#         # Loop over cross-validation folds
+#         for train_index, test_index in cv.split(X, y):
+#             X_train, X_test = X[train_index], X[test_index]
+#             y_train, y_test = y[train_index], y[test_index]
+#
+#             # Apply SMOTE to the training set (remove and include line below to use no smote)
+#             smote = SMOTE(random_state=42)
+#             X_train_resampled, y_train_resampled = smote.fit_resample(X_train, y_train)
+#
+#             if isinstance(model, Sequential):
+#                 model.fit(X_train_resampled, y_train_resampled, epochs=10, batch_size=32, verbose=0)
+#                 y_pred = (model.predict(X_test) > 0.5).astype(int)
+#             else:
+#                 model.fit(X_train_resampled, y_train_resampled)
+#                 # model.fit(X_train, y_train) # if no smote to be used
+#                 y_pred = model.predict(X_test)
+#
+#             accuracy = round(accuracy_score(y_test, y_pred), 2)
+#             precision = round(precision_score(y_test, y_pred), 2)
+#             recall = round(recall_score(y_test, y_pred), 2)
+#             f1 = round(f1_score(y_test, y_pred), 2)
+#             class_report = classification_report(y_test, y_pred)
+#
+#             metric_scores.append((accuracy, precision, recall, f1, class_report))
+#
+#         # Calculate average metrics for the model
+#         avg_accuracy = round(np.mean([score[0] for score in metric_scores]), 2)
+#         avg_precision = round(np.mean([score[1] for score in metric_scores]), 2)
+#         avg_recall = round(np.mean([score[2] for score in metric_scores]), 2)
+#         avg_f1 = round(np.mean([score[3] for score in metric_scores]), 2)
+#         avg_class_report = '\n\n'.join([score[4] for score in metric_scores])
+#
+#         avg_metric_scores.append((model_name, avg_accuracy, avg_precision, avg_recall, avg_f1, avg_class_report))
+#
+#         # Write model results to the file
+#         f.write(f"Model: {model_name}\n")
+#         f.write(f"Final Average Accuracy: {avg_accuracy}\n")
+#         f.write(f"Final Average Precision: {avg_precision}\n")
+#         f.write(f"Final Average Recall: {avg_recall}\n")
+#         f.write(f"Final Average F1-score: {avg_f1}\n")
+#         f.write(f"Final Classification Report:\n{avg_class_report}\n")
+#         f.write("----------------------\n")
+#
+#         # After running the above the best 2 models are chosen and saved
+#         if model_name == 'FeedforwardNN':
+#             model.save('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/feedforward_nn_model.h5')
+#         elif model_name == 'LogisticRegression':
+#             joblib.dump(model, 'C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/logistic_regression_model.pkl')
+#
+# """ 1 e Parameter Tuning the best model """
+# # Load the best model obtained from cross-validation
+# best_model = load_model('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/feedforward_nn_model.h5')  # Replace with the actual path to the saved model
+#
+# # Evaluate the best model on the test dataset
+# test_predictions = best_model.predict(X_test)
+# test_predictions = (test_predictions > 0.5).astype(int)
+#
+# # Calculate metrics
+# accuracy = accuracy_score(y_test, test_predictions)
+# recall = recall_score(y_test, test_predictions)
+# precision = precision_score(y_test, test_predictions)
+# f1 = f1_score(y_test, test_predictions)
+# #
+# with open("Neural Network model - Saved, loaded and tested on test dataset.txt", "w") as f:
+#     # Print metrics
+#     f.write(f"Test Accuracy: {accuracy:.2f}")
+#     f.write(f"Test Recall: {recall:.2f}")
+#     f.write(f"Test Precision: {precision:.2f}")
+#     f.write(f"Test F1-score: {f1:.2f}")
+#
+#     # Generate and print classification report
+#     class_report = classification_report(y_test, test_predictions)
+#     f.write("Classification Report: \n")
+#     f.write(class_report)
 
-""" 2 c. Splitting into train, validate, test datasets """
+""" 1 f Using the model on the untagged data to flag which transcript chunks and thus which videos & YouTubers are giving financial advice """
+nn_model = load_model('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/feedforward_nn_model.h5')
 
+# df_tagged = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/df_tagged_pm.csv')
+# all_transcript_chunks_with_ID = pd.read_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/df_for_randomisation.csv")
+# all_transcript_chunks_with_ID = all_transcript_chunks_with_ID.drop_duplicates(subset=['ID', 'combined_sentence'])
+#
+# all_transcript_chunks_with_ID_advice = pd.merge(all_transcript_chunks_with_ID, df_tagged, on=['ID', 'combined_sentence', 'Source'], how='outer')
+# all_transcript_chunks_with_ID_advice.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/full_transcript_chunks_AdviceTag.csv', index=False)
+#
+# untagged_df = all_transcript_chunks_with_ID_advice[all_transcript_chunks_with_ID_advice['Advice'].isnull()]
+# print(untagged_df.shape)
+# print(untagged_df.columns)
 
-""" 2 d. Train models on the training dataset """
+## Define sentence model
+sentence_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
 
+# Embed the transcript chunks using same embedding method as training dataset
+# untagged_df['embeddings'] = untagged_df['combined_sentence'].apply(sentence_model.encode)
+# untagged_df.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/full_transcript_chunks_AdviceTag_embedding1.csv', index=False)
+
+# import to avoid embedding each time the script runs
+untagged_df = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/full_transcript_chunks_AdviceTag_embedding1.csv')
+untagged_df['embeddings'] = untagged_df['embeddings'].apply(lambda x: [float(val) for val in x[1:-1].split()])
+
+X_untagged = np.array(untagged_df['embeddings'].to_list())
+
+# Make predictions using the trained model
+predictions = nn_model.predict(X_untagged)
+predicted_labels = (predictions > 0.5).astype(int)
+
+# Add the predicted labels as a new column to the DataFrame
+untagged_df['predicted_advice'] = predicted_labels
+print(untagged_df['predicted_advice'].value_counts())
+untagged_df.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/full_transcript_chunks_AdviceTag_embedding1_predicted.csv', index=False)
+
+print('Untagged')
+print(untagged_df.shape)
+print(untagged_df.columns)
+
+### Identifying the videos that are predicted to have advice and should be further investigated
+video_data_metadata = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/video_data_chunks_count.csv')
+print('Video data')
+print(video_data_metadata.columns)
+print(video_data_metadata.shape)
+
+video_metadata_predictions = video_data_metadata.merge(untagged_df, on='ID', how='left')
+video_metadata_predictions = video_metadata_predictions.dropna(subset=['predicted_advice'], axis=0)
+print('Video data + predictions')
+print(video_metadata_predictions.columns)
+print(video_metadata_predictions.shape)
+
+## Keep the relevant columns for the transcript chunks that are predicted to have advice
+# predicted_advice_flag = video_metadata_predictions['predicted_advice'] == 1
+# relevant_columns = ['channelId', 'ID', 'publishedAt', 'tags', 'title', 'description',
+#        'likeCount', 'viewCount', 'commentCount', 'Transcript', 'combined_sentence',
+#        'predicted_advice']
+#
+# video_transcript_chunks_further_investigation = video_metadata_predictions.loc[predicted_advice_flag, relevant_columns]
+
+## ID the unique videos in this

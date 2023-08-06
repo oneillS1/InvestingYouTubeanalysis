@@ -13,22 +13,23 @@ transcript_chunks_combined_df = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Disse
 all_video_df_chunks_count = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/all_video_df_chunks_count.csv', usecols=['Source', 'ID'])
 df_for_randomisation = pd.merge(transcript_chunks_combined_df, all_video_df_chunks_count, on='ID')
 print(df_for_randomisation.head())
+df_for_randomisation.to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/df_for_randomisation.csv", index=False)
 
 # Stratified sampling - randomly select 50% of the 3 types of Sourced videos for tagging
 num_ids_to_select = (df_for_randomisation.groupby('Source')['ID'].nunique() * 0.5).astype(int)
 
-selected_dfs = []
-for source in df_for_randomisation['Source'].unique():
-    group_df = df_for_randomisation[df_for_randomisation['Source'] == source]
-    # Sample 'num_ids_to_select' unique IDs from the group
-    sampled_ids = group_df['ID'].drop_duplicates().sample(n=int(num_ids_to_select[source]), random_state=42)
-    # Filter the original DataFrame for the sampled IDs and append to 'selected_dfs'
-    selected_dfs.append(group_df[group_df['ID'].isin(sampled_ids)])
-
-selected_ids_df = pd.concat(selected_dfs)
-print(selected_ids_df.groupby('Source')['ID'].nunique())
-print(selected_ids_df['Source'].value_counts())
-selected_ids_df.to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/dataset_for_tagging5.csv", index=False)
+# selected_dfs = []
+# for source in df_for_randomisation['Source'].unique():
+#     group_df = df_for_randomisation[df_for_randomisation['Source'] == source]
+#     # Sample 'num_ids_to_select' unique IDs from the group
+#     sampled_ids = group_df['ID'].drop_duplicates().sample(n=int(num_ids_to_select[source]), random_state=42)
+#     # Filter the original DataFrame for the sampled IDs and append to 'selected_dfs'
+#     selected_dfs.append(group_df[group_df['ID'].isin(sampled_ids)])
+#
+# selected_ids_df = pd.concat(selected_dfs)
+# print(selected_ids_df.groupby('Source')['ID'].nunique())
+# print(selected_ids_df['Source'].value_counts())
+# selected_ids_df.to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/dataset_for_tagging.csv", index=False)
 
 df_tagging = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/dataset_for_tagging.csv')
 print(df_tagging['Source'].value_counts())

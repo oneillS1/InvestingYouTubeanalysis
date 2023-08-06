@@ -57,36 +57,36 @@ weighted avg       0.89      0.85      0.86       587
 Model: FeedforwardNN
 Final Average Accuracy: 0.96
 Final Average Precision: 0.87
-Final Average Recall: 0.88
-Final Average F1-score: 0.87
+Final Average Recall: 0.86
+Final Average F1-score: 0.86
 Final Classification Report:
               precision    recall  f1-score   support
 
-         0.0       0.94      0.90      0.92       513
-         1.0       0.48      0.63      0.54        75
+         0.0       0.93      0.91      0.92       513
+         1.0       0.48      0.56      0.52        75
 
     accuracy                           0.87       588
-   macro avg       0.71      0.76      0.73       588
+   macro avg       0.71      0.74      0.72       588
 weighted avg       0.88      0.87      0.87       588
 
 
               precision    recall  f1-score   support
 
-         0.0       0.97      0.98      0.98       512
-         1.0       0.86      0.80      0.83        76
+         0.0       0.97      0.98      0.97       512
+         1.0       0.87      0.76      0.81        76
 
-    accuracy                           0.96       588
-   macro avg       0.92      0.89      0.90       588
-weighted avg       0.96      0.96      0.96       588
+    accuracy                           0.95       588
+   macro avg       0.92      0.87      0.89       588
+weighted avg       0.95      0.95      0.95       588
 
 
               precision    recall  f1-score   support
 
-         0.0       1.00      1.00      1.00       512
-         1.0       0.99      0.97      0.98        75
+         0.0       0.99      1.00      1.00       512
+         1.0       0.99      0.96      0.97        75
 
     accuracy                           0.99       587
-   macro avg       0.99      0.99      0.99       587
+   macro avg       0.99      0.98      0.98       587
 weighted avg       0.99      0.99      0.99       587
 
 
