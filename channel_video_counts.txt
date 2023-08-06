@@ -1,0 +1,970 @@
+
+ This document outlines the channels and videos that the predictive model has identified as possibly containing financial advice. 
+ 
+It is meant to aid investigation into financial advice on YouTube investing videos by identifying videos (and their creators) that may have financial advice present - thus narrowing the search significantly. 
+
+ Metadata, full transcript and subset of transcript where advice is present is also available 
+ 
+For any video ID mentioned below, one can watch it by adding the video id to the prefix here: https://www.youtube.com/watch?v= 
+ 
+ 
+Channels and videos that are predicted to contain financial advice: 
+ 
+Channel ID: UC-5HLi3buMzdxjdTdic3Aig
+No of video IDs: 11
+Video IDs: 6ajkRnW6Mm4, 67iKCqo2RCY, JLWwdUSKYbQ, rIzuDm3n0DI, HmXYJbLXPXg, 5gs8vwQnInI, WTTmbjj0Z0c, Uby6wu8I0e4, 7dtdzn5vk7M, zBqvxUtqXhw, aQZ12XKhodE
+No of transcript chunks with advice predicted:
+   6ajkRnW6Mm4: 1
+   67iKCqo2RCY: 1
+   JLWwdUSKYbQ: 2
+   rIzuDm3n0DI: 2
+   HmXYJbLXPXg: 1
+   5gs8vwQnInI: 1
+   WTTmbjj0Z0c: 1
+   Uby6wu8I0e4: 2
+   7dtdzn5vk7M: 1
+   zBqvxUtqXhw: 1
+   aQZ12XKhodE: 1
+
+Channel ID: UC0BGhWsIbV7Dm-lsvhdlMbA
+No of video IDs: 20
+Video IDs: mzZI61kL2sc, 3irypwLDtTs, hEzDxnSUlIA, pVjDriSvN-U, H1XbtWdhZ5E, rEnGNbcySj0, mHTmYXGMalE, wt2wwoCfPSc, zbTn6HFaZok, 4G6cZrtVmuQ, j5pQOb5TXy0, izlDHnM5NDw, msseS6Jo4NM, _K9B7IMzzZw, 23hVNTdK-bc, 1rV1bArnUCU, MK2V6GKBmf0, zPrYUpECZKs, vkQzEEGqGxs, Q76bFUvxG6g
+No of transcript chunks with advice predicted:
+   mzZI61kL2sc: 1
+   3irypwLDtTs: 4
+   hEzDxnSUlIA: 5
+   pVjDriSvN-U: 3
+   H1XbtWdhZ5E: 4
+   rEnGNbcySj0: 2
+   mHTmYXGMalE: 2
+   wt2wwoCfPSc: 1
+   zbTn6HFaZok: 4
+   4G6cZrtVmuQ: 3
+   j5pQOb5TXy0: 1
+   izlDHnM5NDw: 7
+   msseS6Jo4NM: 2
+   _K9B7IMzzZw: 6
+   23hVNTdK-bc: 2
+   1rV1bArnUCU: 5
+   MK2V6GKBmf0: 2
+   zPrYUpECZKs: 2
+   vkQzEEGqGxs: 1
+   Q76bFUvxG6g: 2
+
+Channel ID: UC12lnsYNt8_VthTNOuOGTmQ
+No of video IDs: 12
+Video IDs: ZoLKXrAIa_g, rxpOQkDozdQ, 9DKAuxO25ss, uEyJidRH9Go, hhmdYKsH2b0, _8GumRDBcXA, ZIv2tgjLj-0, YgGezddO7_8, _6I-0N7DEE0, f1kAl0zJqvs, tG9HiUH3fRU, 0-Rm37LAwT4
+No of transcript chunks with advice predicted:
+   ZoLKXrAIa_g: 1
+   rxpOQkDozdQ: 2
+   9DKAuxO25ss: 3
+   uEyJidRH9Go: 1
+   hhmdYKsH2b0: 3
+   _8GumRDBcXA: 9
+   ZIv2tgjLj-0: 1
+   YgGezddO7_8: 4
+   _6I-0N7DEE0: 7
+   f1kAl0zJqvs: 2
+   tG9HiUH3fRU: 7
+   0-Rm37LAwT4: 6
+
+Channel ID: UC3mjMoJuFnjYRBLon_6njbQ
+No of video IDs: 7
+Video IDs: vPTfaahHkGI, a_OTAxe9xFk, iuM1DOysNd4, IQMl9-MxcoE, 0C-_N-5VlR8, UpXJYSPZeks, 8l6Wnr1RBjo
+No of transcript chunks with advice predicted:
+   vPTfaahHkGI: 3
+   a_OTAxe9xFk: 2
+   iuM1DOysNd4: 2
+   IQMl9-MxcoE: 1
+   0C-_N-5VlR8: 1
+   UpXJYSPZeks: 1
+   8l6Wnr1RBjo: 3
+
+Channel ID: UC4SK8IQ_u14VjUE8KtugSmw
+No of video IDs: 1
+Video IDs: wis3tT9knng
+No of transcript chunks with advice predicted:
+   wis3tT9knng: 6
+
+Channel ID: UC67AEEecqFEc92nVvcqKdhA
+No of video IDs: 22
+Video IDs: DFUs98kOHQY, tyci0fbMEZc, kXwtonUJcFU, n1ttKgGdEGE, YrnOxhI3lF0, lJRd1XwaIOg, wf9zHLiDWRk, u8blZPDgwk4, _w8UlTO97eY, 4hdgGfPkTkE, RPXMc36_d48, xcRVqogMCRg, SXspRnb-xJo, wmZQGy1GWQ4, g55JAdwVs2Q, oVU93f1Y6e4, p60yeVIfbfE, 2VuDHA9PrCQ, _IAqwiz7juE, KnQ2uMm12tc, TkkGX2K0O8g, oVS2G5jy5Bg
+No of transcript chunks with advice predicted:
+   DFUs98kOHQY: 1
+   tyci0fbMEZc: 2
+   kXwtonUJcFU: 1
+   n1ttKgGdEGE: 1
+   YrnOxhI3lF0: 1
+   lJRd1XwaIOg: 3
+   wf9zHLiDWRk: 4
+   u8blZPDgwk4: 6
+   _w8UlTO97eY: 2
+   4hdgGfPkTkE: 2
+   RPXMc36_d48: 2
+   xcRVqogMCRg: 1
+   SXspRnb-xJo: 4
+   wmZQGy1GWQ4: 2
+   g55JAdwVs2Q: 2
+   oVU93f1Y6e4: 1
+   p60yeVIfbfE: 1
+   2VuDHA9PrCQ: 1
+   _IAqwiz7juE: 1
+   KnQ2uMm12tc: 1
+   TkkGX2K0O8g: 1
+   oVS2G5jy5Bg: 1
+
+Channel ID: UC788SahZNYCdVKyUFCFinVA
+No of video IDs: 1
+Video IDs: INgZ0aPePkk
+No of transcript chunks with advice predicted:
+   INgZ0aPePkk: 4
+
+Channel ID: UCBLftV9ZsgTxoMZWPfIUKGw
+No of video IDs: 1
+Video IDs: Yzqyo0NY7F8
+No of transcript chunks with advice predicted:
+   Yzqyo0NY7F8: 5
+
+Channel ID: UCBayuhgYpKNbhJxfExYkPfA
+No of video IDs: 14
+Video IDs: 32QhRORiqGk, 8h1xWOkgrpI, JMcaRfFThmg, xn_Nxa_0JBU, N3E5eYS8d-I, y3USmdoXKt8, AfTzD9VHdi4, Fe4BaF8gCOQ, swwx9SzaFYk, Ymzyd9fbsmI, 1vGVwEaIBag, jw_f_xk3SyA, UCmytyE_8CY, rse9xVchfJQ
+No of transcript chunks with advice predicted:
+   32QhRORiqGk: 1
+   8h1xWOkgrpI: 2
+   JMcaRfFThmg: 1
+   xn_Nxa_0JBU: 1
+   N3E5eYS8d-I: 2
+   y3USmdoXKt8: 1
+   AfTzD9VHdi4: 1
+   Fe4BaF8gCOQ: 2
+   swwx9SzaFYk: 1
+   Ymzyd9fbsmI: 1
+   1vGVwEaIBag: 2
+   jw_f_xk3SyA: 1
+   UCmytyE_8CY: 1
+   rse9xVchfJQ: 1
+
+Channel ID: UCBjrrP9frGRuRwoAJ4RQdag
+No of video IDs: 1
+Video IDs: Us7HiZIcWb4
+No of transcript chunks with advice predicted:
+   Us7HiZIcWb4: 3
+
+Channel ID: UCC7xhD0o7FBHdKXZxMRFspQ
+No of video IDs: 1
+Video IDs: zs52gMG9fyQ
+No of transcript chunks with advice predicted:
+   zs52gMG9fyQ: 6
+
+Channel ID: UCCatR7nWbYrkVXdxXb4cGXw
+No of video IDs: 28
+Video IDs: HhYsGjxYjbs, ByvURTZLSf8, p4UXdvAwmgg, EO-wSgwn7u0, fmuwT2L3u4E, cpT5Z-Nlc2E, 6acmEYT3adY, GOyBgum-cg4, iAhFhdSbtgg, b4tg5XiI5l4, kShqEyNib2k, X0AjxdE2ZsA, 0dph0dUMWEo, LrouAGf00Sk, FOIy_kPlu5M, 9uwOjXd1OH0, 6HwF3ejSpIU, iAmbpMXDh94, SZPGD0rOIRI, DJnv6tbbK3A, OVlQ8Pgcq8w, uIIR5XG0Luc, dLLUIeHH-3A, nFU019GGTxY, NJ3oHc_lzws, tvIYRGdZwdg, lH7Wb4v_oL0, yfNGjW9mWCY
+No of transcript chunks with advice predicted:
+   HhYsGjxYjbs: 1
+   ByvURTZLSf8: 1
+   p4UXdvAwmgg: 4
+   EO-wSgwn7u0: 3
+   fmuwT2L3u4E: 3
+   cpT5Z-Nlc2E: 5
+   6acmEYT3adY: 4
+   GOyBgum-cg4: 3
+   iAhFhdSbtgg: 2
+   b4tg5XiI5l4: 5
+   kShqEyNib2k: 3
+   X0AjxdE2ZsA: 2
+   0dph0dUMWEo: 5
+   LrouAGf00Sk: 3
+   FOIy_kPlu5M: 1
+   9uwOjXd1OH0: 4
+   6HwF3ejSpIU: 2
+   iAmbpMXDh94: 1
+   SZPGD0rOIRI: 1
+   DJnv6tbbK3A: 4
+   OVlQ8Pgcq8w: 4
+   uIIR5XG0Luc: 1
+   dLLUIeHH-3A: 1
+   nFU019GGTxY: 11
+   NJ3oHc_lzws: 2
+   tvIYRGdZwdg: 3
+   lH7Wb4v_oL0: 1
+   yfNGjW9mWCY: 1
+
+Channel ID: UCDBroOWVP4aN8SYM0br6sJQ
+No of video IDs: 1
+Video IDs: u4Adtp04JxI
+No of transcript chunks with advice predicted:
+   u4Adtp04JxI: 1
+
+Channel ID: UCG9FGwgAx9-RKq1smF1lc8w
+No of video IDs: 7
+Video IDs: Cy-jss4E52A, M591pP9tJIk, HdHnrFH79T0, wl1q-iMZf34, XmUMcRVN5O8, wh7_pkZlmbU, 0hd95qLNO4w
+No of transcript chunks with advice predicted:
+   Cy-jss4E52A: 2
+   M591pP9tJIk: 1
+   HdHnrFH79T0: 1
+   wl1q-iMZf34: 2
+   XmUMcRVN5O8: 2
+   wh7_pkZlmbU: 1
+   0hd95qLNO4w: 2
+
+Channel ID: UCGL9ubdGcvZh_dvSV2z1hoQ
+No of video IDs: 5
+Video IDs: PLfJkb5Ydbw, fHXPu-EDb6M, PosvpZRMIjA, k3HrQQszqX4, vb7Lx4jmmSo
+No of transcript chunks with advice predicted:
+   PLfJkb5Ydbw: 1
+   fHXPu-EDb6M: 1
+   PosvpZRMIjA: 1
+   k3HrQQszqX4: 2
+   vb7Lx4jmmSo: 1
+
+Channel ID: UCGy7SkBjcIAgTiwkXEtPnYg
+No of video IDs: 6
+Video IDs: nY234RoQeHw, GgXNedPCej8, 2I_GZebHd8Y, jiSel4EEonM, 2H05cIQH058, zpQ-4EuYmlo
+No of transcript chunks with advice predicted:
+   nY234RoQeHw: 1
+   GgXNedPCej8: 1
+   2I_GZebHd8Y: 1
+   jiSel4EEonM: 1
+   2H05cIQH058: 6
+   zpQ-4EuYmlo: 1
+
+Channel ID: UCHXe1Bfz_-rzf_e-eEoimrg
+No of video IDs: 1
+Video IDs: trqIMWXAUfI
+No of transcript chunks with advice predicted:
+   trqIMWXAUfI: 2
+
+Channel ID: UCHop-jpf-huVT1IYw79ymPw
+No of video IDs: 1
+Video IDs: f60nR1XcW-o
+No of transcript chunks with advice predicted:
+   f60nR1XcW-o: 3
+
+Channel ID: UCI7M65p3A-D3P4v5qW8POxQ
+No of video IDs: 24
+Video IDs: atD3ik7fnI8, rrp8Undxcik, -oDRqE4gKFU, XW7FGmgS-9s, KDGfjaGehSo, JBTR45kRe9I, LqFyWxRnwiw, gVjh-hVfcc8, Kl3nH4qqsis, rVc3XN5BdPo, Ojrkuq77HFE, Sq2AIgRN1Lw, 6JX2eN9eYl8, _zl0R5tMH5U, Av9ypMylguE, zF-FZfl1d60, KBzQgKxcHbE, rKMkYsQuB-s, 9W0uBdZkON4, 3vkZMbTdV3Q, gVtxORF86so, NMNwiOPtFRM, yNWlo3GHLI4, YMTOgqgJwF0
+No of transcript chunks with advice predicted:
+   atD3ik7fnI8: 3
+   rrp8Undxcik: 4
+   -oDRqE4gKFU: 2
+   XW7FGmgS-9s: 2
+   KDGfjaGehSo: 1
+   JBTR45kRe9I: 1
+   LqFyWxRnwiw: 5
+   gVjh-hVfcc8: 1
+   Kl3nH4qqsis: 1
+   rVc3XN5BdPo: 1
+   Ojrkuq77HFE: 2
+   Sq2AIgRN1Lw: 1
+   6JX2eN9eYl8: 6
+   _zl0R5tMH5U: 1
+   Av9ypMylguE: 3
+   zF-FZfl1d60: 3
+   KBzQgKxcHbE: 1
+   rKMkYsQuB-s: 1
+   9W0uBdZkON4: 2
+   3vkZMbTdV3Q: 1
+   gVtxORF86so: 1
+   NMNwiOPtFRM: 1
+   yNWlo3GHLI4: 1
+   YMTOgqgJwF0: 1
+
+Channel ID: UCIxBJrZ5WTanHI6ZTa9QGRQ
+No of video IDs: 1
+Video IDs: E4MNrzXax-0
+No of transcript chunks with advice predicted:
+   E4MNrzXax-0: 3
+
+Channel ID: UCKQvGU-qtjEthINeViNbn6A
+No of video IDs: 12
+Video IDs: bsuespwe_uY, IRavvVM6AVs, WwotytnkYRQ, jLcnYd6Ki0E, A5DAoRLDN0w, hfmloFUxJ1Q, 5GvNYH4KhZQ, -N0ccyDr-ng, mOwnz-M_vo8, 8XGLiV_QVHM, YHM9MyJVLFE, bwqQVIQkz5Q
+No of transcript chunks with advice predicted:
+   bsuespwe_uY: 3
+   IRavvVM6AVs: 1
+   WwotytnkYRQ: 5
+   jLcnYd6Ki0E: 10
+   A5DAoRLDN0w: 2
+   hfmloFUxJ1Q: 2
+   5GvNYH4KhZQ: 11
+   -N0ccyDr-ng: 5
+   mOwnz-M_vo8: 5
+   8XGLiV_QVHM: 1
+   YHM9MyJVLFE: 5
+   bwqQVIQkz5Q: 7
+
+Channel ID: UCKvWzzrVUA_DSCoKXL6GU2w
+No of video IDs: 4
+Video IDs: -nSODrSo7nY, GwjQVKzAuDA, Xqf06imGofs, lcvbNkI5b0U
+No of transcript chunks with advice predicted:
+   -nSODrSo7nY: 2
+   GwjQVKzAuDA: 1
+   Xqf06imGofs: 1
+   lcvbNkI5b0U: 2
+
+Channel ID: UCL-F-8nxFtFZ4M3RWkGn6Qw
+No of video IDs: 1
+Video IDs: _hICV8ZpppU
+No of transcript chunks with advice predicted:
+   _hICV8ZpppU: 3
+
+Channel ID: UCLo66QVfEod0nNM_GzKNxmQ
+No of video IDs: 17
+Video IDs: Gq3rem1jd-Y, C8p8XoKzd4w, ZXHotricTTw, JjCuxckpJ9E, xNZlo2EUfwQ, XwyxQjBTqIs, gq9T2vLiDig, Z0NMPUv6fcM, goVx267uuqw, n6P6o-say-0, mSCE7HX45_A, 3axTuhX-L58, gqTNXd00ZeM, ycrn6n10dEA, l5iaOkW81vg, p4KKPKoIsGg, bjqYN-ONU00
+No of transcript chunks with advice predicted:
+   Gq3rem1jd-Y: 1
+   C8p8XoKzd4w: 1
+   ZXHotricTTw: 2
+   JjCuxckpJ9E: 2
+   xNZlo2EUfwQ: 1
+   XwyxQjBTqIs: 1
+   gq9T2vLiDig: 1
+   Z0NMPUv6fcM: 3
+   goVx267uuqw: 5
+   n6P6o-say-0: 2
+   mSCE7HX45_A: 1
+   3axTuhX-L58: 3
+   gqTNXd00ZeM: 2
+   ycrn6n10dEA: 1
+   l5iaOkW81vg: 1
+   p4KKPKoIsGg: 1
+   bjqYN-ONU00: 1
+
+Channel ID: UCN-qfPKTQ_Wxr8vZLVfM95w
+No of video IDs: 1
+Video IDs: Jf0nMO_2OAE
+No of transcript chunks with advice predicted:
+   Jf0nMO_2OAE: 1
+
+Channel ID: UCN9Nj4tjXbVTLYWN0EKly_Q
+No of video IDs: 28
+Video IDs: 28vMbDcW_jA, m36eAoRIAXg, bPCZfLsd7fU, YX-RZKjGV-M, WAImJuW-3iA, 04TTf55Z0lE, aCYItUDYQ4Y, OPCxzupYLzA, -YG1o-xhX4k, jOOVrLrzZ7A, _5JULMp2Hls, 77o1LcX8T40, JlAdCox7cI8, y2IWGE_HIFU, zqq8MjdjoIk, lJcPsVg3cUQ, 8ihE2q0QkU8, 3EieOrx5r5E, fCWcfYoDPFk, oVEfVR_KxTk, oRSsr6VnOW4, 8Eosysbqiac, XNR-NNUh38w, KWaiAI6ZFrE, qHdw3vMpPz0, HnJryzzy9rY, dUigQLtPp0g, haqeff3RZa8
+No of transcript chunks with advice predicted:
+   28vMbDcW_jA: 4
+   m36eAoRIAXg: 1
+   bPCZfLsd7fU: 4
+   YX-RZKjGV-M: 1
+   WAImJuW-3iA: 3
+   04TTf55Z0lE: 2
+   aCYItUDYQ4Y: 1
+   OPCxzupYLzA: 1
+   -YG1o-xhX4k: 1
+   jOOVrLrzZ7A: 2
+   _5JULMp2Hls: 4
+   77o1LcX8T40: 5
+   JlAdCox7cI8: 1
+   y2IWGE_HIFU: 3
+   zqq8MjdjoIk: 5
+   lJcPsVg3cUQ: 5
+   8ihE2q0QkU8: 5
+   3EieOrx5r5E: 6
+   fCWcfYoDPFk: 4
+   oVEfVR_KxTk: 4
+   oRSsr6VnOW4: 3
+   8Eosysbqiac: 3
+   XNR-NNUh38w: 8
+   KWaiAI6ZFrE: 11
+   qHdw3vMpPz0: 12
+   HnJryzzy9rY: 7
+   dUigQLtPp0g: 1
+   haqeff3RZa8: 1
+
+Channel ID: UCNttUtm9vloDjo-a2jqkoNQ
+No of video IDs: 20
+Video IDs: AMjhgbkQvf8, 2CHHi15AtIw, Bs8vu4CEARU, c-psoassiY8, fOJns7JUY4o, jACDruSwi1A, -Fy1KMt6miI, RzSSI_XptKk, pQxCiu_CxMk, vqlSKj97OhM, a3JV5FaRods, lgdVN2jc09A, sLvGrqqkEyw, akFGfF0pacg, BwyeJbvmP9w, Mfe_j4384oM, Hat7aJ2Knfw, nRo0FlH1Wow, 0JulwSPVJvw, 3gpAXtDFV9E
+No of transcript chunks with advice predicted:
+   AMjhgbkQvf8: 2
+   2CHHi15AtIw: 6
+   Bs8vu4CEARU: 1
+   c-psoassiY8: 4
+   fOJns7JUY4o: 3
+   jACDruSwi1A: 1
+   -Fy1KMt6miI: 6
+   RzSSI_XptKk: 5
+   pQxCiu_CxMk: 6
+   vqlSKj97OhM: 7
+   a3JV5FaRods: 3
+   lgdVN2jc09A: 1
+   sLvGrqqkEyw: 5
+   akFGfF0pacg: 1
+   BwyeJbvmP9w: 1
+   Mfe_j4384oM: 3
+   Hat7aJ2Knfw: 9
+   nRo0FlH1Wow: 2
+   0JulwSPVJvw: 3
+   3gpAXtDFV9E: 5
+
+Channel ID: UCO3tlaeZ6Z0ZN5frMZI3-uQ
+No of video IDs: 8
+Video IDs: lFyeLeP44kY, HvjSRskN_kU, Mxu85SCT9lQ, IXsb3aoXbVk, 8c-gU1A_Bho, _Nb6OKOM_nw, tYfuEF9IYuA, 4E5Wv7ylKBU
+No of transcript chunks with advice predicted:
+   lFyeLeP44kY: 3
+   HvjSRskN_kU: 3
+   Mxu85SCT9lQ: 4
+   IXsb3aoXbVk: 1
+   8c-gU1A_Bho: 6
+   _Nb6OKOM_nw: 1
+   tYfuEF9IYuA: 1
+   4E5Wv7ylKBU: 1
+
+Channel ID: UCSglJMvX-zSgv3PEJIE_inw
+No of video IDs: 11
+Video IDs: 05dHr2LWjsU, _gUMPQZS7b4, Vvby9pR6Q7I, ZKOQbQtelkk, HIlcRqgXSgU, 70fS9IK2XE8, 6Lu71eyaLoo, l-gea33nmEQ, 4qxBl74hRkE, UYL6_94Ok00, Q81vgMOP0nM
+No of transcript chunks with advice predicted:
+   05dHr2LWjsU: 9
+   _gUMPQZS7b4: 1
+   Vvby9pR6Q7I: 1
+   ZKOQbQtelkk: 3
+   HIlcRqgXSgU: 5
+   70fS9IK2XE8: 3
+   6Lu71eyaLoo: 3
+   l-gea33nmEQ: 1
+   4qxBl74hRkE: 1
+   UYL6_94Ok00: 1
+   Q81vgMOP0nM: 1
+
+Channel ID: UCTQuKo8v0PaPCvk5aRxc_Yg
+No of video IDs: 10
+Video IDs: KdZNiVFlQIs, Y6HfXpqtvdI, fYaqitj2Ics, gxlhsuWLIoI, SHwDePphnCo, YYHzkVVSpAo, koe_55782q8, jouK2wcMWTg, U22tZJf7UwQ, MMfPjPuw71o
+No of transcript chunks with advice predicted:
+   KdZNiVFlQIs: 1
+   Y6HfXpqtvdI: 9
+   fYaqitj2Ics: 3
+   gxlhsuWLIoI: 1
+   SHwDePphnCo: 3
+   YYHzkVVSpAo: 1
+   koe_55782q8: 2
+   jouK2wcMWTg: 1
+   U22tZJf7UwQ: 7
+   MMfPjPuw71o: 1
+
+Channel ID: UCUvvj5lwue7PspotMDjk5UA
+No of video IDs: 19
+Video IDs: uFdtO4bVtI0, 8Jq1DjR1RdM, kHlP1-H0nsM, Uxzqfb6unA0, f5NZZ-H98I4, R0pLsJOjGXM, nfueJfuqq8c, h31pnkNK7Bs, oBGkjWKDfes, D9CaxgnWAhQ, -Ugc0dhjp_0, Rgozt3dKAjM, zM2VVtIyolU, vXPyaOCbgwQ, DdEeLblr8H4, AX2AmK1Lmt8, t4Q9K0jct9M, zGtXNEagzOM, -tijHnqu6UU
+No of transcript chunks with advice predicted:
+   uFdtO4bVtI0: 1
+   8Jq1DjR1RdM: 3
+   kHlP1-H0nsM: 3
+   Uxzqfb6unA0: 3
+   f5NZZ-H98I4: 11
+   R0pLsJOjGXM: 1
+   nfueJfuqq8c: 1
+   h31pnkNK7Bs: 2
+   oBGkjWKDfes: 3
+   D9CaxgnWAhQ: 7
+   -Ugc0dhjp_0: 4
+   Rgozt3dKAjM: 6
+   zM2VVtIyolU: 2
+   vXPyaOCbgwQ: 1
+   DdEeLblr8H4: 1
+   AX2AmK1Lmt8: 1
+   t4Q9K0jct9M: 1
+   zGtXNEagzOM: 1
+   -tijHnqu6UU: 1
+
+Channel ID: UCV6KDgJskWaEckne5aPA0aQ
+No of video IDs: 9
+Video IDs: 5_3Ra-Q6vK4, Mc3Jxx23hbo, HBy-xP5aQyA, JjdDUanjGiY, j1xAthFAd-0, idKoh7Amogw, eoA5eyPZrbM, eX4EKNG3QX4, QGjeFVIOmzk
+No of transcript chunks with advice predicted:
+   5_3Ra-Q6vK4: 5
+   Mc3Jxx23hbo: 5
+   HBy-xP5aQyA: 3
+   JjdDUanjGiY: 1
+   j1xAthFAd-0: 1
+   idKoh7Amogw: 1
+   eoA5eyPZrbM: 1
+   eX4EKNG3QX4: 1
+   QGjeFVIOmzk: 1
+
+Channel ID: UCZy3pEdGnWLDsqGu56axxcQ
+No of video IDs: 9
+Video IDs: rr3p4os5SyQ, 4LqvOL7kMvY, HycMHz5Qp04, AdTDrN21J8I, hdkHMxE61II, oaaHVbKd08o, mS6PapOv5ro, KllcTpwikLs, p_XHBBQU8eE
+No of transcript chunks with advice predicted:
+   rr3p4os5SyQ: 1
+   4LqvOL7kMvY: 1
+   HycMHz5Qp04: 1
+   AdTDrN21J8I: 1
+   hdkHMxE61II: 1
+   oaaHVbKd08o: 1
+   mS6PapOv5ro: 1
+   KllcTpwikLs: 2
+   p_XHBBQU8eE: 1
+
+Channel ID: UC_K0S2GbXYI9Fc77d6oRE7w
+No of video IDs: 1
+Video IDs: PuEmnwHsrUA
+No of transcript chunks with advice predicted:
+   PuEmnwHsrUA: 2
+
+Channel ID: UCavTvSwEoRABvnPtLg0e6LQ
+No of video IDs: 5
+Video IDs: xj87qBGtDmA, UhDVihi1JdA, LXjNpGO01Z4, 0RbaFyWhUj0, rzUWlvIzxf0
+No of transcript chunks with advice predicted:
+   xj87qBGtDmA: 1
+   UhDVihi1JdA: 1
+   LXjNpGO01Z4: 2
+   0RbaFyWhUj0: 1
+   rzUWlvIzxf0: 1
+
+Channel ID: UCbLhGKVY-bJPcawebgtNfbw
+No of video IDs: 1
+Video IDs: wWZKsFH_bW4
+No of transcript chunks with advice predicted:
+   wWZKsFH_bW4: 2
+
+Channel ID: UCc4Rz_T9Sb1w5rqqo9pL1Og
+No of video IDs: 29
+Video IDs: 3n5HDH5TwF4, AbRFl9ZXyqc, aJ46nM45NL8, -hJCcNsiBVQ, Y8lMZBy7ydo, ihwI9nr2VeA, 80zosJeVhU4, 0qw1mI1baDY, lH3ONqLW4-E, qCATotC1v-A, fKWLZHg6m_I, VIzHL1RNc6E, TrKRC7Y56uo, 406jWUWCAWk, txrk_dqtcxk, 2UoHacXH6Dw, 5vesVpb62hg, yg9JG2-AvyE, mp9ectaSzKQ, GyKLi9aGkSA, YGtQYTxBYKs, mnCsW8uyUPw, fy5j7wx1sSY, IkT_CTld8aU, LGbfd32e_G0, PIngO_fqf7s, yfaYDLKU6H8, WwQ6crI7C1I, DlD0bnJG5VQ
+No of transcript chunks with advice predicted:
+   3n5HDH5TwF4: 2
+   AbRFl9ZXyqc: 1
+   aJ46nM45NL8: 1
+   -hJCcNsiBVQ: 1
+   Y8lMZBy7ydo: 1
+   ihwI9nr2VeA: 2
+   80zosJeVhU4: 1
+   0qw1mI1baDY: 1
+   lH3ONqLW4-E: 1
+   qCATotC1v-A: 1
+   fKWLZHg6m_I: 1
+   VIzHL1RNc6E: 3
+   TrKRC7Y56uo: 1
+   406jWUWCAWk: 1
+   txrk_dqtcxk: 1
+   2UoHacXH6Dw: 1
+   5vesVpb62hg: 1
+   yg9JG2-AvyE: 1
+   mp9ectaSzKQ: 1
+   GyKLi9aGkSA: 1
+   YGtQYTxBYKs: 1
+   mnCsW8uyUPw: 2
+   fy5j7wx1sSY: 1
+   IkT_CTld8aU: 1
+   LGbfd32e_G0: 1
+   PIngO_fqf7s: 1
+   yfaYDLKU6H8: 1
+   WwQ6crI7C1I: 1
+   DlD0bnJG5VQ: 1
+
+Channel ID: UCdLzNzag8APY4tx6GHYN2Lg
+No of video IDs: 1
+Video IDs: 3vUX1_m8iUM
+No of transcript chunks with advice predicted:
+   3vUX1_m8iUM: 2
+
+Channel ID: UCejoTyCljURHcX7wdkXGRXA
+No of video IDs: 1
+Video IDs: 1M5COKd8t1Q
+No of transcript chunks with advice predicted:
+   1M5COKd8t1Q: 7
+
+Channel ID: UChftTVI0QJmyXkajQYt2tiQ
+No of video IDs: 1
+Video IDs: Fmd2hUq9M7E
+No of transcript chunks with advice predicted:
+   Fmd2hUq9M7E: 1
+
+Channel ID: UCi7RBPfTtRkVchV6qO8PUzg
+No of video IDs: 1
+Video IDs: Ys9FPvbSGAY
+No of transcript chunks with advice predicted:
+   Ys9FPvbSGAY: 1
+
+Channel ID: UCj1pAhsJCqMMcmAeQJgOc9w
+No of video IDs: 2
+Video IDs: G34fTJHXMTk, 235MumUhPiU
+No of transcript chunks with advice predicted:
+   G34fTJHXMTk: 1
+   235MumUhPiU: 1
+
+Channel ID: UCjemQfjaXAzA-95RKoy9n_g
+No of video IDs: 20
+Video IDs: q9eC5S-2PGA, Zc5dUsBTbpI, 7OAKcoCNaCU, Rm6TuE2pyjg, 5Xm_BbSZxUw, WFrFp7ITsys, pA7kuLQN4AM, x2GPeDZOEyo, Uz56waLwUfM, L4869xRVM3E, D51Uf078d0w, 50tYOPvqA5c, LO5XrVbt-fc, oSx1pKSrAXk, NTBWt6AlDX4, dfhCgICxscY, JwXybdcxX6E, ROLsXxkLDq0, 2CHCMLmp1Qs, Z5my5P4j4CY
+No of transcript chunks with advice predicted:
+   q9eC5S-2PGA: 1
+   Zc5dUsBTbpI: 1
+   7OAKcoCNaCU: 4
+   Rm6TuE2pyjg: 3
+   5Xm_BbSZxUw: 3
+   WFrFp7ITsys: 3
+   pA7kuLQN4AM: 4
+   x2GPeDZOEyo: 3
+   Uz56waLwUfM: 2
+   L4869xRVM3E: 5
+   D51Uf078d0w: 3
+   50tYOPvqA5c: 1
+   LO5XrVbt-fc: 5
+   oSx1pKSrAXk: 2
+   NTBWt6AlDX4: 2
+   dfhCgICxscY: 1
+   JwXybdcxX6E: 1
+   ROLsXxkLDq0: 1
+   2CHCMLmp1Qs: 1
+   Z5my5P4j4CY: 1
+
+Channel ID: UCkNgKCu9062P0CPyVoBI5sQ
+No of video IDs: 5
+Video IDs: qze8YAjya-E, nzU6n0da4as, 4DhCKlWWAjE, 1Pb8FnAUjso, EKrikuIVlOo
+No of transcript chunks with advice predicted:
+   qze8YAjya-E: 1
+   nzU6n0da4as: 2
+   4DhCKlWWAjE: 1
+   1Pb8FnAUjso: 1
+   EKrikuIVlOo: 1
+
+Channel ID: UCl2oCaw8hdR_kbqyqd2klIA
+No of video IDs: 21
+Video IDs: SbMtY-aJjFA, 0DKVpnL3hUc, V5wE0ML_WMc, 72hPK8zUnn0, W7fumWmhiaA, VXnYYxI6xYA, AOUCI22GEW8, ssVaf7-mfso, MpOzD65quBE, 4X4R1luTsho, xobu78ax3GQ, 57G4L44Bc7A, UrVbekMqhG4, eNoLBYDf2wc, NiuI9o09DWI, dHy86IAAFXU, RhfKaRAhIRc, RZcoo9JDJ8E, sfDbTze0Q6g, yXEHOfZXf-E, sEEIVDbAV_Y
+No of transcript chunks with advice predicted:
+   SbMtY-aJjFA: 6
+   0DKVpnL3hUc: 1
+   V5wE0ML_WMc: 1
+   72hPK8zUnn0: 2
+   W7fumWmhiaA: 4
+   VXnYYxI6xYA: 6
+   AOUCI22GEW8: 3
+   ssVaf7-mfso: 3
+   MpOzD65quBE: 1
+   4X4R1luTsho: 1
+   xobu78ax3GQ: 1
+   57G4L44Bc7A: 1
+   UrVbekMqhG4: 1
+   eNoLBYDf2wc: 4
+   NiuI9o09DWI: 1
+   dHy86IAAFXU: 1
+   RhfKaRAhIRc: 1
+   RZcoo9JDJ8E: 1
+   sfDbTze0Q6g: 1
+   yXEHOfZXf-E: 2
+   sEEIVDbAV_Y: 1
+
+Channel ID: UCn2JOViAAWssWefchGpTNvw
+No of video IDs: 14
+Video IDs: SrQiOg0TV20, 1kD66RMWimo, jye4aTRjhnw, 1f7ZCdsciDs, kJkxX7ltsRQ, RxtiePtxfzY, wXyOhbH01C0, DF23jO8Y0n0, Y7nBM-v3NG4, nNLod9H6uhQ, D3Pzfx8y0_s, MEo7uJq4TiE, UwqoByDBWIA, IU3ujOCVoME
+No of transcript chunks with advice predicted:
+   SrQiOg0TV20: 2
+   1kD66RMWimo: 2
+   jye4aTRjhnw: 1
+   1f7ZCdsciDs: 1
+   kJkxX7ltsRQ: 1
+   RxtiePtxfzY: 3
+   wXyOhbH01C0: 1
+   DF23jO8Y0n0: 1
+   Y7nBM-v3NG4: 1
+   nNLod9H6uhQ: 1
+   D3Pzfx8y0_s: 2
+   MEo7uJq4TiE: 1
+   UwqoByDBWIA: 1
+   IU3ujOCVoME: 1
+
+Channel ID: UCnMku7J_UtwlcSfZlIuQ3Kw
+No of video IDs: 18
+Video IDs: Y0HHt72fogA, 7GD_D8Wnq-U, g8AzyXxD_JI, 1mI1UFq7kJE, YYyCadWCLH0, vp4yqpLhJ5Q, DRiUSQ5lmtg, AKI64v-7Ko8, WghckXE4hQ0, TwY9CZahsxU, HuF17vCq70E, jXbMAk6dsk0, -uIgcOKmEhs, bMKBs8NU-zk, XnjyKUWfaMk, Pmg-X6aOxx4, dUH2xDt7Zeo, Jv2ya950lP4
+No of transcript chunks with advice predicted:
+   Y0HHt72fogA: 6
+   7GD_D8Wnq-U: 4
+   g8AzyXxD_JI: 3
+   1mI1UFq7kJE: 5
+   YYyCadWCLH0: 3
+   vp4yqpLhJ5Q: 2
+   DRiUSQ5lmtg: 3
+   AKI64v-7Ko8: 3
+   WghckXE4hQ0: 4
+   TwY9CZahsxU: 4
+   HuF17vCq70E: 5
+   jXbMAk6dsk0: 2
+   -uIgcOKmEhs: 5
+   bMKBs8NU-zk: 2
+   XnjyKUWfaMk: 2
+   Pmg-X6aOxx4: 4
+   dUH2xDt7Zeo: 3
+   Jv2ya950lP4: 1
+
+Channel ID: UCnMn36GT_H0X-w5_ckLtlgQ
+No of video IDs: 19
+Video IDs: 7PPwcamumT4, hx1CzMH0cHs, jqsP5O3udv0, Oew3VnE-UD8, nIu1DgllITg, pltfunL1UQM, KY4k6SACiuQ, xFr8J2j_cdA, miTBruk3K3I, lhTsx1x0DT8, l5qYxG64xGY, 6v19fKXaaIw, Wx4ei7YwCaA, QTCZKKZhcz4, g1rYAqX01zo, hWrN0FR0Gzo, eFyATlXubiY, ZcqAV_niP8w, -T9iunhAvy4
+No of transcript chunks with advice predicted:
+   7PPwcamumT4: 1
+   hx1CzMH0cHs: 1
+   jqsP5O3udv0: 1
+   Oew3VnE-UD8: 8
+   nIu1DgllITg: 1
+   pltfunL1UQM: 6
+   KY4k6SACiuQ: 1
+   xFr8J2j_cdA: 4
+   miTBruk3K3I: 4
+   lhTsx1x0DT8: 9
+   l5qYxG64xGY: 1
+   6v19fKXaaIw: 7
+   Wx4ei7YwCaA: 1
+   QTCZKKZhcz4: 1
+   g1rYAqX01zo: 1
+   hWrN0FR0Gzo: 1
+   eFyATlXubiY: 1
+   ZcqAV_niP8w: 1
+   -T9iunhAvy4: 1
+
+Channel ID: UCoMzWLaPjDJBbipihD694pQ
+No of video IDs: 20
+Video IDs: -E91e3al4gg, m00G4m1XEVI, D60pgI8hVm8, yeCwcJuesTc, 3OvpXQGoTHY, isjHU3MzO5U, BbSlcEUr1Ow, OpmMhTUJMnY, wqC3mWP7zAw, wWeECooKbbc, l1DE5WEie-A, 2PgHpcUBdRI, TJMz92k6WmQ, vTC8jc0YFGk, 31X0eQj__U0, wemYN-PjtB8, 6TjFyCWvU6g, 4h1pT2HdN_Q, jgBQx7-EE3Q, mjEpNpcy8PI
+No of transcript chunks with advice predicted:
+   -E91e3al4gg: 10
+   m00G4m1XEVI: 6
+   D60pgI8hVm8: 4
+   yeCwcJuesTc: 6
+   3OvpXQGoTHY: 6
+   isjHU3MzO5U: 7
+   BbSlcEUr1Ow: 1
+   OpmMhTUJMnY: 2
+   wqC3mWP7zAw: 10
+   wWeECooKbbc: 9
+   l1DE5WEie-A: 3
+   2PgHpcUBdRI: 3
+   TJMz92k6WmQ: 9
+   vTC8jc0YFGk: 2
+   31X0eQj__U0: 2
+   wemYN-PjtB8: 6
+   6TjFyCWvU6g: 1
+   4h1pT2HdN_Q: 2
+   jgBQx7-EE3Q: 1
+   mjEpNpcy8PI: 1
+
+Channel ID: UCpRQuynBX9Qy9tPrcswpPag
+No of video IDs: 10
+Video IDs: jjTmsbz_ydE, A1Ntf1f-bzg, Ft6bQI2M37s, 2jCPhSZM2Qc, Y05Tf_XOB8A, h9k1be9B4A4, vc6NBth7Ch4, LaS5Db_cn0I, jTHoIEFAu1g, OmUOXvajDmc
+No of transcript chunks with advice predicted:
+   jjTmsbz_ydE: 2
+   A1Ntf1f-bzg: 1
+   Ft6bQI2M37s: 1
+   2jCPhSZM2Qc: 2
+   Y05Tf_XOB8A: 3
+   h9k1be9B4A4: 3
+   vc6NBth7Ch4: 1
+   LaS5Db_cn0I: 1
+   jTHoIEFAu1g: 2
+   OmUOXvajDmc: 1
+
+Channel ID: UCqK_GSMbpiV8spgD3ZGloSw
+No of video IDs: 12
+Video IDs: EADLE7kO4tA, tNsc4tdXnCE, si5kq7TFjjg, yDXB1jafqg4, i83OuE-aXOM, gpnLjfnZ2qM, UK6LKszd73M, Prkv45GfGUg, v7LyUzKWGfQ, UaGiOdogC7o, XSJnX9oe_is, rmDPFHdE448
+No of transcript chunks with advice predicted:
+   EADLE7kO4tA: 1
+   tNsc4tdXnCE: 1
+   si5kq7TFjjg: 1
+   yDXB1jafqg4: 3
+   i83OuE-aXOM: 2
+   gpnLjfnZ2qM: 1
+   UK6LKszd73M: 3
+   Prkv45GfGUg: 1
+   v7LyUzKWGfQ: 1
+   UaGiOdogC7o: 1
+   XSJnX9oe_is: 1
+   rmDPFHdE448: 1
+
+Channel ID: UCrTFPf6rq5OUSWb7ILW9trg
+No of video IDs: 1
+Video IDs: T9FsKfPz4iQ
+No of transcript chunks with advice predicted:
+   T9FsKfPz4iQ: 6
+
+Channel ID: UCrYmtJBtLdtm2ov84ulV-yg
+No of video IDs: 7
+Video IDs: -2svLnsky0A, L4kldDbR6mI, iNwMSJza4Wc, tvRbVh4JCP4, iMGJnaFLz-w, MlGa0fXIE-o, dgpz5fckgec
+No of transcript chunks with advice predicted:
+   -2svLnsky0A: 2
+   L4kldDbR6mI: 1
+   iNwMSJza4Wc: 2
+   tvRbVh4JCP4: 2
+   iMGJnaFLz-w: 7
+   MlGa0fXIE-o: 3
+   dgpz5fckgec: 1
+
+Channel ID: UCtR_Pn4XLjLU53LhRqYrJTQ
+No of video IDs: 34
+Video IDs: DxZu6kUa5FM, 90hq6GIxJTw, Ui4RFGPIGDg, CpIW-Mtg5X4, 9ozbvy8AxuU, 2BntbmUnLaM, M0dix6hsf0M, dMjiR9B-ts4, PnFOPT4JWp0, EZl0ntQwsoI, 8YAMt5Tt24Q, pG2zv-XowYs, PlVV8V6CFRI, qp4Aalv-Av4, 8Xr-dS8sdSE, z4ra-cLXGZ4, WMUyhTfppNY, 2OAK2pYOMxw, FlwhiNckwRQ, LR9Ign86zZw, z3rZxTPw2VM, SzlO6x6imr4, on8OzKfeu58, m396VLNXmnU, LzcL9q8y88o, txzxXFKe6DU, Az251B6logo, IPld39yx0tY, IxfgrEaO50c, 8LNyH1ITSdY, RSMnV9f5pwg, 91vRKK5UcWo, hcMwHl-XT0w, UHePcNBzGG0
+No of transcript chunks with advice predicted:
+   DxZu6kUa5FM: 5
+   90hq6GIxJTw: 8
+   Ui4RFGPIGDg: 5
+   CpIW-Mtg5X4: 5
+   9ozbvy8AxuU: 5
+   2BntbmUnLaM: 7
+   M0dix6hsf0M: 7
+   dMjiR9B-ts4: 1
+   PnFOPT4JWp0: 4
+   EZl0ntQwsoI: 5
+   8YAMt5Tt24Q: 6
+   pG2zv-XowYs: 3
+   PlVV8V6CFRI: 2
+   qp4Aalv-Av4: 2
+   8Xr-dS8sdSE: 3
+   z4ra-cLXGZ4: 2
+   WMUyhTfppNY: 5
+   2OAK2pYOMxw: 2
+   FlwhiNckwRQ: 2
+   LR9Ign86zZw: 4
+   z3rZxTPw2VM: 6
+   SzlO6x6imr4: 2
+   on8OzKfeu58: 3
+   m396VLNXmnU: 5
+   LzcL9q8y88o: 4
+   txzxXFKe6DU: 2
+   Az251B6logo: 4
+   IPld39yx0tY: 4
+   IxfgrEaO50c: 1
+   8LNyH1ITSdY: 5
+   RSMnV9f5pwg: 5
+   91vRKK5UcWo: 1
+   hcMwHl-XT0w: 1
+   UHePcNBzGG0: 1
+
+Channel ID: UCtlAFoYl2aWb6pMiHCctQHA
+No of video IDs: 16
+Video IDs: x6EyI_hLtJg, 78LpNG_rbI8, CWcD7JF8ebw, k-MQaDfd250, 9hHst4KVwkI, HlnalLo0SjE, Uf4XG3UTBaY, 9cuPzYAy6-c, jCHS6FnwzIs, Tl3XklQmH-I, a27iSIhq3HE, 57tHaO27V7k, t_tAmAQ5lXw, lyGYriulJJs, zSkM8JgAeLA, 8oJyIzX6rv8
+No of transcript chunks with advice predicted:
+   x6EyI_hLtJg: 3
+   78LpNG_rbI8: 2
+   CWcD7JF8ebw: 2
+   k-MQaDfd250: 2
+   9hHst4KVwkI: 1
+   HlnalLo0SjE: 2
+   Uf4XG3UTBaY: 2
+   9cuPzYAy6-c: 1
+   jCHS6FnwzIs: 2
+   Tl3XklQmH-I: 1
+   a27iSIhq3HE: 1
+   57tHaO27V7k: 1
+   t_tAmAQ5lXw: 1
+   lyGYriulJJs: 1
+   zSkM8JgAeLA: 1
+   8oJyIzX6rv8: 1
+
+Channel ID: UCttOH_2-KaxkYa7Fh09r5oA
+No of video IDs: 1
+Video IDs: nkLWG5yTMTk
+No of transcript chunks with advice predicted:
+   nkLWG5yTMTk: 1
+
+Channel ID: UCu7Sre5A1NMV8J3s2FhluCw
+No of video IDs: 28
+Video IDs: nOLYdBEB5Pg, S9urRPApxy4, A4eRXTsNx6I, cY8FMSuLvVQ, KKw3rCCpf44, LpX93GvEvG4, -qhTxdKHlbY, WJl2SodWhqc, cLYCNFV69s4, xA-A6JynmOE, RDn0UfDb2GY, ceob8tvCVaw, BDDAvsV7-l4, LxqIKK0NRaI, psa3mZFj4Gg, s1TOtBPFipk, AkxAdYKBUEg, 7ttJPvqKBDg, YjFOj1M7ZOo, cvPUX_K2NTs, ec6tfiwBQYU, kXF1j6XSuPo, h0OSag4Mapc, sIeErgLAoVU, A5SZCv1KkjY, h6aIxB882LM, A3XWuoUhmcM, GPw3EJsaZdA
+No of transcript chunks with advice predicted:
+   nOLYdBEB5Pg: 2
+   S9urRPApxy4: 2
+   A4eRXTsNx6I: 5
+   cY8FMSuLvVQ: 2
+   KKw3rCCpf44: 3
+   LpX93GvEvG4: 5
+   -qhTxdKHlbY: 4
+   WJl2SodWhqc: 5
+   cLYCNFV69s4: 4
+   xA-A6JynmOE: 6
+   RDn0UfDb2GY: 3
+   ceob8tvCVaw: 5
+   BDDAvsV7-l4: 4
+   LxqIKK0NRaI: 3
+   psa3mZFj4Gg: 3
+   s1TOtBPFipk: 2
+   AkxAdYKBUEg: 2
+   7ttJPvqKBDg: 3
+   YjFOj1M7ZOo: 3
+   cvPUX_K2NTs: 1
+   ec6tfiwBQYU: 3
+   kXF1j6XSuPo: 1
+   h0OSag4Mapc: 1
+   sIeErgLAoVU: 1
+   A5SZCv1KkjY: 1
+   h6aIxB882LM: 2
+   A3XWuoUhmcM: 1
+   GPw3EJsaZdA: 2
+
+Channel ID: UCvSXMi2LebwJEM1s4bz5IBA
+No of video IDs: 3
+Video IDs: Q-0x8AbUam8, 7l3hyQDvKuw, U9KxB0BKf-I
+No of transcript chunks with advice predicted:
+   Q-0x8AbUam8: 1
+   7l3hyQDvKuw: 2
+   U9KxB0BKf-I: 1
+
+Channel ID: UCviqt5aaucA1jP3qFmorZLQ
+No of video IDs: 24
+Video IDs: Aadox_2RbdE, ziyaJLxVfmc, UUivm1DMdX4, h5ZDjK1ad8o, hA0jafKpRkc, FSRRKFuoD-8, 0liZ8jG3yUY, BLdRGPDOqJw, T_v4pW9o7a4, Yn4sKVdJiUU, -ZP59yjtV5M, ueDPXW4dSaw, RSEJUFS4S4w, LDY4fEHHp3s, uPz0uTgEVL8, PAlQA0Ldz6U, dzCjBqBoMnw, vp1VDZMMchI, __txWBAcQFk, zM6W96qUdXg, zZL50ZFvFBE, NUAq98MLoDY, JkZok_f2mQs, FO3JUZKGvSU
+No of transcript chunks with advice predicted:
+   Aadox_2RbdE: 3
+   ziyaJLxVfmc: 1
+   UUivm1DMdX4: 5
+   h5ZDjK1ad8o: 1
+   hA0jafKpRkc: 1
+   FSRRKFuoD-8: 4
+   0liZ8jG3yUY: 2
+   BLdRGPDOqJw: 5
+   T_v4pW9o7a4: 2
+   Yn4sKVdJiUU: 1
+   -ZP59yjtV5M: 5
+   ueDPXW4dSaw: 2
+   RSEJUFS4S4w: 4
+   LDY4fEHHp3s: 1
+   uPz0uTgEVL8: 1
+   PAlQA0Ldz6U: 1
+   dzCjBqBoMnw: 1
+   vp1VDZMMchI: 1
+   __txWBAcQFk: 1
+   zM6W96qUdXg: 1
+   zZL50ZFvFBE: 3
+   NUAq98MLoDY: 2
+   JkZok_f2mQs: 1
+   FO3JUZKGvSU: 1
+
+Channel ID: UCwsRWmIL5XKqFtdytBfeX0g
+No of video IDs: 14
+Video IDs: ZMghrnDpIRk, RabdrZT87oE, sncdDPGHmu4, eTa_w-KA5qQ, Kq6y7y57V7o, _qr6sNEAQsY, A_84dYLz_E0, nQRfsjJUzyk, zQMgwgDNNbE, OGd3uz4AO7s, lI7q_9ZvDGQ, XzUE4pUguAw, S3p1oKAeZvY, vlvMYOhM-LE
+No of transcript chunks with advice predicted:
+   ZMghrnDpIRk: 2
+   RabdrZT87oE: 4
+   sncdDPGHmu4: 2
+   eTa_w-KA5qQ: 1
+   Kq6y7y57V7o: 4
+   _qr6sNEAQsY: 1
+   A_84dYLz_E0: 1
+   nQRfsjJUzyk: 1
+   zQMgwgDNNbE: 4
+   OGd3uz4AO7s: 4
+   lI7q_9ZvDGQ: 1
+   XzUE4pUguAw: 4
+   S3p1oKAeZvY: 3
+   vlvMYOhM-LE: 3
+
+Channel ID: UCxyD6SQNbe8sh-jqo8eTfEg
+No of video IDs: 2
+Video IDs: rtgIVfezB-U, oc4rLzU4OKo
+No of transcript chunks with advice predicted:
+   rtgIVfezB-U: 1
+   oc4rLzU4OKo: 1
+
+Channel ID: UCyzDtZVP6Rlb-Yg3R5rY8Pg
+No of video IDs: 1
+Video IDs: v9MJHzDY8Vk
+No of transcript chunks with advice predicted:
+   v9MJHzDY8Vk: 6
+
+Channel ID: UCzBuoeqN94gdGcx5g4CgYNA
+No of video IDs: 17
+Video IDs: 86PFzsJRp9U, 9kedsUW0ypk, Rf-yQYoP8mY, E516JZbNFKE, afB0Q6kB-40, DqejEplBQ38, aDmOxuJE78A, Fi26SKWTKUc, cEATlnPfK4Q, RqIsrx9aCWs, ksYyJrg_Vw4, o7UqqnBmYeE, lN1Miz0AdHc, 7zgXuWZq2T8, YigzR_xfnCQ, pSg9UnXUqvk, ppE_tHkfyJg
+No of transcript chunks with advice predicted:
+   86PFzsJRp9U: 1
+   9kedsUW0ypk: 2
+   Rf-yQYoP8mY: 2
+   E516JZbNFKE: 4
+   afB0Q6kB-40: 2
+   DqejEplBQ38: 1
+   aDmOxuJE78A: 3
+   Fi26SKWTKUc: 2
+   cEATlnPfK4Q: 1
+   RqIsrx9aCWs: 4
+   ksYyJrg_Vw4: 1
+   o7UqqnBmYeE: 1
+   lN1Miz0AdHc: 2
+   7zgXuWZq2T8: 7
+   YigzR_xfnCQ: 2
+   pSg9UnXUqvk: 4
+   ppE_tHkfyJg: 5
+
