@@ -42,26 +42,27 @@ from keras.models import load_model
 
 
 
-""" Level 1 """
+""" Level 1 - Predicting presence of financial advice from the transcript chunks """
 """ 1 a. Getting transcript chunks that are tagged """
 # df = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/dataset_for_tagging_tagged.csv')
 # print(df['Source'].value_counts())
 # print(df[['Source', 'Advice']].value_counts())
 
-# # As I have only tagged a subset of the dataset originally planned for tagging, I have to keep the tagged for building the model
+# # As I have only tagged a subset of the dataset originally planned for tagging, I have to keep the tagged subset for building the model
 # df_tagged = df.dropna(subset=['Advice'], axis=0)
 # print(df_tagged[['Source', 'Advice']].value_counts())
 # print(df_tagged['Source'].value_counts())
-# # print(df_tagged.columns)
 # df_tagged.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/df_tagged_pm.csv', index=False)
 
 """ 1 b. Adding the embeddings to use as inputs """
+# 1 b i)
 # df_tagged = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/df_tagged_pm.csv')
 # transcripts_tagged_pm = df_tagged['combined_sentence'].tolist()
 #
+# # Define model used for the embeddings (chosen as it performed best on topic modelling on similar dataset)
 # sentence_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
 
-## Code below only needed if you want to save the embeddings
+## 1 b ii) Code below only needed if you want to save the embeddings
 # start_time = time.time()
 # embeddings_1_tagged_pm = sentence_model.encode(transcripts_tagged_pm)
 # end_time = time.time()
@@ -69,6 +70,7 @@ from keras.models import load_model
 # np.save('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Embeddings/embeddings_1_tagged_pm.npy', embeddings_1_tagged_pm)
 # df_tagged.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/df_tagged_pm_embedding_1.csv', index=False)
 
+## 1 b iii) Code below to be run instead of 1 b ii if saving the embeddings separately not necessary
 # df_tagged['embeddings'] = df_tagged['combined_sentence'].apply(sentence_model.encode)
 # df_tagged.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/df_tagged_pm_embedding_1.csv', index=False)
 
@@ -80,21 +82,21 @@ from keras.models import load_model
 # X = np.array(df_tagged_pm1['embeddings'].to_list())
 # y = np.array(df_tagged_pm1['Advice'].to_list())
 #
-# # Get the shape of the first embedding array
+# # Check shape of embedding array (needed for neural network later on) # shape = 384
 # first_shape = len(X[0])
-#
 # # Check if all embeddings have the same shape
 # all_same_shape = all(len(arr) == first_shape for arr in X)
-#
 # if all_same_shape:
 #     print("All embeddings have the same shape:", first_shape)
 # else:
 #     print("Embeddings have different shapes")
 #
-# # Split the data into training and testing sets (for k-fold cross-validation)
+
+# # Split the data into training and testing sets. Stratify ensures same ratio of positive cases in the test dataset as in training dataset. 20% to test dataset.
 # X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
 
 # # # """ 1 d. Train models on the training dataset """
+## Trying LazyClassifer first to get an idea of which types of models appear to do the prediction task well
 # # clf = LazyClassifier(verbose=0, ignore_warnings=True, custom_metric=None)
 # # models_summary, _ = clf.fit(X_train, X_test, y_train, y_test)
 # #
@@ -119,10 +121,13 @@ from keras.models import load_model
 # # print("Classification reports saved to classification_reports.txt")
 #
 # """ 1 d Training models from 1 c using cross validation and SMOTE """
+# Training the models from 1 c and other models using k-fold cross validation and also with the inclusion of SMOTE.
 # SMOTE is a technique for oversampling of positive cases in an unbalanced dataset
+#
+#
 # cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
 #
-# # Define the list of models
+# # Define the list of models I will train (2 not #'d out are the two best models, to see the rest remove the #)
 # models = [
 #     # ('BernoulliNB', BernoulliNB()),
 #     # ('NearestCentroid', NearestCentroid()),
@@ -148,16 +153,16 @@ from keras.models import load_model
 #     ]))
 # ]
 #
-# # Compile neural network models before the loop
+# # Compile neural network model before training
 # for model_name, model in models:
 #     if isinstance(model, Sequential):
 #         model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 #
-#
+# # The below code trains the models using cross validation and using SMOTE. The metrics are written to a txt file for comparison
 # # Lists to store metric scores for each model
 # avg_metric_scores = []
 #
-# # .txt files of model_evaluation.txt and model_evaluation_no_smote.txt run the models # out above.
+# # .txt files of model_evaluation.txt and model_evaluation_no_smote.txt run the models #'d out above. model_evaluation_main2.txt just shows the LR and NN models.
 # # To re-run simply uncomment out the models in the model list above
 #
 # # Open txt file for outputs
@@ -171,7 +176,7 @@ from keras.models import load_model
 #             X_train, X_test = X[train_index], X[test_index]
 #             y_train, y_test = y[train_index], y[test_index]
 #
-#             # Apply SMOTE to the training set (remove and include line below to use no smote)
+#             # Apply SMOTE to the training set (remove and include line #'d in if/else statement below to use no smote)
 #             smote = SMOTE(random_state=42)
 #             X_train_resampled, y_train_resampled = smote.fit_resample(X_train, y_train)
 #
@@ -215,7 +220,7 @@ from keras.models import load_model
 #         elif model_name == 'LogisticRegression':
 #             joblib.dump(model, 'C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/logistic_regression_model.pkl')
 #
-# """ 1 e Parameter Tuning the best model """
+# """ 1 e Testing the best model on test dataset & parameter tuning the best model """
 # # Load the best model obtained from cross-validation
 # best_model = load_model('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/feedforward_nn_model.h5')  # Replace with the actual path to the saved model
 #
@@ -241,8 +246,12 @@ from keras.models import load_model
 #     f.write("Classification Report: \n")
 #     f.write(class_report)
 
+## Given the success of the model in predicting financial advice, no tuning was necessary & the model with parameters as is is chosen
+
 """ 1 f Using the model on the untagged data to flag which transcript chunks and thus which videos & YouTubers are giving financial advice """
 nn_model = load_model('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/feedforward_nn_model.h5')
+
+## Combining metadata and transcript chunk data for the untagged transcripts. Model will help identify which of these require further investigation
 
 # df_tagged = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/df_tagged_pm.csv')
 # all_transcript_chunks_with_ID = pd.read_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/df_for_randomisation.csv")
@@ -258,11 +267,11 @@ nn_model = load_model('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Pre
 ## Define sentence model
 sentence_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
 
-# Embed the transcript chunks using same embedding method as training dataset
+# Embed the transcript chunks using same embedding method as we did for the training & testing datasets
 # untagged_df['embeddings'] = untagged_df['combined_sentence'].apply(sentence_model.encode)
 # untagged_df.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/full_transcript_chunks_AdviceTag_embedding1.csv', index=False)
 
-# # import to avoid embedding each time the script runs
+# # import to avoid embedding each time the script runs (can skip the lines above)
 # untagged_df = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/full_transcript_chunks_AdviceTag_embedding1.csv')
 # untagged_df['embeddings'] = untagged_df['embeddings'].apply(lambda x: [float(val) for val in x[1:-1].split()])
 #
@@ -290,6 +299,7 @@ sentence_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
 # video_transcript_chunks_further_investigation = video_metadata_predictions.loc[predicted_advice_flag, relevant_columns]
 # video_transcript_chunks_further_investigation.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/predicted_advice_df_rel_var.csv', index=False)
 
+## With this dataset, I will write a document that investigators could use to identify the YouTube channels and videos predicted to contain advice
 ## ID the channel and videos for further inspection and write to file for investigators
 video_transcript_chunks_further_investigation = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/predicted_advice_df_rel_var.csv')
 
