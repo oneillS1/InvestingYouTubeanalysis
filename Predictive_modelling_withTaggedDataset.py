@@ -328,6 +328,7 @@ with open('channel_video_counts.txt', 'w') as f:
         for video_id in video_ids:
             row_count = channel_video_ids_predAdvice[(channel_video_ids_predAdvice['channelId'] == channel_id)
                                                                       & (channel_video_ids_predAdvice['ID'] == video_id)]['row_count'].values[0]
-            f.write(f'   {video_id}: {row_count}\n')
+            #video_name = video_transcript_chunks_further_investigation[video_transcript_chunks_further_investigation['ID'] == video_id]['title']
+            f.write(f'   {video_id} : {row_count}\n')
 
         f.write('\n')
