@@ -11,98 +11,920 @@ For any video ID mentioned below, one can watch it by adding the video id to the
 Channels and videos that are predicted to contain financial advice: 
  
 Channel ID: UC-5HLi3buMzdxjdTdic3Aig
-No of video IDs: 11
-Video IDs: 6ajkRnW6Mm4, 67iKCqo2RCY, JLWwdUSKYbQ, rIzuDm3n0DI, HmXYJbLXPXg, 5gs8vwQnInI, WTTmbjj0Z0c, Uby6wu8I0e4, 7dtdzn5vk7M, zBqvxUtqXhw, aQZ12XKhodE
+No of videos with advice predicted: 10
+Video IDs: 6ajkRnW6Mm4, 67iKCqo2RCY, zK2shli5UdM, JLWwdUSKYbQ, rIzuDm3n0DI, 5gs8vwQnInI, Uby6wu8I0e4, 7dtdzn5vk7M, zBqvxUtqXhw, aQZ12XKhodE
 No of transcript chunks with advice predicted:
-   6ajkRnW6Mm4 (147    Who Is ACTUALLY Using Ethereum? The Answer Mig...
-Name: title, dtype: object): 1
-   67iKCqo2RCY (384    Bitcoins Dominance, De-Listing Anonymous Coins...
-Name: title, dtype: object): 1
-   JLWwdUSKYbQ (495    I Bet You Had NO IDEA This Was Happening
-496    I Bet You Had NO IDEA This Was Happening
-Name: title, dtype: object): 2
-   rIzuDm3n0DI (497    This Coin Could SKYROCKET During The Next Bullrun
-498    This Coin Could SKYROCKET During The Next Bullrun
-Name: title, dtype: object): 2
-   HmXYJbLXPXg (499    I Promise, You Will NEVER Guess What Just Happ...
-Name: title, dtype: object): 1
-   5gs8vwQnInI (710    THESE Altcoins Could Outperform Next Bull Run
-Name: title, dtype: object): 1
-   WTTmbjj0Z0c (711    Top 10 Cryptocurrencies To Buy - (According To...
-Name: title, dtype: object): 1
-   Uby6wu8I0e4 (712    The HUGE News NO ONE Is Talking About
-713    The HUGE News NO ONE Is Talking About
-Name: title, dtype: object): 2
-   7dtdzn5vk7M (1477    Bitcoin The Multi Trillion Dollar Asset
-Name: title, dtype: object): 1
-   zBqvxUtqXhw (1478    When Will EOS Go Live? - How To Vote For Block...
-Name: title, dtype: object): 1
-   aQZ12XKhodE (1567    How To Get Crypto For Free
-Name: title, dtype: object): 1
+   6ajkRnW6Mm4 - Who Is ACTUALLY Using Ethereum? The Answer Might Surprise You: 3
+   67iKCqo2RCY - Bitcoins Dominance, De-Listing Anonymous Coins And Twitter Crypto Ad Ban: 1
+   zK2shli5UdM - NEW Ripple XRP Payments + Making Crypto Mainstream & HUGE Bitcoin Prediction for 2042: 2
+   JLWwdUSKYbQ - I Bet You Had NO IDEA This Was Happening: 1
+   rIzuDm3n0DI - This Coin Could SKYROCKET During The Next Bullrun: 3
+   5gs8vwQnInI - THESE Altcoins Could Outperform Next Bull Run: 1
+   Uby6wu8I0e4 - The HUGE News NO ONE Is Talking About: 3
+   7dtdzn5vk7M - Bitcoin The Multi Trillion Dollar Asset: 3
+   zBqvxUtqXhw - When Will EOS Go Live? - How To Vote For Block Producers: 1
+   aQZ12XKhodE - How To Get Crypto For Free: 1
 
 Channel ID: UC0BGhWsIbV7Dm-lsvhdlMbA
-No of video IDs: 20
-Video IDs: mzZI61kL2sc, 3irypwLDtTs, hEzDxnSUlIA, pVjDriSvN-U, H1XbtWdhZ5E, rEnGNbcySj0, mHTmYXGMalE, wt2wwoCfPSc, zbTn6HFaZok, 4G6cZrtVmuQ, j5pQOb5TXy0, izlDHnM5NDw, msseS6Jo4NM, _K9B7IMzzZw, 23hVNTdK-bc, 1rV1bArnUCU, MK2V6GKBmf0, zPrYUpECZKs, vkQzEEGqGxs, Q76bFUvxG6g
+No of videos with advice predicted: 15
+Video IDs: mzZI61kL2sc, 3irypwLDtTs, hEzDxnSUlIA, pVjDriSvN-U, H1XbtWdhZ5E, rEnGNbcySj0, mHTmYXGMalE, zbTn6HFaZok, 4G6cZrtVmuQ, 89pCfpw5OF0, izlDHnM5NDw, msseS6Jo4NM, _K9B7IMzzZw, 1rV1bArnUCU, Q76bFUvxG6g
 No of transcript chunks with advice predicted:
-   mzZI61kL2sc (9    BUY THIS @ 2.43? [SURGE LIKELY]
-Name: title, dtype: object): 1
-   3irypwLDtTs (10    BUY NOW @ $0.13? [HOT]
-11    BUY NOW @ $0.13? [HOT]
-12    BUY NOW @ $0.13? [HOT]
-13    BUY NOW @ $0.13? [HOT]
-Name: title, dtype: object): 4
-   hEzDxnSUlIA (929    THIS IS UNSTOPPABLE!
-930    THIS IS UNSTOPPABLE!
-931    THIS IS UNSTOPPABLE!
-932    THIS IS UNSTOPPABLE!
-933    THIS IS UNSTOPPABLE!
-Name: title, dtype: object): 5
-   pVjDriSvN-U (934    YOU HAVE 53 DAYS LEFT!
-935    YOU HAVE 53 DAYS LEFT!
-936    YOU HAVE 53 DAYS LEFT!
-Name: title, dtype: object): 3
-   H1XbtWdhZ5E (937    Stock Market For Beginners 2022 | FOR SMALL AC...
-938    Stock Market For Beginners 2022 | FOR SMALL AC...
-939    Stock Market For Beginners 2022 | FOR SMALL AC...
-940    Stock Market For Beginners 2022 | FOR SMALL AC...
-Name: title, dtype: object): 4
-   rEnGNbcySj0 (941    BUY FAST @ 0.77? [NEW CATALYST]
-942    BUY FAST @ 0.77? [NEW CATALYST]
-Name: title, dtype: object): 2
-   mHTmYXGMalE (1093    INSANITY INCOMING [watch before open]
-1094    INSANITY INCOMING [watch before open]
-Name: title, dtype: object): 2
-   wt2wwoCfPSc (1095    WARNING: THIS JUST COLLAPSED
-Name: title, dtype: object): 1
-   zbTn6HFaZok (1096    INSANITY INCOMING | moomoo
-1097    INSANITY INCOMING | moomoo
-1098    INSANITY INCOMING | moomoo
-1099    INSANITY INCOMING | moomoo
-Name: title, dtype: object): 4
-   4G6cZrtVmuQ (1100    BUY THIS FAST @ $0.84? [DETAILS]
-1101    BUY THIS FAST @ $0.84? [DETAILS]
-1102    BUY THIS FAST @ $0.84? [DETAILS]
-Name: title, dtype: object): 3
-   j5pQOb5TXy0 (1103    LAYOFFS ARE SKYROCKETING | Depression Warning
-Name: title, dtype: object): 1
-   izlDHnM5NDw (1171    THIS MAY SURGE? [setup breakdown]
-1172    THIS MAY SURGE? [setup breakdown]
-1173    THIS MAY SURGE? [setup breakdown]
-1174    THIS MAY SURGE? [setup breakdown]
-1175    THIS MAY SURGE? [setup breakdown]
-1176    THIS MAY SURGE? [setup breakdown]
-1177    THIS MAY SURGE? [setup breakdown]
-Name: title, dtype: object): 7
-   msseS6Jo4NM (1282    TOP 6 AI STOCKS TO BUY [SURGE LIKELY]
-1283    TOP 6 AI STOCKS TO BUY [SURGE LIKELY]
-Name: title, dtype: object): 2
-   _K9B7IMzzZw (1284    BUY NOW @ $0.76?  [DETAILS]
-1285    BUY NOW @ $0.76?  [DETAILS]
-1286    BUY NOW @ $0.76?  [DETAILS]
-1287    BUY NOW @ $0.76?  [DETAILS]
-1288    BUY NOW @ $0.76?  [DETAILS]
-1289    BUY NOW @ $0.76?  [DETAILS]
-Name: title, dtype: object): 6
-   23hVNTdK-bc (1290    BUY FAST AT $5.22? [MIGHT 10X..]
-1291    BUY FAST AT $5.22? [MIGHT 10X..]
-Name: title, dtype: object): 2
+   mzZI61kL2sc - BUY THIS @ 2.43? [SURGE LIKELY]: 1
+   3irypwLDtTs - BUY NOW @ $0.13? [HOT]: 4
+   hEzDxnSUlIA - THIS IS UNSTOPPABLE!: 3
+   pVjDriSvN-U - YOU HAVE 53 DAYS LEFT!: 3
+   H1XbtWdhZ5E - Stock Market For Beginners 2022 | FOR SMALL ACCOUNTS: 4
+   rEnGNbcySj0 - BUY FAST @ 0.77? [NEW CATALYST]: 1
+   mHTmYXGMalE - INSANITY INCOMING [watch before open]: 2
+   zbTn6HFaZok - INSANITY INCOMING | moomoo: 2
+   4G6cZrtVmuQ - BUY THIS FAST @ $0.84? [DETAILS]: 4
+   89pCfpw5OF0 - THIS IS COMING [48 HOURS]: 3
+   izlDHnM5NDw - THIS MAY SURGE? [setup breakdown]: 5
+   msseS6Jo4NM - TOP 6 AI STOCKS TO BUY [SURGE LIKELY]: 2
+   _K9B7IMzzZw - BUY NOW @ $0.76?  [DETAILS]: 4
+   1rV1bArnUCU - 7 Top Penny Stocks To Buy 🔥| June 2020: 5
+   Q76bFUvxG6g - 7 Top Penny Stocks To Buy 🔥| May 2020: 3
+
+Channel ID: UC12lnsYNt8_VthTNOuOGTmQ
+No of videos with advice predicted: 13
+Video IDs: ZoLKXrAIa_g, rxpOQkDozdQ, 9DKAuxO25ss, uEyJidRH9Go, hhmdYKsH2b0, _8GumRDBcXA, a8SPaKq9ABg, ZIv2tgjLj-0, YgGezddO7_8, _6I-0N7DEE0, f1kAl0zJqvs, tG9HiUH3fRU, 0-Rm37LAwT4
+No of transcript chunks with advice predicted:
+   ZoLKXrAIa_g - Tesla Stock | Sell it Now | 'Famous' Gordon Johnson: 1
+   rxpOQkDozdQ - Elon Musk & Tesla Just Flipped!: 1
+   9DKAuxO25ss - Huge News for Tesla Stock!!: 3
+   uEyJidRH9Go - Real Estate Just Got Much Worse!: 1
+   hhmdYKsH2b0 - Maverick of Wall Street Just Quit...: 4
+   _8GumRDBcXA - Nvidia & Palantir. Stocks to Buy Now?! or Sell?: 13
+   a8SPaKq9ABg - HSBC Just Paid $1 to Buy Silicon Valley Bank (SVB Bank): 1
+   ZIv2tgjLj-0 - DO NOT HOLD CASH RIGHT NOW!: 1
+   YgGezddO7_8 - Selling Now & Taking The Profit: 4
+   _6I-0N7DEE0 - Cathie Wood Just bought Palantir Stock!!!!! My thoughts: 7
+   f1kAl0zJqvs - I Have Great News if you own these Stocks!: 1
+   tG9HiUH3fRU - Tesla Stock Will Do This | Next 90 Days: 6
+   0-Rm37LAwT4 - I will Buy This Stock Soon: 5
+
+Channel ID: UC3mjMoJuFnjYRBLon_6njbQ
+No of videos with advice predicted: 5
+Video IDs: a_OTAxe9xFk, IQMl9-MxcoE, 0C-_N-5VlR8, tlXFnShBbXw, 8l6Wnr1RBjo
+No of transcript chunks with advice predicted:
+   a_OTAxe9xFk - Best Stocks For Beginners 📈 Top 5 Picks For New Investors!: 1
+   IQMl9-MxcoE - 5 ETFs to Own for Life to Become Rich: 2
+   0C-_N-5VlR8 - Bull vs Bear Market Explained: What's The Difference?: 1
+   tlXFnShBbXw - Farmland Investing For Beginners 2023 | How To Buy Land!: 1
+   8l6Wnr1RBjo - How To Buy Bitcoin In 2023 (& Store It Safely): 2
+
+Channel ID: UC4SK8IQ_u14VjUE8KtugSmw
+No of videos with advice predicted: 1
+Video IDs: wis3tT9knng
+No of transcript chunks with advice predicted:
+   wis3tT9knng - 5 Deeply DISCOUNTED Dividend Stocks To Buy In June 2023 💰: 4
+
+Channel ID: UC67AEEecqFEc92nVvcqKdhA
+No of videos with advice predicted: 22
+Video IDs: DFUs98kOHQY, tyci0fbMEZc, kXwtonUJcFU, U0qkxhdcqPE, YrnOxhI3lF0, iC4uhrvxSe0, lJRd1XwaIOg, wf9zHLiDWRk, 1xKD8oRktt0, u8blZPDgwk4, _w8UlTO97eY, 4hdgGfPkTkE, RPXMc36_d48, xcRVqogMCRg, SXspRnb-xJo, wmZQGy1GWQ4, g55JAdwVs2Q, oVU93f1Y6e4, dLMICWCFna4, p60yeVIfbfE, _IAqwiz7juE, TkkGX2K0O8g
+No of transcript chunks with advice predicted:
+   DFUs98kOHQY - The BEST Bitcoin & Crypto Investing Strategies THAT ACTUALLY WORK!: 3
+   tyci0fbMEZc - We've Been Lied To About Bitcoin: 1
+   kXwtonUJcFU - How To Relax Trading Crypto: 1
+   U0qkxhdcqPE - Crypto Trading Bots?: 1
+   YrnOxhI3lF0 - Keep This in Mind When Investing in Cryptocurrency: 1
+   iC4uhrvxSe0 - The Big Problem with Bitcoin: 1
+   lJRd1XwaIOg - Top 10 Crypto Currencies for 2018: 3
+   wf9zHLiDWRk - Crypto Content Cop - Suppoman & Trevon James: 5
+   1xKD8oRktt0 - Why Is Bitcoin Cash Exploding? The Cashening & Mining Profitability.: 1
+   u8blZPDgwk4 - $40 Billion Wiped in 10 Minutes: 6
+   _w8UlTO97eY - Bitcoin Downward Train? What is Bytecoin, Byteball, DigiByte and Bytom?: 1
+   4hdgGfPkTkE - Bitcoin or Alt Season... Has This Only Just Begun!?: 3
+   RPXMc36_d48 - Screaming at Coin Market Cap: 4
+   xcRVqogMCRg - Time to Buy?: 2
+   SXspRnb-xJo - Is it Too Late to Buy Bitcoin Now?: 4
+   wmZQGy1GWQ4 - Time to Buy The Bitcoin Dip?: 1
+   g55JAdwVs2Q - Whales Are Buying Bitcoin Under $50k – Here’s Why: 3
+   oVU93f1Y6e4 - Which Cryptocurrencies I'm Buying!: 1
+   dLMICWCFna4 - Crypto Tax: 1
+   p60yeVIfbfE - The News We've Been Waiting For?: 1
+   _IAqwiz7juE - The $250k BTC by 2020: 3
+   TkkGX2K0O8g - Bitcoin Fork, THE DUMPENING - Should we Fear?: 1
+
+Channel ID: UC788SahZNYCdVKyUFCFinVA
+No of videos with advice predicted: 1
+Video IDs: INgZ0aPePkk
+No of transcript chunks with advice predicted:
+   INgZ0aPePkk - TOP 5 CRYPTO TO BUY IN JUNE 2023! (Massive Potential!!): 4
+
+Channel ID: UCBLftV9ZsgTxoMZWPfIUKGw
+No of videos with advice predicted: 1
+Video IDs: Yzqyo0NY7F8
+No of transcript chunks with advice predicted:
+   Yzqyo0NY7F8 - Next BIG Crypto MOVE Is Coming! (Prepare For This CATALYST!): 3
+
+Channel ID: UCBayuhgYpKNbhJxfExYkPfA
+No of videos with advice predicted: 7
+Video IDs: 1axXKjgCe84, 32QhRORiqGk, 8h1xWOkgrpI, JMcaRfFThmg, y3USmdoXKt8, Fe4BaF8gCOQ, 1vGVwEaIBag
+No of transcript chunks with advice predicted:
+   1axXKjgCe84 - How to Cut Losers Faster: 1
+   32QhRORiqGk - $CHSN $HCDI Momo Stocks: 1
+   8h1xWOkgrpI - Day Trading Tips: How To Build A Watch List: 2
+   JMcaRfFThmg - How to Trade Breaking News 📰: 1
+   y3USmdoXKt8 - I asked ChatGPT to make me a Day Trading Strategy, and it did! Sort of..: 1
+   Fe4BaF8gCOQ - My Day Trading Strategy for 2023 $LIPO +100%: 1
+   1vGVwEaIBag - [LIVE] Day Trading Morning Show with Ross Cameron #stocks #daytrading: 2
+
+Channel ID: UCBjrrP9frGRuRwoAJ4RQdag
+No of videos with advice predicted: 1
+Video IDs: Us7HiZIcWb4
+No of transcript chunks with advice predicted:
+   Us7HiZIcWb4 - Simple Method To Make $100 A Day Trading Cryptocurrency As A Beginner | Binance Tutorial Guide: 2
+
+Channel ID: UCC7xhD0o7FBHdKXZxMRFspQ
+No of videos with advice predicted: 1
+Video IDs: zs52gMG9fyQ
+No of transcript chunks with advice predicted:
+   zs52gMG9fyQ - 5 TOP Dividend Stocks To Buy In June 2023: 2
+
+Channel ID: UCCatR7nWbYrkVXdxXb4cGXw
+No of videos with advice predicted: 28
+Video IDs: HhYsGjxYjbs, ByvURTZLSf8, p4UXdvAwmgg, EO-wSgwn7u0, fmuwT2L3u4E, mDN94E2MRNM, cpT5Z-Nlc2E, 6acmEYT3adY, GOyBgum-cg4, iAhFhdSbtgg, b4tg5XiI5l4, kShqEyNib2k, X0AjxdE2ZsA, 0dph0dUMWEo, LrouAGf00Sk, FOIy_kPlu5M, 9uwOjXd1OH0, 6HwF3ejSpIU, iAmbpMXDh94, SZPGD0rOIRI, DJnv6tbbK3A, qXWsTozY3k0, OVlQ8Pgcq8w, dLLUIeHH-3A, nFU019GGTxY, NJ3oHc_lzws, tvIYRGdZwdg, yfNGjW9mWCY
+No of transcript chunks with advice predicted:
+   HhYsGjxYjbs - Three Ways To Invest In Cryptocurrencies: 1
+   ByvURTZLSf8 - Trading Tip #17: The Differences of Investing in Stocks and Cryptocurrencies: 1
+   p4UXdvAwmgg - Trading Tip #15: How To Make Day Trading Simple: 4
+   EO-wSgwn7u0 - A Brutally Honest Take On Bitcoin For 2023 | "Patience Is Key...": 3
+   fmuwT2L3u4E - An Honest Bitcoin Perspective You Need To Hear...: 4
+   mDN94E2MRNM - Ledger Nano X Setup Tutorial | Beginners Guide: 1
+   cpT5Z-Nlc2E - Why The Crowd Is Wrong About Bitcoin: 5
+   6acmEYT3adY - Bitcoin | How Bad Can It Really Get?: 6
+   GOyBgum-cg4 - No...Michael Saylor Didn't Sell His Bitcoin 🤦‍♂️: 5
+   iAhFhdSbtgg - Bitcoin Hits $23,000 | Why Is This Happening?: 3
+   b4tg5XiI5l4 - Ethereum Isn't Dead...And Here's Why: 5
+   kShqEyNib2k - Shiba Inu Dumps 45% In 8 Days | Here's What You Need To Know: 5
+   X0AjxdE2ZsA - Bitcoin Can't Be In A Bull Market Until This Happens...: 2
+   0dph0dUMWEo - Top 3 Coins to Watch in June | NANO, NULS, & POA: 3
+   LrouAGf00Sk - Is Bitcoin About To Collapse? | The '137,890 BTC' Flash Crash: 4
+   FOIy_kPlu5M - How to Invest in Commodities For Beginners: 3
+   9uwOjXd1OH0 - Bitcoin Flash Crashes -15% | Here's What You Need To Know: 2
+   6HwF3ejSpIU - Here's Why A Bitcoin Sell-Off Is Coming Very Soon...: 1
+   iAmbpMXDh94 - This One Bitcoin Metric Could Signal A Coming Breakout: 2
+   SZPGD0rOIRI - Trading Tip #20: How to Use Volume to Spot Opportunities: 1
+   DJnv6tbbK3A - Bitcoin vs. Ethereum | What Should You Buy?: 5
+   qXWsTozY3k0 - Trading Tip #19: How to trade market cycles: 2
+   OVlQ8Pgcq8w - Could Bitcoin Really Go To $100,000 In The Next Cycle?: 6
+   dLLUIeHH-3A - The Verdict on the Bitcoin Fork: 2
+   nFU019GGTxY - Is It Time To Buy Avalanche or Solana? | Here's What You Need To Know: 8
+   NJ3oHc_lzws - The Next Super-Cycle For Altcoins | DeFi & Enterprise Blockchain: 2
+   tvIYRGdZwdg - Is Bitcoin Set To Breakout Above $10K? | FED Commits New Wave Of Credit Injection: 3
+   yfNGjW9mWCY - I’m in the Netherlands! | Bitcoin hits resistance and 95% of volume is fake?: 1
+
+Channel ID: UCDBroOWVP4aN8SYM0br6sJQ
+No of videos with advice predicted: 1
+Video IDs: u4Adtp04JxI
+No of transcript chunks with advice predicted:
+   u4Adtp04JxI - How to Start Investing for Beginners | Tips For Your 20’s: 2
+
+Channel ID: UCG9FGwgAx9-RKq1smF1lc8w
+No of videos with advice predicted: 13
+Video IDs: 28aZp3n6mmg, WNj4hHxWj2g, Cy-jss4E52A, M591pP9tJIk, HdHnrFH79T0, wl1q-iMZf34, jeW41cEQVCM, XmUMcRVN5O8, dx1Yay7lw08, 0hd95qLNO4w, t1Sn-KeFzE4, -QPkrJXiBFs, xkPAzCUiTiA
+No of transcript chunks with advice predicted:
+   28aZp3n6mmg - Stock Market Crash 2020: How Mohnish Pabrai is Investing: 1
+   WNj4hHxWj2g - 100-Bagger Stocks and How to Find Them: 1
+   Cy-jss4E52A - How to Invest $10,000: 1
+   M591pP9tJIk - Reaction: I Asked Wall Street Millionaires For Investing Advice (@JordanWelch): 1
+   HdHnrFH79T0 - The Buffett Lesson That Changed My Investing Strategy: 1
+   wl1q-iMZf34 - Buffett’s 3 Reasons For All Bad Investments: 2
+   jeW41cEQVCM - Warren Buffett: Investing Small Sums Of Money (Position Sizing): 1
+   XmUMcRVN5O8 - The Future of Berkshire Hathaway (After Warren Buffett): 2
+   dx1Yay7lw08 - Stock Multiples: How To Tell If A Stock Is Undervalued | P/E, P/B, & EV/EBIT Ratios: 1
+   0hd95qLNO4w - How to: BUY STOCKS WHEN OTHERS ARE FEARFUL: 4
+   t1Sn-KeFzE4 - Norbert Lou: "It was a 5x in three years" (Quinsa Stock) | Norbert Lou's Greatest Hits Ep. 1: 1
+   -QPkrJXiBFs - Munger: “I would never sell a share” (Costco Stock) | Charlie's Greatest Hits Ep. 3: 2
+   xkPAzCUiTiA - Going All In on Bitcoin: 1
+
+Channel ID: UCGL9ubdGcvZh_dvSV2z1hoQ
+No of videos with advice predicted: 7
+Video IDs: cjXQPIb_xtM, PLfJkb5Ydbw, fHXPu-EDb6M, PosvpZRMIjA, 4tHTUc1sav8, k3HrQQszqX4, vb7Lx4jmmSo
+No of transcript chunks with advice predicted:
+   cjXQPIb_xtM - How To Get The Most Profit Out Of Your Winning Trades (Forex, Crypto, and Stocks): 1
+   PLfJkb5Ydbw - The Moving Average Trading Strategy I Was Never Going To Share...(Revealed): 1
+   fHXPu-EDb6M - I Failed At Price Action Trading, Until I Applied This Pro Trading Process That Fixed Everything...: 1
+   PosvpZRMIjA - Forex: YOU HAVE BEEN LIED TO... (Don't TRUST Anyone... even me): 1
+   4tHTUc1sav8 - Beginners Guide To Your First Crypto Trade and Stop Loss (Only Video You Will Need...): 1
+   k3HrQQszqX4 - How To Trade The 1 Hour Chart (as a beginner): 1
+   vb7Lx4jmmSo - Is It Time To BUY Bitcoin?: 1
+
+Channel ID: UCGy7SkBjcIAgTiwkXEtPnYg
+No of videos with advice predicted: 4
+Video IDs: 2I_GZebHd8Y, jiSel4EEonM, fAmdC64KKdM, 2H05cIQH058
+No of transcript chunks with advice predicted:
+   2I_GZebHd8Y - How I Pick My Stocks: Investing for Beginners: 1
+   jiSel4EEonM - My Investment Plan Before The Crash: 1
+   fAmdC64KKdM - How To Buy Bitcoin SAFELY | Step By Step Guide: 1
+   2H05cIQH058 - What Will Happen To Your Money In 2023: 4
+
+Channel ID: UCGyqEtcGQQtXyUwvcy7Gmyg
+No of videos with advice predicted: 1
+Video IDs: X2SUrklRy3Y
+No of transcript chunks with advice predicted:
+   X2SUrklRy3Y - NEXT BIG CRYPTO GEM | READY For BIG MOVES Aleph Zero Azero 🚀: 1
+
+Channel ID: UCHXe1Bfz_-rzf_e-eEoimrg
+No of videos with advice predicted: 1
+Video IDs: trqIMWXAUfI
+No of transcript chunks with advice predicted:
+   trqIMWXAUfI - ELON MUSK SAYS THIS IS THE NEXT BIG CRYPTO (RETIRE EARLY WITH THIS ALTCOIN): 1
+
+Channel ID: UCHop-jpf-huVT1IYw79ymPw
+No of videos with advice predicted: 1
+Video IDs: f60nR1XcW-o
+No of transcript chunks with advice predicted:
+   f60nR1XcW-o - I’ve Found the Next BIG Crypto Narrative of This BULLRUN!!! ( 2 Altcoins Will Explode): 1
+
+Channel ID: UCI7M65p3A-D3P4v5qW8POxQ
+No of videos with advice predicted: 20
+Video IDs: atD3ik7fnI8, rrp8Undxcik, XW7FGmgS-9s, KDGfjaGehSo, JBTR45kRe9I, LqFyWxRnwiw, gVjh-hVfcc8, Ojrkuq77HFE, Sq2AIgRN1Lw, 6JX2eN9eYl8, _zl0R5tMH5U, Av9ypMylguE, zF-FZfl1d60, rKMkYsQuB-s, 9W0uBdZkON4, 3vkZMbTdV3Q, eu4oSCDdbBE, gVtxORF86so, yNWlo3GHLI4, YMTOgqgJwF0
+No of transcript chunks with advice predicted:
+   atD3ik7fnI8 - Learn How to Build Your 2021 Crypto Portfolio in 15 mins: 3
+   rrp8Undxcik - DAVE PORTNOY REKT AND DONE WITH BITCOIN | LESSONS TO LEARN: 3
+   XW7FGmgS-9s - THE CASE FOR BITCOIN REACHING $487,000 | NOT A DREAM: 2
+   KDGfjaGehSo - Bitcoin DUMP - Why?  More To Come? Any Good Pickup?: 1
+   JBTR45kRe9I - BUY BITCOIN BEFORE LABOR DAY | GEORGE BALL EX-CEO PRUDENTIAL SECURITIES: 2
+   LqFyWxRnwiw - Bitcoin Is Under IMMENSE Pressure Because Of This…: 3
+   gVjh-hVfcc8 - BITCOIN BULL RUN OVER? | PORTNOY ENCOURAGES PUMP AND DUMP | CHAINLINK UPDATE: 1
+   Ojrkuq77HFE - Bitcoin is 'FUNNY MONEY' | Dave Ramsey's Reaction to Caller Who Made $100,000 with BTC: 1
+   Sq2AIgRN1Lw - Bitcoin in 2023...Give Up or Stay Hopefu: 1
+   6JX2eN9eYl8 - MAXIMIZE Your DeFi Gains With This Crypto!: 4
+   _zl0R5tMH5U - 1 Bitcoin Will Make You A Millionaire | Achieve Financial Freedom: 2
+   Av9ypMylguE - bitcoin has never been in this situation: 2
+   zF-FZfl1d60 - Top 10 Most Googled Crypto in 2022: 4
+   rKMkYsQuB-s - If You Bought Bitcoin At Top...WATCH THIS: 3
+   9W0uBdZkON4 - BITCOIN BREAKS MAJOR TREND LINE | RIPPLE'S CHRIS LARSEN CHIMES IN: 2
+   3vkZMbTdV3Q - Jim Cramer's Genius Thoughts About Silicon Valley Bank (SVB): 2
+   eu4oSCDdbBE - [URGENT UPDATE] - BITCOIN SHATTERS ATH $66,000: 1
+   gVtxORF86so - Bitcoin Above $10,000 - Why the Sudden Jump?: 2
+   yNWlo3GHLI4 - Jim Cramer Reports "Business as Usual" for First Republic Bank: 1
+   YMTOgqgJwF0 - WHY POLYGON MATIC IS SOARING: 1
+
+Channel ID: UCIxBJrZ5WTanHI6ZTa9QGRQ
+No of videos with advice predicted: 1
+Video IDs: E4MNrzXax-0
+No of transcript chunks with advice predicted:
+   E4MNrzXax-0 - 5 Cryptocurrency Tips for Beginners In 2022 - Newbies Should Know!: 2
+
+Channel ID: UCKQvGU-qtjEthINeViNbn6A
+No of videos with advice predicted: 11
+Video IDs: bsuespwe_uY, IRavvVM6AVs, WwotytnkYRQ, jLcnYd6Ki0E, A5DAoRLDN0w, hfmloFUxJ1Q, 5GvNYH4KhZQ, -N0ccyDr-ng, mOwnz-M_vo8, YHM9MyJVLFE, bwqQVIQkz5Q
+No of transcript chunks with advice predicted:
+   bsuespwe_uY - How I Get "Dark Web" 100x ROI Alt Coins: 3
+   IRavvVM6AVs - $10,000 A Day Flipping Micro Alt Coins (Easy & Quick): 2
+   WwotytnkYRQ - SELL Cardano LITERALLY Right NOW (Actually Urgent): 5
+   jLcnYd6Ki0E - DUMP DOGE Into These Coins BEFORE May (Massive Pump): 9
+   A5DAoRLDN0w - Grab These 10x Alt Coins NOW (Actually Urgent Alt Guide): 2
+   hfmloFUxJ1Q - Crypto Youtuber Tier List: 4
+   5GvNYH4KhZQ - Cardano Ecosystems Will 10x Soon (Actually Urgent): 12
+   -N0ccyDr-ng - BITCOIN Will CRASH If This Happens: 5
+   mOwnz-M_vo8 - THIS IS TERRIFYING...STOP BUYING DOGE COIN NOW!: 5
+   YHM9MyJVLFE - These NEW Alt Coins Will 100x In 24 Hours (Epic Early Buy IDO Guide): 6
+   bwqQVIQkz5Q - Bitcoin Will Crash More, Buy Back HERE: 8
+
+Channel ID: UCKvWzzrVUA_DSCoKXL6GU2w
+No of videos with advice predicted: 6
+Video IDs: -nSODrSo7nY, aXW2MqrqZU0, Xqf06imGofs, d6NB5_5Lkfk, lcvbNkI5b0U, dUpsw-BmRco
+No of transcript chunks with advice predicted:
+   -nSODrSo7nY - Cambria Webinar (replay) - Framework for Tail Hedging with Meb Faber: 1
+   aXW2MqrqZU0 - Tim Alcorn, Baillie Gifford – Lessons from Bessembinder (The Best Investment Writing Volume 6): 1
+   Xqf06imGofs - Cambria Fund Profile Series – Cambria Shareholder Yield ETFs (SYLD) (FYLD) (EYLD): 2
+   d6NB5_5Lkfk - 167 - The Cannabis Opportunity: 2
+   lcvbNkI5b0U - The Best Investment Writing Volume 3: Aswath Damodaran – The Perils of Investing Idol Worship: The: 2
+   dUpsw-BmRco - Buying Pizza With Bitcoin: 1
+
+Channel ID: UCL-F-8nxFtFZ4M3RWkGn6Qw
+No of videos with advice predicted: 1
+Video IDs: _hICV8ZpppU
+No of transcript chunks with advice predicted:
+   _hICV8ZpppU - This Popular AI Stock Is CRASHING - Is It A Buy?: 4
+
+Channel ID: UCLo66QVfEod0nNM_GzKNxmQ
+No of videos with advice predicted: 17
+Video IDs: Gq3rem1jd-Y, 60_OaOOZaAo, C8p8XoKzd4w, ZXHotricTTw, JjCuxckpJ9E, xNZlo2EUfwQ, XwyxQjBTqIs, gq9T2vLiDig, Z0NMPUv6fcM, wrcsRKlCX_M, goVx267uuqw, LSkEWrCT-eo, n6P6o-say-0, mSCE7HX45_A, 3axTuhX-L58, gqTNXd00ZeM, l5iaOkW81vg
+No of transcript chunks with advice predicted:
+   Gq3rem1jd-Y - Top Crypto Trading Tips For Altseason: 4
+   60_OaOOZaAo - Top Cryptocurrency Tips: 2
+   C8p8XoKzd4w - Bitcoin/Altcoin Correlation Explained - Part 1: 2
+   ZXHotricTTw - How To Consistently Pick Quality Projects: 2
+   JjCuxckpJ9E - Altcoin Trading Pairs - USD vs Tether vs Bitcoin/Satoshi Value Clearly Explained: 1
+   xNZlo2EUfwQ - Member Content Bitcoin Flash Update - How To Predict Changes In Money Flow: 1
+   XwyxQjBTqIs - What is Navcoin (NAV)? - Interview with Alex & Paul: 1
+   gq9T2vLiDig - The Financial System Is Collapsing - How To Become Your Own Bank: 1
+   Z0NMPUv6fcM - How To Arbitrage The Physical Silver Shortage - Clearly Explained: 3
+   wrcsRKlCX_M - What's The Best Way Buy To Bitcoin? Dollar Cost Average Or Bulk Buy?: 2
+   goVx267uuqw - Emergency Update - Major Money Flows About To Occur: 4
+   LSkEWrCT-eo - Buy/Sell Walls and Order Books - What You Need To Know: 1
+   n6P6o-say-0 - Trading Entry & Exit Strategy - Is It Too Late To Buy Bitcoin & Crypto?: 4
+   mSCE7HX45_A - EtherDelta Tutorial - Clearly Explained: 1
+   3axTuhX-L58 - Dogethereum - Ethereum - Dogecoin Bridge: 1
+   gqTNXd00ZeM - Ethereum Technical Analysis - June 17th 2017: 1
+   l5iaOkW81vg - Optimistic Ethereum - How To Use Uniswap V3 Tutorial: 2
+
+Channel ID: UCN9Nj4tjXbVTLYWN0EKly_Q
+No of videos with advice predicted: 26
+Video IDs: 28vMbDcW_jA, bPCZfLsd7fU, YX-RZKjGV-M, WAImJuW-3iA, 04TTf55Z0lE, zSGCtoO4VJU, OPCxzupYLzA, -YG1o-xhX4k, jOOVrLrzZ7A, _5JULMp2Hls, 77o1LcX8T40, JlAdCox7cI8, y2IWGE_HIFU, zqq8MjdjoIk, lJcPsVg3cUQ, 8ihE2q0QkU8, 3EieOrx5r5E, fCWcfYoDPFk, oVEfVR_KxTk, oRSsr6VnOW4, 8Eosysbqiac, XNR-NNUh38w, KWaiAI6ZFrE, qHdw3vMpPz0, HnJryzzy9rY, haqeff3RZa8
+No of transcript chunks with advice predicted:
+   28vMbDcW_jA - How To Outsmart The Crypto Market And Position Yourself RIGHT NOW!: 5
+   bPCZfLsd7fU - The TOP Crypto Money-Making Strategies For 2023!: 4
+   YX-RZKjGV-M - Crypto Trading Masterclass 08 - How To Trade Cryptocurrency Using Moving Averages: 1
+   WAImJuW-3iA - Binance Spot Trading Tutorial: 2
+   04TTf55Z0lE - A Guide To Tokenomics In Crypto Gaming! | Which Tokens Have The Best Tokenomics?: 2
+   zSGCtoO4VJU - Crypto Trading Masterclass 12 - How To Master Fibonacci Retracement Tools To Trade Crypto: 1
+   OPCxzupYLzA - "BITCOIN IS DEFINITELY NOT AN INFLATION HEDGE" - MARK CUBAN. (BEST ADVICE FROM A BILLIONAIRE): 1
+   -YG1o-xhX4k - The US Dollar Is DYING (What It Means For You): 1
+   jOOVrLrzZ7A - How To Win a $43,000 Tesla For Just $1: 1
+   _5JULMp2Hls - Bull Trap Confirmed! | Crypto And Stocks To Make New Lows?: 5
+   77o1LcX8T40 - Don’t Miss The Easiest Crypto Trade This Week | 🚀 ETH Signal Flashes!: 4
+   JlAdCox7cI8 - Short ETH “Failed” Merge Using BitGet! (Top U.S. Exchange): 2
+   y2IWGE_HIFU - How Long Will The Bitcoin Range Continue To Hold? (Next Price Targets): 4
+   zqq8MjdjoIk - New Data Just In: Do Not Buy More Crypto Until You See This!: 3
+   lJcPsVg3cUQ - AI Altcoins That Can Give You 10X Returns! (And Other AI News): 6
+   8ihE2q0QkU8 - WATCH THIS BEFORE Investing In Vulcan Forged! | What is Vulcan Forged?: 3
+   3EieOrx5r5E - Too Late To Buy ALTCOINS? | These Are The Key Levels For These TOP Altcoins!: 9
+   fCWcfYoDPFk - Which Gaming Tokens Are SAFE To Buy? | What Happened To FTX Gaming!?: 4
+   oVEfVR_KxTk - Should I Buy Gala Games? | Gala Games Pros & Cons!: 9
+   oRSsr6VnOW4 - Wall Street Enters Web3! | What Are They Buying?: 2
+   8Eosysbqiac - Will Gala Film Nodes Live Up To The Hype?! (How To Buy & Use A Node): 4
+   XNR-NNUh38w - Alt Season OR Huge Trap? | Is It Too Late To Buy Crypto?: 7
+   KWaiAI6ZFrE - THESE Crypto Gaming Altcoins Could Give BIG Returns When Crypto BOUNCES!: 10
+   qHdw3vMpPz0 - $4 TRILLION To Pump BITCOIN & ALTCOINS? (What I'm Trading!): 16
+   HnJryzzy9rY - The Market Just Signaled A HUGE WARNING! (BITCOIN IN TROUBLE): 4
+   haqeff3RZa8 - BITCOIN NOW: dominance up, at resistance. Will BTC be sent higher?!: 1
+
+Channel ID: UCNttUtm9vloDjo-a2jqkoNQ
+No of videos with advice predicted: 20
+Video IDs: AMjhgbkQvf8, 2CHHi15AtIw, Bs8vu4CEARU, c-psoassiY8, fOJns7JUY4o, jACDruSwi1A, -Fy1KMt6miI, RzSSI_XptKk, pQxCiu_CxMk, vqlSKj97OhM, a3JV5FaRods, lgdVN2jc09A, _Dl_DOLeEH4, sLvGrqqkEyw, BwyeJbvmP9w, Mfe_j4384oM, Hat7aJ2Knfw, nRo0FlH1Wow, 0JulwSPVJvw, 3gpAXtDFV9E
+No of transcript chunks with advice predicted:
+   AMjhgbkQvf8 - Warning 🔥 Threat to YOUR Investment 🔥 #aapl #tsla #baba #btc #vfc: 4
+   2CHHi15AtIw - Wall Street Loading UP THESE AI Stocks 🔥 AI Stocks to Buy NOW 🔥: 5
+   Bs8vu4CEARU - Stocks to Buy Right Now |  Trading in a Recession ⚠️ 4 Pro Trading Tips: 2
+   c-psoassiY8 - Buying This Before Earnings 🚀: 3
+   fOJns7JUY4o - Buying this Stock ... Bears Bulls & Short Selling Sharks: 2
+   jACDruSwi1A - Big Tech | Who will win big in 2023 | Stock Market Analysis: 2
+   -Fy1KMt6miI - Top 10 in 10 Hot Stocks & Crypto Analysis #Tesla #SQQQ #Meta #smallcapstocks: 5
+   RzSSI_XptKk - EV Stocks will Crash 🔥 Which EV Stocks to Buy: Tesla, NIO, Lucid, Mullen: 5
+   pQxCiu_CxMk - 4 Hot Stocks .. TA: 6
+   vqlSKj97OhM - Crypto Signal YOU Must SEE 🔥 Important Announcement: 7
+   a3JV5FaRods - FANG Stock Pump to ATHs 🔥 When will AI Bubble POP: 2
+   lgdVN2jc09A - Is the Stock Market 2023 Recession Over?: 1
+   _Dl_DOLeEH4 - ACTIVE TRADE | Scalp or Swing?: 1
+   sLvGrqqkEyw - It's worse than you think...: 5
+   BwyeJbvmP9w - Billionaire loading up on this Stock 🚀 Millionaires being made with this Crypto: 1
+   Mfe_j4384oM - Tesla Stock Analysis | Hot Stocks to Buy 🚀 #spx #gehc #tcom: 3
+   Hat7aJ2Knfw - Best Crypto to Buy Now 🏅  Top 10 Crypto Coins: 11
+   nRo0FlH1Wow - Where is the Market Headed? Stock to buy right now!: 1
+   0JulwSPVJvw - Crypto Crash or Time to Buy? #cryptonews: 2
+   3gpAXtDFV9E - Is this Bank Stock worth Buying NOW?: 3
+
+Channel ID: UCO3tlaeZ6Z0ZN5frMZI3-uQ
+No of videos with advice predicted: 7
+Video IDs: lFyeLeP44kY, HvjSRskN_kU, 5rN22nIRh0M, Mxu85SCT9lQ, 8c-gU1A_Bho, _Nb6OKOM_nw, 4E5Wv7ylKBU
+No of transcript chunks with advice predicted:
+   lFyeLeP44kY - 7 Dividend Stocks That Pay Me $1,800 Per Month: 1
+   HvjSRskN_kU - How I'm Investing in 2023: 2
+   5rN22nIRh0M - 6 Investing Mistakes Beginners Make In The Stock Market: 1
+   Mxu85SCT9lQ - Stock Market For Beginners 2020 [How To Invest]: 1
+   8c-gU1A_Bho - 9 Dividend Stocks That Pay Me $3,100 Per Month: 6
+   _Nb6OKOM_nw - 5 Best Investments For Life: 3
+   4E5Wv7ylKBU - 7 Items To Buy That MAKE You Money: 1
+
+Channel ID: UCRhG6wctiojOkfFUjEVC3xQ
+No of videos with advice predicted: 1
+Video IDs: Dn8x0W-LsfQ
+No of transcript chunks with advice predicted:
+   Dn8x0W-LsfQ - Welcome to the Stock Market! 🎪🎤🔥 - NFA (NotFinancialAdvice.Crypto): 1
+
+Channel ID: UCSglJMvX-zSgv3PEJIE_inw
+No of videos with advice predicted: 10
+Video IDs: 05dHr2LWjsU, _gUMPQZS7b4, Vvby9pR6Q7I, ZKOQbQtelkk, HIlcRqgXSgU, z1IIG_2Yq6k, 70fS9IK2XE8, l-gea33nmEQ, nh_oQvrezKw, Q81vgMOP0nM
+No of transcript chunks with advice predicted:
+   05dHr2LWjsU - TOP Growth Stocks for 2023: 9
+   _gUMPQZS7b4 - I Called an Investment Scam - Here is What Happened: 1
+   Vvby9pR6Q7I - Simple Dividend Formula So We Don't Overpay for Dividend Stocks: 1
+   ZKOQbQtelkk - Top Dividend Stocks for 2023: 3
+   HIlcRqgXSgU - Tesla Stock Analysis - What is the Fair Value of Tesla's Stock?: 1
+   z1IIG_2Yq6k - Ford Stock Analysis - is Ford's Stock a Good Buy Today: 2
+   70fS9IK2XE8 - BYND Stock - is Beyond Meat Stock a Good Buy Today? Should We Buy Beyond Meat Stock-Best Investment: 3
+   l-gea33nmEQ - Best Gaming Stocks? Best Video Game Stocks for Long Term Investors: 3
+   nh_oQvrezKw - What is a Required Return in Investing - Required Rate of Return: 1
+   Q81vgMOP0nM - What is a Value Stock - Value Investing: 1
+
+Channel ID: UCTQuKo8v0PaPCvk5aRxc_Yg
+No of videos with advice predicted: 8
+Video IDs: j38ZXGcZ9u4, Y6HfXpqtvdI, fYaqitj2Ics, gxlhsuWLIoI, pNIZw_toUIo, SHwDePphnCo, koe_55782q8, U22tZJf7UwQ
+No of transcript chunks with advice predicted:
+   j38ZXGcZ9u4 - 5 INVESTING STRATEGIES THAT CHANGED MY LIFE (must watch): 1
+   Y6HfXpqtvdI - 7 Top Stocks to Buy in September 2022 (Beat Inflation): 9
+   fYaqitj2Ics - The 6 TOP Stocks to Buy in August 2022! (Beat the Recession): 4
+   gxlhsuWLIoI - What is Warren Buffett’s Stock Strategy for 2020?: 1
+   pNIZw_toUIo - If You Have $5,000 in your Bank Account, Do This NOW: 1
+   SHwDePphnCo - 3 TOP Stocks That Warren Buffett Would Consider Buying (2020): 3
+   koe_55782q8 - 7 Alternative Investments That Can Make You VERY Rich (2022): 3
+   U22tZJf7UwQ - The 6 TOP High Growth ETFs to Buy in 2022!: 8
+
+Channel ID: UCUvvj5lwue7PspotMDjk5UA
+No of videos with advice predicted: 12
+Video IDs: uFdtO4bVtI0, 8Jq1DjR1RdM, kHlP1-H0nsM, Uxzqfb6unA0, f5NZZ-H98I4, oBGkjWKDfes, D9CaxgnWAhQ, -Ugc0dhjp_0, OsUNLAbJmiM, Rgozt3dKAjM, AX2AmK1Lmt8, -tijHnqu6UU
+No of transcript chunks with advice predicted:
+   uFdtO4bVtI0 - unbelievable: 1
+   8Jq1DjR1RdM - Avoid these 5 Investing Mistakes during the Crisis: 2
+   kHlP1-H0nsM - The Worsening Stock Market Reset: 50% MORE to Come.: 2
+   Uxzqfb6unA0 - the real reason stocks are falling: 2
+   f5NZZ-H98I4 - Top 5 Stocks to Buy NOW!: 6
+   oBGkjWKDfes - I Was Wrong.: 1
+   D9CaxgnWAhQ - The Elon Musk Double U-Turn: Cancelling Twitter & Saving Tesla.: 3
+   -Ugc0dhjp_0 - wtf cathie wood | critical mistake.: 2
+   OsUNLAbJmiM - just bought a house at auction... got majorly screwed: 1
+   Rgozt3dKAjM - My Favorite 4 CHEAP Stocks to Buy NOW: 3
+   AX2AmK1Lmt8 - Stocks vs Real Estate.: 1
+   -tijHnqu6UU - How To Get Rich Fast!: 1
+
+Channel ID: UCV6KDgJskWaEckne5aPA0aQ
+No of videos with advice predicted: 8
+Video IDs: 5_3Ra-Q6vK4, VmdncOfNWas, Mc3Jxx23hbo, HBy-xP5aQyA, JjdDUanjGiY, j1xAthFAd-0, VUU56K2UB4E, idKoh7Amogw
+No of transcript chunks with advice predicted:
+   5_3Ra-Q6vK4 - HOW TO MAKE EASY MONEY IN THE STOCK MARKET: 1
+   VmdncOfNWas - My Investing Plan For 2023 (How To Prepare): 1
+   Mc3Jxx23hbo - The Next Market Crash | How To Get Rich In The 2023 Recession: 7
+   HBy-xP5aQyA - RECESSION ALERT: The 5 BEST Index Funds To Buy ASAP: 5
+   JjdDUanjGiY - Michael Reeves Just Ruined Investing: 1
+   j1xAthFAd-0 - I Found The WORST Financial Advice On TikTok: 1
+   VUU56K2UB4E - How Much $ You Need To Live Off Dividends (FOREVER): 1
+   idKoh7Amogw - Touring Elon Musk’s $50,000 Tiny Home!: 1
+
+Channel ID: UCZy3pEdGnWLDsqGu56axxcQ
+No of videos with advice predicted: 6
+Video IDs: rr3p4os5SyQ, 4LqvOL7kMvY, HycMHz5Qp04, hdkHMxE61II, mS6PapOv5ro, KllcTpwikLs
+No of transcript chunks with advice predicted:
+   rr3p4os5SyQ - TI - CMT Certification: 1
+   4LqvOL7kMvY - Trading Weed Names like $ACB and $CRON: 1
+   HycMHz5Qp04 - TI Summit 2019 - Speaker 2 - David Aferiat, Trade Ideas: 1
+   hdkHMxE61II - Trade Ideas Trader Talks with Brad Engen - talking swing trading stocks for beginners to the pros: 1
+   mS6PapOv5ro - TI - Trade Assistant Holly AI in DAVA: 1
+   KllcTpwikLs - Trade Ideas Trade of the Week: TAN - Buy Level $77.01 #Shorts: 1
+
+Channel ID: UCavTvSwEoRABvnPtLg0e6LQ
+No of videos with advice predicted: 4
+Video IDs: xj87qBGtDmA, UhDVihi1JdA, LXjNpGO01Z4, rzUWlvIzxf0
+No of transcript chunks with advice predicted:
+   xj87qBGtDmA - How to Make a $Billion with Crypto in 22 Seconds: 1
+   UhDVihi1JdA - Debt Ceiling Has Been Raised. Here’s What Happens NEXT!: 1
+   LXjNpGO01Z4 - You Won’t Believe Who Will Own MORE BITCOIN Than Microstrategy!: 1
+   rzUWlvIzxf0 - Who Decides if BTC NFTs Get Cancelled??: 1
+
+Channel ID: UCbLhGKVY-bJPcawebgtNfbw
+No of videos with advice predicted: 2
+Video IDs: 93tTlejQCuI, wWZKsFH_bW4
+No of transcript chunks with advice predicted:
+   93tTlejQCuI - LIKE BUYING ETHEREUM AT $80 🔴 CRYPTO NEXT BIG OPPORTUNITY: 1
+   wWZKsFH_bW4 - CNBC Host STUNNED 🤯 After Billionaire’s Bitcoin Prediction: 2
+
+Channel ID: UCc4Rz_T9Sb1w5rqqo9pL1Og
+No of videos with advice predicted: 24
+Video IDs: QRpode16wnI, uKp0G74aivM, 3n5HDH5TwF4, AbRFl9ZXyqc, -hJCcNsiBVQ, ihwI9nr2VeA, 80zosJeVhU4, 0qw1mI1baDY, lH3ONqLW4-E, qCATotC1v-A, fKWLZHg6m_I, VIzHL1RNc6E, TrKRC7Y56uo, 406jWUWCAWk, txrk_dqtcxk, 5vesVpb62hg, yg9JG2-AvyE, mp9ectaSzKQ, mnCsW8uyUPw, IkT_CTld8aU, LGbfd32e_G0, yfaYDLKU6H8, WwQ6crI7C1I, DlD0bnJG5VQ
+No of transcript chunks with advice predicted:
+   QRpode16wnI - How To Make $100 Per Day Trading Crypto On Bybit (Beginners Guide): 1
+   uKp0G74aivM - How To Become A MILLIONAIRE With Crypto In 2023!!: 1
+   3n5HDH5TwF4 - TOP 5 CRYPTOCURRENCIES TO BUY IN 2023: 3
+   AbRFl9ZXyqc - 🚨 HOW TO MAKE MASSIVE GAINS WITH PROPER RISK MANAGEMENT!!! [bitcoin trading]: 1
+   -hJCcNsiBVQ - 13 MONTHS!!!!!!!!!!! (you need to see this): 1
+   ihwI9nr2VeA - DO NOT MISS THIS TRADE !!!!!!!!! 🚀: 2
+   80zosJeVhU4 - 💵 HOW TO MAKE MONEY With Binance Futures [tutorial]: 1
+   0qw1mI1baDY - THE CROSS JUST HAPPENED!!!: 1
+   lH3ONqLW4-E - DON'T BUY PEPE !!!!!!!!!!!!!!!!: 3
+   qCATotC1v-A - Yahoo Finance ATTACKING ME In LIVE TV !!! [because of the FTX scammer]: 1
+   fKWLZHg6m_I - 🔴  I JUST DUMPED $600,000 INTO BITCOIN ON BYBIT !!!: 1
+   VIzHL1RNc6E - Top 10 Blockchains To Invest In To Make MILLIONS !!!: 4
+   TrKRC7Y56uo - BUY BITCOIN HOLD FOR 2 YEARS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!: 2
+   406jWUWCAWk - BUY..........???: 1
+   txrk_dqtcxk - 🚨 OMG LOOK AT THIS BITCOIN TRADE TODAY !!!!!!!!!!!!!!!!!: 1
+   5vesVpb62hg - IT HAS STARTED...... [let me show you...]: 1
+   yg9JG2-AvyE - THIS IS THE END 😲: 3
+   mp9ectaSzKQ - NEW EMERGENCY FOR BITCOIN 😲: 2
+   mnCsW8uyUPw - THIS IS INSANE 🚨🚨🚨🚨🚨: 2
+   IkT_CTld8aU - DIAMOND PATTERN EMERGENCY VIDEO !!!!: 1
+   LGbfd32e_G0 - THE BULLMARKET IS BACK: 1
+   yfaYDLKU6H8 - Bitcoin Halving: 1
+   WwQ6crI7C1I - BEST TIME TO BUY BITCOIN?: 1
+   DlD0bnJG5VQ - Fantastic Time To Buy Bitcoin: 1
+
+Channel ID: UCdLzNzag8APY4tx6GHYN2Lg
+No of videos with advice predicted: 1
+Video IDs: 3vUX1_m8iUM
+No of transcript chunks with advice predicted:
+   3vUX1_m8iUM - Buy Hold Sell: 5 boring stocks trading at beautiful prices: 1
+
+Channel ID: UCejoTyCljURHcX7wdkXGRXA
+No of videos with advice predicted: 1
+Video IDs: 1M5COKd8t1Q
+No of transcript chunks with advice predicted:
+   1M5COKd8t1Q - Top 3 Crypto to buy in April 2023 (HUGE Potential): 7
+
+Channel ID: UCi7RBPfTtRkVchV6qO8PUzg
+No of videos with advice predicted: 1
+Video IDs: Ys9FPvbSGAY
+No of transcript chunks with advice predicted:
+   Ys9FPvbSGAY - When Next Crypto Bull Cycle? 💥📈 18+ Months to Buy Bitcoin?! ⏳ (My 2023-2025 Market Predictions 🔮): 1
+
+Channel ID: UCjemQfjaXAzA-95RKoy9n_g
+No of videos with advice predicted: 22
+Video IDs: q9eC5S-2PGA, Zc5dUsBTbpI, 7OAKcoCNaCU, Rm6TuE2pyjg, 5Xm_BbSZxUw, 0Rs7o6oAMyQ, WFrFp7ITsys, pA7kuLQN4AM, x2GPeDZOEyo, Uz56waLwUfM, q6HfyuZ4wrQ, L4869xRVM3E, D51Uf078d0w, 50tYOPvqA5c, LO5XrVbt-fc, oSx1pKSrAXk, NTBWt6AlDX4, pnxVSFk_jZc, JwXybdcxX6E, ROLsXxkLDq0, Cg9nEeQBbOk, 2CHCMLmp1Qs
+No of transcript chunks with advice predicted:
+   q9eC5S-2PGA - Top Three 100x Altcoins! (A.I. Is The FUTURE Of Crypto): 1
+   Zc5dUsBTbpI - Best Crypto Trading Strategies EXPLAINED: 2
+   7OAKcoCNaCU - Become a Crypto MILLIONAIRE (TOP 3 Ways): 3
+   Rm6TuE2pyjg - BEST Bitcoin Strategy RIGHT NOW (Exact Advice I'm Giving New Investors): 4
+   5Xm_BbSZxUw - MOST Shocking Coins in Lil Yachty's Portfolio (2021 Crypto Advice): 3
+   0Rs7o6oAMyQ - #1 Bitcoin Indicator FANTASTIC Run SOON (Best Crypto Advice): 1
+   WFrFp7ITsys - I’M PISSED… Where is the LOYALTY in Crypto Today?: 2
+   pA7kuLQN4AM - Hex Falling Apart? (Crypto Portfolio Update): 2
+   x2GPeDZOEyo - Ben Coin to the Moon? 🌙 (INSANE Crypto Uniswap Controversy): 2
+   Uz56waLwUfM - Mini METAVERSE Bull Run Ahead! (Ledger PR Nightmare): 3
+   q6HfyuZ4wrQ - CRYPTO & INFLATION Battle Goes GLOBAL (Fed FRANTIC Over Gas Prices): 1
+   L4869xRVM3E - How to Buy Pepe Coin for Easy Crypto Gains (PEPE Tutorial): 4
+   D51Uf078d0w - How to Buy Altcoins (BEST Altcoin Exchanges 2021): 1
+   50tYOPvqA5c - I FOUND $208M Dollars in Crypto (Pi Network Takeover?): 1
+   LO5XrVbt-fc - Cardano WILL BE #1 in ALL of Crypto (ADA Beats ETH): 5
+   oSx1pKSrAXk - How to Buy Bitcoin & Cryptocurrency on PayPal (Full Tutorial): 1
+   NTBWt6AlDX4 - Cardano Millionaire Buys Lambo (How ADA Changed My Life): 1
+   pnxVSFk_jZc - THIS COIN Will Replace Twitter [Lens Protocol Decentralized Social Media]: 1
+   JwXybdcxX6E - ALL OF MY CRYPTO HOLDINGS IN 30 SECONDS: 1
+   ROLsXxkLDq0 - Understand The Bitcoin Cycle in 20 Seconds: 1
+   Cg9nEeQBbOk - Upcoming Global Reserves: 1
+   2CHCMLmp1Qs - This Company Bought The Sandbox Metaverse: 1
+
+Channel ID: UCkNgKCu9062P0CPyVoBI5sQ
+No of videos with advice predicted: 3
+Video IDs: qze8YAjya-E, ZocOzdVvNvE, Mbd7koFnlaY
+No of transcript chunks with advice predicted:
+   qze8YAjya-E - Warren Buffett: Ignore Him for Wealth Building Advice 🙉: 1
+   ZocOzdVvNvE - My Top 5 Stock Picks of All Time (over 21.4% return 📈): 1
+   Mbd7koFnlaY - The Best Investment Ever (no risk and guaranteed returns??): 1
+
+Channel ID: UCl2oCaw8hdR_kbqyqd2klIA
+No of videos with advice predicted: 24
+Video IDs: SbMtY-aJjFA, qQ0xDrWbVSk, 0DKVpnL3hUc, V5wE0ML_WMc, 72hPK8zUnn0, 5C4LTWq_gTI, W7fumWmhiaA, VXnYYxI6xYA, AOUCI22GEW8, ssVaf7-mfso, MpOzD65quBE, 4X4R1luTsho, xobu78ax3GQ, 57G4L44Bc7A, eNoLBYDf2wc, NiuI9o09DWI, NZNuXWsdfCY, dHy86IAAFXU, BpX1CTbwX6E, RhfKaRAhIRc, RZcoo9JDJ8E, RJjrmmDGj8k, srUoT66jUGA, bobP7xfnl_k
+No of transcript chunks with advice predicted:
+   SbMtY-aJjFA - Here’s What Crypto Coins I’m Buying Now: 6
+   qQ0xDrWbVSk - 7 Ways To Make $10,000 A Month With Crypto In 2023: 2
+   0DKVpnL3hUc - How To Invest In Crypto For Beginners [Full Guide]: 2
+   V5wE0ML_WMc - How To Get Ahead Of 99% Of People In Crypto [Do This Now]: 2
+   72hPK8zUnn0 - Bitcoin, You’re Not Going To Believe This! [Crypto News]: 1
+   5C4LTWq_gTI - It’s Official! Bitcoin Will Explode In 2023! [Crypto News]: 2
+   W7fumWmhiaA - Bitcoin To $150,000 In December 2024 [Shocking Prediction]: 4
+   VXnYYxI6xYA - Is 1 Bitcoin Enough To Become Rich? Realistically?: 9
+   AOUCI22GEW8 - Bitcoin Price Breaking Out! $28,000 Soon? [Crypto Analysis]: 4
+   ssVaf7-mfso - BITCOIN HASN’T DONE THIS SINCE 2013!!! Bullish Crypto News: 3
+   MpOzD65quBE - Billionaire Makes A Terrifying Financial Warning! [Don't Ignore This]: 2
+   4X4R1luTsho - It’s Starting: June 1st China Will Change Bitcoin & Crypto Forever: 1
+   xobu78ax3GQ - Warning! War On Bitcoin & Crypto Just Got Worse!: 1
+   57G4L44Bc7A - First Republic Bank Collapse Just The Start…: 1
+   eNoLBYDf2wc - BEST CRYPTO ALTCOINS TO BUY NOW TO GET RICH IN 2021! [Here's What to Watch & to Avoid]: 2
+   NiuI9o09DWI - These 8 Altcoins Just Flipped The Crypto Market 👀: 1
+   NZNuXWsdfCY - BRICS Explained - A New World Order Is Forming Now!: 1
+   dHy86IAAFXU - You Won’t Get Rich In The 2023 AI Boom Unless You Do This: 1
+   BpX1CTbwX6E - Bitcoin To $1,000,000 & Gold To $10,000… Here’s Why!: 1
+   RhfKaRAhIRc - Rich Vs Poor: Why 99% LOSE MONEY In Crypto Investing 2023: 2
+   RZcoo9JDJ8E - 1 Ethereum Won’t Make You Rich! #ethereum: 1
+   RJjrmmDGj8k - $100 Of Bitcoin Won’t Make You Rich!: 1
+   srUoT66jUGA - This Bitcoin Chart Blew My Mind: 1
+   bobP7xfnl_k - How Risky Is Buying Bitcoin? #bitcoin: 1
+
+Channel ID: UClMW7w5LIPCr98Hw17GeiYQ
+No of videos with advice predicted: 1
+Video IDs: -gjpndsLjZc
+No of transcript chunks with advice predicted:
+   -gjpndsLjZc - Watch Out For This Next Big Thing In Crypto, CZ: 1
+
+Channel ID: UCmHm0w-JJfC2Ll1Of_WObAQ
+No of videos with advice predicted: 1
+Video IDs: fErzHbEiQIs
+No of transcript chunks with advice predicted:
+   fErzHbEiQIs - Warren Buffett: Advice For Young People Who Want To Get Rich: 1
+
+Channel ID: UCn2JOViAAWssWefchGpTNvw
+No of videos with advice predicted: 10
+Video IDs: SrQiOg0TV20, 1kD66RMWimo, 1f7ZCdsciDs, Z8ycYGNFFZA, RxtiePtxfzY, wXyOhbH01C0, DF23jO8Y0n0, nNLod9H6uhQ, D3Pzfx8y0_s, IU3ujOCVoME
+No of transcript chunks with advice predicted:
+   SrQiOg0TV20 - [LIVE] Day Trading | How I Made $460 in 5 Minutes (from start to finish...): 2
+   1kD66RMWimo - Day Trading Tip | How I Use the SPY as a Day Trader to Make Me Money: 1
+   1f7ZCdsciDs - QYLD Investment - Are You Ok With THIS Risk???: 1
+   Z8ycYGNFFZA - How Joey Turned $150 into $25,000 in 3 Months | Small Account Challenge: 1
+   RxtiePtxfzY - Top 10 Stocks For May 25, 2023 ( $ENVB, $UTRS, $NIO, $PLTR, $AMC,  and more! ): 1
+   wXyOhbH01C0 - ClayTrader University Sample: No Stress Trading: 1
+   DF23jO8Y0n0 - Trading 101: How to Buy Stocks: 1
+   nNLod9H6uhQ - Trading 101: How Does a Stock Make You Money?: 1
+   D3Pzfx8y0_s - $HIMX - Live Stock Trade - Learn from my Mistake: 1
+   IU3ujOCVoME - Is ThinkOrSwim Disappearing? Here’s the news…: 1
+
+Channel ID: UCnMku7J_UtwlcSfZlIuQ3Kw
+No of videos with advice predicted: 21
+Video IDs: Y0HHt72fogA, 7GD_D8Wnq-U, g8AzyXxD_JI, 1mI1UFq7kJE, JhQXHAjnfjQ, YYyCadWCLH0, vp4yqpLhJ5Q, DRiUSQ5lmtg, AKI64v-7Ko8, WghckXE4hQ0, TwY9CZahsxU, HuF17vCq70E, jXbMAk6dsk0, -uIgcOKmEhs, bMKBs8NU-zk, XnjyKUWfaMk, Pmg-X6aOxx4, ojuzQMpYflc, w4vXQXOBp4E, dUH2xDt7Zeo, zbgOHbTziks
+No of transcript chunks with advice predicted:
+   Y0HHt72fogA - BITCOIN Turns the Page - A NEW CRYPTO ERA Begins NOW!: 6
+   7GD_D8Wnq-U - Bitcoin CRASH Brewing: What You Need to Know! (Michael Saylor Still Buying): 3
+   g8AzyXxD_JI - BITCOIN SHORTS LIQUIDATED $60 Million in 10 Minutes! WHAT DOES THIS MEAN FOR BTC?: 5
+   1mI1UFq7kJE - IS S&P 500 DRIVING BITCOIN PRICE INTO BEAR TERRITORY?!: 6
+   JhQXHAjnfjQ - LITECOIN MAKES BEST MOVE POSSIBLE - LTC LOOKING GREAT: 1
+   YYyCadWCLH0 - INCREDIBLE BITCOIN "PUMP" ON BTC BIRTHDAY | IS THIS THE BULLISH REVERSAL?: 2
+   vp4yqpLhJ5Q - BITCOIN HALVING, DOMINANCE, & POWERFUL PATH TO BTC ALL TIME HIGH: 3
+   DRiUSQ5lmtg - BITCOIN FACES BRICK WALL! (DEBT CEILING DEAL "IMMINENT"!): 4
+   AKI64v-7Ko8 - Debt Ceiling Crisis Threatens Bitcoin!: 3
+   WghckXE4hQ0 - The Greatest BITCOIN Play For Next Bull Cycle (BRC20 & Ordinals): 5
+   TwY9CZahsxU - Tether STOCKPILES BITCOIN! Volatility ALERT For BITCOIN Holders: 5
+   HuF17vCq70E - WARNING: The Greatest Crypto Opportunity Is About To Begin | Prepare NOW: 3
+   jXbMAk6dsk0 - A CRYPTO FRENZY Is Coming | ETH "$20 Trillion Market Cap" 2030 Tells A PARABOLIC Story!: 1
+   -uIgcOKmEhs - MASSIVE CRYPTO INDICATOR TRIGGERED! (DO THIS NOW!): 7
+   bMKBs8NU-zk - Bitcoin on 4 hour chart - Hints of BULL MOVE?: 3
+   XnjyKUWfaMk - BULLISH! Bitcoin & Litecoin On TD Ameritrade Platform: 1
+   Pmg-X6aOxx4 - SENSATIONAL BITCOIN PATTERN | BTC PRICE TARGET COULD HIT $10,700!: 3
+   ojuzQMpYflc - Janet Yellen Drops CRYPTO BOMBSHELL! (BAN or NO BAN?): 1
+   w4vXQXOBp4E - LONG TERM CRYPTO PAIN IS ENDING! (BUT PREPARE FOR VOLATILITY): 1
+   dUH2xDt7Zeo - Bitcoin "IN FOR A TREAT"? (DO NOT Ignore This BTC WARNING SIGNAL): 3
+   zbgOHbTziks - Crypto Mind-Hack To Win In A Bear Market: 1
+
+Channel ID: UCnMn36GT_H0X-w5_ckLtlgQ
+No of videos with advice predicted: 16
+Video IDs: hx1CzMH0cHs, Oew3VnE-UD8, nIu1DgllITg, pltfunL1UQM, KY4k6SACiuQ, xFr8J2j_cdA, miTBruk3K3I, lhTsx1x0DT8, l5qYxG64xGY, 6v19fKXaaIw, QTCZKKZhcz4, hWrN0FR0Gzo, eFyATlXubiY, ZcqAV_niP8w, -T9iunhAvy4, CBeuaMcch9g
+No of transcript chunks with advice predicted:
+   hx1CzMH0cHs - Stock Market for Beginners Tips! - Investing in Stocks for Beginners Tips!: 1
+   Oew3VnE-UD8 - hahahahahahahahahahahahahahahahaha!!!!!!!!!: 7
+   nIu1DgllITg - I Sold ttcf: 1
+   pltfunL1UQM - Why I Put $99,000 in Silver: 7
+   KY4k6SACiuQ - My Advice to All Stock Market Investors Right Now: 2
+   xFr8J2j_cdA - Do Not Buy. I Repeat DO NOT BUY.: 4
+   miTBruk3K3I - Its Going to $0. Get Out!!!: 3
+   lhTsx1x0DT8 - Stop Buying Now?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!: 5
+   l5qYxG64xGY - Warren Buffett JUST SAID WHAT!!: 2
+   6v19fKXaaIw - I Cant Stop Buying... ($40,000 Today): 5
+   QTCZKKZhcz4 - Just Made $110,000,000 on BBBY Stock as a 20 Year Old: 1
+   hWrN0FR0Gzo - 4 Stocks I'm Buying Now!: 1
+   eFyATlXubiY - Tesla Stock Projection 2027: 1
+   ZcqAV_niP8w - FTX Trying To Buy Robinhood Out: 1
+   -T9iunhAvy4 - This 10X Stock | Risk vs Reward Far Underrated: 1
+   CBeuaMcch9g - Buying Palantir Stock | Why Jeremy Lefebvre Spent $30,000+ on Palantir Stock in 2022: 1
+
+Channel ID: UCoMzWLaPjDJBbipihD694pQ
+No of videos with advice predicted: 17
+Video IDs: -E91e3al4gg, m00G4m1XEVI, D60pgI8hVm8, yeCwcJuesTc, 3OvpXQGoTHY, isjHU3MzO5U, BbSlcEUr1Ow, OpmMhTUJMnY, wqC3mWP7zAw, wWeECooKbbc, l1DE5WEie-A, 2PgHpcUBdRI, TJMz92k6WmQ, vTC8jc0YFGk, 31X0eQj__U0, wemYN-PjtB8, jgBQx7-EE3Q
+No of transcript chunks with advice predicted:
+   -E91e3al4gg - ⚠️🚀 TOP 6 BEST STOCKS TO BUY NOW ⚠️🚀 {GROWTH STOCKS 2023 MAY} BEST STOCKS TO INVEST IN 2023: 10
+   m00G4m1XEVI - PEOPLE WILL GET RICH IN 2023 AND THIS IS HOW I THINK IT HAPPENS!   BEST STOCKS TO BUY NOW 2023: 4
+   D60pgI8hVm8 - 🔥Best Stocks To Invest In 2023🔥 | Top BEST Growth Stocks 2023 MUST SEE!: 5
+   yeCwcJuesTc - ✅ BEST STOCKS TO BUY NOW ✅ {TOP GROWTH STOCKS 2023 MAY} TOP INVESTMENTS TO BUY NOW: 6
+   3OvpXQGoTHY - 🚀🚀BEST STOCKS TO BUY NOW THAT COULD MAKE BANK FOR INVESTORS🚀🚀 {Top Growth Stocks 2023 May}: 6
+   isjHU3MzO5U - ✅6 BEST STOCKS TO BUY NOW ✅ {GROWTH STOCKS 2023 MAY} TOP STOCKS TO INVEST IN 2023!: 6
+   BbSlcEUr1Ow - 🔥🔥MASSIVE WARNING SIGN 🔥 FROM WARREN BUFFETT STOCK MARKET CRASH BEST STOCKS TO BUY NOW!: 1
+   OpmMhTUJMnY - 🔥🔥🔥MILLIONS MADE AND POSSIBLY LOST? BEST STOCKS TO BUY NOW BEST PENNY STOCKS 2023 TOP GROWTH STOCKS: 5
+   wqC3mWP7zAw - BEST STOCKS TO BUY NOW {TOP GROWTH STOCKS 2023 APRIL}: 9
+   wWeECooKbbc - 6 BEST STOCKS TO BUY NOW (TOP GROWTH STOCKS APRIL 2023): 5
+   l1DE5WEie-A - EXPOSED!  THE TRUTH ABOUT INVESTING YOURSELF VS. PAYING A FUND MANAGER - HOW TO BECOME A MILLIONAIRE: 4
+   2PgHpcUBdRI - BEST STOCKS TO BUY NOW WITH MAJOR WARNING FROM MICHAEL BURRY!: 1
+   TJMz92k6WmQ - BEST STOCKS TO BUY TO TURN $1,000 INTO $10,000 {GROWTH STOCKS 2023 FEBRUARY}: 10
+   vTC8jc0YFGk - HOW TO INVEST IN THE STOCK MARKET FOR 2023!  {BEST STOCKS TO BUY NOW}: 2
+   31X0eQj__U0 - YOU HAVE BEEN WARNED WITH THIS VIDEO!  I AM LOADING THE BOAT WITH THESE BEST STOCKS TO BUY NOW!: 1
+   wemYN-PjtB8 - BEST GROWTH STOCKS TO BUY NOW FOR 10X YOUR MONEY! (GROWTH STOCKS 2023 FEBRUARY): 6
+   jgBQx7-EE3Q - GET RICH FROM THE ETHEREUM MERGE!: 1
+
+Channel ID: UCpRQuynBX9Qy9tPrcswpPag
+No of videos with advice predicted: 6
+Video IDs: omuMbgHjH7k, 2jCPhSZM2Qc, h9k1be9B4A4, vc6NBth7Ch4, PWT20QyKqNs, OmUOXvajDmc
+No of transcript chunks with advice predicted:
+   omuMbgHjH7k - How to Invest: 5 Effective Investing Principles: 1
+   2jCPhSZM2Qc - How to Get Started in Investing: 5 Terms to Know Before You Begin: 2
+   h9k1be9B4A4 - How to Buy Stock In Top Companies Like Apple and Amazon: 3
+   vc6NBth7Ch4 - Why Do Some People HATE Tesla and Elon Musk?: 1
+   PWT20QyKqNs - Motley Fool 11 O'Clock Stock Market Tips: Update with David Gardner: 1
+   OmUOXvajDmc - What Happens When a Company You Own Stock in is Bought?: 1
+
+Channel ID: UCqK_GSMbpiV8spgD3ZGloSw
+No of videos with advice predicted: 9
+Video IDs: tNsc4tdXnCE, si5kq7TFjjg, yDXB1jafqg4, 1lwN6iIIDps, 0Og5-OJ1x1s, UK6LKszd73M, v7LyUzKWGfQ, UaGiOdogC7o, rmDPFHdE448
+No of transcript chunks with advice predicted:
+   tNsc4tdXnCE - Daily Crypto Investing Routine: My TOP TIPS & Resources!! 💯: 1
+   si5kq7TFjjg - Crypto Investing on a Budget: COMPLETE 101 GUIDE!! 💲: 1
+   yDXB1jafqg4 - Bitcoin Options: Overview & TOP Trading Tips: 1
+   1lwN6iIIDps - You Will Own NOTHING!! Here's How They Plan to Make You "Happy": 2
+   0Og5-OJ1x1s - Banks Can STEAL Your Money?! Here’s How!: 2
+   UK6LKszd73M - TOP 10 CRAZIEST Things To Buy With Bitcoin!! 💰: 4
+   v7LyUzKWGfQ - Crypto Swing Trading 101: TA For Long-Term GAINS!! 💸: 1
+   UaGiOdogC7o - How To Get FREE BITCOIN? 5 Ways! 💰: 1
+   rmDPFHdE448 - Stacks: Should You STACK STX?! My Take! 💰: 1
+
+Channel ID: UCrTFPf6rq5OUSWb7ILW9trg
+No of videos with advice predicted: 1
+Video IDs: T9FsKfPz4iQ
+No of transcript chunks with advice predicted:
+   T9FsKfPz4iQ - Watch Before Market Open | 4 Stocks to Buy June 2023: 4
+
+Channel ID: UCrYmtJBtLdtm2ov84ulV-yg
+No of videos with advice predicted: 10
+Video IDs: 8fzV9bO56ow, IGhqslEwuOI, -2svLnsky0A, L4kldDbR6mI, iNwMSJza4Wc, tvRbVh4JCP4, iMGJnaFLz-w, _7Rph_Hm5lg, MlGa0fXIE-o, dgpz5fckgec
+No of transcript chunks with advice predicted:
+   8fzV9bO56ow - Moralis Money Tutorial (Finding 50-100X Altcoins Step by Step): 1
+   IGhqslEwuOI - Programmer explains Bitcoin Cash - Practical tips: 1
+   -2svLnsky0A - 99% OF TRADERS DON'T KNOW THIS!! How to move funds across chains - 11 bridges demonstrated: 2
+   L4kldDbR6mI - 5 Top Altcoins (MASSIVE HUGE POTENTIAL) Most Interesting Crypto Investments?: 1
+   iNwMSJza4Wc - THIS ALTCOIN CAN DO 30X (NOT CLICKBAIT) - Developer explains Radix Problems and Opportunities: 3
+   tvRbVh4JCP4 - TOP L2 ALTS AND HOW THEY MAKE YOU RICH... (explained by Phil): 3
+   iMGJnaFLz-w - EXTRA: HOW TO PROFIT FROM ARBITRUM (even if you missed the airdrop) - Coin launching tomorrow: 5
+   _7Rph_Hm5lg - 99% OF TRADERS IGNORE CARDANO!!! don't stay behind  (ecosystem speedrun): 1
+   MlGa0fXIE-o - CHEAP ALTCOINS WITH ACTUAL USE-CASES (Bridge Coins Explained by Phil): 4
+   dgpz5fckgec - Full Solana Tutorial - Phantom, Raydium, ORCA, Magic Eden, Solend, Marinade, Lido, Solscan, Drift: 2
+
+Channel ID: UCtR_Pn4XLjLU53LhRqYrJTQ
+No of videos with advice predicted: 34
+Video IDs: DxZu6kUa5FM, 90hq6GIxJTw, Ui4RFGPIGDg, CpIW-Mtg5X4, 9ozbvy8AxuU, 2BntbmUnLaM, M0dix6hsf0M, dMjiR9B-ts4, PnFOPT4JWp0, EZl0ntQwsoI, 8YAMt5Tt24Q, pG2zv-XowYs, PlVV8V6CFRI, qp4Aalv-Av4, 8Xr-dS8sdSE, z4ra-cLXGZ4, WMUyhTfppNY, 2OAK2pYOMxw, FlwhiNckwRQ, LR9Ign86zZw, z3rZxTPw2VM, SzlO6x6imr4, on8OzKfeu58, m396VLNXmnU, LzcL9q8y88o, txzxXFKe6DU, Az251B6logo, IPld39yx0tY, IxfgrEaO50c, 8LNyH1ITSdY, RSMnV9f5pwg, 91vRKK5UcWo, kaFPdlHEOUA, hcMwHl-XT0w
+No of transcript chunks with advice predicted:
+   DxZu6kUa5FM - URGENT: Bitcoin's NEXT MAJOR MOVE Revealed! | Pro Crypto Trading Tips & Strategies: 4
+   90hq6GIxJTw - LAST CHANCE to Become a Millionaire with Cryptocurrency in 2023?!: 5
+   Ui4RFGPIGDg - Make a Killing with this Bitcoin Trade - Act Now Before it's Too Late!: 4
+   CpIW-Mtg5X4 - QUICKY BITCOIN & ETH IMPORTANT SIGNAL 🚨: 3
+   9ozbvy8AxuU - Attention Bitcoin Holders: BUY MORE When Bitcoin Does This (Get Ready): 5
+   2BntbmUnLaM - BITCOIN TRADES: LAST HOPE TODAY: 7
+   M0dix6hsf0M - BITCOIN & ETHEREUM WARNING 🚨: 7
+   dMjiR9B-ts4 - BITCOIN THE CLOCK IS TICKING 🚨⏰: 2
+   PnFOPT4JWp0 - Pro Bitcoin Trader: BITCOIN BULLISH, ETH, BNB & ALTS DANGEROUS ⚠: 5
+   EZl0ntQwsoI - BITCOIN DANGER & Best Cryptocurrency Investing Strategy into 2023 (Top Altcoins Revealed): 5
+   8YAMt5Tt24Q - Do you want to be rich? Bitcoin: 7
+   pG2zv-XowYs - BITCOIN WARNING: NEXT MAJOR MOVE STARTS! (be ready!): 3
+   PlVV8V6CFRI - BITCOIN 4500 SELL NUKE ☢️: 2
+   qp4Aalv-Av4 - SHOCKING: What Happens to Bitcoin if the U.S. Defaults? No One's Telling You This!: 3
+   8Xr-dS8sdSE - How To Trade Bitcoin on ByBit With Leverage from your phone! (Step By Step Tutorial ): 5
+   z4ra-cLXGZ4 - Mind-Blowing Bitcoin Prediction: The Rally Mistake Even Top Traders Are Making: 2
+   WMUyhTfppNY - AMAZING NEWS FOR CRYPTO, BITCOIN & TESLA: 5
+   2OAK2pYOMxw - AMAZING NEWS FOR BITCOIN & CRYPTO 🎉: 3
+   FlwhiNckwRQ - BITCOIN TRADE WARNING BEFORE IT GOES CRAZY 🚨🚨🚨🚨: 1
+   LR9Ign86zZw - Is Now the Time to Dump Bitcoin?! The Truth May Surprise You!: 5
+   z3rZxTPw2VM - BITCOIN NOW & ELON BUYING ALL TWITTER!!!: 3
+   SzlO6x6imr4 - BITCOIN DANGER ⚠️🚨: 3
+   on8OzKfeu58 - PRO BITCOIN TRADER: BEST CRYPTOS TO BUY FOR THE NEXT BULL RUN IN 2025: 1
+   m396VLNXmnU - $100 A Day Trading On Bybit - Cryptocurrency Trading For Beginners: 4
+   LzcL9q8y88o - Bitcoin 24,000 buy & How to Invest $1000 in Cryptocurrency in 2023 to Become A Millionaire: 5
+   txzxXFKe6DU - Bitcoin Trader Who Predicted 2018 Bottom Makes 2022 Bottom Prediction: 2
+   Az251B6logo - BITCOIN MAJOR BREAKOUT 🚨: 3
+   IPld39yx0tY - WARNING: BITCOIN JUST FLASHED RED – Do This NOW: 4
+   IxfgrEaO50c - Bitcoin isn't dropping. Buy & Sell Bitcoin for Beginners / Pros in Minutes 2023: 1
+   8LNyH1ITSdY - BITCOIN PUMP NOW !!! MAKING MONEY ON $LUNA 2.0: 4
+   RSMnV9f5pwg - BITCOIN & ETHEREUM SUPER DANGEROUS MOMENT 🚨: 6
+   91vRKK5UcWo - We need to keep this support right here to keep the Elliott Wave count! 📈📉: 1
+   kaFPdlHEOUA - $BTC REJECTED 🫣: 1
+   hcMwHl-XT0w - 4,600 BITCOIN BUY JUST NOW. !!!!: 1
+
+Channel ID: UCtlAFoYl2aWb6pMiHCctQHA
+No of videos with advice predicted: 13
+Video IDs: x6EyI_hLtJg, 78LpNG_rbI8, 9hHst4KVwkI, HlnalLo0SjE, Uf4XG3UTBaY, Qb_Em_x5Pf8, jCHS6FnwzIs, FBLMqO8B4-k, Tl3XklQmH-I, a27iSIhq3HE, 57tHaO27V7k, QACqK4VnwPs, zSkM8JgAeLA
+No of transcript chunks with advice predicted:
+   x6EyI_hLtJg - HOW TO MAKE $100 A DAY AS A BEGINNER INVESTOR: 3
+   78LpNG_rbI8 - How To Swing Trade As A Beginner Investor (PRICE ACTION): 2
+   9hHst4KVwkI - 3 Tips For Beginner Traders In The Stock Market | Ricky Gutierrez: 1
+   HlnalLo0SjE - WARREN BUFFETT: A Bull Market Is Coming...: 3
+   Uf4XG3UTBaY - THE BEST TIME TO START INVESTING | STOCKS FOR BEGINNERS: 2
+   Qb_Em_x5Pf8 - THESE 2 STOCKS ARE SOARING...: 1
+   jCHS6FnwzIs - How I Turned $300 To $6,000 Investing In Cryptocurrency  | What To Buy?: 1
+   FBLMqO8B4-k - When To BUY & SELL A Stock For Beginners: 1
+   Tl3XklQmH-I - EXACTLY HOW TO MAKE MONEY DAY TRADING STOCKS: 1
+   a27iSIhq3HE - Best 3 Stocks To Buy In 2023 (100% ROI): 1
+   57tHaO27V7k - How To Buy Cheap Cars To Resell For Profit?: 1
+   QACqK4VnwPs - Kevin Hart speaks on how he manages his money ! #motivating #investing: 1
+   zSkM8JgAeLA - 🚨 NOW IS THE TIME TO BUY THIS CHEAP STOCK (OVERSOLD): 1
+
+Channel ID: UCttOH_2-KaxkYa7Fh09r5oA
+No of videos with advice predicted: 1
+Video IDs: nkLWG5yTMTk
+No of transcript chunks with advice predicted:
+   nkLWG5yTMTk - PEPE airdrop! $PEPE on binance | earn $450K+ tokens | memecoin launch!: 1
+
+Channel ID: UCu7Sre5A1NMV8J3s2FhluCw
+No of videos with advice predicted: 28
+Video IDs: nOLYdBEB5Pg, S9urRPApxy4, A4eRXTsNx6I, cY8FMSuLvVQ, KKw3rCCpf44, LpX93GvEvG4, _24BJuNpyzc, -qhTxdKHlbY, WJl2SodWhqc, cLYCNFV69s4, xA-A6JynmOE, RDn0UfDb2GY, ceob8tvCVaw, BDDAvsV7-l4, LxqIKK0NRaI, psa3mZFj4Gg, s1TOtBPFipk, AkxAdYKBUEg, 7ttJPvqKBDg, YjFOj1M7ZOo, cvPUX_K2NTs, ec6tfiwBQYU, kXF1j6XSuPo, h0OSag4Mapc, sIeErgLAoVU, A5SZCv1KkjY, h6aIxB882LM, _8OQvHWr3NQ
+No of transcript chunks with advice predicted:
+   nOLYdBEB5Pg - MY TOP 2 ALTCOIN TRADING STRATEGIES FOR 2021!!!!! [tips for beginners, platforms, signals..]: 3
+   S9urRPApxy4 - Crypto Trading Tip: Trade Like a WHALE Using the Rich List: 2
+   A4eRXTsNx6I - BITCOIN: RECESSION 100% GUARANTEED!!!!!!!: 5
+   cY8FMSuLvVQ - TOP CRYPTO ALTCOINS JUNE 2023!!!!!!!! [5 coins to 5 million]: 2
+   KKw3rCCpf44 - BITCOIN: URGENT NEXT 72 HOURS!!!!!!!!: 2
+   LpX93GvEvG4 - BITCOIN: DOES ANYONE ELSE SEE THIS!!!!? 👀: 4
+   _24BJuNpyzc - ⚠️ BITCOIN: LAST WARNING!!!!!!! ⚠️: 1
+   -qhTxdKHlbY - 🚨 BITCOIN TRAP!!!!!!!!!! 🚨: 5
+   WJl2SodWhqc - BITCOIN'S SHOCKING SETUP [no one sees this..]: 3
+   cLYCNFV69s4 - BITCOIN'S SCARIEST CHART!!!!! I'M SHAKING!!!!!: 4
+   xA-A6JynmOE - THE $13,000 BITCOIN FALLACY!!!!!: 6
+   RDn0UfDb2GY - BITCOIN: 🚨THEY DON'T WANT YOU TO SEE THIS!!!!!!!!: 2
+   ceob8tvCVaw - BITCOIN'S WORST NIGHTMARE!!!!! [this is it..]: 6
+   BDDAvsV7-l4 - FANTOM (FTM) - COULD $1,002 MAKE YOU A MILLIONAIRE... REALISTICALLY???: 3
+   LxqIKK0NRaI - BITCOIN BEST TIME TO BUY & SELL!!!!!!!!! [time of day, day of week, month and year..]: 4
+   psa3mZFj4Gg - TOP 3 ALTCOINS TO BUY IN 2022!!!!!! [best portfolio to be rich..]: 6
+   s1TOtBPFipk - BITCOIN: 🚨 I AM BUYING EVERYTHING NOW!!!!!!!!!: 3
+   AkxAdYKBUEg - BUY BITCOIN & ETHEREUM NOW... OR YOU WILL REGRET IT!!!!!!!!: 1
+   7ttJPvqKBDg - TOP ALTCOINS TO BUY TO TURN $1,000 INTO $10,000 THIS WEEK!!!!!!!!!: 3
+   YjFOj1M7ZOo - BEST ALTCOINS TO BUY NOW TO TURN $1,000 INTO $10,000 THIS WEEK!!!!!! LOW CAP CRYPTO HIDDEN GEMS!!!!: 1
+   cvPUX_K2NTs - Binance Stop Loss Tutorial and How to Buy IOTA on Binance Exchange: 2
+   ec6tfiwBQYU - BITCOIN: 🚨I AM BUYING EVERYTHING NOW!!!!!!!!!: 3
+   kXF1j6XSuPo - THE NEXT BITCOIN - 1,000X GAINZ GUARANTEED!!!: 2
+   h0OSag4Mapc - Will Quantum Computer KILL Bitcoin?!? Realistically...: 1
+   sIeErgLAoVU - WATCH OUT!!!!!!! THIS IS BITCOIN’s NEXT CRAZY…: 1
+   A5SZCv1KkjY - 1 Bitcoin, 2 Lambos, 3 Years: 2
+   h6aIxB882LM - The TWO BEST ALTCOINS for...: 2
+   _8OQvHWr3NQ - Bitquence (BQX) Double Bottom - Profits 97% of the Time: 1
+
+Channel ID: UCvSXMi2LebwJEM1s4bz5IBA
+No of videos with advice predicted: 3
+Video IDs: Q-0x8AbUam8, 7l3hyQDvKuw, U9KxB0BKf-I
+No of transcript chunks with advice predicted:
+   Q-0x8AbUam8 - Peter Lynch: How to Invest in 2023: 3
+   7l3hyQDvKuw - Top 5 Stocks the Smart Money is Buying for the 2023 Recession: 3
+   U9KxB0BKf-I - Warren Buffett Explains How to Invest in 2023: 1
+
+Channel ID: UCviqt5aaucA1jP3qFmorZLQ
+No of videos with advice predicted: 23
+Video IDs: Aadox_2RbdE, ziyaJLxVfmc, UUivm1DMdX4, h5ZDjK1ad8o, FSRRKFuoD-8, 0liZ8jG3yUY, BLdRGPDOqJw, T_v4pW9o7a4, Yn4sKVdJiUU, -ZP59yjtV5M, ueDPXW4dSaw, RSEJUFS4S4w, uPz0uTgEVL8, PAlQA0Ldz6U, dzCjBqBoMnw, vp1VDZMMchI, __txWBAcQFk, zM6W96qUdXg, zZL50ZFvFBE, 4cMQf1OZlHk, NUAq98MLoDY, lVHm4hzuKVE, FO3JUZKGvSU
+No of transcript chunks with advice predicted:
+   Aadox_2RbdE - Crypto Tips I Needed When I Was New!: 4
+   ziyaJLxVfmc - Amazing Crypto Trading Setup + Lux Algo: 1
+   UUivm1DMdX4 - CARDANO BOTTOM IN? This Is My 7-14 Day Cardano Price Prediction! #CryptoBytes: 5
+   h5ZDjK1ad8o - "We're In A New Bull Market" - Unstoppable Bitcoin Indicator: 1
+   FSRRKFuoD-8 - Can You HODL Bitcoin For A Year?: 4
+   0liZ8jG3yUY - A Perfect Indicator Calls A $70k Bitcoin... (Lux Algo): 1
+   BLdRGPDOqJw - I BOUGHT A TON OF POLKADOT! Why I Doubled Down On Dot! Polkadot Price Prediction! #CryptoEspresso: 1
+   T_v4pW9o7a4 - WHY I'M BUYING ETHEREUM BEFORE IT'S TOO LATE!! - THIS ETHEREUM NEWS TELLS ALL!!: 4
+   Yn4sKVdJiUU - START WINNING TRADES With Lux Algo Price Action Concepts!: 1
+   -ZP59yjtV5M - $20 Avalanche Price Prediction Then 600% GAINS! When To Buy AVAX!: 3
+   ueDPXW4dSaw - I'M GOING TO BUY ADA SOON! Bottoming Cardano Price Prediction & Strategy EXPLAINED! #CryptoEspresso: 2
+   RSEJUFS4S4w - I'M ABOUT TO BUY CARDANO! My Cardano Price Prediction & Buys EXPLAINED! #CryptoEspresso: 4
+   uPz0uTgEVL8 - This is the BEST Bitcoin Bottom Indicator?: 1
+   PAlQA0Ldz6U - DON’T LEAVE CRYPTO!!: 2
+   dzCjBqBoMnw - BITCOIN TO $20k!?: 1
+   vp1VDZMMchI - Check Out This CoinMarketCap Trick!: 1
+   __txWBAcQFk - BITCOIN IS ON SALE!: 1
+   zM6W96qUdXg - The United States Is Going BANKRUPT [Debt Ceiling Explained]: 1
+   zZL50ZFvFBE - When Bitcoin Hits $88k... You're Gonna See Some Serious STUFF! Pattern Tells All! #CryptoEspresso: 4
+   4cMQf1OZlHk - The Most Interesting Question Kevin O'Leary Has Ever Been Asked!: 1
+   NUAq98MLoDY - $85,000 Bitcoin Price Prediction?! These Bitcoin Patterns Tell ALL! #CryptoEspresso: 1
+   lVHm4hzuKVE - My BITCOIN CRASH Strategy!: 1
+   FO3JUZKGvSU - Cardano is Pumping to ATH!!: 1
+
+Channel ID: UCwsRWmIL5XKqFtdytBfeX0g
+No of videos with advice predicted: 15
+Video IDs: ZMghrnDpIRk, RabdrZT87oE, sncdDPGHmu4, eTa_w-KA5qQ, Kq6y7y57V7o, _qr6sNEAQsY, nQRfsjJUzyk, zQMgwgDNNbE, PQPi_ewwe1I, OGd3uz4AO7s, lI7q_9ZvDGQ, XzUE4pUguAw, S3p1oKAeZvY, vlvMYOhM-LE, UOEx1B8YII8
+No of transcript chunks with advice predicted:
+   ZMghrnDpIRk - Masternodes- Crypto Masterclass 2024: 5
+   RabdrZT87oE - How I Trade Bitcoin With Market Cipher - Best Indicator For Scalping: 4
+   sncdDPGHmu4 - Turn $50 into $200 in a day with Crypto Arbitrage?: 1
+   eTa_w-KA5qQ - You have Been Exposed! - Must Watch: 1
+   Kq6y7y57V7o - Why I bought 800 ETHOS Bitquence Cryptocurrency: 5
+   _qr6sNEAQsY - Legit Day Trading Strategy For Beginners 🤑 28% Gains Weekly?: 2
+   nQRfsjJUzyk - Top 7 Books To Learn To Trade and Technical Analysis: 1
+   zQMgwgDNNbE - Bitcoin - We May See a $9.5 Trillion Market Cap in 2 Years - Cryptocurrency: 6
+   PQPi_ewwe1I - N Korean Hackers and BTC Cloud Mining: 1
+   OGd3uz4AO7s - Why CARDANO will Moon to $8-$10 EASILY in 2022 😱🤑: 2
+   lI7q_9ZvDGQ - Cardano and ESG Compliance and Little Mermaid Review: 2
+   XzUE4pUguAw - Top 5 Cryptos For Feb 2023: 7
+   S3p1oKAeZvY - Cryptocurrency Wallets and Where To Buy Cryptos: 1
+   vlvMYOhM-LE - This .05 Crypto Could 100x by 2025: 2
+   UOEx1B8YII8 - Cardano - Crypto Market Cap: 1
+
+Channel ID: UCxgAuX3XZROujMmGphN_scA
+No of videos with advice predicted: 1
+Video IDs: tmryHfunyQ4
+No of transcript chunks with advice predicted:
+   tmryHfunyQ4 - How I Pick My Stocks: Investing For Beginners: 1
+
+Channel ID: UCxyD6SQNbe8sh-jqo8eTfEg
+No of videos with advice predicted: 1
+Video IDs: s4WnnEuPrQQ
+No of transcript chunks with advice predicted:
+   s4WnnEuPrQQ - Silver: Why It's Not Always a Store of Value: 1
+
+Channel ID: UCyzDtZVP6Rlb-Yg3R5rY8Pg
+No of videos with advice predicted: 1
+Video IDs: v9MJHzDY8Vk
+No of transcript chunks with advice predicted:
+   v9MJHzDY8Vk - LATEST BREAKING NEWS This Is So Good  for Dogecoin, Bitcoin & Shiba Inu! Get Ready: 5
+
+Channel ID: UCzBuoeqN94gdGcx5g4CgYNA
+No of videos with advice predicted: 17
+Video IDs: 86PFzsJRp9U, xRPBoOVZp7A, IoJLJ2D2Ul0, 9kedsUW0ypk, YTALNVYZ_Y4, Rf-yQYoP8mY, E516JZbNFKE, M7g2j7YXEdU, afB0Q6kB-40, aDmOxuJE78A, cEATlnPfK4Q, RqIsrx9aCWs, ksYyJrg_Vw4, 7zgXuWZq2T8, YigzR_xfnCQ, pSg9UnXUqvk, ppE_tHkfyJg
+No of transcript chunks with advice predicted:
+   86PFzsJRp9U - Stock Market Massive Down: Buy These Stocks Immediatly!: 1
+   xRPBoOVZp7A - 🔴 LIVE - Massive Profit Taking: 1
+   IoJLJ2D2Ul0 - Stock market crash course under 5 min. All you need to know: 1
+   9kedsUW0ypk - 🔴 Why the Stock Market is Collapsing...: 2
+   YTALNVYZ_Y4 - Best Way to invest in Gold 2021: NOT to invest in it, But This!: 1
+   Rf-yQYoP8mY - Worst Case in 2030: First $1 Trillionaire from Green Investing: 1
+   E516JZbNFKE - $YUMMY the X100 Crytpo Coin: The Shocking True After I invested: 4
+   M7g2j7YXEdU - You Should have Bought at $13.52: 1
+   afB0Q6kB-40 - You thought SPCE is dead: 32% in 2 Days: 2
+   aDmOxuJE78A - We Knew it: THIS IS A X10 Stock: 2
+   cEATlnPfK4Q - Next Big Short: General Electric GE Accounting Fraud by Markopolos: 1
+   RqIsrx9aCWs - Cathy Wood can’t resist low TSLA stock (even me bought $34,000): 3
+   ksYyJrg_Vw4 - Last 30 Minutes Buying Opportunity in a Crashy Market: 1
+   7zgXuWZq2T8 - Why Elon Buying Bitcoin Is Destroying Traditional CEOs: 4
+   YigzR_xfnCQ - SPCE 2023 another Delay: Why I am not selling BUT BUYING: 3
+   pSg9UnXUqvk - Which Stocks is for You to Buy: $TSLA or $SPCE: 3
+   ppE_tHkfyJg - These Best 2 Stocks to Buy RIGHT NOW. But Those 3 are NOT!: 5
+

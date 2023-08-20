@@ -47,20 +47,20 @@ from keras.models import load_model
 # df = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/dataset_for_tagging_tagged.csv')
 # print(df['Source'].value_counts())
 # print(df[['Source', 'Advice']].value_counts())
-
-# # As I have only tagged a subset of the dataset originally planned for tagging, I have to keep the tagged subset for building the model
+#
+# # # As I have only tagged a subset of the dataset originally planned for tagging, I have to keep the tagged subset for building the model
 # df_tagged = df.dropna(subset=['Advice'], axis=0)
 # print(df_tagged[['Source', 'Advice']].value_counts())
 # print(df_tagged['Source'].value_counts())
 # df_tagged.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/df_tagged_pm.csv', index=False)
-
-""" 1 b. Adding the embeddings to use as inputs """
-# 1 b i)
+#
+# """ 1 b. Adding the embeddings to use as inputs """
+# # 1 b i)
 # df_tagged = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/df_tagged_pm.csv')
 # transcripts_tagged_pm = df_tagged['combined_sentence'].tolist()
-#
-# # Define model used for the embeddings (chosen as it performed best on topic modelling on similar dataset)
-# sentence_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+
+# Define model used for the embeddings (chosen as it performed best on topic modelling on similar dataset)
+sentence_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
 
 ## 1 b ii) Code below only needed if you want to save the embeddings
 # start_time = time.time()
@@ -70,18 +70,20 @@ from keras.models import load_model
 # np.save('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Embeddings/embeddings_1_tagged_pm.npy', embeddings_1_tagged_pm)
 # df_tagged.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/df_tagged_pm_embedding_1.csv', index=False)
 
-## 1 b iii) Code below to be run instead of 1 b ii if saving the embeddings separately not necessary
+# # 1 b iii) Code below to be run instead of 1 b ii if saving the embeddings separately not necessary
 # df_tagged['embeddings'] = df_tagged['combined_sentence'].apply(sentence_model.encode)
 # df_tagged.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/df_tagged_pm_embedding_1.csv', index=False)
 
 """ 1 c. Splitting into train, validate, test datasets """
-# df_tagged_pm1 = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/df_tagged_pm_embedding_1.csv')
-#
-# df_tagged_pm1['embeddings'] = df_tagged_pm1['embeddings'].apply(lambda x: [float(val) for val in x[1:-1].split()])
-#
-# X = np.array(df_tagged_pm1['embeddings'].to_list())
-# y = np.array(df_tagged_pm1['Advice'].to_list())
-#
+df_tagged_pm1 = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/df_tagged_pm_embedding_1.csv')
+print(df_tagged_pm1[['Source', 'Advice']].value_counts())
+print(df_tagged_pm1['Source'].value_counts())
+
+df_tagged_pm1['embeddings'] = df_tagged_pm1['embeddings'].apply(lambda x: [float(val) for val in x[1:-1].split()])
+
+X = np.array(df_tagged_pm1['embeddings'].to_list())
+y = np.array(df_tagged_pm1['Advice'].to_list())
+
 # # Check shape of embedding array (needed for neural network later on) # shape = 384
 # first_shape = len(X[0])
 # # Check if all embeddings have the same shape
@@ -90,43 +92,42 @@ from keras.models import load_model
 #     print("All embeddings have the same shape:", first_shape)
 # else:
 #     print("Embeddings have different shapes")
-#
 
-# # Split the data into training and testing sets. Stratify ensures same ratio of positive cases in the test dataset as in training dataset. 20% to test dataset.
-# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
 
-# # # """ 1 d. Train models on the training dataset """
-## Trying LazyClassifer first to get an idea of which types of models appear to do the prediction task well
-# # clf = LazyClassifier(verbose=0, ignore_warnings=True, custom_metric=None)
-# # models_summary, _ = clf.fit(X_train, X_test, y_train, y_test)
-# #
-# # print(models_summary)
-# # models_summary.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/LC_models_summary_pm_embedding_1.csv', index=False)
-# #
-# # # Create a text file to save the classification reports
-# # with open('classification_reports.txt', 'w') as f:
-# #     # Loop through models and get classification reports
-# #     for model_name in models_summary.index:
-# #         model = clf.models[model_name]
-# #         model.fit(X_train, y_train)
-# #         y_pred = model.predict(X_test)
-# #
-# #         classification_rep = classification_report(y_test, y_pred)
-# #
-# #         # Write the classification report to the text file
-# #         f.write(f"Classification Report for {model_name}:\n")
-# #         f.write(classification_rep)
-# #         f.write('\n\n')
-# #
-# # print("Classification reports saved to classification_reports.txt")
+# Split the data into training and testing sets. Stratify ensures same ratio of positive cases in the test dataset as in training dataset. 20% to test dataset.
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
+
+# # """ 1 d. Train models on the training dataset """
+# Trying LazyClassifer first to get an idea of which types of models appear to do the prediction task well
+# clf = LazyClassifier(verbose=0, ignore_warnings=True, custom_metric=None)
+# models_summary, _ = clf.fit(X_train, X_test, y_train, y_test)
 #
-# """ 1 d Training models from 1 c using cross validation and SMOTE """
+# print(models_summary)
+# models_summary.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/LC_models_summary_pm_embedding_1.csv', index=False)
+#
+# # Create a text file to save the classification reports
+# with open('classification_reports.txt', 'w') as f:
+#     # Loop through models and get classification reports
+#     for model_name in models_summary.index:
+#         model = clf.models[model_name]
+#         model.fit(X_train, y_train)
+#         y_pred = model.predict(X_test)
+#
+#         classification_rep = classification_report(y_test, y_pred)
+#
+#         # Write the classification report to the text file
+#         f.write(f"Classification Report for {model_name}:\n")
+#         f.write(classification_rep)
+#         f.write('\n\n')
+#
+# print("Classification reports saved to classification_reports.txt")
+
+""" 1 d Training models from 1 c using cross validation and SMOTE """
 # Training the models from 1 c and other models using k-fold cross validation and also with the inclusion of SMOTE.
 # SMOTE is a technique for oversampling of positive cases in an unbalanced dataset
-#
-#
-# cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
-#
+
+cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+
 # # Define the list of models I will train (2 not #'d out are the two best models, to see the rest remove the #)
 # models = [
 #     # ('BernoulliNB', BernoulliNB()),
@@ -161,10 +162,10 @@ from keras.models import load_model
 # # The below code trains the models using cross validation and using SMOTE. The metrics are written to a txt file for comparison
 # # Lists to store metric scores for each model
 # avg_metric_scores = []
-#
-# # .txt files of model_evaluation.txt and model_evaluation_no_smote.txt run the models #'d out above. model_evaluation_main2.txt just shows the LR and NN models.
-# # To re-run simply uncomment out the models in the model list above
-#
+
+# .txt files of model_evaluation.txt and model_evaluation_no_smote.txt run the models #'d out above. model_evaluation_main2.txt just shows the LR and NN models.
+# To re-run simply uncomment out the models in the model list above
+
 # # Open txt file for outputs
 # with open('model_evaluation_main2.txt', 'w') as f:
 #     # Loop over models
@@ -184,7 +185,7 @@ from keras.models import load_model
 #                 model.fit(X_train_resampled, y_train_resampled, epochs=10, batch_size=32, verbose=0)
 #                 y_pred = (model.predict(X_test) > 0.5).astype(int)
 #             else:
-#                 model.fit(X_train_resampled, y_train_resampled)
+#                 model.fit(X_train_resampled, y_train_resampled) # smote used
 #                 # model.fit(X_train, y_train) # if no smote to be used
 #                 y_pred = model.predict(X_test)
 #
@@ -219,8 +220,8 @@ from keras.models import load_model
 #             model.save('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/feedforward_nn_model.h5')
 #         elif model_name == 'LogisticRegression':
 #             joblib.dump(model, 'C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/logistic_regression_model.pkl')
-#
-# """ 1 e Testing the best model on test dataset & parameter tuning the best model """
+
+""" 1 e Testing the best model on test dataset & parameter tuning the best model """
 # # Load the best model obtained from cross-validation
 # best_model = load_model('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/feedforward_nn_model.h5')  # Replace with the actual path to the saved model
 #
@@ -236,10 +237,10 @@ from keras.models import load_model
 # #
 # with open("Neural Network model - Saved, loaded and tested on test dataset.txt", "w") as f:
 #     # Print metrics
-#     f.write(f"Test Accuracy: {accuracy:.2f}")
-#     f.write(f"Test Recall: {recall:.2f}")
-#     f.write(f"Test Precision: {precision:.2f}")
-#     f.write(f"Test F1-score: {f1:.2f}")
+#     f.write(f"Test Accuracy: {accuracy:.2f} \n")
+#     f.write(f"Test Recall: {recall:.2f} \n")
+#     f.write(f"Test Precision: {precision:.2f} \n")
+#     f.write(f"Test F1-score: {f1:.2f} \n")
 #
 #     # Generate and print classification report
 #     class_report = classification_report(y_test, test_predictions)
@@ -251,8 +252,8 @@ from keras.models import load_model
 """ 1 f Using the model on the untagged data to flag which transcript chunks and thus which videos & YouTubers are giving financial advice """
 nn_model = load_model('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/feedforward_nn_model.h5')
 
-## Combining metadata and transcript chunk data for the untagged transcripts. Model will help identify which of these require further investigation
-
+# ## Combining metadata and transcript chunk data for the untagged transcripts. Model will help identify which of these require further investigation
+#
 # df_tagged = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/df_tagged_pm.csv')
 # all_transcript_chunks_with_ID = pd.read_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/df_for_randomisation.csv")
 # all_transcript_chunks_with_ID = all_transcript_chunks_with_ID.drop_duplicates(subset=['ID', 'combined_sentence'])
@@ -267,10 +268,10 @@ nn_model = load_model('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Pre
 ## Define sentence model
 sentence_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
 
-# Embed the transcript chunks using same embedding method as we did for the training & testing datasets
+# # Embed the transcript chunks using same embedding method as we did for the training & testing datasets
 # untagged_df['embeddings'] = untagged_df['combined_sentence'].apply(sentence_model.encode)
 # untagged_df.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/full_transcript_chunks_AdviceTag_embedding1.csv', index=False)
-
+#
 # # import to avoid embedding each time the script runs (can skip the lines above)
 # untagged_df = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/full_transcript_chunks_AdviceTag_embedding1.csv')
 # untagged_df['embeddings'] = untagged_df['embeddings'].apply(lambda x: [float(val) for val in x[1:-1].split()])
@@ -308,7 +309,7 @@ channel_video_ids_predAdvice = video_transcript_chunks_further_investigation.gro
 channel_video_counts = video_transcript_chunks_further_investigation.groupby('channelId')['ID'].nunique()
 
 # Open a text file for writing
-with open('channel_video_counts.txt', 'w') as f:
+with open('channel_video_counts.txt', 'w', encoding='utf-8') as f:
     f.write("\n This document outlines the channels and videos that the predictive model has identified as possibly containing financial advice. \n \n")
     f.write("It is meant to aid investigation into financial advice on YouTube investing videos by identifying videos (and their creators) that may have financial advice present - thus narrowing the search significantly. \n")
     f.write("\n Metadata, full transcript and subset of transcript where advice is present is also available \n \n")
@@ -316,7 +317,7 @@ with open('channel_video_counts.txt', 'w') as f:
     f.write("Channels and videos that are predicted to contain financial advice: \n \n")
     for channel_id, unique_video_count in channel_video_counts.items():
         f.write(f'Channel ID: {channel_id}\n')
-        f.write(f'No of video IDs: {unique_video_count}\n')
+        f.write(f'No of videos with advice predicted: {unique_video_count}\n')
 
         # Get video IDs for the current channel
         video_ids = video_transcript_chunks_further_investigation[video_transcript_chunks_further_investigation['channelId'] == channel_id]['ID'].unique()
@@ -328,7 +329,7 @@ with open('channel_video_counts.txt', 'w') as f:
         for video_id in video_ids:
             row_count = channel_video_ids_predAdvice[(channel_video_ids_predAdvice['channelId'] == channel_id)
                                                                       & (channel_video_ids_predAdvice['ID'] == video_id)]['row_count'].values[0]
-            #video_name = video_transcript_chunks_further_investigation[video_transcript_chunks_further_investigation['ID'] == video_id]['title']
-            f.write(f'   {video_id} : {row_count}\n')
+            video_name = video_transcript_chunks_further_investigation[video_transcript_chunks_further_investigation['ID'] == video_id]['title'].iloc[0]
+            f.write(f'   {video_id} - {video_name}: {row_count}\n')
 
         f.write('\n')
