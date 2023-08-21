@@ -160,39 +160,39 @@ embeddings_1 = np.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/em
 # # # Defining sub-models
 # #
 # Altering the stopwords to be omitted due to intricacies of language used in investing and YouTube videos generally
-vectorizer = CountVectorizer(stop_words="english")
-stopwords = vectorizer.get_stop_words()
-modified_stopwords = list(stopwords)
-words_to_remove = ["should", "must", "interest", "never"]
-words_to_add = ["im", "Im", "uh", "hi", "youre", "you're", 'um', 'okay', 'yes', 'yeah', 'just', 'really', 'theyre', 'thank', 'Music', 'Applause', 'foreign', 'music', 'hmm', 'ill']
-modified_stopwords.extend(words_to_add)
-for word in words_to_remove:
-    modified_stopwords.remove(word)
-vectorizer.set_params(stop_words=modified_stopwords)
-
-umap_model = UMAP(n_neighbors=15, n_components=5, min_dist=0.0, metric='cosine', random_state=100)
-hdbscan_model = HDBSCAN(min_cluster_size=15, min_samples=2, metric='euclidean', cluster_selection_method='eom')
-ctfidf_model = ClassTfidfTransformer(reduce_frequent_words=True)
-# candidate_topics = ["crypto", "ETF", "advice", "strategy", "stock picks", "countries"]
-#representation_model_2 = ZeroShotClassification(candidate_topics, model="facebook/bart-large-mnli")
-representation_model_1 = MaximalMarginalRelevance(diversity=0.5)
-# #
-# # # Model building
-# # # Topic model 1
-topic_model_1 = BERTopic(
-    umap_model=UMAP(n_neighbors=15, n_components=5, min_dist=0.0, metric='cosine', random_state=100),
-    language="english",
-    hdbscan_model=hdbscan_model,
-    vectorizer_model=vectorizer,
-    ctfidf_model=ctfidf_model,
-    representation_model=representation_model_1,
-    verbose = True
-)
-start_time = time.time()
-topic_model_1 = topic_model_1.fit(transcripts, embeddings_1)
-end_time = time.time()
-print("Topic model 1 time:", end_time - start_time, " seconds")
-
+# vectorizer = CountVectorizer(stop_words="english")
+# stopwords = vectorizer.get_stop_words()
+# modified_stopwords = list(stopwords)
+# words_to_remove = ["should", "must", "interest", "never"]
+# words_to_add = ["im", "Im", "uh", "hi", "youre", "you're", 'um', 'okay', 'yes', 'yeah', 'just', 'really', 'theyre', 'thank', 'Music', 'Applause', 'foreign', 'music', 'hmm', 'ill']
+# modified_stopwords.extend(words_to_add)
+# for word in words_to_remove:
+#     modified_stopwords.remove(word)
+# vectorizer.set_params(stop_words=modified_stopwords)
+#
+# umap_model = UMAP(n_neighbors=15, n_components=5, min_dist=0.0, metric='cosine', random_state=100)
+# hdbscan_model = HDBSCAN(min_cluster_size=15, min_samples=2, metric='euclidean', cluster_selection_method='eom')
+# ctfidf_model = ClassTfidfTransformer(reduce_frequent_words=True)
+# # candidate_topics = ["crypto", "ETF", "advice", "strategy", "stock picks", "countries"]
+# #representation_model_2 = ZeroShotClassification(candidate_topics, model="facebook/bart-large-mnli")
+# representation_model_1 = MaximalMarginalRelevance(diversity=0.5)
+# # #
+# # # # Model building
+# # # # Topic model 1
+# topic_model_1 = BERTopic(
+#     umap_model=UMAP(n_neighbors=15, n_components=5, min_dist=0.0, metric='cosine', random_state=100),
+#     language="english",
+#     hdbscan_model=hdbscan_model,
+#     vectorizer_model=vectorizer,
+#     ctfidf_model=ctfidf_model,
+#     representation_model=representation_model_1,
+#     verbose = True
+# )
+# start_time = time.time()
+# topic_model_1 = topic_model_1.fit(transcripts, embeddings_1)
+# end_time = time.time()
+# print("Topic model 1 time:", end_time - start_time, " seconds")
+#
 # start_time = time.time()
 # topics_1_test, probs_1_test = topic_model_1.fit(transcripts, embeddings_1)
 # end_time = time.time()
@@ -241,10 +241,10 @@ print("Topic model 1 time:", end_time - start_time, " seconds")
 # # # print("TM2")
 # # # print(topic_model_2.get_topic_info())
 #
-vectorizer_model = CountVectorizer(stop_words=modified_stopwords, ngram_range=(1, 3), min_df=10)
-
-topic_model_1.update_topics(transcripts, vectorizer_model = vectorizer_model)
-topic_model_1.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1_countVec")
+# vectorizer_model = CountVectorizer(stop_words=modified_stopwords, ngram_range=(1, 3), min_df=10)
+#
+# topic_model_1.update_topics(transcripts, vectorizer_model = vectorizer_model)
+# topic_model_1.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1_countVec")
 # topic_model_1 = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1_countVec")
 #
 # # topic_model_2.update_topics(transcripts, vectorizer_model = vectorizer_model)
@@ -266,7 +266,7 @@ topic_model_1.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/t
 # # print("Updated with Count Vec TM3")
 # # print(topic_model_3.get_topic_info().head(12))
 #
-topic_model_1.get_topic_info().to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics_list_TM1.csv")
+# topic_model_1.get_topic_info().to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics_list_TM1.csv")
 # #topic_model_2.get_topic_info().to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics_list_TM2.csv")
 # #topic_model_3.get_topic_info().to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics_list_TM3.csv")
 #
@@ -326,116 +326,121 @@ topics_of_interest_1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
                         14, 24, 26, 36, 43, 54, 59, 60]
 
 """ 4 b: Visualise topics"""
-# Barchart - top 12
-vis_barchart_1 = topic_model_1.visualize_barchart(top_n_topics = 12, n_words=5, width=300, height=300)
-pio.write_image(vis_barchart_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_barchart_1.png")
-vis_barchart_1.write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_barchart_1.html")
-topic_model_1.visualize_topics().write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_topics_1_html.html")
-topic_model_1.visualize_topics(top_n_topics = 12).write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_topics_1_top12_html.html")
-
-# Barchart - topics of interest
-vis_barchart_1_toi = topic_model_1.visualize_barchart(topics=topics_of_interest_1, n_words=5, width=300, height=300)
-pio.write_image(vis_barchart_1_toi, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_barchart_1_toi.png")
-vis_barchart_1_toi.write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_barchart_1_toi.html")
-topic_model_1.visualize_topics(topics=topics_of_interest_1).write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_topics_1_toi_html.html")
-
-
-""" 4 b) Visualise documents """
-tm1_visualisation_toi = topic_model_1.visualize_documents(
-    transcripts,
-    embeddings=embeddings_1,
-    hide_annotations=False,
-    topics=topics_of_interest_1,
-    custom_labels=True
-).write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/tm1_visualisation_toi.html")
-#pio.write_image(tm1_visualisation_toi, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/visualization.png")
+# # Barchart - top 12
+# vis_barchart_1 = topic_model_1.visualize_barchart(top_n_topics = 12, n_words=5, width=300, height=300)
+# pio.write_image(vis_barchart_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_barchart_1.png")
+# vis_barchart_1.write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_barchart_1.html")
+# topic_model_1.visualize_topics().write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_topics_1_html.html")
+# topic_model_1.visualize_topics(top_n_topics = 12).write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_topics_1_top12_html.html")
+#
+# # Barchart - topics of interest
+# vis_barchart_1_toi = topic_model_1.visualize_barchart(topics=topics_of_interest_1, n_words=5, width=300, height=300)
+# pio.write_image(vis_barchart_1_toi, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_barchart_1_toi.png")
+# vis_barchart_1_toi.write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_barchart_1_toi.html")
+# topic_model_1.visualize_topics(topics=topics_of_interest_1).write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_topics_1_toi_html.html")
+#
+#
+# """ 4 b) Visualise documents """
+# tm1_visualisation_toi = topic_model_1.visualize_documents(
+#     transcripts,
+#     embeddings=embeddings_1,
+#     hide_annotations=False,
+#     topics=topics_of_interest_1,
+#     custom_labels=True
+# ).write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/tm1_visualisation_toi.html")
+# #pio.write_image(tm1_visualisation_toi, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/visualization.png")
 
 """ 4 c) Visualise topic hierarchy & topic tree"""
-# Can ID which topics could be merged from these two figures
-hierarchical_topics = topic_model_1.hierarchical_topics(transcripts)
-hierarchy_topics_1 = topic_model_1.visualize_hierarchy()
-hierarchy_topics_1.write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/hierarchy_topics_1.html")
-pio.write_image(hierarchy_topics_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/hierarchy_topics_1_b.png")
-
-topic_tree_1 = topic_model_1.get_topic_tree(hierarchical_topics)
-# print(topic_tree_1)
-
-# Visualise hierarchy of specific topics
-hierarchy_topics_1 = topic_model_1.visualize_hierarchy(top_n_topics=12)
-pio.write_image(hierarchy_topics_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/hierarchy_topics_1.png")
-
-hierarchy_topics_1 = topic_model_1.visualize_hierarchy(topics=topics_of_interest_1)
-pio.write_image(hierarchy_topics_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/hierarchy_topics_1_toi.png")
-
-""" 4 d) Visualise topic similarity """
-topic_similarity_heatmap_1 = topic_model_1.visualize_heatmap()
-pio.write_image(topic_similarity_heatmap_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/topic_similarity_heatmap_1.png")
-
-""" 4 e) Visualise hierarchical documents """
-vis_hierarchical_docs = topic_model_1.visualize_hierarchical_documents(transcripts, hierarchical_topics, embeddings = embeddings_1)
-vis_hierarchical_docs.write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_hierarchy_docs_1.html")
+# # Can ID which topics could be merged from these two figures
+# hierarchical_topics = topic_model_1.hierarchical_topics(transcripts)
+# hierarchy_topics_1 = topic_model_1.visualize_hierarchy()
+# hierarchy_topics_1.write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/hierarchy_topics_1.html")
+# pio.write_image(hierarchy_topics_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/hierarchy_topics_1_b.png")
+#
+# topic_tree_1 = topic_model_1.get_topic_tree(hierarchical_topics)
+# # print(topic_tree_1)
+#
+# # Visualise hierarchy of specific topics
+# hierarchy_topics_1 = topic_model_1.visualize_hierarchy(top_n_topics=12)
+# pio.write_image(hierarchy_topics_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/hierarchy_topics_1.png")
+#
+# hierarchy_topics_1 = topic_model_1.visualize_hierarchy(topics=topics_of_interest_1)
+# pio.write_image(hierarchy_topics_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/hierarchy_topics_1_toi.png")
+#
+# """ 4 d) Visualise topic similarity """
+# topic_similarity_heatmap_1 = topic_model_1.visualize_heatmap()
+# pio.write_image(topic_similarity_heatmap_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/topic_similarity_heatmap_1.png")
+#
+# """ 4 e) Visualise hierarchical documents """
+# vis_hierarchical_docs = topic_model_1.visualize_hierarchical_documents(transcripts, hierarchical_topics, embeddings = embeddings_1)
+# vis_hierarchical_docs.write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_hierarchy_docs_1.html")
 
 """ 5 Evaluating the topic model """
-# from sklearn.metrics import silhouette_score
-# import gensim.corpora as corpora
-# from gensim.models.coherencemodel import CoherenceModel
+from sklearn.metrics import silhouette_score
+import gensim.corpora as corpora
+from gensim.models.coherencemodel import CoherenceModel
+import joblib
+
+topic_model = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1_countVec")
+transcripts = transcript_chunks_combined_df['combined_sentence'].to_list()
 #
-# topic_model = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1_countVec")
-# transcripts = transcript_chunks_combined_df['combined_sentence'].to_list()
-# # topic_model = BERTopic(verbose=True, n_gram_range=(1, 3))
 # topics, _ = topic_model.fit_transform(transcripts)
-#
-# # Preprocess Documents
-# documents = pd.DataFrame({"Document": transcripts,
-#                           "ID": range(len(transcripts)),
-#                           "Topic": topics})
-# documents_per_topic = documents.groupby(['Topic'], as_index=False).agg({'Document': ' '.join})
-# cleaned_docs = topic_model._preprocess_text(documents_per_topic.Document.values)
-#
-# # Extract vectorizer and analyzer from BERTopic
-# vectorizer = topic_model.vectorizer_model
-# analyzer = vectorizer.build_analyzer()
-#
-# # Extract features for Topic Coherence evaluation
-# words = vectorizer.get_feature_names()
-# tokens = [analyzer(doc) for doc in cleaned_docs]
-# dictionary = corpora.Dictionary(tokens)
-# corpus = [dictionary.doc2bow(token) for token in tokens]
-# topic_words = [[words for words, _ in topic_model.get_topic(topic)]
-#                for topic in range(len(set(topics))-1)]
-#
-# # Evaluate
-# coherence_model_cv = CoherenceModel(topics=topic_words,
-#                                  texts=tokens,
-#                                  corpus=corpus,
-#                                  dictionary=dictionary,
-#                                  coherence='c_v')
-# coherence_cv = coherence_model_cv.get_coherence()
-#
-# coherence_model_umass = CoherenceModel(topics=topic_words,
-#                                  texts=tokens,
-#                                  corpus=corpus,
-#                                  dictionary=dictionary,
-#                                  coherence='umass')
-# coherence_umass = coherence_model_umass.get_coherence()
-#
-# # Calculate Silhouette Score
-# labels = topic_model_1.hdbscan_model.labels_
-# silhouette_avg = silhouette_score(embeddings_1, labels)
+# joblib.dump(topics, 'C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics.pkl')
+# joblib.dump(_, 'C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/transformed_data.pkl')
+topics = joblib.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics.pkl')
+_ = joblib.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/transformed_data.pkl')
+
+# Preprocess Documents
+documents = pd.DataFrame({"Document": transcripts,
+                          "ID": range(len(transcripts)),
+                          "Topic": topics})
+documents_per_topic = documents.groupby(['Topic'], as_index=False).agg({'Document': ' '.join})
+cleaned_docs = topic_model._preprocess_text(documents_per_topic.Document.values)
+
+# Extract vectorizer and analyzer from BERTopic
+vectorizer = topic_model.vectorizer_model
+analyzer = vectorizer.build_analyzer()
+
+# Extract features for Topic Coherence evaluation
+words = vectorizer.get_feature_names_out()
+tokens = [analyzer(doc) for doc in cleaned_docs]
+dictionary = corpora.Dictionary(tokens)
+corpus = [dictionary.doc2bow(token) for token in tokens]
+topic_words = [[words for words, _ in topic_model.get_topic(topic)]
+               for topic in range(len(set(topics))-1)]
+
+# Evaluate
+coherence_model_cv = CoherenceModel(topics=topic_words,
+                                 texts=tokens,
+                                 corpus=corpus,
+                                 dictionary=dictionary,
+                                 coherence='c_v')
+coherence_cv = coherence_model_cv.get_coherence()
+
+coherence_model_umass = CoherenceModel(topics=topic_words,
+                                 texts=tokens,
+                                 corpus=corpus,
+                                 dictionary=dictionary,
+                                 coherence='umass')
+coherence_umass = coherence_model_umass.get_coherence()
+
+# Calculate Silhouette Score
+labels = topic_model_1.hdbscan_model.labels_
+silhouette_avg = silhouette_score(embeddings_1, labels)
 #
 # # Calculate Dominance
 # document_topic_counts = topic_model_1.transform(transcripts)
 # dominance_scores = document_topic_counts.max(axis=1)
 # average_dominance = np.mean(dominance_scores)
 #
-# # Write metrics to a text file
-# output_file = "topic_modelling_metrics_model_1.txt"
-# with open(output_file, "w") as f:
-#     f.write("Topic Modelling Metrics - Model 1\n")
-#     f.write("-------------------------------\n")
-#     f.write(f"Coherence (C_V): {coherence_cv:.4f}\n")
-#     f.write(f"Coherence (UMass): {coherence_umass:.4f}\n")
-#     f.write(f"Silhouette Score: {silhouette_avg:.4f}\n")
-#     f.write(f"Average Dominance: {average_dominance:.4f}\n")
-#
-# print("Metrics written to", output_file)
+# Write metrics to a text file
+output_file = "topic_modelling_metrics_model_1.txt"
+with open(output_file, "w") as f:
+    f.write("Topic Modelling Metrics - Model 1\n")
+    f.write("-------------------------------\n")
+    f.write(f"Coherence (C_V): {coherence_cv:.4f}\n")
+    f.write(f"Coherence (UMass): {coherence_umass:.4f}\n")
+    f.write(f"Silhouette Score: {silhouette_avg:.4f}\n")
+    # f.write(f"Average Dominance: {average_dominance:.4f}\n")
+
+print("Metrics written to", output_file)
