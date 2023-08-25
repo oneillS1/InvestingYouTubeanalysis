@@ -383,10 +383,17 @@ import joblib
 
 topic_model = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1_countVec")
 transcripts = transcript_chunks_combined_df['combined_sentence'].to_list()
-#
+
+# topic_model_smaller = topic_model.reduce_topics(transcripts, nr_topics=70)
+
 # topics, _ = topic_model.fit_transform(transcripts)
 # joblib.dump(topics, 'C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics.pkl')
 # joblib.dump(_, 'C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/transformed_data.pkl')
+
+# topics_smaller, _smaller = topic_model_smaller.fit_transform(transcripts)
+# joblib.dump(topics_smaller, 'C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics_smaller.pkl')
+# joblib.dump(_smaller, 'C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/transformed_data_smaller.pkl')
+
 topics = joblib.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics.pkl')
 _ = joblib.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/transformed_data.pkl')
 
@@ -400,47 +407,40 @@ cleaned_docs = topic_model._preprocess_text(documents_per_topic.Document.values)
 # Extract vectorizer and analyzer from BERTopic
 vectorizer = topic_model.vectorizer_model
 analyzer = vectorizer.build_analyzer()
-
+print('here1')
 # Extract features for Topic Coherence evaluation
-words = vectorizer.get_feature_names_out()
+#words = vectorizer.get_feature_names_out()
 tokens = [analyzer(doc) for doc in cleaned_docs]
 dictionary = corpora.Dictionary(tokens)
 corpus = [dictionary.doc2bow(token) for token in tokens]
 topic_words = [[words for words, _ in topic_model.get_topic(topic)]
                for topic in range(len(set(topics))-1)]
-
+print('here2')
 # Evaluate
-coherence_model_cv = CoherenceModel(topics=topic_words,
-                                 texts=tokens,
-                                 corpus=corpus,
-                                 dictionary=dictionary,
-                                 coherence='c_v')
-coherence_cv = coherence_model_cv.get_coherence()
+if __name__ == '__main__':
+    coherence_model_umass = CoherenceModel(topics=topic_words,
+                           texts=tokens,
+                           corpus=corpus,
+                           dictionary=dictionary,
+                           coherence='u_mass')
+    print('here again')
+    coherence_umass = coherence_model_umass.get_coherence()
+    print('here3')
+    print(coherence_umass)
 
-coherence_model_umass = CoherenceModel(topics=topic_words,
-                                 texts=tokens,
-                                 corpus=corpus,
-                                 dictionary=dictionary,
-                                 coherence='umass')
-coherence_umass = coherence_model_umass.get_coherence()
+print('ok')
 
 # Calculate Silhouette Score
 labels = topic_model_1.hdbscan_model.labels_
 silhouette_avg = silhouette_score(embeddings_1, labels)
-#
-# # Calculate Dominance
-# document_topic_counts = topic_model_1.transform(transcripts)
-# dominance_scores = document_topic_counts.max(axis=1)
-# average_dominance = np.mean(dominance_scores)
-#
+
 # Write metrics to a text file
 output_file = "topic_modelling_metrics_model_1.txt"
 with open(output_file, "w") as f:
     f.write("Topic Modelling Metrics - Model 1\n")
     f.write("-------------------------------\n")
-    f.write(f"Coherence (C_V): {coherence_cv:.4f}\n")
+    # f.write(f"Coherence (C_V): {coherence_cv:.4f}\n")
     f.write(f"Coherence (UMass): {coherence_umass:.4f}\n")
     f.write(f"Silhouette Score: {silhouette_avg:.4f}\n")
-    # f.write(f"Average Dominance: {average_dominance:.4f}\n")
 
 print("Metrics written to", output_file)
