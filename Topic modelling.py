@@ -131,12 +131,12 @@ pd.set_option('display.max_columns', 10)
 transcript_chunks_combined_df = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/transcript_chunks_combined_df.csv')
 transcripts = transcript_chunks_combined_df['combined_sentence'].tolist()
 
-# # start_time = time.time()
-# # sentence_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
-# # embeddings_1 = sentence_model.encode(transcripts)
-# # end_time = time.time()
-# # print("Embeddings 1 time:", end_time - start_time, " seconds")
-# # np.save('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/embeddings_1.npy', embeddings_1)
+# start_time = time.time()
+# sentence_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+# embeddings_1 = sentence_model.encode(transcripts)
+# end_time = time.time()
+# print("Embeddings 1 time:", end_time - start_time, " seconds")
+# np.save('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/embeddings_1.npy', embeddings_1)
 embeddings_1 = np.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/embeddings_1.npy')
 
 #
@@ -157,48 +157,42 @@ embeddings_1 = np.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/em
 # # embeddings_3 = np.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/embeddings_3.npy')
 #
 # """ 3 c) Creating the topic model """
-# # # Defining sub-models
-# #
-# Altering the stopwords to be omitted due to intricacies of language used in investing and YouTube videos generally
-# vectorizer = CountVectorizer(stop_words="english")
-# stopwords = vectorizer.get_stop_words()
-# modified_stopwords = list(stopwords)
-# words_to_remove = ["should", "must", "interest", "never"]
-# words_to_add = ["im", "Im", "uh", "hi", "youre", "you're", 'um', 'okay', 'yes', 'yeah', 'just', 'really', 'theyre', 'thank', 'Music', 'Applause', 'foreign', 'music', 'hmm', 'ill']
-# modified_stopwords.extend(words_to_add)
-# for word in words_to_remove:
-#     modified_stopwords.remove(word)
-# vectorizer.set_params(stop_words=modified_stopwords)
+# # Defining sub-models
 #
-# umap_model = UMAP(n_neighbors=15, n_components=5, min_dist=0.0, metric='cosine', random_state=100)
-# hdbscan_model = HDBSCAN(min_cluster_size=15, min_samples=2, metric='euclidean', cluster_selection_method='eom')
-# ctfidf_model = ClassTfidfTransformer(reduce_frequent_words=True)
-# # candidate_topics = ["crypto", "ETF", "advice", "strategy", "stock picks", "countries"]
-# #representation_model_2 = ZeroShotClassification(candidate_topics, model="facebook/bart-large-mnli")
-# representation_model_1 = MaximalMarginalRelevance(diversity=0.5)
-# # #
-# # # # Model building
-# # # # Topic model 1
-# topic_model_1 = BERTopic(
-#     umap_model=UMAP(n_neighbors=15, n_components=5, min_dist=0.0, metric='cosine', random_state=100),
-#     language="english",
-#     hdbscan_model=hdbscan_model,
-#     vectorizer_model=vectorizer,
-#     ctfidf_model=ctfidf_model,
-#     representation_model=representation_model_1,
-#     verbose = True
-# )
+# Altering the stopwords to be omitted due to intricacies of language used in investing and YouTube videos generally
+vectorizer = CountVectorizer(stop_words="english")
+stopwords = vectorizer.get_stop_words()
+modified_stopwords = list(stopwords)
+words_to_remove = ["should", "must", "interest", "never"]
+words_to_add = ["im", "Im", "uh", "hi", "youre", "you're", 'um', 'okay', 'yes', 'yeah', 'just', 'really', 'theyre', 'thank', 'Music', 'Applause', 'foreign', 'music', 'hmm', 'ill']
+modified_stopwords.extend(words_to_add)
+for word in words_to_remove:
+    modified_stopwords.remove(word)
+vectorizer.set_params(stop_words=modified_stopwords)
+
+umap_model = UMAP(n_neighbors=15, n_components=5, min_dist=0.0, metric='cosine', random_state=100)
+hdbscan_model = HDBSCAN(min_cluster_size=15, min_samples=2, metric='euclidean', cluster_selection_method='eom')
+ctfidf_model = ClassTfidfTransformer(reduce_frequent_words=True)
+# candidate_topics = ["crypto", "ETF", "advice", "strategy", "stock picks", "countries"]
+# representation_model_2 = ZeroShotClassification(candidate_topics, model="facebook/bart-large-mnli")
+representation_model_1 = MaximalMarginalRelevance(diversity=0.5)
+
+# # Model building
+# # Topic model 1
+topic_model_1 = BERTopic(
+    umap_model=UMAP(n_neighbors=15, n_components=5, min_dist=0.0, metric='cosine', random_state=100),
+    language="english",
+    hdbscan_model=hdbscan_model,
+    vectorizer_model=vectorizer,
+    ctfidf_model=ctfidf_model,
+    representation_model=representation_model_1,
+    verbose = True
+)
 # start_time = time.time()
 # topic_model_1 = topic_model_1.fit(transcripts, embeddings_1)
 # end_time = time.time()
 # print("Topic model 1 time:", end_time - start_time, " seconds")
 #
-# start_time = time.time()
-# topics_1_test, probs_1_test = topic_model_1.fit(transcripts, embeddings_1)
-# end_time = time.time()
-# print("Topic model 1 transform time:", end_time - start_time, " seconds")
-
-
 # #
 # # # Topic model 2
 # # topic_model_2 = BERTopic(
@@ -394,53 +388,74 @@ transcripts = transcript_chunks_combined_df['combined_sentence'].to_list()
 # joblib.dump(topics_smaller, 'C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics_smaller.pkl')
 # joblib.dump(_smaller, 'C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/transformed_data_smaller.pkl')
 
-topics = joblib.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics.pkl')
-_ = joblib.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/transformed_data.pkl')
+# topics = joblib.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics.pkl')
+# _ = joblib.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/transformed_data.pkl')
+#
+# # Preprocess Documents
+# documents = pd.DataFrame({"Document": transcripts,
+#                           "ID": range(len(transcripts)),
+#                           "Topic": topics})
+# documents_per_topic = documents.groupby(['Topic'], as_index=False).agg({'Document': ' '.join})
+# cleaned_docs = topic_model._preprocess_text(documents_per_topic.Document.values)
+#
+# # Extract vectorizer and analyzer from BERTopic
+# vectorizer = topic_model.vectorizer_model
+# analyzer = vectorizer.build_analyzer()
+#
+# # Extract features for Topic Coherence evaluation
+# tokens = [analyzer(doc) for doc in cleaned_docs]
+# dictionary = corpora.Dictionary(tokens)
+# corpus = [dictionary.doc2bow(token) for token in tokens]
+# topic_words = [[words for words, _ in topic_model.get_topic(topic)]
+#                for topic in range(len(set(topics))-1)]
+#
+# # Evaluate
+# if __name__ == '__main__':
+#     coherence_model_umass = CoherenceModel(topics=topic_words,
+#                            texts=tokens,
+#                            corpus=corpus,
+#                            dictionary=dictionary,
+#                            coherence='u_mass')
+#     coherence_umass = coherence_model_umass.get_coherence()
+#     print(coherence_umass)
+#
+# # Calculate Silhouette Score
+# labels = topic_model_1.hdbscan_model.labels_
+# silhouette_avg = silhouette_score(embeddings_1, labels)
+#
+# # Write metrics to a text file
+# output_file = "topic_modelling_metrics_model_1.txt"
+# with open(output_file, "w") as f:
+#     f.write("Topic Modelling Metrics - Model 1\n")
+#     f.write("-------------------------------\n")
+#     # f.write(f"Coherence (C_V): {coherence_cv:.4f}\n")
+#     f.write(f"Coherence (UMass): {coherence_umass:.4f}\n")
+#     f.write(f"Silhouette Score: {silhouette_avg:.4f}\n")
 
-# Preprocess Documents
-documents = pd.DataFrame({"Document": transcripts,
-                          "ID": range(len(transcripts)),
-                          "Topic": topics})
-documents_per_topic = documents.groupby(['Topic'], as_index=False).agg({'Document': ' '.join})
-cleaned_docs = topic_model._preprocess_text(documents_per_topic.Document.values)
+""" 6. Example of search topics """
+sentence_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+topic_model_1 = BERTopic(
+    umap_model=UMAP(n_neighbors=15, n_components=5, min_dist=0.0, metric='cosine', random_state=100),
+    language="english",
+    hdbscan_model=hdbscan_model,
+    vectorizer_model=vectorizer,
+    ctfidf_model=ctfidf_model,
+    representation_model=representation_model_1,
+    verbose = True,
+    embedding_model = sentence_model
+)
 
-# Extract vectorizer and analyzer from BERTopic
-vectorizer = topic_model.vectorizer_model
-analyzer = vectorizer.build_analyzer()
-print('here1')
-# Extract features for Topic Coherence evaluation
-#words = vectorizer.get_feature_names_out()
-tokens = [analyzer(doc) for doc in cleaned_docs]
-dictionary = corpora.Dictionary(tokens)
-corpus = [dictionary.doc2bow(token) for token in tokens]
-topic_words = [[words for words, _ in topic_model.get_topic(topic)]
-               for topic in range(len(set(topics))-1)]
-print('here2')
-# Evaluate
-if __name__ == '__main__':
-    coherence_model_umass = CoherenceModel(topics=topic_words,
-                           texts=tokens,
-                           corpus=corpus,
-                           dictionary=dictionary,
-                           coherence='u_mass')
-    print('here again')
-    coherence_umass = coherence_model_umass.get_coherence()
-    print('here3')
-    print(coherence_umass)
+start_time = time.time()
+topics_1_test, probs_1_test = topic_model_1.fit_transform(transcripts, embeddings_1)
+end_time = time.time()
+print("Topic model 1 transform time:", end_time - start_time, " seconds")
+vectorizer_model = CountVectorizer(stop_words=modified_stopwords, ngram_range=(1, 3), min_df=10)
 
-print('ok')
+topic_model_1.update_topics(transcripts, vectorizer_model = vectorizer_model)
+topic_model_1.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1_test")
 
-# Calculate Silhouette Score
-labels = topic_model_1.hdbscan_model.labels_
-silhouette_avg = silhouette_score(embeddings_1, labels)
+similar_topics, similarity = topic_model_1.find_topics("crypto advice", top_n=5)
+print(topic_model.get_topic(similar_topics[0]))
 
-# Write metrics to a text file
-output_file = "topic_modelling_metrics_model_1.txt"
-with open(output_file, "w") as f:
-    f.write("Topic Modelling Metrics - Model 1\n")
-    f.write("-------------------------------\n")
-    # f.write(f"Coherence (C_V): {coherence_cv:.4f}\n")
-    f.write(f"Coherence (UMass): {coherence_umass:.4f}\n")
-    f.write(f"Silhouette Score: {silhouette_avg:.4f}\n")
-
-print("Metrics written to", output_file)
+similar_topics, similarity = topic_model_1.find_topics("financial advice", top_n=5)
+print(topic_model.get_topic(similar_topics[0]))
