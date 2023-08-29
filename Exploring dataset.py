@@ -22,7 +22,7 @@ raw_video_data = pd.concat(dataframes)
 # Save the combined dataframe to a new CSV file
 #raw_video_data.to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/Final dataset(s) for analysis/raw data.csv", index=False)
 
-""" Part 3: Initial data exploration 
+""" Part 3: Initial data exploration
 - checking: no of videos in dataset, duplicates, no without transcript """
 # print(raw_video_data.shape)
 # print(raw_video_data.dtypes)
@@ -52,3 +52,6 @@ print(video_data['Source'].value_counts())
 
 """ Part 4: Saving cleaned dataset for analysis """
 video_data.to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/Final dataset(s) for analysis/cleaned data.csv", index=False)
+
+video_data = pd.read_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/Final dataset(s) for analysis/cleaned data.csv")
+print(video_data['Source'].value_counts())

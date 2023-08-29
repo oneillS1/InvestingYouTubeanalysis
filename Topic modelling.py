@@ -433,6 +433,8 @@ transcripts = transcript_chunks_combined_df['combined_sentence'].to_list()
 #     f.write(f"Silhouette Score: {silhouette_avg:.4f}\n")
 
 """ 6. Example of search topics """
+## To use find_topics(), which finds the topics most similar to a search term, the embeddings have to be passed directly to the model
+## The below recreates the topic model above just with the embeddings directly in it.
 sentence_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
 topic_model_1 = BERTopic(
     umap_model=UMAP(n_neighbors=15, n_components=5, min_dist=0.0, metric='cosine', random_state=100),
@@ -454,8 +456,9 @@ vectorizer_model = CountVectorizer(stop_words=modified_stopwords, ngram_range=(1
 topic_model_1.update_topics(transcripts, vectorizer_model = vectorizer_model)
 topic_model_1.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1_test")
 
+## Find the topics most similar to the terms 'crypto advice', 'stock tips' and print the 1st one's most common words
 similar_topics, similarity = topic_model_1.find_topics("crypto advice", top_n=5)
 print(topic_model.get_topic(similar_topics[0]))
 
-similar_topics, similarity = topic_model_1.find_topics("financial advice", top_n=5)
+similar_topics, similarity = topic_model_1.find_topics("stock tips", top_n=5)
 print(topic_model.get_topic(similar_topics[0]))
