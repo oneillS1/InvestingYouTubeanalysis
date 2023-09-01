@@ -9,14 +9,14 @@ import pandas as pd
 
 """ 2. Randomly selecting train, validate and test sets """
 # Dataset = 1890 videos, 17958 chunks of transcript - 9ish chunks on average
-transcript_chunks_combined_df = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/transcript_chunks_combined_df.csv')
-all_video_df_chunks_count = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/all_video_df_chunks_count.csv', usecols=['Source', 'ID'])
-df_for_randomisation = pd.merge(transcript_chunks_combined_df, all_video_df_chunks_count, on='ID')
-print(df_for_randomisation.head())
-df_for_randomisation.to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/df_for_randomisation.csv", index=False)
-
-# Stratified sampling - randomly select 50% of the 3 types of Sourced videos for tagging
-num_ids_to_select = (df_for_randomisation.groupby('Source')['ID'].nunique() * 0.5).astype(int)
+# transcript_chunks_combined_df = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/transcript_chunks_combined_df.csv')
+# all_video_df_chunks_count = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/all_video_df_chunks_count.csv', usecols=['Source', 'ID'])
+# df_for_randomisation = pd.merge(transcript_chunks_combined_df, all_video_df_chunks_count, on='ID')
+# print(df_for_randomisation.head())
+# df_for_randomisation.to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/df_for_randomisation.csv", index=False)
+#
+# # Stratified sampling - randomly select 50% of the 3 types of Sourced videos for tagging
+# num_ids_to_select = (df_for_randomisation.groupby('Source')['ID'].nunique() * 0.5).astype(int)
 
 # selected_dfs = []
 # for source in df_for_randomisation['Source'].unique():
