@@ -157,17 +157,17 @@ cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
 # # Compile neural network model before training
 # for model_name, model in models:
 #     if isinstance(model, Sequential):
-#         model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+#         model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['Recall'])
 #
 # # The below code trains the models using cross validation and using SMOTE. The metrics are written to a txt file for comparison
 # # Lists to store metric scores for each model
 # avg_metric_scores = []
-
-# .txt files of model_evaluation.txt and model_evaluation_no_smote.txt run the models #'d out above. model_evaluation_main2.txt just shows the LR and NN models.
-# To re-run simply uncomment out the models in the model list above
-
+#
+# # .txt files of model_evaluation.txt and model_evaluation_no_smote.txt run the models #'d out above. model_evaluation_main2.txt just shows the LR and NN models.
+# # To re-run simply uncomment out the models in the model list above
+#
 # # Open txt file for outputs
-# with open('model_evaluation_main2.txt', 'w') as f:
+# with open('model_evaluation_main2_recall.txt', 'w') as f:
 #     # Loop over models
 #     for model_name, model in models:
 #         metric_scores = []
@@ -217,13 +217,106 @@ cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
 #
 #         # After running the above the best 2 models are chosen and saved
 #         if model_name == 'FeedforwardNN':
-#             model.save('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/feedforward_nn_model.h5')
+#             model.save('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/feedforward_nn_model_recall.h5')
 #         elif model_name == 'LogisticRegression':
 #             joblib.dump(model, 'C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/logistic_regression_model.pkl')
 
 """ 1 e Testing the best model on test dataset & parameter tuning the best model """
+# ## recreating nn models which multiple different parameters
+# from itertools import product
+#
+# # Setting the parameters for the grid search for the best parameters for the neural network
+# hidden_layers = [1, 2]
+# neurons_layer1 = [32, 64]
+# neurons_layer2 = [16, 32]
+# activation_functions = ['relu']
+# optimisers = ['adam']
+# batch_sizes = [16, 32]
+# epochs_values = [5, 10]
+#
+# # Create a list to store results
+# results = []
+# model_counter = 1
+#
+# # Loop over hyperparameters
+# for hl, n1, n2, activation, optimizer, batch_size, epochs in product(hidden_layers, neurons_layer1, neurons_layer2, activation_functions, optimisers, batch_sizes, epochs_values):
+#     model_name = f'Model-{model_counter}'
+#     hl_value = hl
+#     neurons1_value = n1
+#     neurons2_value = n2
+#     activation_value = activation
+#     optimiser_value = optimizer
+#     batch_size_value = batch_size
+#     epochs_value = epochs
+#
+#     model = Sequential()
+#
+#     # Adding a hidden layer (at least 1 for all models)
+#     model.add(Dense(n1, activation=activation, input_shape=(384,)))
+#
+#     if hl == 2:
+#         # Adding second layer for some models (50% of them) - testing to see if improvemnet and therefore necessary
+#         model.add(Dense(n2, activation=activation))
+#         neurons2_value = n2
+#     else:
+#         neurons2_value = 0
+#
+#     # Final output layer should always have 1 neuron and sigmoid function to output 0-1
+#     model.add(Dense(1, activation='sigmoid'))
+#
+#     # Compile the model and optimise for recall
+#     model.compile(loss='binary_crossentropy', optimizer=optimizer, metrics=['Recall'])
+#
+#     metric_scores = []
+#
+#     # Loop over cross-validation folds
+#     for train_index, test_index in cv.split(X, y):
+#         X_train, X_test = X[train_index], X[test_index]
+#         y_train, y_test = y[train_index], y[test_index]
+#
+#         smote = SMOTE(random_state=42)
+#         X_train_resampled, y_train_resampled = smote.fit_resample(X_train, y_train)
+#
+#         start_time = time.time()
+#         model.fit(X_train_resampled, y_train_resampled, epochs=epochs, batch_size=batch_size, verbose=0)
+#         end_time = time.time()
+#         training_time = round(end_time - start_time, 2)
+#
+#         y_pred = (model.predict(X_test) > 0.5).astype(int)
+#
+#         accuracy = round(accuracy_score(y_test, y_pred), 2)
+#         precision = round(precision_score(y_test, y_pred), 2)
+#         recall = round(recall_score(y_test, y_pred), 2)
+#         f1 = round(f1_score(y_test, y_pred), 2)
+#
+#         metric_scores.append((accuracy, precision, recall, f1, training_time))
+#
+#     avg_accuracy = round(np.mean([score[0] for score in metric_scores]), 2)
+#     avg_precision = round(np.mean([score[1] for score in metric_scores]), 2)
+#     avg_recall = round(np.mean([score[2] for score in metric_scores]), 2)
+#     avg_f1 = round(np.mean([score[3] for score in metric_scores]), 2)
+#     avg_training_time = round(np.mean([score[4] for score in metric_scores]), 2)
+#
+#     results.append((model_name, hl_value, neurons1_value, neurons2_value, activation_value, optimiser_value, batch_size_value,
+#                     epochs_value, avg_accuracy, avg_precision, avg_recall, avg_f1, avg_training_time))
+#
+#     model_counter += 1
+#
+#     # Saving the best one, chosen by inspection of output
+#     if hl == 2 and n1 ==64  and n2 ==32  and activation == 'relu' and optimizer == 'adam' and batch_size == 32 and epochs == 10:
+#         model.save('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/best_feedforward_nn_model.h5')
+#
+# # Create a DataFrame from the results
+# nn_tuning_df = pd.DataFrame(results, columns=['Model', 'HL', 'Neurons1', 'Neurons2', 'Activation', 'Optimiser', 'Batch Size', 'Epochs',
+#                                               'Average Accuracy', 'Average Precision', 'Average Recall', 'Average F1-score',
+#                                              'Average Training Time'])
+#
+# # Save the DataFrame to a CSV file
+# nn_tuning_df.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/nn_fine_tuning_results.csv', index=False)
+
+""" 1 f Loading and testing best model on test dataset"""
 # # Load the best model obtained from cross-validation
-# best_model = load_model('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/feedforward_nn_model.h5')  # Replace with the actual path to the saved model
+# best_model = load_model('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/best_feedforward_nn_model.h5')  # Replace with the actual path to the saved model
 #
 # # Evaluate the best model on the test dataset
 # test_predictions = best_model.predict(X_test)
@@ -249,11 +342,11 @@ cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
 
 ## Given the success of the model in predicting financial advice, no tuning was necessary & the model with parameters as is is chosen
 
-""" 1 f Using the model on the untagged data to flag which transcript chunks and thus which videos & YouTubers are giving financial advice """
-nn_model = load_model('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/feedforward_nn_model.h5')
+""" 1 g Using the model on the untagged data to flag which transcript chunks and thus which videos & YouTubers are giving financial advice """
+nn_model = load_model('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/best_feedforward_nn_model.h5')
 
-# ## Combining metadata and transcript chunk data for the untagged transcripts. Model will help identify which of these require further investigation
-#
+## Combining metadata and transcript chunk data for the untagged transcripts. Model will help identify which of these require further investigation
+
 # df_tagged = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/df_tagged_pm.csv')
 # all_transcript_chunks_with_ID = pd.read_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/df_for_randomisation.csv")
 # all_transcript_chunks_with_ID = all_transcript_chunks_with_ID.drop_duplicates(subset=['ID', 'combined_sentence'])
@@ -273,57 +366,63 @@ sentence_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
 # untagged_df.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/full_transcript_chunks_AdviceTag_embedding1.csv', index=False)
 #
 # # import to avoid embedding each time the script runs (can skip the lines above)
-# untagged_df = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/full_transcript_chunks_AdviceTag_embedding1.csv')
-# untagged_df['embeddings'] = untagged_df['embeddings'].apply(lambda x: [float(val) for val in x[1:-1].split()])
-#
-# X_untagged = np.array(untagged_df['embeddings'].to_list())
-#
-# # Make predictions using the trained model
-# predictions = nn_model.predict(X_untagged)
-# predicted_labels = (predictions > 0.5).astype(int)
-#
-# # Add the predicted labels as a new column to the DataFrame
-# untagged_df['predicted_advice'] = predicted_labels
-# untagged_df.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/full_transcript_chunks_AdviceTag_embedding1_predicted.csv', index=False)
-#
-# ### Identifying the videos that are predicted to have advice and should be further investigated
-# video_data_metadata = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/video_data_chunks_count.csv')
-# video_metadata_predictions = video_data_metadata.merge(untagged_df, on='ID', how='left')
-# video_metadata_predictions = video_metadata_predictions.dropna(subset=['predicted_advice'], axis=0)
-#
-# # Keep the relevant columns for the transcript chunks that are predicted to have advice
-# predicted_advice_flag = video_metadata_predictions['predicted_advice'] == 1
-# relevant_columns = ['channelId', 'ID', 'publishedAt', 'tags', 'title', 'description',
-#        'likeCount', 'viewCount', 'commentCount', 'Transcript', 'combined_sentence',
-#        'predicted_advice']
-#
-# video_transcript_chunks_further_investigation = video_metadata_predictions.loc[predicted_advice_flag, relevant_columns]
-# video_transcript_chunks_further_investigation.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/predicted_advice_df_rel_var.csv', index=False)
+untagged_df = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/full_transcript_chunks_AdviceTag_embedding1.csv')
+untagged_df['embeddings'] = untagged_df['embeddings'].apply(lambda x: [float(val) for val in x[1:-1].split()])
 
-## With this dataset, I will write a document that investigators could use to identify the YouTube channels and videos predicted to contain advice
-## ID the channel and videos for further inspection and write to file for investigators
+X_untagged = np.array(untagged_df['embeddings'].to_list())
+
+# Make predictions using the trained model
+predictions = nn_model.predict(X_untagged)
+predicted_labels = (predictions > 0.5).astype(int)
+
+# Add the predicted labels as a new column to the DataFrame
+untagged_df['predicted_advice'] = predicted_labels
+untagged_df.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/full_transcript_chunks_AdviceTag_embedding1_predicted.csv', index=False)
+
+### Identifying the videos that are predicted to have advice and should be further investigated
+video_data_metadata = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/video_data_chunks_count.csv')
+video_metadata_predictions = video_data_metadata.merge(untagged_df, on='ID', how='left')
+video_metadata_predictions = video_metadata_predictions.dropna(subset=['predicted_advice'], axis=0)
+
+
+# Keep the relevant columns for the transcript chunks that are predicted to have advice
+predicted_advice_flag = video_metadata_predictions['predicted_advice'] == 1
+relevant_columns = ['channelId', 'ID', 'publishedAt', 'tags', 'title', 'description',
+       'likeCount', 'viewCount', 'commentCount', 'Transcript', 'combined_sentence',
+       'predicted_advice']
+
+video_transcript_chunks_further_investigation = video_metadata_predictions.loc[predicted_advice_flag, relevant_columns]
+video_transcript_chunks_further_investigation.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/predicted_advice_df_rel_var.csv', index=False)
+
+# With this dataset, I will write a document that investigators could use to identify the YouTube channels and videos predicted to contain advice
+# ID the channel and videos for further inspection and write to file for investigators
 video_transcript_chunks_further_investigation = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/predicted_advice_df_rel_var.csv')
 
 # Group by channelId and video_ID to count unique video IDs and rows per video ID
 channel_video_ids_predAdvice = video_transcript_chunks_further_investigation.groupby(['channelId', 'ID']).size().reset_index(name='row_count')
 channel_video_counts = video_transcript_chunks_further_investigation.groupby('channelId')['ID'].nunique()
 
+unique_channel_count = video_transcript_chunks_further_investigation['channelId'].nunique()
+unique_video_id_count = video_transcript_chunks_further_investigation['ID'].nunique()
+
 # Open a text file for writing
 with open('channel_video_counts.txt', 'w', encoding='utf-8') as f:
     f.write("\n This document outlines the channels and videos that the predictive model has identified as possibly containing financial advice. \n \n")
-    f.write("It is meant to aid investigation into financial advice on YouTube investing videos by identifying videos (and their creators) that may have financial advice present - thus narrowing the search significantly. \n")
-    f.write("\n Metadata, full transcript and subset of transcript where advice is present is also available \n \n")
+    f.write("It is meant to aid investigation into financial advice on YouTube investing videos \n by identifying videos (and their creators) that may have financial advice present - thus narrowing the search significantly. \n")
+    f.write("\n Video metadata, full transcript and subset of transcript where advice is present is also available \n \n")
     f.write("For any video ID mentioned below, one can watch it by adding the video id to the prefix here: https://www.youtube.com/watch?v= \n \n \n")
+    f.write(f'Total number of channels with financial advice: {unique_channel_count}\n')
+    f.write(f'Total number of videos with financial advice: {unique_video_id_count}\n\n')
     f.write("Channels and videos that are predicted to contain financial advice: \n \n")
     for channel_id, unique_video_count in channel_video_counts.items():
         f.write(f'Channel ID: {channel_id}\n')
-        f.write(f'No of videos with advice predicted: {unique_video_count}\n')
+        f.write(f'No of videos with financial advice predicted: {unique_video_count}\n')
 
         # Get video IDs for the current channel
         video_ids = video_transcript_chunks_further_investigation[video_transcript_chunks_further_investigation['channelId'] == channel_id]['ID'].unique()
-        f.write(f'Video IDs: {", ".join(video_ids)}\n')
+        f.write(f'Video IDs with financial advice predicted: {", ".join(video_ids)}\n')
 
-        f.write('No of transcript chunks with advice predicted:\n')
+        f.write('Video ID, title and number of transcript chunks containing financial advice:\n')
 
         # Count rows per video ID in the current channel
         for video_id in video_ids:
