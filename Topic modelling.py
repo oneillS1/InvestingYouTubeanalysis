@@ -374,88 +374,90 @@ from sklearn.metrics import silhouette_score
 import gensim.corpora as corpora
 from gensim.models.coherencemodel import CoherenceModel
 import joblib
-
-topic_model = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1_countVec")
-transcripts = transcript_chunks_combined_df['combined_sentence'].to_list()
-
-# topic_model_smaller = topic_model.reduce_topics(transcripts, nr_topics=70)
-
-# topics, _ = topic_model.fit_transform(transcripts)
-# joblib.dump(topics, 'C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics.pkl')
-# joblib.dump(_, 'C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/transformed_data.pkl')
-
-# topics_smaller, _smaller = topic_model_smaller.fit_transform(transcripts)
-# joblib.dump(topics_smaller, 'C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics_smaller.pkl')
-# joblib.dump(_smaller, 'C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/transformed_data_smaller.pkl')
-
-# topics = joblib.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics.pkl')
-# _ = joblib.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/transformed_data.pkl')
 #
-# # Preprocess Documents
-# documents = pd.DataFrame({"Document": transcripts,
-#                           "ID": range(len(transcripts)),
-#                           "Topic": topics})
-# documents_per_topic = documents.groupby(['Topic'], as_index=False).agg({'Document': ' '.join})
-# cleaned_docs = topic_model._preprocess_text(documents_per_topic.Document.values)
+# topic_model = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1_countVec")
+# transcripts = transcript_chunks_combined_df['combined_sentence'].to_list()
 #
-# # Extract vectorizer and analyzer from BERTopic
-# vectorizer = topic_model.vectorizer_model
-# analyzer = vectorizer.build_analyzer()
+# # topic_model_smaller = topic_model.reduce_topics(transcripts, nr_topics=70)
 #
-# # Extract features for Topic Coherence evaluation
-# tokens = [analyzer(doc) for doc in cleaned_docs]
-# dictionary = corpora.Dictionary(tokens)
-# corpus = [dictionary.doc2bow(token) for token in tokens]
-# topic_words = [[words for words, _ in topic_model.get_topic(topic)]
-#                for topic in range(len(set(topics))-1)]
+# # topics, _ = topic_model.fit_transform(transcripts)
+# # joblib.dump(topics, 'C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics.pkl')
+# # joblib.dump(_, 'C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/transformed_data.pkl')
 #
-# # Evaluate
-# if __name__ == '__main__':
-#     coherence_model_umass = CoherenceModel(topics=topic_words,
-#                            texts=tokens,
-#                            corpus=corpus,
-#                            dictionary=dictionary,
-#                            coherence='u_mass')
-#     coherence_umass = coherence_model_umass.get_coherence()
-#     print(coherence_umass)
+# # topics_smaller, _smaller = topic_model_smaller.fit_transform(transcripts)
+# # joblib.dump(topics_smaller, 'C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics_smaller.pkl')
+# # joblib.dump(_smaller, 'C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/transformed_data_smaller.pkl')
 #
-# # Calculate Silhouette Score
-# labels = topic_model_1.hdbscan_model.labels_
-# silhouette_avg = silhouette_score(embeddings_1, labels)
+# # topics = joblib.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics.pkl')
+# # _ = joblib.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/transformed_data.pkl')
+# #
+# # # Preprocess Documents
+# # documents = pd.DataFrame({"Document": transcripts,
+# #                           "ID": range(len(transcripts)),
+# #                           "Topic": topics})
+# # documents_per_topic = documents.groupby(['Topic'], as_index=False).agg({'Document': ' '.join})
+# # cleaned_docs = topic_model._preprocess_text(documents_per_topic.Document.values)
+# #
+# # # Extract vectorizer and analyzer from BERTopic
+# # vectorizer = topic_model.vectorizer_model
+# # analyzer = vectorizer.build_analyzer()
+# #
+# # # Extract features for Topic Coherence evaluation
+# # tokens = [analyzer(doc) for doc in cleaned_docs]
+# # dictionary = corpora.Dictionary(tokens)
+# # corpus = [dictionary.doc2bow(token) for token in tokens]
+# # topic_words = [[words for words, _ in topic_model.get_topic(topic)]
+# #                for topic in range(len(set(topics))-1)]
+# #
+# # # Evaluate
+# # if __name__ == '__main__':
+# #     coherence_model_umass = CoherenceModel(topics=topic_words,
+# #                            texts=tokens,
+# #                            corpus=corpus,
+# #                            dictionary=dictionary,
+# #                            coherence='u_mass')
+# #     coherence_umass = coherence_model_umass.get_coherence()
+# #     print(coherence_umass)
+# #
+# # # Calculate Silhouette Score
+# # labels = topic_model_1.hdbscan_model.labels_
+# # silhouette_avg = silhouette_score(embeddings_1, labels)
+# #
+# # # Write metrics to a text file
+# # output_file = "topic_modelling_metrics_model_1.txt"
+# # with open(output_file, "w") as f:
+# #     f.write("Topic Modelling Metrics - Model 1\n")
+# #     f.write("-------------------------------\n")
+# #     # f.write(f"Coherence (C_V): {coherence_cv:.4f}\n")
+# #     f.write(f"Coherence (UMass): {coherence_umass:.4f}\n")
+# #     f.write(f"Silhouette Score: {silhouette_avg:.4f}\n")
 #
-# # Write metrics to a text file
-# output_file = "topic_modelling_metrics_model_1.txt"
-# with open(output_file, "w") as f:
-#     f.write("Topic Modelling Metrics - Model 1\n")
-#     f.write("-------------------------------\n")
-#     # f.write(f"Coherence (C_V): {coherence_cv:.4f}\n")
-#     f.write(f"Coherence (UMass): {coherence_umass:.4f}\n")
-#     f.write(f"Silhouette Score: {silhouette_avg:.4f}\n")
+# """ 6. Example of search topics """
+# ## To use find_topics(), which finds the topics most similar to a search term, the embeddings have to be passed directly to the model
+# ## The below recreates the topic model above just with the embeddings directly in it.
+# sentence_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+# topic_model_1 = BERTopic(
+#     umap_model=UMAP(n_neighbors=15, n_components=5, min_dist=0.0, metric='cosine', random_state=100),
+#     language="english",
+#     hdbscan_model=hdbscan_model,
+#     vectorizer_model=vectorizer,
+#     ctfidf_model=ctfidf_model,
+#     representation_model=representation_model_1,
+#     verbose = True,
+#     embedding_model = sentence_model
+# )
+#
+# start_time = time.time()
+# topics_1_test, probs_1_test = topic_model_1.fit_transform(transcripts, embeddings_1)
+# end_time = time.time()
+# print("Topic model 1 transform time:", end_time - start_time, " seconds")
+# vectorizer_model = CountVectorizer(stop_words=modified_stopwords, ngram_range=(1, 3), min_df=10)
+#
+# topic_model_1.update_topics(transcripts, vectorizer_model = vectorizer_model)
+# topic_model_1.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1_test")
 
-""" 6. Example of search topics """
-## To use find_topics(), which finds the topics most similar to a search term, the embeddings have to be passed directly to the model
-## The below recreates the topic model above just with the embeddings directly in it.
-sentence_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
-topic_model_1 = BERTopic(
-    umap_model=UMAP(n_neighbors=15, n_components=5, min_dist=0.0, metric='cosine', random_state=100),
-    language="english",
-    hdbscan_model=hdbscan_model,
-    vectorizer_model=vectorizer,
-    ctfidf_model=ctfidf_model,
-    representation_model=representation_model_1,
-    verbose = True,
-    embedding_model = sentence_model
-)
 
-start_time = time.time()
-topics_1_test, probs_1_test = topic_model_1.fit_transform(transcripts, embeddings_1)
-end_time = time.time()
-print("Topic model 1 transform time:", end_time - start_time, " seconds")
-vectorizer_model = CountVectorizer(stop_words=modified_stopwords, ngram_range=(1, 3), min_df=10)
-
-topic_model_1.update_topics(transcripts, vectorizer_model = vectorizer_model)
-topic_model_1.save("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1_test")
-
+topic_model_1 = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1_test")
 ## Find the topics most similar to the terms 'crypto advice', 'stock tips' and print the 1st one's most common words
 similar_topics, similarity = topic_model_1.find_topics("crypto advice", top_n=5)
 print(topic_model.get_topic(similar_topics[0]))

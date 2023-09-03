@@ -315,120 +315,120 @@ cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
 # nn_tuning_df.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/nn_fine_tuning_results.csv', index=False)
 
 """ 1 f Loading and testing best model on test dataset"""
-# # Load the best model obtained from cross-validation
-# best_model = load_model('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/best_feedforward_nn_model.h5')  # Replace with the actual path to the saved model
+# Load the best model obtained from cross-validation
+best_model = load_model('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/best_feedforward_nn_model.h5')  # Replace with the actual path to the saved model
+
+# Evaluate the best model on the test dataset
+test_predictions = best_model.predict(X_test)
+test_predictions = (test_predictions > 0.5).astype(int)
+
+# Calculate metrics
+accuracy = accuracy_score(y_test, test_predictions)
+recall = recall_score(y_test, test_predictions)
+precision = precision_score(y_test, test_predictions)
+f1 = f1_score(y_test, test_predictions)
 #
-# # Evaluate the best model on the test dataset
-# test_predictions = best_model.predict(X_test)
-# test_predictions = (test_predictions > 0.5).astype(int)
-#
-# # Calculate metrics
-# accuracy = accuracy_score(y_test, test_predictions)
-# recall = recall_score(y_test, test_predictions)
-# precision = precision_score(y_test, test_predictions)
-# f1 = f1_score(y_test, test_predictions)
-# #
-# with open("Neural Network model - Saved, loaded and tested on test dataset.txt", "w") as f:
-#     # Print metrics
-#     f.write(f"Test Accuracy: {accuracy:.2f} \n")
-#     f.write(f"Test Recall: {recall:.2f} \n")
-#     f.write(f"Test Precision: {precision:.2f} \n")
-#     f.write(f"Test F1-score: {f1:.2f} \n")
-#
-#     # Generate and print classification report
-#     class_report = classification_report(y_test, test_predictions)
-#     f.write("Classification Report: \n")
-#     f.write(class_report)
+with open("Neural Network model - Saved, loaded and tested on test dataset.txt", "w") as f:
+    # Print metrics
+    f.write(f"Test Accuracy: {accuracy:.2f} \n")
+    f.write(f"Test Recall: {recall:.2f} \n")
+    f.write(f"Test Precision: {precision:.2f} \n")
+    f.write(f"Test F1-score: {f1:.2f} \n")
+
+    # Generate and print classification report
+    class_report = classification_report(y_test, test_predictions)
+    f.write("Classification Report: \n")
+    f.write(class_report)
 
 ## Given the success of the model in predicting financial advice, no tuning was necessary & the model with parameters as is is chosen
 
 """ 1 g Using the model on the untagged data to flag which transcript chunks and thus which videos & YouTubers are giving financial advice """
-nn_model = load_model('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/best_feedforward_nn_model.h5')
-
-## Combining metadata and transcript chunk data for the untagged transcripts. Model will help identify which of these require further investigation
-
-# df_tagged = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/df_tagged_pm.csv')
-# all_transcript_chunks_with_ID = pd.read_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/df_for_randomisation.csv")
-# all_transcript_chunks_with_ID = all_transcript_chunks_with_ID.drop_duplicates(subset=['ID', 'combined_sentence'])
+# nn_model = load_model('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/best_feedforward_nn_model.h5')
 #
-# all_transcript_chunks_with_ID_advice = pd.merge(all_transcript_chunks_with_ID, df_tagged, on=['ID', 'combined_sentence', 'Source'], how='outer')
-# all_transcript_chunks_with_ID_advice.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/full_transcript_chunks_AdviceTag.csv', index=False)
+# ## Combining metadata and transcript chunk data for the untagged transcripts. Model will help identify which of these require further investigation
 #
-# untagged_df = all_transcript_chunks_with_ID_advice[all_transcript_chunks_with_ID_advice['Advice'].isnull()]
-# print(untagged_df.shape)
-# print(untagged_df.columns)
-
-## Define sentence model
-sentence_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
-
-# # Embed the transcript chunks using same embedding method as we did for the training & testing datasets
-# untagged_df['embeddings'] = untagged_df['combined_sentence'].apply(sentence_model.encode)
-# untagged_df.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/full_transcript_chunks_AdviceTag_embedding1.csv', index=False)
+# # df_tagged = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/df_tagged_pm.csv')
+# # all_transcript_chunks_with_ID = pd.read_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/df_for_randomisation.csv")
+# # all_transcript_chunks_with_ID = all_transcript_chunks_with_ID.drop_duplicates(subset=['ID', 'combined_sentence'])
+# #
+# # all_transcript_chunks_with_ID_advice = pd.merge(all_transcript_chunks_with_ID, df_tagged, on=['ID', 'combined_sentence', 'Source'], how='outer')
+# # all_transcript_chunks_with_ID_advice.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/full_transcript_chunks_AdviceTag.csv', index=False)
+# #
+# # untagged_df = all_transcript_chunks_with_ID_advice[all_transcript_chunks_with_ID_advice['Advice'].isnull()]
+# # print(untagged_df.shape)
+# # print(untagged_df.columns)
 #
-# # import to avoid embedding each time the script runs (can skip the lines above)
-untagged_df = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/full_transcript_chunks_AdviceTag_embedding1.csv')
-untagged_df['embeddings'] = untagged_df['embeddings'].apply(lambda x: [float(val) for val in x[1:-1].split()])
-
-X_untagged = np.array(untagged_df['embeddings'].to_list())
-
-# Make predictions using the trained model
-predictions = nn_model.predict(X_untagged)
-predicted_labels = (predictions > 0.5).astype(int)
-
-# Add the predicted labels as a new column to the DataFrame
-untagged_df['predicted_advice'] = predicted_labels
-untagged_df.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/full_transcript_chunks_AdviceTag_embedding1_predicted.csv', index=False)
-
-### Identifying the videos that are predicted to have advice and should be further investigated
-video_data_metadata = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/video_data_chunks_count.csv')
-video_metadata_predictions = video_data_metadata.merge(untagged_df, on='ID', how='left')
-video_metadata_predictions = video_metadata_predictions.dropna(subset=['predicted_advice'], axis=0)
-
-
-# Keep the relevant columns for the transcript chunks that are predicted to have advice
-predicted_advice_flag = video_metadata_predictions['predicted_advice'] == 1
-relevant_columns = ['channelId', 'ID', 'publishedAt', 'tags', 'title', 'description',
-       'likeCount', 'viewCount', 'commentCount', 'Transcript', 'combined_sentence',
-       'predicted_advice']
-
-video_transcript_chunks_further_investigation = video_metadata_predictions.loc[predicted_advice_flag, relevant_columns]
-video_transcript_chunks_further_investigation.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/predicted_advice_df_rel_var.csv', index=False)
-
-# With this dataset, I will write a document that investigators could use to identify the YouTube channels and videos predicted to contain advice
-# ID the channel and videos for further inspection and write to file for investigators
-video_transcript_chunks_further_investigation = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/predicted_advice_df_rel_var.csv')
-
-# Group by channelId and video_ID to count unique video IDs and rows per video ID
-channel_video_ids_predAdvice = video_transcript_chunks_further_investigation.groupby(['channelId', 'ID']).size().reset_index(name='row_count')
-channel_video_counts = video_transcript_chunks_further_investigation.groupby('channelId')['ID'].nunique()
-
-unique_channel_count = video_transcript_chunks_further_investigation['channelId'].nunique()
-unique_video_id_count = video_transcript_chunks_further_investigation['ID'].nunique()
-
-# Open a text file for writing
-with open('channel_video_counts.txt', 'w', encoding='utf-8') as f:
-    f.write("\n This document outlines the channels and videos that the predictive model has identified as possibly containing financial advice. \n \n")
-    f.write("It is meant to aid investigation into financial advice on YouTube investing videos \n by identifying videos (and their creators) that may have financial advice present - thus narrowing the search significantly. \n")
-    f.write("\n Video metadata, full transcript and subset of transcript where advice is present is also available \n \n")
-    f.write("For any video ID mentioned below, one can watch it by adding the video id to the prefix here: https://www.youtube.com/watch?v= \n \n \n")
-    f.write(f'Total number of channels with financial advice: {unique_channel_count}\n')
-    f.write(f'Total number of videos with financial advice: {unique_video_id_count}\n\n')
-    f.write("Channels and videos that are predicted to contain financial advice: \n \n")
-    for channel_id, unique_video_count in channel_video_counts.items():
-        f.write(f'Channel ID: {channel_id}\n')
-        f.write(f'No of videos with financial advice predicted: {unique_video_count}\n')
-
-        # Get video IDs for the current channel
-        video_ids = video_transcript_chunks_further_investigation[video_transcript_chunks_further_investigation['channelId'] == channel_id]['ID'].unique()
-        f.write(f'Video IDs with financial advice predicted: {", ".join(video_ids)}\n')
-
-        f.write('Video ID, title and number of transcript chunks containing financial advice:\n')
-
-        # Count rows per video ID in the current channel
-        for video_id in video_ids:
-            row_count = channel_video_ids_predAdvice[(channel_video_ids_predAdvice['channelId'] == channel_id)
-                                                                      & (channel_video_ids_predAdvice['ID'] == video_id)]['row_count'].values[0]
-            video_name = video_transcript_chunks_further_investigation[video_transcript_chunks_further_investigation['ID'] == video_id]['title'].iloc[0]
-            f.write(f'   {video_id} - {video_name}: {row_count}\n')
-
-        f.write('\n')
+# ## Define sentence model
+# sentence_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+#
+# # # Embed the transcript chunks using same embedding method as we did for the training & testing datasets
+# # untagged_df['embeddings'] = untagged_df['combined_sentence'].apply(sentence_model.encode)
+# # untagged_df.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/full_transcript_chunks_AdviceTag_embedding1.csv', index=False)
+# #
+# # # import to avoid embedding each time the script runs (can skip the lines above)
+# untagged_df = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/full_transcript_chunks_AdviceTag_embedding1.csv')
+# untagged_df['embeddings'] = untagged_df['embeddings'].apply(lambda x: [float(val) for val in x[1:-1].split()])
+#
+# X_untagged = np.array(untagged_df['embeddings'].to_list())
+#
+# # Make predictions using the trained model
+# predictions = nn_model.predict(X_untagged)
+# predicted_labels = (predictions > 0.5).astype(int)
+#
+# # Add the predicted labels as a new column to the DataFrame
+# untagged_df['predicted_advice'] = predicted_labels
+# untagged_df.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/full_transcript_chunks_AdviceTag_embedding1_predicted.csv', index=False)
+#
+# ### Identifying the videos that are predicted to have advice and should be further investigated
+# video_data_metadata = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/video_data_chunks_count.csv')
+# video_metadata_predictions = video_data_metadata.merge(untagged_df, on='ID', how='left')
+# video_metadata_predictions = video_metadata_predictions.dropna(subset=['predicted_advice'], axis=0)
+#
+#
+# # Keep the relevant columns for the transcript chunks that are predicted to have advice
+# predicted_advice_flag = video_metadata_predictions['predicted_advice'] == 1
+# relevant_columns = ['channelId', 'ID', 'publishedAt', 'tags', 'title', 'description',
+#        'likeCount', 'viewCount', 'commentCount', 'Transcript', 'combined_sentence',
+#        'predicted_advice']
+#
+# video_transcript_chunks_further_investigation = video_metadata_predictions.loc[predicted_advice_flag, relevant_columns]
+# video_transcript_chunks_further_investigation.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/predicted_advice_df_rel_var.csv', index=False)
+#
+# # With this dataset, I will write a document that investigators could use to identify the YouTube channels and videos predicted to contain advice
+# # ID the channel and videos for further inspection and write to file for investigators
+# video_transcript_chunks_further_investigation = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/predicted_advice_df_rel_var.csv')
+#
+# # Group by channelId and video_ID to count unique video IDs and rows per video ID
+# channel_video_ids_predAdvice = video_transcript_chunks_further_investigation.groupby(['channelId', 'ID']).size().reset_index(name='row_count')
+# channel_video_counts = video_transcript_chunks_further_investigation.groupby('channelId')['ID'].nunique()
+#
+# unique_channel_count = video_transcript_chunks_further_investigation['channelId'].nunique()
+# unique_video_id_count = video_transcript_chunks_further_investigation['ID'].nunique()
+#
+# # Open a text file for writing
+# with open('channel_video_counts.txt', 'w', encoding='utf-8') as f:
+#     f.write("\n This document outlines the channels and videos that the predictive model has identified as possibly containing financial advice. \n \n")
+#     f.write("It is meant to aid investigation into financial advice on YouTube investing videos \n by identifying videos (and their creators) that may have financial advice present - thus narrowing the search significantly. \n")
+#     f.write("\n Video metadata, full transcript and subset of transcript where advice is present is also available \n \n")
+#     f.write("For any video ID mentioned below, one can watch it by adding the video id to the prefix here: https://www.youtube.com/watch?v= \n \n \n")
+#     f.write(f'Total number of channels with financial advice: {unique_channel_count}\n')
+#     f.write(f'Total number of videos with financial advice: {unique_video_id_count}\n\n')
+#     f.write("Channels and videos that are predicted to contain financial advice: \n \n")
+#     for channel_id, unique_video_count in channel_video_counts.items():
+#         f.write(f'Channel ID: {channel_id}\n')
+#         f.write(f'No of videos with financial advice predicted: {unique_video_count}\n')
+#
+#         # Get video IDs for the current channel
+#         video_ids = video_transcript_chunks_further_investigation[video_transcript_chunks_further_investigation['channelId'] == channel_id]['ID'].unique()
+#         f.write(f'Video IDs with financial advice predicted: {", ".join(video_ids)}\n')
+#
+#         f.write('Video ID, title and number of transcript chunks containing financial advice:\n')
+#
+#         # Count rows per video ID in the current channel
+#         for video_id in video_ids:
+#             row_count = channel_video_ids_predAdvice[(channel_video_ids_predAdvice['channelId'] == channel_id)
+#                                                                       & (channel_video_ids_predAdvice['ID'] == video_id)]['row_count'].values[0]
+#             video_name = video_transcript_chunks_further_investigation[video_transcript_chunks_further_investigation['ID'] == video_id]['title'].iloc[0]
+#             f.write(f'   {video_id} - {video_name}: {row_count}\n')
+#
+#         f.write('\n')
