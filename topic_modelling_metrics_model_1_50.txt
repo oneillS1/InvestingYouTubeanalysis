@@ -1,0 +1,4 @@
+Topic Modelling Metrics - Model 1 - 50 topics
+-------------------------------
+Coherence (UMass): -0.3372
+Silhouette Score: -0.0419

@@ -146,7 +146,7 @@ embeddings_1 = np.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/em
 # # end_time = time.time()
 # # print("Embeddings 2 time:", end_time - start_time, " seconds")
 # # np.save('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/embeddings_2.npy', embeddings_2)
-# embeddings_2 = np.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/embeddings_2.npy')
+embeddings_2 = np.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/embeddings_2.npy')
 #
 # # start_time = time.time()
 # # sentence_model = SentenceTransformer('sentence-transformers/all-distilroberta-v1')
@@ -154,7 +154,7 @@ embeddings_1 = np.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/em
 # # end_time = time.time()
 # # print("Embeddings 3 time:", end_time - start_time, " seconds")
 # # np.save('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/embeddings_3.npy', embeddings_3)
-# # embeddings_3 = np.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/embeddings_3.npy')
+embeddings_3 = np.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/embeddings_3.npy')
 #
 # """ 3 c) Creating the topic model """
 # # Defining sub-models
@@ -304,34 +304,28 @@ topic_model_1 = BERTopic(
 
 """ 4 Editing and visualising the chosen topic model """
 # On inspection of the visualisations and the list of topics, topic model 1 is chosen to investigate further
-topic_model_1 = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1_countVec")
-topic_model_1.get_topic_info().to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics_list_TM1.csv")
-
-# # Manually merging of topics
+# topic_model_1 = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1_countVec")
+# topic_model_1 = topic_model_1.reduce_topics(transcripts, nr_topics=50)
 #
+# topic_model_1.get_topic_info().to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics_list_TM1_50.csv")
 #
+# ### Defining the index of topics of particular interest
+# # topics_of_interest_1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+# #                         14, 24, 26, 36, 43, 54, 59, 60]
 #
-""" 4 Visualising """
-### Labels of topics
-
-
-### Defining the index of topics of particular interest
-topics_of_interest_1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-                        14, 24, 26, 36, 43, 54, 59, 60]
-
-""" 4 b: Visualise topics"""
+# """ 4 b: Visualise topics"""
 # # Barchart - top 12
 # vis_barchart_1 = topic_model_1.visualize_barchart(top_n_topics = 12, n_words=5, width=300, height=300)
-# pio.write_image(vis_barchart_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_barchart_1.png")
-# vis_barchart_1.write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_barchart_1.html")
-# topic_model_1.visualize_topics().write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_topics_1_html.html")
-# topic_model_1.visualize_topics(top_n_topics = 12).write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_topics_1_top12_html.html")
+# pio.write_image(vis_barchart_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1_50/vis_barchart_1.png")
+# vis_barchart_1.write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1_50/vis_barchart_1.html")
+# topic_model_1.visualize_topics().write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1_50/vis_topics_1_html.html")
+# topic_model_1.visualize_topics(top_n_topics = 12).write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1_50/vis_topics_1_top12_html.html")
 #
 # # Barchart - topics of interest
-# vis_barchart_1_toi = topic_model_1.visualize_barchart(topics=topics_of_interest_1, n_words=5, width=300, height=300)
-# pio.write_image(vis_barchart_1_toi, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_barchart_1_toi.png")
-# vis_barchart_1_toi.write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_barchart_1_toi.html")
-# topic_model_1.visualize_topics(topics=topics_of_interest_1).write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_topics_1_toi_html.html")
+# # vis_barchart_1_toi = topic_model_1.visualize_barchart(topics=topics_of_interest_1, n_words=5, width=300, height=300)
+# # pio.write_image(vis_barchart_1_toi, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1_20/vis_barchart_1_toi.png")
+# # vis_barchart_1_toi.write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1_20/vis_barchart_1_toi.html")
+# # topic_model_1.visualize_topics(topics=topics_of_interest_1).write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1_20/vis_topics_1_toi_html.html")
 #
 #
 # """ 4 b) Visualise documents """
@@ -339,99 +333,99 @@ topics_of_interest_1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
 #     transcripts,
 #     embeddings=embeddings_1,
 #     hide_annotations=False,
-#     topics=topics_of_interest_1,
+#     # topics=topics_of_interest_1,
 #     custom_labels=True
-# ).write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/tm1_visualisation_toi.html")
+# ).write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1_50/tm1_visualisation_toi.html")
 # #pio.write_image(tm1_visualisation_toi, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/visualization.png")
-
-""" 4 c) Visualise topic hierarchy & topic tree"""
+#
+# """ 4 c) Visualise topic hierarchy & topic tree"""
 # # Can ID which topics could be merged from these two figures
 # hierarchical_topics = topic_model_1.hierarchical_topics(transcripts)
 # hierarchy_topics_1 = topic_model_1.visualize_hierarchy()
-# hierarchy_topics_1.write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/hierarchy_topics_1.html")
-# pio.write_image(hierarchy_topics_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/hierarchy_topics_1_b.png")
+# hierarchy_topics_1.write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1_50/hierarchy_topics_1.html")
+# pio.write_image(hierarchy_topics_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1_50/hierarchy_topics_1_b.png")
 #
 # topic_tree_1 = topic_model_1.get_topic_tree(hierarchical_topics)
 # # print(topic_tree_1)
 #
 # # Visualise hierarchy of specific topics
 # hierarchy_topics_1 = topic_model_1.visualize_hierarchy(top_n_topics=12)
-# pio.write_image(hierarchy_topics_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/hierarchy_topics_1.png")
+# pio.write_image(hierarchy_topics_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1_50/hierarchy_topics_1.png")
 #
-# hierarchy_topics_1 = topic_model_1.visualize_hierarchy(topics=topics_of_interest_1)
-# pio.write_image(hierarchy_topics_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/hierarchy_topics_1_toi.png")
+# # hierarchy_topics_1 = topic_model_1.visualize_hierarchy(topics=topics_of_interest_1)
+# # pio.write_image(hierarchy_topics_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1_20/hierarchy_topics_1_toi.png")
 #
 # """ 4 d) Visualise topic similarity """
 # topic_similarity_heatmap_1 = topic_model_1.visualize_heatmap()
-# pio.write_image(topic_similarity_heatmap_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/topic_similarity_heatmap_1.png")
+# pio.write_image(topic_similarity_heatmap_1, "C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1_50/topic_similarity_heatmap_1.png")
 #
 # """ 4 e) Visualise hierarchical documents """
 # vis_hierarchical_docs = topic_model_1.visualize_hierarchical_documents(transcripts, hierarchical_topics, embeddings = embeddings_1)
-# vis_hierarchical_docs.write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1/vis_hierarchy_docs_1.html")
+# vis_hierarchical_docs.write_html("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/Model figures/TM1_50/vis_hierarchy_docs_1.html")
 
 """ 5 Evaluating the topic model """
-from sklearn.metrics import silhouette_score
-import gensim.corpora as corpora
-from gensim.models.coherencemodel import CoherenceModel
-import joblib
+# from sklearn.metrics import silhouette_score
+# import gensim.corpora as corpora
+# from gensim.models.coherencemodel import CoherenceModel
+# import joblib
 #
 # topic_model = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1_countVec")
 # transcripts = transcript_chunks_combined_df['combined_sentence'].to_list()
 #
-# # topic_model_smaller = topic_model.reduce_topics(transcripts, nr_topics=70)
+# topic_model_smaller = topic_model.reduce_topics(transcripts, nr_topics=20)
 #
-# # topics, _ = topic_model.fit_transform(transcripts)
-# # joblib.dump(topics, 'C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics.pkl')
-# # joblib.dump(_, 'C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/transformed_data.pkl')
+# topics, _ = topic_model_smaller.fit_transform(transcripts)
+# joblib.dump(topics, 'C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics_1_20.pkl')
+# joblib.dump(_, 'C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/transformed_data_1_20.pkl')
 #
 # # topics_smaller, _smaller = topic_model_smaller.fit_transform(transcripts)
 # # joblib.dump(topics_smaller, 'C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics_smaller.pkl')
 # # joblib.dump(_smaller, 'C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/transformed_data_smaller.pkl')
 #
-# # topics = joblib.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics.pkl')
-# # _ = joblib.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/transformed_data.pkl')
-# #
-# # # Preprocess Documents
-# # documents = pd.DataFrame({"Document": transcripts,
-# #                           "ID": range(len(transcripts)),
-# #                           "Topic": topics})
-# # documents_per_topic = documents.groupby(['Topic'], as_index=False).agg({'Document': ' '.join})
-# # cleaned_docs = topic_model._preprocess_text(documents_per_topic.Document.values)
-# #
-# # # Extract vectorizer and analyzer from BERTopic
-# # vectorizer = topic_model.vectorizer_model
-# # analyzer = vectorizer.build_analyzer()
-# #
-# # # Extract features for Topic Coherence evaluation
-# # tokens = [analyzer(doc) for doc in cleaned_docs]
-# # dictionary = corpora.Dictionary(tokens)
-# # corpus = [dictionary.doc2bow(token) for token in tokens]
-# # topic_words = [[words for words, _ in topic_model.get_topic(topic)]
-# #                for topic in range(len(set(topics))-1)]
-# #
-# # # Evaluate
-# # if __name__ == '__main__':
-# #     coherence_model_umass = CoherenceModel(topics=topic_words,
-# #                            texts=tokens,
-# #                            corpus=corpus,
-# #                            dictionary=dictionary,
-# #                            coherence='u_mass')
-# #     coherence_umass = coherence_model_umass.get_coherence()
-# #     print(coherence_umass)
-# #
-# # # Calculate Silhouette Score
-# # labels = topic_model_1.hdbscan_model.labels_
-# # silhouette_avg = silhouette_score(embeddings_1, labels)
-# #
-# # # Write metrics to a text file
-# # output_file = "topic_modelling_metrics_model_1.txt"
-# # with open(output_file, "w") as f:
-# #     f.write("Topic Modelling Metrics - Model 1\n")
-# #     f.write("-------------------------------\n")
-# #     # f.write(f"Coherence (C_V): {coherence_cv:.4f}\n")
-# #     f.write(f"Coherence (UMass): {coherence_umass:.4f}\n")
-# #     f.write(f"Silhouette Score: {silhouette_avg:.4f}\n")
+# topics = joblib.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics_1_20.pkl')
+# _ = joblib.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/transformed_data_1_20.pkl')
 #
+# # Preprocess Documents
+# documents = pd.DataFrame({"Document": transcripts,
+#                           "ID": range(len(transcripts)),
+#                           "Topic": topics})
+# documents_per_topic = documents.groupby(['Topic'], as_index=False).agg({'Document': ' '.join})
+# cleaned_docs = topic_model._preprocess_text(documents_per_topic.Document.values)
+#
+# # Extract vectorizer and analyzer from BERTopic
+# vectorizer = topic_model.vectorizer_model
+# analyzer = vectorizer.build_analyzer()
+#
+# # Extract features for Topic Coherence evaluation
+# tokens = [analyzer(doc) for doc in cleaned_docs]
+# dictionary = corpora.Dictionary(tokens)
+# corpus = [dictionary.doc2bow(token) for token in tokens]
+# topic_words = [[words for words, _ in topic_model.get_topic(topic)]
+#                for topic in range(len(set(topics))-1)]
+#
+# # Evaluate
+# if __name__ == '__main__':
+#     coherence_model_umass = CoherenceModel(topics=topic_words,
+#                            texts=tokens,
+#                            corpus=corpus,
+#                            dictionary=dictionary,
+#                            coherence='u_mass')
+#     coherence_umass = coherence_model_umass.get_coherence()
+#     print(coherence_umass)
+#
+# # Calculate Silhouette Score
+# labels = topic_model_smaller.hdbscan_model.labels_
+# silhouette_avg = silhouette_score(embeddings_1, labels)
+#
+# # Write metrics to a text file
+# output_file = "topic_modelling_metrics_model_1_20.txt"
+# with open(output_file, "w") as f:
+#     f.write("Topic Modelling Metrics - Model 1 - 20 topics\n")
+#     f.write("-------------------------------\n")
+#     # f.write(f"Coherence (C_V): {coherence_cv:.4f}\n")
+#     f.write(f"Coherence (UMass): {coherence_umass:.4f}\n")
+#     f.write(f"Silhouette Score: {silhouette_avg:.4f}\n")
+
 # """ 6. Example of search topics """
 # ## To use find_topics(), which finds the topics most similar to a search term, the embeddings have to be passed directly to the model
 # ## The below recreates the topic model above just with the embeddings directly in it.
@@ -459,8 +453,11 @@ import joblib
 
 topic_model_1 = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1_test")
 ## Find the topics most similar to the terms 'crypto advice', 'stock tips' and print the 1st one's most common words
-similar_topics, similarity = topic_model_1.find_topics("crypto advice", top_n=5)
-print(topic_model.get_topic(similar_topics[0]))
+similar_topics, similarity = topic_model_1.find_topics("advice", top_n=5)
+print(topic_model_1.get_topic(similar_topics[0]))
 
-similar_topics, similarity = topic_model_1.find_topics("stock tips", top_n=5)
-print(topic_model.get_topic(similar_topics[0]))
+similar_topics, similarity = topic_model_1.find_topics("Electric vehicles", top_n=5)
+print(topic_model_1.get_topic(similar_topics[0]))
+print(topic_model_1.get_topic(similar_topics[1]))
+
+print(topic_model_1.get_topic(similar_topics))

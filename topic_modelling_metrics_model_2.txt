@@ -1,0 +1,4 @@
+Topic Modelling Metrics - Model 2
+-------------------------------
+Coherence (UMass): -0.9272
+Silhouette Score: -0.0584

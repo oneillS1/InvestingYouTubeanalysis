@@ -1,0 +1,4 @@
+Topic Modelling Metrics - Model 3
+-------------------------------
+Coherence (UMass): -0.9790
+Silhouette Score: -0.0587
