@@ -3,8 +3,8 @@
 
 """ This script was going to be the predictive modelling task but at the video level using the metadata. However, this was not pursued.
 
-Code is written for the first parts but decision taken not to proceed for now due to sucesss of model in the 
-predicitve modelling at transcript chunk level being sufficient to id which videos without use of metadata """
+Decision taken not to proceed for now due to success of model in the transcript chunk level task.
+Essentially the predicitve modelling at transcript chunk level was deemed sufficient to id which videos without use of metadata given time too"""
 
 """ Level 2 """
 # df_tagged = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/df_tagged_pm_embedding_1.csv')
