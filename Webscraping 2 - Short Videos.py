@@ -1,6 +1,7 @@
 
 """
-This script is for the Webscraping section of the 'Analysis of Investing on YouTube' project. Running this will result in the final dataset.
+This script is for the Webscraping section of the 'Analysis of Investing on YouTube' project.
+It scrapes the short <4 min videos.
 
 *NB: This file is used in conjunction with 'YouTube_scraping_functions.py' & 'Hard_coding.py' & 'Installing & Loading packages.py'
 Related files 'webscraping short videos.py' and 'description of logic followed.py'
@@ -56,61 +57,61 @@ channel_names_stocks = ["@RickyGutierrezz", "@thetradingchannel", "@DaytradeWarr
             "@AndreiJikh", "@NateOBrien", "@wealthhacker", "@wolfofdubai", "@StockswithJosh", "@jeremylefebvremakesmoney7934"]
 
 """ 3 b) Finding channel ids from the usernames """
-## Crypto
-#channel_ids_username_crypto, channel_ids_crypto = find_channel_ids(channel_names_crypto, api_key)
+# Crypto
+channel_ids_username_crypto, channel_ids_crypto = find_channel_ids(channel_names_crypto, api_key)
 
-## Stocks
-#channel_ids_username_stocks, channel_ids_stocks = find_channel_ids(channel_names_stocks, api_key)
+# Stocks
+channel_ids_username_stocks, channel_ids_stocks = find_channel_ids(channel_names_stocks, api_key)
 
 # To reduce the times I call the YouTube API (as there are daily restrictions) I hardcode the output of the channel ids function for subsequent runs.
 # The output of the two functions above is contained in the 'Hard_coding.py' file & imported here as 'channnel_ids_crypto' and 'channel_ids_stocks'.
 # Alternatively I could just run the code above too.
 
 """ 3 c) Finding relevant video ids within channels (by channel id and keyword search) """
-## Crypto
-    # Keyword: Crypto
-#video_ids_by_channel_crypto1, video_ids_crypto1 = search_videos_by_keyword_in_channel_short(channel_ids_crypto, "crypto tips", max_results=10, api_key = api_key)
-#     # Keyword: Crypto
-#video_ids_by_channel_crypto2, video_ids_crypto2 = search_videos_by_keyword_in_channel_short(channel_ids_crypto, "advice", max_results=10, api_key = api_key)
-#     # Keyword: Crypto
-#video_ids_by_channel_crypto3, video_ids_crypto3 = search_videos_by_keyword_in_channel_short(channel_ids_crypto, "#notfinancialadvice", max_results=10, api_key = api_key_2)
-#     # Keyword: Crypto
-#video_ids_by_channel_crypto4, video_ids_crypto4 = search_videos_by_keyword_in_channel_short(channel_ids_crypto, "what to buy", max_results=10, api_key = api_key_2)
+# Crypto
+    # Keyword: Crypto tips
+video_ids_by_channel_crypto1, video_ids_crypto1 = search_videos_by_keyword_in_channel_short(channel_ids_crypto, "crypto tips", max_results=10, api_key = api_key)
+    # Keyword: advice
+video_ids_by_channel_crypto2, video_ids_crypto2 = search_videos_by_keyword_in_channel_short(channel_ids_crypto, "advice", max_results=10, api_key = api_key)
+    # Keyword: #notfinancialadvice
+video_ids_by_channel_crypto3, video_ids_crypto3 = search_videos_by_keyword_in_channel_short(channel_ids_crypto, "#notfinancialadvice", max_results=10, api_key = api_key_2)
+    # Keyword: what to buy
+video_ids_by_channel_crypto4, video_ids_crypto4 = search_videos_by_keyword_in_channel_short(channel_ids_crypto, "what to buy", max_results=10, api_key = api_key_2)
 
 # Similarly I have hard coded the outputs of the above (which is a list of video ids) so as to run subsequent code without reconnecting to the YouTube API
 # The output of is contained in the 'Hard_coding.py' file & imported here as 'video_ids_crypto' with the 1-4 as suffix.
 # Alternatively I could just run the code above too but it will call YouTube API a lot so use different API keys
 
-## Stocks
-    # Keyword: Stocks
-#video_ids_by_channel_stocks1, video_ids_stocks1 = search_videos_by_keyword_in_channel_short(channel_ids_stocks, "stock tips", max_results=10, api_key = api_key_5)
-#     # Keyword: Stocks
-#video_ids_by_channel_stocks2, video_ids_stocks2 = search_videos_by_keyword_in_channel_short(channel_ids_stocks, "investment advice", max_results=10, api_key = api_key_5)
-#     # Keyword: Stocks
-#video_ids_by_channel_stocks3, video_ids_stocks3 = search_videos_by_keyword_in_channel_short(channel_ids_stocks, "#notfinancialadvice", max_results=10, api_key = api_key_6)
-#     # Keyword: Stocks
-#video_ids_by_channel_stocks4, video_ids_stocks4 = search_videos_by_keyword_in_channel_short(channel_ids_stocks, "what to buy", max_results=10, api_key = api_key_6)
+# Stocks
+    # Keyword: stock tips
+video_ids_by_channel_stocks1, video_ids_stocks1 = search_videos_by_keyword_in_channel_short(channel_ids_stocks, "stock tips", max_results=10, api_key = api_key_5)
+    # Keyword: investment advice
+video_ids_by_channel_stocks2, video_ids_stocks2 = search_videos_by_keyword_in_channel_short(channel_ids_stocks, "investment advice", max_results=10, api_key = api_key_5)
+    # Keyword: #notfinancialadvice
+video_ids_by_channel_stocks3, video_ids_stocks3 = search_videos_by_keyword_in_channel_short(channel_ids_stocks, "#notfinancialadvice", max_results=10, api_key = api_key_6)
+    # Keyword: what to buy
+video_ids_by_channel_stocks4, video_ids_stocks4 = search_videos_by_keyword_in_channel_short(channel_ids_stocks, "what to buy", max_results=10, api_key = api_key_6)
 
 # Similarly I have hard coded the outputs of the above (which is a list of video ids) so as to run subsequent code without reconnecting to the YouTube API
 # The output of is contained in the 'Hard_coding.py' file & imported here as 'video_ids_stocks' with the 1-4 as suffix.
 # Alternatively I could just run the code above too but it will call YouTube API a lot so use different API keys
 
 """ Part 4: Scraping the data """
-## Crypto
-# metadata_crypto1 = extract_multiVideo_metadata(video_ids_crypto1, api_key_3)
-# metadata_crypto2 = extract_multiVideo_metadata(video_ids_crypto2, api_key_3)
-# metadata_crypto3 = extract_multiVideo_metadata(video_ids_crypto3, api_key_4)
-# metadata_crypto4 = extract_multiVideo_metadata(video_ids_crypto4, api_key_4)
+# Crypto
+metadata_crypto1 = extract_multiVideo_metadata(video_ids_crypto1, api_key_3)
+metadata_crypto2 = extract_multiVideo_metadata(video_ids_crypto2, api_key_3)
+metadata_crypto3 = extract_multiVideo_metadata(video_ids_crypto3, api_key_4)
+metadata_crypto4 = extract_multiVideo_metadata(video_ids_crypto4, api_key_4)
 
-## Stocks
-# metadata_stocks = extract_multiVideo_metadata(video_ids_stocks1, api_key_7)
-# metadata_stocks2 = extract_multiVideo_metadata(video_ids_stocks2, api_key_7)
-# metadata_stocks3 = extract_multiVideo_metadata(video_ids_stocks3, api_key_8)
-# metadata_stocks4 = extract_multiVideo_metadata(video_ids_stocks4, api_key_8)
+# Stocks
+metadata_stocks = extract_multiVideo_metadata(video_ids_stocks1, api_key_7)
+metadata_stocks2 = extract_multiVideo_metadata(video_ids_stocks2, api_key_7)
+metadata_stocks3 = extract_multiVideo_metadata(video_ids_stocks3, api_key_8)
+metadata_stocks4 = extract_multiVideo_metadata(video_ids_stocks4, api_key_8)
 
-## Overall
-# video_ids = video_ids_crypto + video_ids_stocks
-# metadata_overall = extract_multiVideo_metadata(video_ids, api_key)
+# Overall (code not used in final script)
+#video_ids = video_ids_crypto + video_ids_stocks
+#metadata_overall = extract_multiVideo_metadata(video_ids, api_key)
 
 """ Part 5: Creating the dataset """
 ## Crypto
@@ -119,10 +120,10 @@ csv_fle_crypto2 = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data_short_videos/
 csv_fle_crypto3 = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data_short_videos/crypto3_short.csv"
 csv_fle_crypto4 = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data_short_videos/crypto4_short.csv"
 
-# df_crypto_short = append_metadata_to_csv(metadata_crypto1, csv_fle_crypto1)
-# df_crypto2_short = append_metadata_to_csv(metadata_crypto2, csv_fle_crypto2)
-# df_crypto3_short = append_metadata_to_csv(metadata_crypto3, csv_fle_crypto3)
-# df_crypto4_short = append_metadata_to_csv(metadata_crypto4, csv_fle_crypto4)
+df_crypto_short = append_metadata_to_csv(metadata_crypto1, csv_fle_crypto1)
+df_crypto2_short = append_metadata_to_csv(metadata_crypto2, csv_fle_crypto2)
+df_crypto3_short = append_metadata_to_csv(metadata_crypto3, csv_fle_crypto3)
+df_crypto4_short = append_metadata_to_csv(metadata_crypto4, csv_fle_crypto4)
 
 #print(df_crypto.head())
 
@@ -132,10 +133,10 @@ csv_fle_stocks2 = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data_short_videos/
 csv_fle_stocks3 = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data_short_videos/stocks3_short.csv"
 csv_fle_stocks4 = "C:/Users/Steve.HAHAHA/Desktop/Dissertation/Data_short_videos/stocks4_short.csv"
 
-# df_stocks_short = append_metadata_to_csv(metadata_stocks, csv_fle_stocks1)
-# df_stocks2_short = append_metadata_to_csv(metadata_stocks2, csv_fle_stocks2)
-# df_stocks3_short = append_metadata_to_csv(metadata_stocks3, csv_fle_stocks3)
-# df_stocks4_short = append_metadata_to_csv(metadata_stocks4, csv_fle_stocks4)
+df_stocks_short = append_metadata_to_csv(metadata_stocks, csv_fle_stocks1)
+df_stocks2_short = append_metadata_to_csv(metadata_stocks2, csv_fle_stocks2)
+df_stocks3_short = append_metadata_to_csv(metadata_stocks3, csv_fle_stocks3)
+df_stocks4_short = append_metadata_to_csv(metadata_stocks4, csv_fle_stocks4)
 
 """ 5 b) Combining all dataframes and saving as overall csv 
     (again coding in this way to reduce times connecting to YouTube API - not the most efficient way but gets around their restrictions) """
@@ -148,8 +149,8 @@ for filename in os.listdir(folder_path):
         df = pd.read_csv(file_path)
         dataframes.append(df)
 
-# Concatenate the dataframes together
+# Concatenating short videos together
 overall_video_data = pd.concat(dataframes)
 
-# Save the combined dataframe to a new CSV file
+# All short videos together saved in csv
 overall_video_data.to_csv("C:/Users/Steve.HAHAHA/Desktop/Dissertation/Overall datasets/overall_short_video_data.csv", index=False)
