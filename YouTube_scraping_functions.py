@@ -184,4 +184,4 @@ def parse_duration(duration):
     else:  # the format then = MM:SS
         minutes, seconds = parts
         total_seconds = int(minutes) * 60 + int(seconds)
-    return total_seconds # find seconds as easiest binary threshold for use in other functions
+    return total_seconds # find seconds as easiest binary threshold for use in other function
