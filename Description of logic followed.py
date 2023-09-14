@@ -1,7 +1,7 @@
 
 
 """
-This is a text file outlining the criteria and logic used for various parts of the project
+This is a text file outlining the criteria and logic used for identifying channels to search and scrape
 
 Part 3: Finding relevant videos
 
