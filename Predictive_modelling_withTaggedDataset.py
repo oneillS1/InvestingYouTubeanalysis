@@ -1,9 +1,10 @@
 
 """ Predictive modelling:
 
-Prediction tasks at 2 levels.
+This script builds the predictive model reported
+
 - Level 1: Transcript chunk: Inputs - transcript chunk embedding ; Predict - Advice flag
-- Level 2: Video level: Inputs - metadata, transcript chunk embeddings as new variables; Predict - Advice flag
+
  """
 
 """ Importing necessary packages """
