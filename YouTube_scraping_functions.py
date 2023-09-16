@@ -121,7 +121,10 @@ def find_channel_ids(channel_usernames, api_key):
     return channel_ids_username, channel_ids
 
 """ 4: Function for extracting relevant data from YouTube video """
+# Logic for obtaining each field is listed on YouTube Data API page
+# - https://developers.google.com/youtube/v3/docs/videos#resource
 def extract_metadata(video_id, api_key):
+    # getting the snippet, snippet and id from the video id (all relevant fields are contained in these parts of the video data on YouTubeAPI - see link above)
     url = f"https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id={video_id}&key={api_key}"
     response = requests.get(url)
     data = response.json() # obtaining the .json file of the information on each video id identified. Can then search json file to find the information
@@ -135,7 +138,7 @@ def extract_metadata(video_id, api_key):
         try:
             if field == 'Transcript': # transcripts obtained using different api
                 try:
-                    metadata[field] = YouTubeTranscriptApi.get_transcript(video_id)
+                    metadata[field] = YouTubeTranscriptApi.get_transcript(video_id) # Use YouTubeTranscriptApi from the video id
                 except (TranscriptsDisabled, NoTranscriptFound):
                     metadata[field] = None
             elif field in ['likeCount', 'viewCount', 'commentCount']: # some fields in statistics, some in snippet within the json file and id is its own subheading
@@ -161,13 +164,13 @@ def extract_multiVideo_metadata(video_ids, api_key):
 def append_metadata_to_csv(metadata, csv_file):
     var_names = ['channelId', 'publishedAt', 'tags', 'id', 'title', 'description', 'likeCount', 'viewCount', 'commentCount', 'Transcript']
 
-    # Creating an empty dataframe with relevant headings
+    # Creating a df with the variable names as headings
     df = pd.DataFrame(metadata, columns=var_names)
 
-    # Replacing  newline characters in 'Transcript'
+    # Creating one string for each transcript (if transcript present hence the if else statement at end)
     df['Transcript'] = df['Transcript'].apply(lambda x: ' '.join(segment['text'] for segment in x) if x is not None else None)
 
-    # In some fields there are new line characters e.g., description - these are taken out too
+    # In some fields there are new line characters e.g., description - these are taken out
     df = df.replace('\n', ' ', regex=True)
 
     # Write to dataset - encoding used as there are some emojis in description and transcript fields

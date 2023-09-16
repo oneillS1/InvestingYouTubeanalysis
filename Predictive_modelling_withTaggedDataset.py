@@ -78,6 +78,7 @@ df_tagged_pm1 = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddin
 print(df_tagged_pm1[['Source', 'Advice']].value_counts())
 print(df_tagged_pm1['Source'].value_counts())
 
+# Eeach embeddings need to be a list of float numbers rather so the code below converts each character of each embedding (exvept the brackets) to a float
 df_tagged_pm1['embeddings'] = df_tagged_pm1['embeddings'].apply(lambda x: [float(val) for val in x[1:-1].split()])
 
 # NP arrays rather than lists needed for the Lazy Classifier subsequently
@@ -106,7 +107,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 # models_summary.to_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/LC_models_summary_pm_embedding_1.csv', index=False)
 #
 # # Create a text file to save the classification reports
-# with open('classification_reports.txt', 'w') as f:
+# with open('classification_reports.txt', 'w') as txtfile:
 #     # Loop through models and get classification reports
 #     for model_name in models_summary.index:
 #         model = clf.models[model_name]
@@ -116,9 +117,9 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 #         classification_rep = classification_report(y_test, y_pred)
 #
 #         # Write the classification report to the text file
-#         f.write(f"Classification Report for {model_name}:\n")
-#         f.write(classification_rep)
-#         f.write('\n\n')
+#         txtfile.write(f"Classification Report for {model_name}:\n")
+#         txtfile.write(classification_rep)
+#         txtfile.write('\n\n')
 #
 # print("Classification reports saved to classification_reports.txt")
 
@@ -170,7 +171,7 @@ avg_metric_scores = []#
 # # To re-run simply (un)comment out the relevant parts
 #
 # Creating 1 text file - the name is altered for each of the files
-with open('model_evaluation_main.txt', 'w') as f:
+with open('model_evaluation_main.txt', 'w') as txtfile:
     # Loop over all the modls listed
     for model_name, model in models:
         metric_scores = []
@@ -211,13 +212,13 @@ with open('model_evaluation_main.txt', 'w') as f:
         avg_metric_scores.append((model_name, avg_accuracy, avg_precision, avg_recall, avg_f1, avg_class_report))
 
         # Write model results to the file
-        f.write(f"Model: {model_name}\n")
-        f.write(f"Final Average Accuracy: {avg_accuracy}\n")
-        f.write(f"Final Average Precision: {avg_precision}\n")
-        f.write(f"Final Average Recall: {avg_recall}\n")
-        f.write(f"Final Average F1-score: {avg_f1}\n")
-        f.write(f"Final Classification Report:\n{avg_class_report}\n")
-        f.write("----------------------\n")
+        txtfile.write(f"Model: {model_name}\n")
+        txtfile.write(f"Final Average Accuracy: {avg_accuracy}\n")
+        txtfile.write(f"Final Average Precision: {avg_precision}\n")
+        txtfile.write(f"Final Average Recall: {avg_recall}\n")
+        txtfile.write(f"Final Average F1-score: {avg_f1}\n")
+        txtfile.write(f"Final Classification Report:\n{avg_class_report}\n")
+        txtfile.write("----------------------\n")
 
         # After running the above the best 2 models are chosen and saved (this code was added after first running)
         if model_name == 'FeedforwardNN':
@@ -332,17 +333,17 @@ recall = recall_score(y_test, test_predictions)
 precision = precision_score(y_test, test_predictions)
 f1 = f1_score(y_test, test_predictions)
 #
-with open("Neural Network model - Saved, loaded and tested on test dataset.txt", "w") as f:
+with open("Neural Network model - Saved, loaded and tested on test dataset.txt", "w") as txtfile:
     # Print metrics
-    f.write(f"Test Accuracy: {accuracy:.2f} \n")
-    f.write(f"Test Recall: {recall:.2f} \n")
-    f.write(f"Test Precision: {precision:.2f} \n")
-    f.write(f"Test F1-score: {f1:.2f} \n")
+    txtfile.write(f"Test Accuracy: {accuracy:.2f} \n")
+    txtfile.write(f"Test Recall: {recall:.2f} \n")
+    txtfile.write(f"Test Precision: {precision:.2f} \n")
+    txtfile.write(f"Test F1-score: {f1:.2f} \n")
 
     # Generate and print classification report
     class_report = classification_report(y_test, test_predictions)
-    f.write("Classification Report: \n")
-    f.write(class_report)
+    txtfile.write("Classification Report: \n")
+    txtfile.write(class_report)
 
 
 
@@ -371,6 +372,8 @@ sentence_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
 #
 # # import to avoid embedding each time the script runs (can skip the lines above)
 untagged_df = pd.read_csv('C:/Users/Steve.HAHAHA/Desktop/Dissertation/Embeddings/Predictive model/Datasets/full_transcript_chunks_AdviceTag_embedding1.csv')
+# As with the previous embeddings each embeddings need to be a list of float numbers rather so the code below converts each character of each
+# embedding (exvept the brackets) to a float
 untagged_df['embeddings'] = untagged_df['embeddings'].apply(lambda x: [float(val) for val in x[1:-1].split()])
 
 X_untagged = np.array(untagged_df['embeddings'].to_list())

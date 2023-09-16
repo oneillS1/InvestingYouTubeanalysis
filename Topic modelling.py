@@ -378,7 +378,8 @@ import joblib
 topic_model = BERTopic.load("C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topic_model_1_countVec")
 transcripts = transcript_chunks_combined_df['combined_sentence'].to_list()
 #
-# I do the metrics for the full list, the one with 50 topics and 20 topics, by altering topic_model in below code to topic_model_smaller
+# I do the metrics for the full topic model, and then the one with 50 topics and 20 topics, by altering topic_model in below code to topic_model_smaller
+# Rerun the code below then with topic_model_smaller rather than topic model.
 # topic_model_smaller = topic_model.reduce_topics(transcripts, nr_topics=50)
 # topic_model_smaller = topic_model.reduce_topics(transcripts, nr_topics=20)
 
@@ -393,47 +394,55 @@ joblib.dump(_, 'C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/trans
 topics = joblib.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/topics_1.pkl')
 _ = joblib.load('C:/Users/Steve.HAHAHA/Desktop/Dissertation/BERTopic models/transformed_data_1.pkl')
 
-# Preprocess Documents
-documents = pd.DataFrame({"Document": transcripts,
-                          "ID": range(len(transcripts)),
+# Create a dataframe ot transcript chunks, an ID and the topics from model 1
+chunks = pd.DataFrame({"Chunk": transcripts,
+                          "ID": range(len(transcripts)), # ID from 0 onwards for each chunks
                           "Topic": topics})
-documents_per_topic = documents.groupby(['Topic'], as_index=False).agg({'Document': ' '.join})
-cleaned_docs = topic_model._preprocess_text(documents_per_topic.Document.values)
+# ALtering the df to show the chunks assigned to each topic in one list
+chunks_per_topic = chunks.groupby(['Topic'], as_index=False)
+chunks_per_topic = chunks_per_topic.agg({'Chunk': ' '.join}) # grouping the documents in the same topic
+cleaned_chunks = topic_model._preprocess_text(chunks_per_topic.Chunk.values) # preprocessing the trasncripts (needed to assess topic coherence)
 
 # Extract vectorizer and analyzer from BERTopic
 vectorizer = topic_model.vectorizer_model
-analyzer = vectorizer.build_analyzer()
+analyzer = vectorizer.build_analyzer() # analyser needed to tokenise the grouped transcripts must be the same as in the topic model hence these two lines
 
-# Extract features for Topic Coherence evaluation
-tokens = [analyzer(doc) for doc in cleaned_docs]
-dictionary = corpora.Dictionary(tokens)
-corpus = [dictionary.doc2bow(token) for token in tokens]
-topic_words = [[words for words, _ in topic_model.get_topic(topic)]
-               for topic in range(len(set(topics))-1)]
+# Extract the 4 input features for the topic coherence model (tokenised trasncripts, dicctionary, bag of words corupus and words associated with each topic)
+# (from Grootendorst on GitHub - https://github.com/MaartenGr/BERTopic/issues/90)
+tokenised_transcripts = [analyzer(doc) for doc in cleaned_chunks]
+dictionary_idFreq = corpora.Dictionary(tokenised_transcripts) # create a gensim dictionary from the tokenised transcripts - each transcript chunk rep as word id word frequency pairs
+corpus = [dictionary_idFreq.doc2bow(token) for token in tokenised_transcripts] # neeeded to create a bag of words representation of the full corpus
+# topic_words = [[words for words, _ in topic_model.get_topic(topic)]
+#                for topic in range(len(set(topics))-1)]
+# Getting the words associated with each topic
+topic_words = []
+for topic in range(len(set(topics)) - 1):
+    words_for_current_topic = [words for words, _ in topic_model.get_topic(topic)]
+    topic_words.append(words_for_current_topic)
 
-# Finding the umass score
+# Instantiating a CoherenceModel from gensim which allows for finding umass score
 if __name__ == '__main__':
     coherence_model_umass = CoherenceModel(topics=topic_words,
-                           texts=tokens,
+                           texts=tokenised_transcripts,
                            corpus=corpus,
-                           dictionary=dictionary,
+                           dictionary=dictionary_idFreq,
                            coherence='u_mass')
     coherence_umass = coherence_model_umass.get_coherence()
     print(coherence_umass)
 
-# Calculating silhuuette Score
+# Calculating silhuuette Score from the labels used in hbdscan
 labels = topic_model.hdbscan_model.labels_
 silhouette_avg = silhouette_score(embeddings_1, labels)
 
-# Write up metrics (add suffix to title for 20 and 50 topic version
+# Write up metrics (add suffix to title for 20 and 50 topic version of the .txt files - after changing the topic model)
 output_file = "topic_modelling_metrics_model_1.txt"
-with open(output_file, "w") as f:
-    f.write("Topic Modelling Metrics - Model 1\n")
-    f.write("-------------------------------\n")
-    f.write(f"Coherence (UMass): {coherence_umass:.4f}\n")
-    f.write(f"Silhouette Score: {silhouette_avg:.4f}\n")
+with open(output_file, "w") as txtfile:
+    txtfile.write("Topic Modelling Metrics - Model 1\n")
+    txtfile.write("-------------------------------\n")
+    txtfile.write(f"Coherence (UMass): {coherence_umass:.4f}\n")
+    txtfile.write(f"Silhouette Score: {silhouette_avg:.4f}\n")
 
-# """ 6. Example of search topics """
+# """ 6. Applied context: Example of search topics """
 ## To use find_topics(), which finds the topics most similar to a search term, the embeddings have to be passed directly to the model
 ## The below recreates the topic model above just with the embeddings directly in it.
 sentence_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
