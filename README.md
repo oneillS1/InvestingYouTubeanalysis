@@ -15,19 +15,12 @@ The project is split into 3 parts which follows the structure in this GitHub rep
 
 ** 1. Webscraping: Finding relevant videos On YouTube and scraping metadata and transcript data from each video **
 
-_Webscraping 1 Medium videos.py_ : A script where videos between 4 and 15 mins long are found via keyword searching channels on YouTube and metadata and transcript data is scraped
-
-_Webscraping 2 Short videos.py_ : A script where videos <4 mins long are found via keyword searching channels on YouTube and metadata and transcript data is scraped
-
+_Webscraping 1 Medium videos.py_ : A script where videos between 4 and 15 mins long are found via keyword searching channels on YouTube and metadata and transcript data is scraped <br>
+_Webscraping 2 Short videos.py_ : A script where videos <4 mins long are found via keyword searching channels on YouTube and metadata and transcript data is scraped <br>
 _Webscraping 3 Free search.py_ : A script where videos are found via keyword searching YouTube and metadata and transcript data is scraped
-
 _YouTube_scraping_functions.py_ : A file containing the custom functions written and used to search YouTube for videos, & scrape the necessary data
-
 _Installing & loading packages.py_ : A file where relevant packages are installed/loaded and referenced in other scripts in this section
-
 _Hard_coding.py_ : A file containing some outputs of sections of code that are then hard-coded as inputs to subsequent sections. Only done to reduce time and avoid exceeding YouTube API limits and script can be 
 run without these.
-
 _Exploring dataset.py_ : A file containing exploratory analysis of the full scraped dataset
-
 _Description of logic followed.py_ : A file describing the logic followed in the search for relevant channels
