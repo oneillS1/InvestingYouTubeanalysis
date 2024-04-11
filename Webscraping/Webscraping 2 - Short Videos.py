@@ -29,15 +29,15 @@ from YouTube_scraping_functions import extract_multiVideo_metadata
 from YouTube_scraping_functions import append_metadata_to_csv
 
 """ Part 2: Connecting to YouTube API """
-# Using multiple API keys gets around daily restrictions on calls to the API
-api_key = "AIzaSyBvqa2-cEtjDKTCZ47qQcVJQqY4wKk5kek"
-api_key_2 = "AIzaSyCkMzXm8C6lhQJCJUJbWM57bPF3Bi5jO3U"
-api_key_3 = "AIzaSyAOLyZ77wU_n_wBg22jcN_RF-QMXvg7azg"
-api_key_4 = "AIzaSyDCxeqgw_SekMX_tnuJ2keIXIydChvMOZQ"
-api_key_5 = "AIzaSyDJaz06nOcCQMOsi9UrC6Y9LfZ2r3oIBGc"
-api_key_6 = "AIzaSyAR6W-smS3JzjJwlJ5KafSwi8f2k-kIVHY"
-api_key_7 = "AIzaSyDVlVnYgR4cL8zx4bHjPJygJqVLUGqcR0w"
-api_key_8 = "AIzaSyAl8cA_xOIBvt4m0fhQDmGKfyrklDZpKLU"
+# Using multiple API keys gets around daily restrictions on calls to the API - enter your own api keys to run the script
+api_key = ""
+api_key_2 = ""
+api_key_3 = ""
+api_key_4 = ""
+api_key_5 = ""
+api_key_6 = ""
+api_key_7 = ""
+api_key_8 = ""
 
 """ Part 3: Finding relevant videos """
     # Channel usernames identified from sector knowledge, google searches
